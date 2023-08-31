@@ -1,40 +1,40 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../routes/dbConnect';
+import { DataType, Model } from 'sequelize-typescript';
 
 class User extends Model {
-    public id!: number;
-    public name!: string;
-    public mail!: string;
-    public password!: string;
-    public birthdate!: string;
-    public direction!: string;
+    id!: number;
+    name!: string;
+    mail!: string;
+    password!: string;
+    birthDate!: string;
+    direction!: string;
 }
 
-User.init ({
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    mail: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    birthdate: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    direction: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    }
-}, {
-    sequelize,
-    modelName: 'user',
-    timestamps: false}
-);
-
-export default User;
+export default function initializeUserModel(sequelize: any): void {
+    User.init(
+        {
+            id: {
+                type: DataType.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+            },
+            name: {
+                type: DataType.STRING
+            },
+            mail: {
+                type: DataType.STRING
+            },
+            password: {
+                type: DataType.STRING
+            },
+            birthDate: {
+                type: DataType.DATEONLY
+            },
+            direction: {
+                type: DataType.STRING
+            }
+        },{
+            sequelize,
+            modelName: 'user'
+        }
+    )
+}
