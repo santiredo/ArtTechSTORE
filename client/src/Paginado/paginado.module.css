@@ -1,0 +1,11 @@
+.container{
+    margin: 44px 500px;
+}
+.paginate {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    justify-content: space-around;
+    justify-items: center;
+    align-items: center;
+}
+  
