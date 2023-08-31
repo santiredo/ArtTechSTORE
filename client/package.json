@@ -20,7 +20,7 @@
 
     "react-router-dom": "^6.15.0",
     "redux": "^4.2.1",
-    "vite-plugin-css": "^1.0.4"
+    "vite-plugin-css": "^1.0.4",
     "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
