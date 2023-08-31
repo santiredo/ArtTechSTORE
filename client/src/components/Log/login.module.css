@@ -1,0 +1,111 @@
+.loginComponent{
+    margin: 0;
+    font-family: 'Yuji Syuku', serif;
+    background: linear-gradient(#A65525, #FFC4A1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 30px 20px;
+    gap: 30px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.loginComponent h1{
+    margin: 0 0 10px;
+    font-size: 25px;
+    color: #faedde;
+}
+
+.loginInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loginInputs input{
+    width: 75%;
+    height: 15px;
+    border: none;
+    padding: 0 0 2.5px 10px;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.loginInputs input:focus{
+    outline: none;
+}
+
+.loginInputs input::placeholder{
+    color: #583000a0;
+}
+
+.loginInputs button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 77.5%;
+    background-color: #faedde;
+    color: #583000;
+    border: 1px solid transparent;
+    font-size: 17px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.fastLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.fastLogin p{
+    margin: 0 0 20px 0;
+    color: #583000;
+}
+
+.fastLoginButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 77.5%;
+    padding: 2px 2px;
+    gap: 30px;
+    background-color: #faedde;
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.fastLoginButton:hover img{
+    transform: translateX(.3s);
+    transition: .3s;
+}
+
+.fastLoginButton img{
+    width: 20px;
+    margin: 0;
+    position: absolute;
+    left: 10px;
+}
+
+.loginComponent h4{
+    margin: 0;
+    color: #583000;
+    font-weight: 100;
+}
+
+.loginComponent h4:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
