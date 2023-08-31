@@ -1,28 +1,19 @@
+
 import { useLocation, Route, Routes } from 'react-router-dom';
-import Card from './Card/Card';
+import Landing from './views/Landing/Landing'
 import './App.css';
 
-const App: React.FC = () => {
+
+export default function App() {
   const location = useLocation();
 
-  if (location.pathname === '/') {
-    const cardProps = {
-      id: '1',  // Agrega el id deseado aquí
-      imageURL: 'arte.jpg',
-      type: 'Type',
-      name: 'Name',
-      artistName: 'Artist Name',
-      cost: '$'
-    };
-
+  if(location.pathname === '/'){
     return (
       <>
         <Routes>
-          <Route path="/" element={<Card {...cardProps} />} />
+          <Route path='/' element={<Landing/>}/>
         </Routes>
       </>
-    );
+    )
   }
 };
-
-export default App;
