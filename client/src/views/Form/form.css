@@ -1,0 +1,138 @@
+.selectBox{
+    position: relative;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+}
+
+.technique,
+.type{
+    color: #000000;
+    font-family: 'Yuji Syuku', serif;
+    height: 25px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+    background-color: #ECD5C7;
+    border: none;
+    cursor: pointer;
+}
+
+.technique:hover::before,
+.type:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-bottom: 10px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ECD5C7;
+    border-left: 5px solid transparent;
+    position: absolute;
+    left: calc(50% - 8px);
+    bottom: -16px;
+}
+
+.techniqueActive::before,
+.typeActive::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-bottom: 10px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ECD5C7;
+    border-left: 5px solid transparent;
+    position: absolute;
+    left: calc(50% - 8px);
+    bottom: -16px;
+}
+
+.title{
+    margin: 0;
+    font-size: 15px;
+}
+
+.hiddenOptions{
+    overflow: auto;
+    display: none;
+}
+
+.showTechnique,
+.hideTechnique,
+.showType,
+.hideType{
+    padding: 5px 0;
+    background-color: #ECD5C7;
+    color: #000000;
+    font-weight: 300;
+    overflow-x: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: 45px;
+    gap: 10px;
+    z-index: 999;
+}
+
+.showTechnique p,
+.hideTechnique p,
+.showType p,
+.hideType p{
+    margin: 0;
+    cursor: pointer;;
+}
+
+.hideTechnique::-webkit-scrollbar,
+.showTechnique::-webkit-scrollbar,
+.hideType::-webkit-scrollbar,
+.showType::-webkit-scrollbar {
+    width: 2px;
+}
+
+.hideTechnique::-webkit-scrollbar-thumb,
+.showTechnique::-webkit-scrollbar-thumb,
+.hideType::-webkit-scrollbar-thumb,
+.showType::-webkit-scrollbar-thumb{
+    background-color: #A65525;
+}
+
+.showTechnique,
+.showType {
+    animation: show .5s;
+    height: 100px;
+}
+
+@keyframes show {
+    0%{
+        height: 0px;
+        opacity: 0;
+    }
+    100%{
+        height: 100px;
+        opacity: 1;
+    }
+}
+
+.hideTechnique,
+.hideType{
+    animation: hide .5s;
+}
+
+@keyframes hide {
+    0%{
+        height: 100px;
+        opacity: 1;
+    }
+
+    100%{
+        height: 0;
+        opacity: 0;
+    }
+}
