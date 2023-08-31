@@ -26,7 +26,7 @@ const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, cost 
 
   return (
     <div
-      id={id}
+      key={id}
       className={`${style.card} ${isHovered ? style.hovered : ''}`}
       style={cardStyle}
       onMouseEnter={() => setIsHovered(true)}
