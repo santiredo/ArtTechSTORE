@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-export class Product extends Model {
+export class productModel extends Model {
   id!: number;
   title!: string;
   price!: number;
@@ -14,8 +14,8 @@ export class Product extends Model {
   image!: string;
 }
 
-export default function initializeProductModel(sequelize: Sequelize): void {
-  Product.init(
+export default function Product(sequelize: Sequelize): void {
+  productModel.init(
     {
       id: {
         type: DataTypes.INTEGER,
