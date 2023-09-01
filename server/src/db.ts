@@ -3,7 +3,6 @@ import 'dotenv/config';
 
 import fs from 'fs'
 import path from 'path'
-import { useActionData } from 'react-router-dom';
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
@@ -28,7 +27,6 @@ fs.readdirSync(path.join(__dirname, '/models'))
         modelDefiners.push(require(path.join(__dirname, '/models', file)));
 });
 
-
 modelDefiners.forEach((model: any) => model.default(sequelize))
 let entries = Object.entries(sequelize.models)
 
@@ -37,11 +35,5 @@ entries.forEach(([modelName, model]) => {
     const capitalizedModelName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
     capitalizedModels[capitalizedModelName] = model as ModelCtor<any>;
 })
-
-const { Product, User } = sequelize.models
-
-
-User.belongsToMany(Product, {through: 'user_product'})
-Product.belongsToMany(User, {through: 'user_product'})
 
 export { sequelize };
