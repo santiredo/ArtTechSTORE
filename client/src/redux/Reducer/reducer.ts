@@ -8,23 +8,21 @@ interface ArtGalleryItem {
 }
 
 export type InitialState = {
-  allPosts: ArtGalleryItem[],
   numPage: number,
   artGallery: ArtGalleryItem[],
 };
 
-type Action<T> ={
+type Action={
   type:string;
-  payload:T;
+  payload:[];
 }
 
 const initialState: InitialState = {
-  allPosts: [],
   artGallery: [],
   numPage: 1,
 };
 
-export default function rootReducer(state = initialState, action:Action<any>){
+export default function rootReducer(state = initialState, action:Action){
   switch(action.type){
     case 'SEARCH_ARTIST':
       let artist: Array<any> = [];
@@ -54,15 +52,8 @@ export default function rootReducer(state = initialState, action:Action<any>){
         ...state,
         numPage: state.numPage + 1,
       };
-    case 'CREATE_POST':
-      return {
-        ...state,
-        allPosts: [action.payload, ...state.allPosts]
-      }
     default:
       return {...state};
-      
-      
   }
 }
 
