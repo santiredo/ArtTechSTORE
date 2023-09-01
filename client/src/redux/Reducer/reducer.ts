@@ -6,7 +6,7 @@ interface ArtGalleryItem {
     artistName: string;
     cost: string;
   }
-  
+
 export type InitialState<T> = {
     allPosts: T,
     numPage: number,
@@ -61,4 +61,3 @@ export default function rootReducer(state = initialState, action:Action<any>){
           default:
               return {...state};
     }
-  }

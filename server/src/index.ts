@@ -1,12 +1,12 @@
-import express from 'express';
-import { Express, Request, Response} from 'express';
+import { sequelize } from './db'; 
+import server from './server';
 
-const app: Express = express();
-// const app = express();
-const port = 3001;
-app.get('/', (req: Request, res: Response) => {
-  res.send('Estas es la página principal del servidor ArtTechStore');
-});
-app.listen(port, () => {
-   console.log(`servidor is listening on ${port}`);
+const PORT = 3001;
+
+sequelize.sync({ force: false }).then(() => {
+  server.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}).catch((error: any) => {  // Declara el tipo del parámetro 'error'
+  console.error(error);
 });
