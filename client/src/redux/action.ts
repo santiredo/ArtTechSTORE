@@ -8,7 +8,7 @@ export type Action = {
 export function searchArtist(name:string) {
   return async function search(dispatch: Dispatch<Action>) {
     try {
-      const response = await axios.get(`http://localhost/getUsers?name=${name}`);
+      const response = await axios.get(`http://localhost/user?name=${name}`);
         dispatch({
           type: 'SEARCH_ARTIST',
           payload: response.data,
@@ -23,7 +23,7 @@ export function searchArtist(name:string) {
 export function displayArtist(name:string) {
   return async function display(dispatch: Dispatch<Action>) {
     try {
-      const response = await axios.get(`http://localhost/getUsers?name=${name}`);
+      const response = await axios.get(`http://localhost/user?name=${name}`);
         dispatch({
           type: 'DISPLAY_ARTIST',
           payload: response.data,
