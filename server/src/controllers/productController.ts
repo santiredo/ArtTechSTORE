@@ -24,3 +24,12 @@ export async function updateProduct(productId: number, newData: Partial<productM
 
   return product.update(newData);
 }
+
+export async function deleteProduct(productId: number) {
+  const product = await productModel.findByPk(productId);
+  if (!product) {
+    throw new Error('Product no encontrado');
+  }
+
+  return product.destroy();
+}
