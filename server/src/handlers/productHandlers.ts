@@ -11,7 +11,7 @@ import {
 export async function createProductHandler(req: Request, res: Response) {
   try {
     const newProductData = req.body;
-    const newProduct = await createProduct(newProductData);
+    const newProduct = await createProduct(newProductData);//*Revisar que lo que llega del body esta correcto
     return res.status(201).json(newProduct);
   } catch (error) {
     console.error('Error al crear el producto', error);
