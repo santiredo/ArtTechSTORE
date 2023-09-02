@@ -1,7 +1,17 @@
-// import { Request, Response } from "express";
-// import Comment from "../models/Comment";
+import { Comment } from "../models/Comment";
 
-// export const getComments = (req: Request, res: Response) => {
-//   const response: object = Comment.findAll((comment) => comment.userId === id);
+export const getComments = async (productId: string) => {
+  try {
+    const comments = await Comment.findAll({
+      where: { productId }, // Busca comentarios relacionados con el producto específico
+    });
 
-// };
+    if (!comments || comments.length === 0) {
+      throw new Error("No se encontraron comentarios para este producto.");
+    }
+
+    return comments;
+  } catch (error: any) {
+    throw new Error("Error al obtener comentarios: " + error.message);
+  }
+};

@@ -1,14 +1,14 @@
 import { DataTypes, Model } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 
-export class commentModel extends Model {
+export class Comment extends Model {
   id!: number;
   message!: string;
   rating!: number;
 }
 
-export default function Comment(sequelize: Sequelize): void {
-  commentModel.init(
+export default function initializeCommentModel(sequelize: Sequelize): void {
+  Comment.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -25,6 +25,7 @@ export default function Comment(sequelize: Sequelize): void {
     {
       sequelize,
       modelName: "Comment",
+      timestamps: false,
     }
   );
 }
