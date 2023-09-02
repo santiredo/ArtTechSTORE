@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { postCommentsHandler } from "../handlers/getComment.handler";
+import { postCommentsHandler } from "../handlers/postComment.handler";
 
 const router = Router();
 
