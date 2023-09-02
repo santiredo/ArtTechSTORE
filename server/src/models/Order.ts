@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-export class Order extends Model {
+export class orderModel extends Model {
   id!: number;
   userId!: number;
   statusId!: number;
@@ -10,7 +10,7 @@ export class Order extends Model {
 }
 
 export default function initializeOrderModel(sequelize: Sequelize): void {
-  Order.init(
+  orderModel.init(
     {
       id: {
         type: DataTypes.INTEGER,

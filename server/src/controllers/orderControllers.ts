@@ -1,5 +1,5 @@
 // orderController.ts
-import { Order } from '../models/order';
+import { orderModel } from '../models/order';
 
 // Controlador para crear una orden
 export async function createOrder(userId: number, statusId: number, price: number, address: string) {
