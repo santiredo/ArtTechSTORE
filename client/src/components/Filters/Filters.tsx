@@ -1,18 +1,35 @@
 
 
 
-/* import { useDispatch } from 'react-redux'
- */import reset from '../../assets/reset.png'
+
+import { useDispatch } from 'react-redux'
+import reset from '../../assets/reset.png'
 import style from './filters.module.css'
+import { filterByPayment, filterByPrice, filterByTechnique, filterByType } from '../../redux/action'
+
 
 
 export default function Filters() {
 
-/*     const dispatch = useDispatch()
- */
-/*     const handleType = (event: React.ChangeEvent<HTMLParagraphElement>) => {
-        dispatch(filterByType(event.target.defaultValue))
-    } */
+
+    const dispatch = useDispatch()
+
+    const handleType = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        dispatch(filterByType(event.currentTarget.getAttribute('data-value') ?? ''))
+    }
+
+    const handleTechnique = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        dispatch(filterByTechnique(event.currentTarget.getAttribute('data-value') ?? ''))
+    }
+
+    const handlePayment = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        dispatch(filterByPayment(event.currentTarget.getAttribute('data-value') ?? ''))
+    }
+
+    const handlePrice = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        dispatch(filterByPrice(event.currentTarget.getAttribute('data-value') ?? ''))
+    }
+
 
     return (
         <div className={style.divAuxiliar}>
@@ -22,35 +39,38 @@ export default function Filters() {
                 <div className={style.filterDiv}>
                     Type
                     <div className={style.options}>
-                        <p /* onClick={handleType} */ defaultValue='Drawing'>Drawings</p>
-                        <p /* onClick={handleType} */ defaultValue='Painting'>Paintings</p>
-                        <p /* onClick={handleType} */ defaultValue='3D Object'>3D Objects</p>
+                        <p onClick={handleType} data-value='Drawing'>Drawing</p>
+                        <p onClick={handleType} data-value='Painting'>Painting</p>
+                        <p onClick={handleType} data-value='3D Object'>3D Object</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
                     Technique
                     <div className={style.options}>
-                        <p /* onClick={handleTechnique} */ defaultValue='Oleo'>Oleo</p>
-                        <p /* onClick={handleTechnique} */ defaultValue='Lapiz'>Lapiz</p>
-                        <p /* onClick={handleTechnique} */ defaultValue='Acuarela'>Acuarela</p>
-                        <p /* onClick={handleTechnique} */ defaultValue='Macrame'>Macrame</p>
-                        <p /* onClick={handleTechnique} */ defaultValue='Ceramica'>Ceramica</p>
+                        <p onClick={handleTechnique} data-value='Oil painting'>Oil painting</p>
+                        <p onClick={handleTechnique} data-value='Pencil'>Pencil</p>
+                        <p onClick={handleTechnique} data-value='Watercolor'>Watercolor</p>
+                        <p onClick={handleTechnique} data-value='Macrame'>Macrame</p>
+                        <p onClick={handleTechnique} data-value='Ceramics'>Ceramics</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
                     Payment method
                     <div className={style.options}>
-                        <p /* onClick={handlePayment} */ defaultValue='Direct Purchase'>Direct Purchase</p>
-                        <p /* onClick={handlePayment} */ defaultValue='Auction'>Auction</p>
+                        <p onClick={handlePayment} data-value='Direct Purchase'>Direct Purchase</p>
+                        <p onClick={handlePayment} data-value='Auction'>Auction</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
                     Price
                     <div className={style.options}>
-                        <p /* onClick={handlePrice} */ defaultValue='< 2000>'>{`<`} 2000</p>
-                        <p /* onClick={handlePrice} */ defaultValue='2000-5000'>2000-5000</p>
-                        <p /* onClick={handlePrice} */ defaultValue='5000-10000'>5000-10000</p>
-                        <p /* onClick={handlePrice} */ defaultValue='> 10000'>{`>`}10000</p>
+
+                        <p onClick={handlePrice} data-value='Higher'>Higher {'>'} Lower</p>
+                        <p onClick={handlePrice} data-value='Lower'>Lower {'>'} Higher</p>
+
                     </div>
                 </div>
             </div>
