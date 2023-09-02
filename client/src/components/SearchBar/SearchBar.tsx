@@ -3,14 +3,15 @@ import { useDispatch } from 'react-redux';
 import { displayArtist, searchArtist } from '../../redux/action';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { InitialState } from '../../redux/reducer';
+import style from './SearchBar.module.css'
 
 
 export const SearchBar = () => {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate()
   const [artistState, setArtistState] = useState('');
-  const possibleArtists:any = useSelector<any>((state)=>state.artists);
+  let possibleArtists:any = useSelector<any>((state)=>state.artists);
+  const hasta:number=8
 
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +26,15 @@ export const SearchBar = () => {
   };
 
   const renderPossibleArtists = () => {
-    if (possibleArtists.length === 0) {
+    if (possibleArtists.length <= 0) {
       return null;
     }
-
+    if (possibleArtists.length<=hasta) {
+      possibleArtists=possibleArtists.slice(0,possibleArtists.length);
+    } else {
+      possibleArtists=possibleArtists.slice(0,hasta);
+    }
+    
     return (
       <ul>
         {possibleArtists.map((artist:any) => (
@@ -39,7 +45,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <input
         value={artistState}
         onChange={handleChange}
@@ -47,7 +53,7 @@ export const SearchBar = () => {
         placeholder="Search an Artist"
       />
       {renderPossibleArtists()}
-      <button onClick={() => onSearch(artistState)}>Search</button>
+      <button className={style.button} onClick={() => onSearch(artistState)}>Search</button>
     </div>
   );
 };
