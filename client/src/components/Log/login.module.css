@@ -1,0 +1,127 @@
+.loginComponent{
+    font-family: 'Yuji Syuku', serif;
+    background: linear-gradient(#A65525, #FFC4A1);
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.loginComponent h1{
+    margin: 0 0 10px;
+    font-size: 25px;
+    color: #faedde;
+}
+
+.custom-modal {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust the width as needed */
+    max-width: 90%; /* Set a maximum width if desired */
+    padding: 20px; /* Add padding for content inside the modal */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+.loginInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loginInputs input{
+    width: 75%;
+    height: 25px;
+    border: none;
+    padding: 0 0 2.5px 10px;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.loginInputs input:focus{
+    outline: none;
+}
+
+.loginInputs input::placeholder{
+    color: #583000a0;
+}
+
+.btn{
+    list-style-type: none;
+    padding: 0 0 0px 0;
+    height: 35px;
+    width: 35%;
+    background-color: #faedde;
+    color: #583000;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px white;
+    }
+}
+
+.fastLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.fastLogin p{
+    margin: 0 0 20px 0;
+    color: #583000;
+}
+
+.fastLoginButton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    gap: 30px;
+    background-color: #faedde;
+    width: 70%;
+    margin-left: 17px;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px white;
+    }
+}
+
+.fastLoginButton:hover img{
+    transform: translateX(15px);
+    transition: .3s;
+}
+
+.fastLoginButton img{
+    width: 20px;
+    margin: 0;
+    position: absolute;
+    left: 10px;
+}
+
+.loginComponent h4{
+    margin: 0;
+    color: #583000;
+    font-weight: 100;
+}
+
+.loginComponent h4:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

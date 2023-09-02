@@ -1,0 +1,99 @@
+.divAuxiliar{
+    position: fixed;
+    bottom: 10%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1000;
+    margin-left: 5%;
+    width: 15%;
+    height: 80%;
+    gap: 10px;
+}
+
+.filtersComponent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: #3b5b85eb;
+    width: 100%;
+    padding-left: 5%;
+    box-shadow: 0 0 5px #000000;
+    border-radius: 5px;
+}
+
+.filtersComponent h3{
+    margin: 0;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.filtersComponent img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: 4%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.filtersComponent img:hover{
+    transform: rotate(-45deg) scale(1.1);
+}
+
+.filterDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: start;
+    width: 98%;
+    padding-right: 2%;
+    padding-left: 5%;
+    max-height: 75px;
+    overflow: auto;
+    border-top: 3px solid #1f416d;
+    
+}
+
+.options p{
+    width: 100%;
+    font-size: small;
+    margin: 2px 0;
+    cursor: pointer;
+    position: relative;
+    font-weight: 600;
+}
+
+.options p:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    border-left: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    position: absolute;
+    border-radius: 5px;
+    right: 30%;
+    top:55%; 
+}
+
+.options::-webkit-scrollbar{
+    width: 1px;
+}
+
+.options::-webkit-scrollbar-thumb {
+    background-color: #1f416d;
+}
