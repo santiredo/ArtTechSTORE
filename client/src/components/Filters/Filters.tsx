@@ -1,13 +1,16 @@
 
 
 
+
 import { useDispatch } from 'react-redux'
 import reset from '../../assets/reset.png'
 import style from './filters.module.css'
 import { filterByPayment, filterByPrice, filterByTechnique, filterByType } from '../../redux/action'
 
 
+
 export default function Filters() {
+
 
     const dispatch = useDispatch()
 
@@ -27,6 +30,7 @@ export default function Filters() {
         dispatch(filterByPrice(event.currentTarget.getAttribute('data-value') ?? ''))
     }
 
+
     return (
         <div className={style.divAuxiliar}>
             <div className={style.filtersComponent}>
@@ -38,6 +42,7 @@ export default function Filters() {
                         <p onClick={handleType} data-value='Drawing'>Drawing</p>
                         <p onClick={handleType} data-value='Painting'>Painting</p>
                         <p onClick={handleType} data-value='3D Object'>3D Object</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
@@ -48,6 +53,7 @@ export default function Filters() {
                         <p onClick={handleTechnique} data-value='Watercolor'>Watercolor</p>
                         <p onClick={handleTechnique} data-value='Macrame'>Macrame</p>
                         <p onClick={handleTechnique} data-value='Ceramics'>Ceramics</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
@@ -55,13 +61,16 @@ export default function Filters() {
                     <div className={style.options}>
                         <p onClick={handlePayment} data-value='Direct Purchase'>Direct Purchase</p>
                         <p onClick={handlePayment} data-value='Auction'>Auction</p>
+
                     </div>
                 </div>
                 <div className={style.filterDiv}>
                     Price
                     <div className={style.options}>
+
                         <p onClick={handlePrice} data-value='Higher'>Higher {'>'} Lower</p>
                         <p onClick={handlePrice} data-value='Lower'>Lower {'>'} Higher</p>
+
                     </div>
                 </div>
             </div>

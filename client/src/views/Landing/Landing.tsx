@@ -1,28 +1,19 @@
-
-
-import { useState } from 'react'
 import foto1 from '../../assets/fotoLanding.jpg'
 import foto2 from '../../assets/fotoLanding2.jpg'
 import foto3 from '../../assets/fotoLanding3.png'
 import foto4 from '../../assets/fotoLanding4.jpg'
 import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
-import {LogIn} from '../../components/Log/LogIn.tsx'
 import style from './landing.module.css'
 
 
 export default function Landing() {
 
-    const [register, setRegister] = useState(false)
-
     return (
 
         <div className={style.landingPage}>
             <h1>Welcome to ArtTech STORE</h1>
-            <div className={style.divButtons}>
-                <button>Log In</button>
-                <button>Register</button>
-            </div>
+            
             <div className={style.phrases}>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>

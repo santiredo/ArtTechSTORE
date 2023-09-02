@@ -1,32 +1,28 @@
 .container{
-    width: auto;
-    background: linear-gradient(rgba(198, 202, 205, 0.5), rgba(198,202,205,0.5)), url("../../images/fondo2.jpg");
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-}
-
-.registerComponent{
-    margin: 0;
     font-family: 'Yuji Syuku', serif;
-    
-    background: linear-gradient(191deg,#9f5d4e 0%, #d7cac4 80%);
+    background: linear-gradient(#A65525, #FFC4A1);
+    background-size: cover;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
-    padding: 30px;
-    gap: 50px;
-    max-width: 400px;
+    align-items: center;
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
 }
 
-.registerComponent h1{
-    margin: 0;
-    font-size: 30px;
-    color: #faedde;
-}
+.custom-modal {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust the width as needed */
+    max-width: 90%; /* Set a maximum width if desired */
+    padding: 20px; /* Add padding for content inside the modal */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
 
 .regisInputs{
     display: flex;
