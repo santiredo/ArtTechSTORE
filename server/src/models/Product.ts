@@ -42,10 +42,10 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.BOOLEAN
       },
       type: {
-        type: DataTypes.ENUM('Pintura', 'Escultura', 'Dibujo')
+        type: DataTypes.ENUM('Painting', '3D Object', 'Drawing')
       },
       technique: {
-        type: DataTypes.ENUM('Oleo', 'Lapiz')
+        type: DataTypes.ENUM('Oil painting', 'Pencil', 'Watercolor', 'Macrame', 'Ceramics')
       },
       description: {
         type: DataTypes.TEXT

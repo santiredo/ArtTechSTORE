@@ -2,9 +2,11 @@ import axios from "axios";
 import { Dispatch } from 'redux';
 
 export type Action = {
-    type: string;
-    payload : any;
-  };
+  type: string;
+  payload : any;
+};
+
+
 export function searchArtist(name:string) {
   return async function search(dispatch: Dispatch<Action>) {
     try {
@@ -20,6 +22,7 @@ export function searchArtist(name:string) {
   }
 }
 
+
 export function displayArtist(name:string) {
   return async function display(dispatch: Dispatch<Action>) {
     try {
@@ -33,6 +36,7 @@ export function displayArtist(name:string) {
     }
   }
 }
+
 
 const llamadoAlBackend = async( creation: {
     title: string;
@@ -51,6 +55,8 @@ const llamadoAlBackend = async( creation: {
         error instanceof Error && alert(`Error: ${error.message}`);
     }
 }
+
+
 export const postCreation = (creation: {
     title: string;
     price:string;
@@ -66,18 +72,52 @@ export const postCreation = (creation: {
     }
 }
 
+
 export function prev() {
   return {
     type: 'PREV',
   };
 }
+
+
 export function next() {
   return {
     type: 'NEXT',
   };
 }
+
+
 export function resetPage() {
   return {
     type: 'RESET_PAGE',
   };
+}
+
+
+export const filterByType = (value:string) => {
+  return {
+    type: 'FILTER_TYPE',
+    payload: value
+  }
+}
+
+export const filterByTechnique = (value:string) => {
+  return {
+    type: 'FILTER_TECHNIQUE',
+    payload: value
+  }
+}
+
+export const filterByPayment = (value:string) => {
+  return {
+    type: 'FILTER_PAYMENT',
+    payload: value
+  }
+}
+
+export const filterByPrice = (value:string) => {
+  return {
+    type: 'FILTER_PRICE',
+    payload: value
+  }
 }
