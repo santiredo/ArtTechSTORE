@@ -3,6 +3,10 @@ import { Sequelize } from "sequelize-typescript";
 
 export class Order extends Model {
   id!: number;
+  userId!: number;
+  statusId!: number;
+  price!: number;
+  address!: string;
 }
 
 export default function initializeOrderModel(sequelize: Sequelize): void {
@@ -15,17 +19,22 @@ export default function initializeOrderModel(sequelize: Sequelize): void {
       },
       userId:{
         type: DataTypes.INTEGER,
-        autoIncrement: true
+        allowNull: false,
       },
       statusId:{
         type: DataTypes.INTEGER,
-        autoIncrement: true
+        allowNull: false,
       },
       price:{
         type: DataTypes.FLOAT,
+        validate: {
+        min: 1, 
+        },
+        allowNull: false,
       },
       address:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
       }
     },
     {
