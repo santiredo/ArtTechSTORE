@@ -1,7 +1,9 @@
+
 import { DataTypes, Model } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 
 export class Order extends Model {
+
   id!: number;
   userId!: number;
   statusId!: number;
@@ -10,13 +12,16 @@ export class Order extends Model {
 }
 
 export default function initializeOrderModel(sequelize: Sequelize): void {
+
   Order.init(
+
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
+
       userId:{
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -40,6 +45,7 @@ export default function initializeOrderModel(sequelize: Sequelize): void {
     {
       sequelize,
       modelName: "Order",
+
     }
   );
 }

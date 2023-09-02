@@ -1,14 +1,16 @@
 .loginComponent{
-    margin: 0;
     font-family: 'Yuji Syuku', serif;
     background: linear-gradient(#A65525, #FFC4A1);
+    background-size: cover;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-    padding: 30px 20px;
-    gap: 30px;
-    max-width: 400px;
-    text-align: center;
+    align-items: center;
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
+    list-style-type: none;
+    justify-content: center;
 }
 
 .loginComponent h1{
@@ -16,6 +18,19 @@
     font-size: 25px;
     color: #faedde;
 }
+
+.custom-modal {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust the width as needed */
+    max-width: 90%; /* Set a maximum width if desired */
+    padding: 20px; /* Add padding for content inside the modal */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
 
 .loginInputs{
     display: flex;
@@ -26,7 +41,7 @@
 
 .loginInputs input{
     width: 75%;
-    height: 15px;
+    height: 25px;
     border: none;
     padding: 0 0 2.5px 10px;
     border-radius: 2px;
@@ -44,19 +59,18 @@
     color: #583000a0;
 }
 
-.loginInputs button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25px;
-    width: 77.5%;
+.btn{
+    list-style-type: none;
+    padding: 0 0 0px 0;
+    height: 35px;
+    width: 35%;
     background-color: #faedde;
     color: #583000;
-    border: 1px solid transparent;
-    font-size: 17px;
-    font-family: inherit;
-    cursor: pointer;
-    border-radius: 2px;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px white;
+    }
 }
 
 .fastLogin{
@@ -72,23 +86,25 @@
 }
 
 .fastLoginButton{
-    display: flex;
+    display:flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 77.5%;
-    padding: 2px 2px;
+    margin-bottom: 10px;
+    padding: 10px 10px;
     gap: 30px;
     background-color: #faedde;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-family: inherit;
-    cursor: pointer;
-    border-radius: 2px;
+    width: 70%;
+    margin-left: 17px;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px white;
+    }
 }
 
 .fastLoginButton:hover img{
-    transform: translateX(.3s);
+    transform: translateX(15px);
     transition: .3s;
 }
 
