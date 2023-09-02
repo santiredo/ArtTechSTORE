@@ -1,4 +1,3 @@
-// productController.ts
 import { productModel } from '../models/Product';
 
 // Controlador para crear un producto
