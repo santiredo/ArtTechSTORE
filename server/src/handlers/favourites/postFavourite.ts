@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createFavourite } from '../controllers/postFavourite';
+import { createFavourite } from '../../controllers/postFavourite';
 
 // Manejador para crear un nuevo favorito
 export async function createFavouriteHandler(req: Request, res: Response) {
