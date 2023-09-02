@@ -6,8 +6,14 @@ interface ArtGalleryItem {
     artistName: string;
     cost: string;
   }
+interface Artists{
+  id:number,
+  name:string,
+}
 
 export type InitialState<T> = {
+    artist:T,
+    artists:Artists[],
     allPosts: T,
     numPage: number,
     artGallery: ArtGalleryItem[],
@@ -19,6 +25,8 @@ type Action<T> = {
 }
 
 const initialState: InitialState<any> = {
+    artist:{},
+    artists:[],
     allPosts: [],
     numPage:1,
     artGallery:[],
@@ -32,16 +40,15 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 ...state,
                 allPosts: [action.payload, ...state.allPosts],
               };
+        case 'DISPLAY_ARTIST':
+              return{
+                ...state,
+                artists: action.payload,
+              }
         case 'SEARCH_ARTIST':
-                let artist: Array<any> = [];
-                if (action.payload.length === 0) {
-                  artist = state.artGallery;
-                } else {
-                  artist = action.payload.map((ele: string) => ele);
-                }
                 return {
                     ...state,
-                    searchArtist: artist,
+                    artist: action.payload,
                   };
         case 'RESET_PAGE':
                 return {
@@ -61,3 +68,4 @@ export default function rootReducer(state = initialState, action:Action<any>){
           default:
               return {...state};
     }
+}

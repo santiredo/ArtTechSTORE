@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { finalValidate, validateForm, validateSubmit } from './Validation/validation';
 import style from './form.module.css'
 import './form.css'
-import { postCreation } from '../../redux/Actions/action';
+import { postCreation } from '../../redux/action';
 
 
 export default function Form() {

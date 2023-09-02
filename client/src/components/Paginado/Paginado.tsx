@@ -1,7 +1,7 @@
 // import React from "react";
 import { useDispatch } from "react-redux";
 import style from './paginado.module.css'
-import { prev,next } from "../Redux/Actions/action";
+import { prev,next } from '../../redux/action';
 
 interface PaginateProps {
     numPage: number;
