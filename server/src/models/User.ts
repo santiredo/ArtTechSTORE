@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-export class userModel extends Model {
+export class User extends Model {
   id!: number;
   name!: string;
   mail!: string;
@@ -10,8 +10,8 @@ export class userModel extends Model {
   direction!: string;
 }
 
-export default function User(sequelize: Sequelize): void {
-  userModel.init(
+export default function initializeUserModel(sequelize: Sequelize): void {
+  User.init(
     {
       id: {
         type: DataTypes.INTEGER,
