@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-    "commitlint": {
+  "commitlint": {
     "extends": "@commitlint/config-conventional"
-    },
+  },
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
     "build": "tsc --build tsconfig.json",
@@ -24,7 +24,7 @@
     "url": "https://github.com/santiredo/ArtTechSTORE/issues"
   },
   "homepage": "https://github.com/santiredo/ArtTechSTORE#readme",
-    "dependencies": {
+  "dependencies": {
     "axios": "^1.5.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -32,6 +32,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
     "sequelize": "^6.32.1",
+    "sequelize-typescript": "^2.1.5",
     "soket.io": "^0.0.1-security",
     "tsc": "^2.0.4",
     "typescript": "^5.2.2",
