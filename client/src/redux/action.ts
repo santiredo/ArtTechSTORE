@@ -3,12 +3,12 @@ import { Dispatch } from 'redux';
 
 export type Action = {
     type: string;
-    payload?: any;
+    payload : any;
   };
 export function searchArtist(name:string) {
   return async function search(dispatch: Dispatch<Action>) {
     try {
-      const response = await axios.get(`http://localhost/getPosts?name=${name}`);
+      const response = await axios.get(`http://localhost/getUsers?name=${name}`);
         dispatch({
           type: 'SEARCH_ARTIST',
           payload: response.data,
@@ -16,6 +16,20 @@ export function searchArtist(name:string) {
     } catch (error) {
       console.log(error);
       alert('No se encontro el artista con ese nombre');
+    }
+  }
+}
+
+export function displayArtist(name:string) {
+  return async function display(dispatch: Dispatch<Action>) {
+    try {
+      const response = await axios.get(`http://localhost/getUsers?name=${name}`);
+        dispatch({
+          type: 'DISPLAY_ARTIST',
+          payload: response.data,
+        });
+    } catch (error) {
+      console.log(error);
     }
   }
 }
