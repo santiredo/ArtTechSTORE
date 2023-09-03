@@ -1,6 +1,6 @@
-import { sequelize } from './db'; 
+import { sequelize } from "./db";
 
-
+const { Product, User } = sequelize.models;
 
 const { Product, User, Favourite, Comment, Status, Order } = sequelize.models
 User.belongsToMany(Product, {through: 'user_product'})
@@ -27,8 +27,6 @@ los favoritos relacionados.*/
 Favourite.belongsTo(User, { foreignKey: 'userId' });
 Favourite.belongsTo(Product, { foreignKey: 'productId' });
 
-// relación entre Comment y User
-Comment.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 
 // relación entre Comment y User
 Comment.belongsTo(User, { foreignKey: 'userId', as: 'user' });
@@ -41,3 +39,4 @@ Order.belongsTo(Status, { foreignKey: 'statusId', as: 'status' });
 
 // Relación entre Order y Product
 Order.hasMany(Product, { foreignKey: 'orderId', as: 'products' });
+
