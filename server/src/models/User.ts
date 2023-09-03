@@ -8,6 +8,7 @@ export class User extends Model {
   password!: string;
   birthDate!: string;
   direction!: string;
+  role!: 'Admi' | 'Seller' | 'Buyer';
 }
 
 export default function initializeUserModel(sequelize: Sequelize): void {
@@ -32,7 +33,12 @@ export default function initializeUserModel(sequelize: Sequelize): void {
       },
       direction: {
         type: DataTypes.STRING
-      }
+      },
+      role: {
+        type: DataTypes.ENUM('Admin', 'Seller', 'Buyer'),
+        allowNull: false,
+        defaultValue: 'Buyer', // Establece el valor predeterminado del rol
+      },
     },
     {
       sequelize,

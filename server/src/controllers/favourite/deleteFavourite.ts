@@ -1,4 +1,4 @@
-import { Favourite } from '../models/Favourites'; // Asegúrate de importar el modelo correctamente
+import { Favourite } from '../../models/Favourites'; // Asegúrate de importar el modelo correctamente
 
 // Controlador para eliminar un favorito por su ID
 export async function deleteFavourite(favouriteId: number) {
