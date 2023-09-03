@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getFavourite } from '../controllers/getFavourite';
+import { getFavourite } from '../../controllers/favourite/getFavourite';
 
 // Manejador para obtener un favorito por su ID
 export async function getFavouriteHandler(req: Request, res: Response) {

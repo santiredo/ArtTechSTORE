@@ -1,4 +1,4 @@
-import { Favourite } from '../models/Favourites';
+import { Favourite } from '../../models/Favourites';
 
 // Controlador para crear un nuevo favorito
 export async function createFavourite(data: any) {

@@ -1,4 +1,4 @@
-import { Favourite } from '../models/Favourites'; // Asegúrate de importar el modelo correctamente
+import { Favourite } from '../../models/Favourites';
 
 // Controlador para obtener un favorito por su ID
 export async function getFavourite(favouriteId: number) {
