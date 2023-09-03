@@ -5,15 +5,43 @@ import foto4 from '../../assets/fotoLanding4.jpg'
 import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
+import LoginModal from "../../components/Log/LogIn";
+import RegisterModal from "../../components/Register/Register";
+import React, {useState} from "react";
 
 
 export default function Landing() {
+
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    
+    const openRegisterModal = () => {
+        setIsRegisterModalOpen(true);
+      };
+    
+      const closeRegisterModal = () => {
+        setIsRegisterModalOpen(false);
+      };
+
+    const openLoginModal = () => {
+        setIsLoginModalOpen(true);
+      };
+    
+      const closeLoginModal = () => {
+        setIsLoginModalOpen(false);
+      };
 
     return (
 
         <div className={style.landingPage}>
             <h1>Welcome to ArtTech STORE</h1>
-            
+            <div className={style.divButtons}>
+                <button onClick={openLoginModal}>Log In</button>
+                <LoginModal isOpen={isLoginModalOpen} onRequestClose={closeLoginModal} openRegistration={openRegisterModal} />
+                <RegisterModal isOpen={isRegisterModalOpen} onRequestClose={closeRegisterModal}/>
+                <button onClick={openRegisterModal}>Register</button>
+            </div>
             <div className={style.phrases}>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
@@ -52,16 +80,6 @@ export default function Landing() {
                 </div>
                 <img className={style.fondo1} src={fondo1} alt="" />
             </div>
-            {/* {
-                register
-                ? (
-                    <></>
-                )
-                : (
-                    <LogIn onRegister={() => setRegister(true)}/>
-                    
-                )
-            } */}
         </div>
     )
 }
