@@ -8,7 +8,7 @@ export class User extends Model {
   password!: string;
   birthDate!: string;
   direction!: string;
-  role!: 'Admi' | 'Seller' | 'Buyer';
+  role!: 'Admin' | 'Seller' | 'Buyer';
 }
 
 export default function initializeUserModel(sequelize: Sequelize): void {
