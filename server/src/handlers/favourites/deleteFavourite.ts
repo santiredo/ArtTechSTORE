@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { deleteFavourite } from '../controllers/deleteFavourite'; 
+import { deleteFavourite } from '../../controllers/deleteFavourite'; 
 
 // Manejador para eliminar un favorito por su ID
 export async function deleteFavouriteHandler(req: Request, res: Response) {
