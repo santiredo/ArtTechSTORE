@@ -3,6 +3,7 @@ import 'dotenv/config';
 
 import fs from 'fs'
 import path from 'path'
+import { productModel } from 'dist/models/Product';
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
@@ -36,4 +37,35 @@ entries.forEach(([modelName, model]) => {
     capitalizedModels[capitalizedModelName] = model as ModelCtor<any>;
 })
 
+
+
+// ACA VAN LAS RELACIONES
+
+const { User, Artist, Product, Comment, Order, Status } = sequelize.models
+
+Artist.hasMany(Product)
+Product.belongsTo(Artist)
+
+User.belongsToMany(Product, {through: 'User_Favourite'})
+Product.belongsToMany(User, {through: 'User_Favourite'})
+
+User.hasMany(Comment)
+Comment.belongsTo(User)
+
+User.hasMany(Order)
+Order.belongsTo(User)
+
+Artist.hasMany(Order)
+Order.belongsTo(Artist)
+
+Order.hasOne(Status)
+Status.hasMany(Order)
+
+Product.hasOne(Order)
+Order.belongsTo(Product)
+
+Product.hasOne(Comment)
+Comment.belongsTo(Product)
+
+export { User, Artist, Product, Comment, Order, Status }
 export { sequelize };

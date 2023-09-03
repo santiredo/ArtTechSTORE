@@ -1,33 +1,33 @@
-import { statusModel } from '../models/Status';
+import { Status } from '../db';
 
 // Controlador para crear un estado
-export async function createStatus(newStatusData: Partial<statusModel>) {
-  return statusModel.create(newStatusData);
+/* export async function createStatus(newStatusData: Partial<Status>) {
+  return Status.create(newStatusData);
 }
-
+ */
 // Controlador para obtener todos los estados
 export async function getStatuses() {
-  return statusModel.findAll();
+  return Status.findAll();
 }
 
 // Controlador para obtener un estado por su ID
 export async function getStatusById(statusId: number) {
-  return statusModel.findByPk(statusId);
+  return Status.findByPk(statusId);
 }
 
 // Controlador para actualizar un estado por su ID
-export async function updateStatus(statusId: number, newData: Partial<statusModel>) {
-  const status = await statusModel.findByPk(statusId);
+/* export async function updateStatus(statusId: number, newData: Partial<Status>) {
+  const status = await Status.findByPk(statusId);
   if (!status) {
     throw new Error('Estado no encontrado');
   }
 
   return status.update(newData);
-}
+} */
 
 // Controlador para eliminar un estado por su ID
 export async function deleteStatus(statusId: number) {
-  const status = await statusModel.findByPk(statusId);
+  const status = await Status.findByPk(statusId);
   if (!status) {
     throw new Error('Estado no encontrado');
   }

@@ -1,13 +1,8 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-export class statusModel extends Model {
-  id!: number;
-  name!: string;
-}
-
 export default function initializeStatusModel(sequelize: Sequelize): void {
-  statusModel.init(
+  sequelize.define('Status',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -20,8 +15,7 @@ export default function initializeStatusModel(sequelize: Sequelize): void {
       },
     },
     {
-      sequelize,
-      modelName: 'Status',
+      timestamps: false,
     }
-  );
+  )
 }

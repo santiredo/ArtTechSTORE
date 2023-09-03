@@ -1,21 +1,9 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-export class productModel extends Model {
-  id!: number;
-  title!: string;
-  price!: number;
-  published!: string;
-  posted!: boolean;
-  bet!: boolean;
-  type!: string;
-  technique!: string;
-  description!: string;
-  image!: string;
-}
 
 export default function Product(sequelize: Sequelize): void {
-  productModel.init(
+  sequelize.define('Product',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -33,10 +21,11 @@ export default function Product(sequelize: Sequelize): void {
         }
       },
       published: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.STRING
       },
       posted: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       },
       bet: {
         type: DataTypes.BOOLEAN
@@ -55,8 +44,7 @@ export default function Product(sequelize: Sequelize): void {
       }
     },
     {
-      sequelize,
-      modelName: 'Product'
+      timestamps: false,
     }
   );
 }

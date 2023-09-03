@@ -1,20 +1,10 @@
-
-import { DataTypes, Model } from "sequelize";
+import { DataTypes } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 
-export class Order extends Model {
-
-  id!: number;
-  userId!: number;
-  statusId!: number;
-  price!: number;
-  address!: string;
-}
 
 export default function initializeOrderModel(sequelize: Sequelize): void {
-
-  Order.init(
-
+  
+  sequelize.define('Order',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -43,9 +33,7 @@ export default function initializeOrderModel(sequelize: Sequelize): void {
       }
     },
     {
-      sequelize,
-      modelName: "Order",
-
+      timestamps: false,
     }
   );
 }

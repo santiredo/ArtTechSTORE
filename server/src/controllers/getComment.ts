@@ -1,4 +1,4 @@
-import { Comment } from "../models/Comment";
+import { Comment } from "../db";
 
 export const getComments = async (productId: string) => {
   try {

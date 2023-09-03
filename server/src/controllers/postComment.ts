@@ -1,4 +1,4 @@
-import { Comment } from "../models/Comment";
+import { Comment } from "../db";
 
 export async function postComment(
   productId: string,

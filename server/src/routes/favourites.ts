@@ -1,7 +1,7 @@
-import express from "express";
-import { getFavouriteHandler } from "@/handlers/favourites/getFavourite";
-import { createFavouriteHandler } from "@/handlers/favourites/postFavourite";
-import { deleteFavouriteHandler } from "@/handlers/favourites/deleteFavourite";
+/* import express from "express";
+import { getFavouriteHandler } from "../handlers/favourite/getFavourite";
+import { createFavouriteHandler } from "../handlers/favourite/postFavourite";
+import { deleteFavouriteHandler } from "../handlers/favourite/deleteFavourite";
 
 const favoritesRouter =express.Router();
 
@@ -10,4 +10,4 @@ favoritesRouter.post("/",createFavouriteHandler);
 favoritesRouter.delete("/:id",deleteFavouriteHandler);
 
 
-export default favoritesRouter;
+export default favoritesRouter; */

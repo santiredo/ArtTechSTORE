@@ -1,4 +1,4 @@
-import { Order } from "../../models/Order";
+import { Order } from "../../db";
 
 export async function getOrders(orderId: number) {
     const orders = await Order.findByPk(orderId);

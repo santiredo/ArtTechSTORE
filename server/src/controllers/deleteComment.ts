@@ -1,4 +1,4 @@
-import { Comment } from "../models/Comment";
+import { Comment } from "../db";
 
 export const deleteComments = async (id: string) => {
   const deletedComment = await Comment.findByPk(id);
