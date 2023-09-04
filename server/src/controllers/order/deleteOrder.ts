@@ -1,4 +1,4 @@
-import { Order } from "../../models/Order"
+import { Order } from "../../db"
 
 export async function deleteOrder(orderId: number) {
     const order = await Order.findByPk(orderId);

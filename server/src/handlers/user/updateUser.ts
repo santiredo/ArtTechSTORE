@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { updateUser } from '../../controllers/user/updateUser';
-import { User } from '../../models/User';
+import { User } from "../../db";
 
 export async function updateUserHandler(req: Request, res: Response) {
     const userId = req.params.id;

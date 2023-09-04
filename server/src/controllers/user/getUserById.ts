@@ -1,4 +1,4 @@
-import { User } from "../../models/User";
+import { User } from "../../db";
 
 export async function getUserById(userId: number) {
     const user = await User.findByPk(userId);

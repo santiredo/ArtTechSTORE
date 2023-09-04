@@ -1,22 +1,22 @@
 import { Request, Response } from 'express';
 import {
-  createStatus,
+  /* createStatus */
   getStatuses,
   getStatusById,
-  updateStatus,
+  /* updateStatus */
   deleteStatus,
 } from '../controllers/statusController';
 
 // Manejador para crear un estado
 export async function createStatusHandler(req: Request, res: Response) {
-  try {
+/*   try {
     const newStatusData = req.body;
     const newStatus = await createStatus(newStatusData);
     return res.status(201).json(newStatus);
   } catch (error) {
     console.error('Error al crear el estado', error);
     return res.status(500).json({ error: 'Error al crear el estado' });
-  }
+  } */
 }
 
 // Manejador para obtener todos los estados
@@ -49,7 +49,7 @@ export async function getStatusByIdHandler(req: Request, res: Response) {
 
 // Manejador para actualizar un estado por su ID
 export async function updateStatusHandler(req: Request, res: Response) {
-  try {
+/*   try {
     const statusId = parseInt(req.params.id, 10);
     const newData = req.body;
     const updatedStatus = await updateStatus(statusId, newData);
@@ -57,7 +57,7 @@ export async function updateStatusHandler(req: Request, res: Response) {
   } catch (error) {
     console.error('Error al actualizar el estado', error);
     return res.status(500).json({ error: 'Error al actualizar el estado' });
-  }
+  } */
 }
 
 // Manejador para eliminar un estado por su ID

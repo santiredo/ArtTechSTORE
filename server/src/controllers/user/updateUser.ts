@@ -1,4 +1,4 @@
-import { User } from "../../models/User";
+import { User } from "../../db";
 
 export async function updateUser(name:any, password:any) {
 
