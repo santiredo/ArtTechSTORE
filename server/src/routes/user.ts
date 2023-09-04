@@ -1,10 +1,10 @@
 import express from "express";
 
-import { deleteUserHandler } from "../handlers/user/deleteUser";
-import { getUserByIdHandler } from "../handlers/user/getUserById";
-import { getUserByNameHandler } from "../handlers/user/getUserByName";
-import { postUserHandler } from "../handlers/user/postUser";
-import { updateUserHandler } from "../handlers/user/updateUser";
+import { deleteUserHandler } from "../handlers/User/deleteUser";
+import { getUserByIdHandler } from "../handlers/User/getUserById";
+import { getUserByNameHandler } from "../handlers/User/getUserByName";
+import { postUserHandler } from "../handlers/User/postUser";
+import { updateUserHandler } from "../handlers/User/updateUser";
 
 const userRouter = express.Router();
 
