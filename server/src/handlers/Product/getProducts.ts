@@ -9,7 +9,7 @@ export async function getProductsHandler(req: Request, res: Response) {
   
       const products = await getProducts();
   
-      return res.json(products);
+      return res.status(201).json(products);
   
     } catch (error) {
   

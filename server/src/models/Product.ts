@@ -27,7 +27,7 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.BOOLEAN,
         defaultValue: true
       },
-      bet: {
+      auction: {
         type: DataTypes.BOOLEAN
       },
       type: {
