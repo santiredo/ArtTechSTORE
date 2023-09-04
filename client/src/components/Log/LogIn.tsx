@@ -7,16 +7,14 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root'); // Set the app root element
 
 const LoginModal = ({ isOpen, onRequestClose, openRegistration }) => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-       
     const handleLogin = () => {
     // Handle login logic here, e.g., send a request to your authentication API
     // Close the modal after successful login
     onRequestClose();
     };
-
     
     return (
         <Modal
@@ -31,18 +29,18 @@ const LoginModal = ({ isOpen, onRequestClose, openRegistration }) => {
                 <div className={style.loginInputs}>
                     <input
                     type="text"
-                    id="username"
-                    value={username}
-                    placeholder="Username"
+                    name="email"
+                    value={email}
+                    placeholder="Email"
                     autoComplete="off"
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <br />
                 <div className={style.loginInputs}>
                     <input
                     type="password"
-                    id="password"
+                    name="password"
                     value={password}
                     placeholder="Password"
                     autoComplete="off"
