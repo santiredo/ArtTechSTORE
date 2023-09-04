@@ -11,15 +11,6 @@ export default function initializeOrderModel(sequelize: Sequelize): void {
         autoIncrement: true,
         primaryKey: true,
       },
-
-      userId:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      statusId:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       price:{
         type: DataTypes.FLOAT,
         validate: {
