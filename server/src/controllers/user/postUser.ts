@@ -4,7 +4,7 @@ export async function postUser(name: string, mail: string, password: string, bir
   try {
 
     const newUser = await User.create({
-      name: name.toLocaleLowerCase(),
+      name: name,
       mail: mail,
       password: password,
       birthDate: birthDate,
