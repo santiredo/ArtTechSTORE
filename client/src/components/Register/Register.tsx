@@ -3,19 +3,38 @@ import faceIcon from "../../assets/facebookIcon.png";
 import React, {useState} from "react";
 import style from "./register.module.css";
 import Modal from 'react-modal';
+import validation from "./validation";
 
 Modal.setAppElement('#root');
 
 const RegisterModal = ({ isOpen, onRequestClose, onRegister }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [userData, setUserData] = useState({
+        email:'',
+        password:''
+    })
   
+    const[errors, setErrors] = useState({});
+
     const handleRegister = () => {
         // Handle registration logic here
         // You can use registrationData to get user input
         // Call onRegister when registration is successful
         onRegister();
         onRequestClose(); // Close the registration modal
+    };
+
+    const handleChange = (event) => {
+        setUserData({
+            ...userData,
+            [event.target.name]: event.target.value
+        });
+
+        setErrors(
+            validation({
+                ...userData,
+                [event.target.name]: event.target.value
+            })
+        );
     };
 
     return(
@@ -29,12 +48,51 @@ const RegisterModal = ({ isOpen, onRequestClose, onRegister }) => {
             <form onSubmit={handleRegister}>
                 <h1>REGISTER</h1>
                 <div className={style.regisInputs}>
-                    <input type="text" autoComplete="off" placeholder="Name"/>
-                    <input type="text" autoComplete="off" placeholder="Username"/>
-                    <input type="text" autoComplete="off" placeholder="Address"/>
-                    <input type="text" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                    <input type="text" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-                    <input type="text" autoComplete="off" placeholder="Repeat your password"/>
+                    <input 
+                    type="text" 
+                    autoComplete="off" 
+                    placeholder="Name"
+                    onChange={handleChange}
+                    />
+                    <input 
+                    type="text" 
+                    autoComplete="off" 
+                    placeholder="Username"
+                    onChange={handleChange}
+                    />
+                    <input 
+                    type="text" 
+                    autoComplete="off" 
+                    placeholder="Address"
+                    onChange={handleChange}
+                    />
+                    <input 
+                    type="text"
+                    name="email" 
+                    autoComplete="off" 
+                    value={userData.email} 
+                    onChange={handleChange} 
+                    placeholder="Email"
+                    />
+                    <p className={style.error}>
+                    {errors.email && errors.email}
+                    </p>
+                    <input 
+                    type="text"
+                    name="password" 
+                    autoComplete="off" 
+                    value={userData.password} 
+                    onChange={handleChange}
+                    placeholder="Password"
+                    />
+                    <p className={style.error}>
+                    {errors.password && errors.password}
+                    </p>
+                    <input 
+                    type="text" 
+                    autoComplete="off" 
+                    placeholder="Repeat your password"
+                    />
                     <select className={style.list}>
                     <option value="option" disabled selected hidden>
                         Choose an option

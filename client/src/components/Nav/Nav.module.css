@@ -17,6 +17,7 @@
     color: rgb(66, 39, 39);
     font-size: 3vh;
     font-weight: bolder;
+    margin-top: -5px;
 }
 
 .link:hover{
@@ -48,5 +49,34 @@
 }
 
 .carrito:hover{
+    transform: scale(1.1, 1.1);
+}
+
+.art{
+    margin-right: 4px;
+    width: fit-content;
+    height: 90px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+}
+
+.art:hover{
+    transform: scale(1.1, 1.1);
+}
+
+.subcontainer{
+    display: flex;
+    justify-content:flex-start;
+}
+
+.log{
+    text-decoration: none;
+    color: rgb(66, 39, 39);
+    font-size: 3vh;
+    font-weight: bolder;
+    margin-top: 25px;
+}
+
+.log:hover{
+    background-color: rgba(211, 219, 219, 0.079);
     transform: scale(1.1, 1.1);
 }
