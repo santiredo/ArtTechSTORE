@@ -1,15 +1,14 @@
 import {User} from "../../db";
 
-export async function postUser(name: string, mail: string, password: string, birthDate: string, direction: string, role: string) {
+export async function postUser(name: string, mail: string, password: string, birthDate: string) {
   try {
 
     const newUser = await User.create({
-      name: name,
+      name: name.toLocaleLowerCase(),
       mail: mail,
       password: password,
       birthDate: birthDate,
-      direction: direction,
-      role: role
+      admin: false
     });
 
     

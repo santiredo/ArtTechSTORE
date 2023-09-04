@@ -6,10 +6,10 @@ export async function postUserHandler(req: Request, res: Response) {
 
   try {
 
-    const { name, mail, password, birthDate, direction, role } = req.body;
+    const { name, mail, password, birthDate } = req.body;
 
       
-    const user = await postUser(name, mail, password, birthDate, direction, role);
+    const user = await postUser(name, mail, password, birthDate);
 
     console.log(user)
     res.status(201).json(user);

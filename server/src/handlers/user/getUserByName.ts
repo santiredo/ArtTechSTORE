@@ -3,8 +3,10 @@ import { getUserByName } from '../../controllers/user/getUserByName';
 
 export async function getUserByNameHandler(req: Request, res: Response) {
     try {
-      const userName = req.params.name;
-      const user = await getUserByName(userName);
+      const {name}= req.query;
+      console.log("Esto es el nombre",name);
+      
+      const user = await getUserByName(name as string);
   
       return res.status(200).json(user);
     } catch (error) {
