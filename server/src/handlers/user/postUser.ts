@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { postUser } from '../../controllers/user/postUser';
+import { postUser } from '../../controllers/User/postUser';
 
 
 export async function postUserHandler(req: Request, res: Response) {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { deleteComments } from "../controllers/deleteComment";
+import { deleteComments } from "../../controllers/Comment/deleteComment";
 
 export async function deleteCommentsHandler(req: Request, res: Response) {
   try {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { postComment } from "../controllers/postComment";
+import { postComment } from "../../controllers/Comment/postComment";
 
 export async function postCommentsHandler(req: Request, res: Response) {
   try {

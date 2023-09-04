@@ -1,5 +1,9 @@
+import { deleteProductHandler } from '../handlers/Product/deleteProduct';
+import { getProductByIdHandler } from "../handlers/Product/getById";
+import { getProductsHandler } from "../handlers/Product/getProducts";
+import { createProductHandler } from "../handlers/Product/postProduct";
+import { updateProductHandler } from "../handlers/Product/updateProduct";
 import express from "express";
-import { createProductHandler, deleteProductHandler, getProductByIdHandler, getProductsHandler, updateProductHandler } from "../handlers/productHandlers";
 
 const productsRouter= express.Router();
 
