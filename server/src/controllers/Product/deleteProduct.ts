@@ -1,10 +1,20 @@
 import { Product } from "../../db";
 
 export async function deleteProduct(productId: number) {
-  const product = await Product.findByPk(productId);
-  if (!product) {
-    throw new Error('Product no encontrado');
+
+
+
+  const deletedProduct = await Product.findByPk(productId)
+
+  if (!deletedProduct) {
+    throw new Error('Producto no encontrado');
   }
 
-  return product.destroy();
+  
+  deletedProduct!.dataValues.posted = false
+ 
+  await deletedProduct?.save()
+ 
+  return deletedProduct
+
 }

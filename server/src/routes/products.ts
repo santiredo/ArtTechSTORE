@@ -7,17 +7,12 @@ import express from "express";
 
 const productsRouter= express.Router();
 
+
+productsRouter.post("/",createProductHandler);
 productsRouter.get("/:id",getProductByIdHandler);
 productsRouter.get("/",getProductsHandler);
 productsRouter.put("/:id",updateProductHandler);
-productsRouter.post("/",createProductHandler);
 productsRouter.delete("/:id",deleteProductHandler);
 
 export default productsRouter;
 
-
-// import router from "./index";
-
-// import { updateProductHandler } from "../handlers/productHandlers";
-
-// router.put("/product/:id",updateProductHandler);
