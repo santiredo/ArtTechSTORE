@@ -34,6 +34,7 @@ const LoginModal = ({ isOpen, onRequestClose, openRegistration }) => {
                     id="username"
                     value={username}
                     placeholder="Username"
+                    autoComplete="off"
                     onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
@@ -44,6 +45,7 @@ const LoginModal = ({ isOpen, onRequestClose, openRegistration }) => {
                     id="password"
                     value={password}
                     placeholder="Password"
+                    autoComplete="off"
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>

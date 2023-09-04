@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import style from './SearchBar.module.css'
 
 
-export const SearchBar = () => {
+const SearchBar = () => {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate()
   const [artistState, setArtistState] = useState('');
@@ -57,3 +57,5 @@ export const SearchBar = () => {
     </div>
   );
 };
+
+export default SearchBar;

@@ -1,0 +1,52 @@
+.container{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(36deg,#dcd59f 0%, #badea9 80%);
+    color: rgb(255, 255, 255);
+    height: 55px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content:space-around;
+    list-style-type: none;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(66, 39, 39);
+    font-size: 3vh;
+    font-weight: bolder;
+}
+
+.link:hover{
+    background-color: rgba(211, 219, 219, 0.079);
+    transform: scale(1.1, 1.1);
+}
+
+.btn{
+    font-family: 'Yuji Syuku', serif;
+    text-decoration: none;
+    color: rgb(66, 39, 39);
+    font-size: 3vh;
+    font-weight: bolder;
+    border: none;
+    background: linear-gradient(36deg,#badea9 0%, #badea9 80%);
+}
+
+.btn:hover{
+    background-color: rgba(211, 219, 219, 0.079);
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+}
+
+.carrito{
+    margin-right: 40px;
+    width: fit-content;
+    height: 60px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+}
+
+.carrito:hover{
+    transform: scale(1.1, 1.1);
+}

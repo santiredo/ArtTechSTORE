@@ -29,12 +29,12 @@ const RegisterModal = ({ isOpen, onRequestClose, onRegister }) => {
             <form onSubmit={handleRegister}>
                 <h1>REGISTER</h1>
                 <div className={style.regisInputs}>
-                    <input type="text" placeholder="Name"/>
-                    <input type="text" placeholder="Username"/>
-                    <input type="text" placeholder="Address"/>
-                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                    <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-                    <input type="text" placeholder="Repeat your password"/>
+                    <input type="text" autoComplete="off" placeholder="Name"/>
+                    <input type="text" autoComplete="off" placeholder="Username"/>
+                    <input type="text" autoComplete="off" placeholder="Address"/>
+                    <input type="text" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+                    <input type="text" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+                    <input type="text" autoComplete="off" placeholder="Repeat your password"/>
                     <select className={style.list}>
                     <option value="option" disabled selected hidden>
                         Choose an option
