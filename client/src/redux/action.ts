@@ -6,6 +6,20 @@ export type Action = {
   payload : any;
 };
 
+export function allProducts(){
+  return async function allPaintings(dispatch: Dispatch<Action>){
+    try {
+      const response = await axios.get(`http://localhost/products`);
+        dispatch({
+          type: 'GET_ALL_POST',
+          payload: response.data,
+        });
+    } catch (error) {
+      console.log(error);
+      alert('Hubo un error al obtener los post');
+    }
+  }
+}
 
 export function searchArtist(name:string) {
   return async function search(dispatch: Dispatch<Action>) {
@@ -48,7 +62,7 @@ const llamadoAlBackend = async( creation: {
 }) => {
     try {
         const {title, price, type, technique, image, description} = creation
-        const response = await axios.post('hhtp://localhost:3001/createPost', {title, price, type, technique, image, description})
+        const response = await axios.post('http://localhost:3001/products', {title, price, type, technique, image, description})
         const dbCreation = response.data
         return dbCreation
     } catch (error) {

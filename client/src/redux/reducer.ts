@@ -7,6 +7,7 @@ interface ArtGalleryItem {
     technique: string;
     price: number;
     bet: boolean;
+    posted: boolean;
 }
 
 
@@ -48,7 +49,15 @@ const initialState: InitialState<any> = {
 
 export default function rootReducer(state = initialState, action:Action<any>){
     switch(action.type){
-      
+        case 'GET_ALL_POST':
+          {
+            const Products= action.payload
+            const allProducts=Products.filter((post:ArtGalleryItem) => post.posted === true)
+            return{
+              ...state,
+              allPosts: allProducts,
+            }
+          }
         case 'CREATE_POST':
               return {
                 ...state,
