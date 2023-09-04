@@ -1,4 +1,4 @@
-/* import { deleteOrderHandler } from "../handlers/order/deleteOrder";
+import { deleteOrderHandler } from "../handlers/order/deleteOrder";
 import { getOrderHandler } from "../handlers/order/getOrders";
 import { createOrderHandler } from "../handlers/order/postOrder";
 import express from "express";
@@ -9,4 +9,4 @@ orderRouter.get("/",getOrderHandler);
 orderRouter.post("/",createOrderHandler);
 orderRouter.delete("/:id",deleteOrderHandler);
 
-export default orderRouter; */
+export default orderRouter; 
