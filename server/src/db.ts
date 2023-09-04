@@ -3,7 +3,6 @@ import 'dotenv/config';
 
 import fs from 'fs'
 import path from 'path'
-import { productModel } from 'dist/models/Product';
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
 
