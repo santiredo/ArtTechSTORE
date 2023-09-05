@@ -1,41 +1,55 @@
+.loginButtonLanding{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    width: 120px;
+    font-size: 20px;
+    padding: 0 0 5px 0;
+    font-family: 'Yuji Syuku', serif;
+    top: 50px;
+    right: 10%;
+}
+
+.loginButtonLanding:hover{
+    cursor: pointer;
+    background-color: #0000003a;
+}
+
+.loginPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #0000007b;
+    z-index: 1000;
+}
+
 .loginComponent{
     font-family: 'Yuji Syuku', serif;
-    background: linear-gradient(#A65525, #FFC4A1);
-    background-size: cover;
-    text-align: center;
+    background-color: #0000003a;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20%;
-    margin-left: 40%;
-    margin-top: 10%;
-    list-style-type: none;
-    justify-content: center;
+    gap: 5%;
+    width: 30%;
+    height: 70%;
+    padding: 30px 10px;
+    z-index: 1000;
 }
 
 .loginComponent h1{
-    margin: 0 0 10px;
+    margin: 0;
     font-size: 25px;
     color: #faedde;
 }
-
-.custom-modal {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px; /* Adjust the width as needed */
-    max-width: 90%; /* Set a maximum width if desired */
-    padding: 20px; /* Add padding for content inside the modal */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
 
 .loginInputs{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     gap: 15px;
 }
 
@@ -43,7 +57,7 @@
     width: 75%;
     height: 25px;
     border: none;
-    padding: 0 0 2.5px 10px;
+    padding: 0 2.5% 1% 2.5%;
     border-radius: 2px;
     background-color: #faedde;
     color: #583000;
@@ -59,48 +73,51 @@
     color: #583000a0;
 }
 
-.btn{
-    list-style-type: none;
-    padding: 0 0 0px 0;
-    height: 35px;
-    width: 35%;
+.loginButton{
     background-color: #faedde;
-    color: #583000;
-    &:hover{
-        color:darkslategray;
-        background-color: azure;
-        box-shadow: 0 5px 5px white;
-    }
+    border: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 1% 0;
+    font-family: 'Yuji Syuku', serif;
+    width: 50%;
+    height: 25px;
+    border-radius: 2px;
+    cursor: pointer;
 }
 
 .fastLogin{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    width: 75%;
 }
 
 .fastLogin p{
-    margin: 0 0 20px 0;
-    color: #583000;
+    margin: 0 0 10px 0;
+    color: #faedde;
 }
 
 .fastLoginButton{
-    display:flex;
+    background-color: #faedde;
+    border: none;
+    font-size: 15px;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-bottom: 10px;
-    padding: 10px 10px;
-    gap: 30px;
-    background-color: #faedde;
-    width: 70%;
-    margin-left: 17px;
-    &:hover{
-        color:darkslategray;
-        background-color: azure;
-        box-shadow: 0 5px 5px white;
-    }
+    padding: 0 0 1% 0;
+    font-family: 'Yuji Syuku', serif;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.fastLoginButton:hover{
+    cursor: pointer;
 }
 
 .fastLoginButton:hover img{
@@ -109,19 +126,34 @@
 }
 
 .fastLoginButton img{
-    width: 20px;
-    margin: 0;
+    width: 30px;
     position: absolute;
     left: 10px;
+    top: calc(50% - 15px);
 }
 
 .loginComponent h4{
-    margin: 0;
-    color: #583000;
+    margin: 40px 0 0 0;
+    color: #faedde;
     font-weight: 100;
 }
 
 .loginComponent h4:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.quitLoginButton{
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    margin: 0; 
+    border: none;
+    z-index: 1;
+}
+.quitLoginButton:hover{
+    cursor: pointer;
+    background-color: #0000004f;
 }
