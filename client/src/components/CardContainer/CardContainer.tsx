@@ -30,7 +30,7 @@ const CardContainer=()=>{
                     type={artGallery.type}
                     name={artGallery.name}
                     artistName={artGallery.artistName}
-                    cost={artGallery.cost}
+                    price={artGallery.price}
                 />
             })}
         </div>

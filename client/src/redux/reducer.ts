@@ -163,6 +163,23 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   return 0
                 })
               }
+
+            case 'ADD_FAVORITE':
+                
+                if (!state.artGallery.some((artGallery) => artGallery.id === action.payload.id)) {
+                  return {
+                    ...state,
+                    artGallery: [...state.artGallery, action.payload],
+                  };
+                }
+                return state; 
+          
+              case 'REMOVE_FAVORITE':
+                return {
+                  ...state,
+                  artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
+                };
+        
           default:
               return {...state};
     }

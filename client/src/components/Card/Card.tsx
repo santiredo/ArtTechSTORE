@@ -7,7 +7,7 @@ interface CardProps {
   type: string;
   name: string;
   artistName: string;
-  cost: string;
+  price: number;
 }
 
 const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, cost }) => {
