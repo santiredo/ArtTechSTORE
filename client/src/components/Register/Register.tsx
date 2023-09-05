@@ -22,7 +22,10 @@ export default function Register({onRegister} : {onRegister: () => void})  {
         setIsArtist(!isArtist)
     }
     
-    const[errors, setErrors] = useState({});
+    const[errors, setErrors] = useState({
+        mail:'',
+        password:'',
+    });
 
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +35,7 @@ export default function Register({onRegister} : {onRegister: () => void})  {
         })
         setErrors(
             validation({
-                ...userData,
+                ...errors,
                 [event.target.name]: event.target.value
             })
         );
@@ -79,5 +82,5 @@ export default function Register({onRegister} : {onRegister: () => void})  {
             <button onClick={onRegister} className={style.quitRegisterButton}></button>
         </div>
     );
-};
+}
 
