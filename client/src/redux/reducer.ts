@@ -59,6 +59,11 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 ...state,
                 artists: action.payload,
               }
+        case 'FETCH_PROFILE_PHOTO':
+              return{
+                ...state,
+                artists: action.payload,
+              }
         case 'SEARCH_ARTIST':
               return {
                 ...state,

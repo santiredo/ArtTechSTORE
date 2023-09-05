@@ -1,48 +1,66 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProfileView.module.css";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { actionProfilePhoto, displayArtist } from '../../redux/action';
 
 interface Artist {
   artistName: string;
   location: string;
 }
 
+interface ProfileState {
+  artistName: string;
+  photo: string | null;
+}
+
 const ProfileView: React.FC<Artist> = (props) => {
-  const [photo, setPhoto] = useState<string | null>(null);
+  const dispatch = useDispatch();
+  const { artistName, photo } = useSelector((state: { artist: ProfileState }) => state.artist);
+  const [rating, setRating] = useState(0);
 
   useEffect(() => {
-    const fetchProfilePhoto = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get<string>(`https://api.example.com/profiles/${props.artistName}/photo`);
-        setPhoto(response.data);
+        await Promise.all([
+          dispatch<any>(displayArtist(props.artistName)),
+          dispatch<any>(actionProfilePhoto(props.artistName))
+        ]);
       } catch (error) {
-        console.error("Error fetching profile photo:", error);
+        console.error("Error fetching artist data:", error);
       }
     };
 
-    fetchProfilePhoto();
-  }, [props.artistName]);
+    fetchData();
+  }, [dispatch, props.artistName]);
+
 
   return (
     <div className={styles["profile-container"]}>
       <div className={styles["p-container"]}>
-        {photo && <img className={styles["artist-photo"]} src={photo} alt="Artist's photo" />}
+        {photo && <img className={styles["artist-photo"]} src={photo} alt="Artist photo" />}
+        
         <div className={styles["stars-ranking"]}>
           {[1, 2, 3, 4, 5].map((star) => (
-            <span className="filled" key={star}>
-              ✩
+            <span
+              className={star <= rating ? styles["filled"] : ""}
+              key={star}
+              onClick={() => setRating(star)}>
+              {star <= rating ? "★" : "☆"}
             </span>
           ))}
         </div>
       </div>
+     
       <div className={styles["artist-info"]}>
-        <h1 className={styles["artist-name"]}>{props.artistName}</h1>
+        <h1 className={styles["artist-name"]}>{artistName}</h1>
         <p className={styles["artist-location"]}>{props.location}</p>
       </div>
+    
       <div className={styles["button-container"]}>
         <button className={styles.CreateButton}>Creaciones en venta</button>
         <button className={styles.SaleButton}>Vendidos</button>
       </div>
+    
     </div>
   );
 };
