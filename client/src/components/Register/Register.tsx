@@ -3,6 +3,7 @@ import {useState} from 'react'
 import googleIcon from "../../assets/googleIcon.png";
 import facebookIcon from "../../assets/facebookIcon.png";
 import style from "./register.module.css";
+import validation from "./validation";
 
 
 export default function Register({onRegister} : {onRegister: () => void})  {
@@ -20,16 +21,25 @@ export default function Register({onRegister} : {onRegister: () => void})  {
     const handleCheckboxChange = () => {
         setIsArtist(!isArtist)
     }
+    
+    const[errors, setErrors] = useState({});
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setRegisterForm({
             ...registerForm,
             [event.target.name]: event.target.value
         })
+        setErrors(
+            validation({
+                ...userData,
+                [event.target.name]: event.target.value
+            })
+        );
     }
 
     return (
-
+      
         <div className={style.registerPage}>
             <form className={style.registerComponent}>
                 <h1>CREATE YOUR ACOUNT</h1>
