@@ -1,3 +1,7 @@
+
+
+import {useState} from 'react'
+import Login from '../../components/Log/LogIn'
 import foto1 from '../../assets/fotoLanding.jpg'
 import foto2 from '../../assets/fotoLanding2.jpg'
 import foto3 from '../../assets/fotoLanding3.png'
@@ -5,43 +9,32 @@ import foto4 from '../../assets/fotoLanding4.jpg'
 import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
-import LoginModal from "../../components/Log/LogIn";
-import RegisterModal from "../../components/Register/Register";
-import React, {useState} from "react";
+import Register from '../../components/Register/Register'
+
 
 
 export default function Landing() {
 
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    
-    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-    
-    const openRegisterModal = () => {
-        setIsRegisterModalOpen(true);
-      };
-    
-      const closeRegisterModal = () => {
-        setIsRegisterModalOpen(false);
-      };
+    const [registerHandler, setRegisterHandler] = useState(false)
 
-    const openLoginModal = () => {
-        setIsLoginModalOpen(true);
-      };
-    
-      const closeLoginModal = () => {
-        setIsLoginModalOpen(false);
-      };
+
+    const showRegister = () => {
+        console.log(registerHandler)
+        registerHandler ? setRegisterHandler(false) : setRegisterHandler(true)
+    }
+
 
     return (
 
         <div className={style.landingPage}>
-            <h1>Welcome to ArtTech STORE</h1>
-            <div className={style.divButtons}>
-                <button onClick={openLoginModal}>Log In</button>
-                <LoginModal isOpen={isLoginModalOpen} onRequestClose={closeLoginModal} openRegistration={openRegisterModal} />
-                <RegisterModal isOpen={isRegisterModalOpen} onRequestClose={closeRegisterModal}/>
-                <button onClick={openRegisterModal}>Register</button>
-            </div>
+            <h1 className={style.title}>Welcome to ArtTech STORE</h1>
+            <Login onRegister={showRegister}/>
+            <button className={style.registerButtonLanding} onClick={showRegister}>Register</button>
+            {
+                registerHandler && (
+                    <Register onRegister={showRegister}/>
+                )
+            }
             <div className={style.phrases}>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
