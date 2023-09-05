@@ -3,10 +3,10 @@ import { postComment } from "../../controllers/Comment/postComment";
 
 export async function postCommentsHandler(req: Request, res: Response) {
   try {
-    const { productId, userId } = req.params;
-    const { message, rating } = req.body;
+    //const { productId, userId } = req.params;
+    const { message, rating, userId, productId } = req.body;
 
-    const comment = await postComment(productId, userId, message, rating);
+    const comment = await postComment( message, rating, userId, productId);
 
     return res.status(200).json(comment);
   } catch (error: any) {
