@@ -1,0 +1,120 @@
+.profile-container {
+    height: 100vh;
+  }
+
+  .artist-photo {
+    border-radius: 50%;
+  }
+
+  .artist-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    gap: 400px;
+    border-bottom: 1px solid black;
+    position: relative;
+    left: 60%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  .artist-name {
+    font-size: 24px;
+  }
+
+  .artist-location {
+    font-size: 20px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 300px;
+    position: relative;
+    left: 60%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .CreateButton {
+    padding: 6px 10px;
+    height: 35px;
+    width: 15%;
+    background-color: #d4d2d0;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px rgb(171, 142, 111);
+    }
+  }
+  
+  .CreateButton:hover {
+    transform: scale(1.03);
+    border: 1px solid gray;
+    outline: none;
+  }
+
+  .SaleButton {
+    padding: 6px 10px;
+    height: 35px;
+    width: 15%;
+    background-color: #d4d2d0;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    &:hover{
+        color:darkslategray;
+        background-color: azure;
+        box-shadow: 0 5px 5px rgb(171, 142, 111);
+    }
+  }
+
+  .SaleButton:hover {
+    transform: scale(1.03);
+    border: 1px solid gray;
+    outline: none;
+  }
+
+  .stars-ranking {
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .stars-ranking span {
+    font-size: 30px;
+    color: #2e2727;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .stars-ranking span.filled {
+    color: gold;
+    animation: shine 1s linear forwards, scale 0.5s;
+  }
+  
+  
+  
+
+  
+ 
+ 
+
+  .p-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 50px;
+  }
+ 
+ 
+
+
+
+
+

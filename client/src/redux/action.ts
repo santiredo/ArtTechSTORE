@@ -51,6 +51,24 @@ export function displayArtist(name:string) {
   }
 }
 
+//PHOTO ARTISTA
+
+export function actionProfilePhoto(artistName: string) {
+  return async function display(dispatch: Dispatch<Action>) {
+    try {
+      const response = await axios.get<string>(`https://localhost/profile/${artistName}/photo`);
+      const photo = response.data;
+
+      dispatch({
+        type: 'FETCH_PROFILE_PHOTO',
+        payload: photo,
+      });
+    } catch (error) {
+      console.error("Error fetching profile photo:", error);
+    }
+  };
+}
+
 
 const llamadoAlBackend = async( creation: {
     title: string;
