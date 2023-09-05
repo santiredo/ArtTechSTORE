@@ -5,7 +5,7 @@
 import { useDispatch } from 'react-redux'
 import reset from '../../assets/reset.png'
 import style from './filters.module.css'
-import { filterByPayment, filterByPrice, filterByTechnique, filterByType } from '../../redux/action'
+import { filterByPayment, filterByPrice, filterByTechnique, filterByType, resetFilter } from '../../redux/action'
 
 
 
@@ -29,13 +29,16 @@ export default function Filters() {
     const handlePrice = (event: React.MouseEvent<HTMLParagraphElement>) => {
         dispatch(filterByPrice(event.currentTarget.getAttribute('data-value') ?? ''))
     }
-
+    const handleReset = (event: React.MouseEvent<HTMLParagraphElement>) => {
+        event.preventDefault();
+        dispatch(resetFilter())
+    }
 
     return (
         <div className={style.divAuxiliar}>
             <div className={style.filtersComponent}>
                 <h3>Filters</h3>
-                <img src={reset} alt="" />
+                <img src={reset} onClick={handleReset} alt="" />
                 <div className={style.filterDiv}>
                     Type
                     <div className={style.options}>
