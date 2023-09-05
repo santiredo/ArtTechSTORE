@@ -137,35 +137,66 @@ export const filterByPrice = (value:string) => {
 }
 
 export const addFavorite = (artGallery: string) => {
-  const endpoint = "http://localhost:3001/favorites/";
-  return async (dispatch) => {
+  
+  return (dispatch: Dispatch) => {
     try {
-      const response = await axios.post(endpoint, artGallery); 
-      const { data } = response;
-      return dispatch({
+      const artwork = JSON.parse(artGallery);
+      dispatch({
         type: 'ADD_FAVORITE',
-        payload: data,
+        payload: artwork,
       });
     } catch (error) {
-      alert(error.message);
+      const errorMessage = (error as Error).message;
+      alert(errorMessage);
     }
   };
 };
 
 
 export const deleteFavorite = (id: string) => {
-  const endpoint = "http://localhost:3001/favorites/" + id;
     
-    return async (dispatch) => {
+    return (dispatch: Dispatch) => {
       try {
-        const response = await axios.delete(endpoint);
-        const { data } = response;
-        return dispatch({
-          type: 'DELETE_FAVORITE',
-          payload: data,
-        });
+        dispatch({
+        type: 'DELETE_FAVORITE',
+        payload: id,
+      });
       } catch (error) {
-        alert(error.message);
+        const errorMessage = (error as Error).message;
+        alert(errorMessage);
       }
   };
+};
+
+
+export const addCart = (artGallery: string) => {
+  
+  return (dispatch: Dispatch) => {
+    try {
+      const artwork = JSON.parse(artGallery);
+      dispatch({
+        type: 'ADD_CART',
+        payload: artwork,
+      });
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      alert(errorMessage);
+    }
+  };
+};
+
+
+export const deleteCart = (id: string) => {
+    
+  return (dispatch: Dispatch) => {
+    try {
+      dispatch({
+      type: 'DELETE_CART',
+      payload: id,
+    });
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      alert(errorMessage);
+    }
+};
 };

@@ -1,6 +1,6 @@
 import { useSelector} from "react-redux";
 import Card from "../Card/Card";
-import style from "./Favorites.module.css";
+import style from "./Cart.module.css";
 
 interface ArtGallery {
     id: string;
@@ -12,18 +12,18 @@ interface ArtGallery {
   }
 
 interface RootState {
-    favorites: ArtGallery[]; 
+    cart: ArtGallery[]; 
   }
 
-export default function Favorites (){
+export default function Cart (){
 
-    const favorites = useSelector((state:RootState)=> state.favorites);
+    const cart = useSelector((state:RootState)=> state.cart);
    
     return(
         <div className={style.container}>
-            <h1>My favorite products</h1>
+            <h1>My cart</h1>
             {
-            favorites?.map((artGallery) => (
+            cart?.map((artGallery) => (
             <Card
             key={artGallery.id}
             id={artGallery.id}
