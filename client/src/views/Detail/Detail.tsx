@@ -1,69 +1,60 @@
-import style from "./Detail.module.css";
+
+
+import { useState } from 'react';
+import emptyFav from '../../assets/favEmpty.png'
+import filledFav from '../../assets/favFilled.png'
 import Viaje from "../../images/Viaje.jpg";
+import style from "./Detail.module.css";
+
+
+
 
 const Detail = () => {
+
+    const [isFav, setIsFav] = useState(false)
+
+    const handleFav = () => {
+        setIsFav(!isFav)
+    }
     
     return(
-        <div className={style.all}>
-            <h1>El Viaje</h1>
-            <div className={style.container}>
-                <div>
-                    <img 
-                    className={style.image}
-                    src={Viaje} 
-                    alt="cuadro" />
-                </div>
+        <div className={style.detailPage}>
+            <div className={style.postContainer}>
+                <img className={style.postImage} src={Viaje} alt="cuadro" />
                 <div className={style.info}>
-                    <h1>$400</h1>
-                    <br />
-                    <button>🤍 Add to Favorites</button>
-                    <br />
-                    <button>Add to cart</button>
-                    <h4>Sold by: Henry</h4>
-                    <div className="star-rating">
-                        {[1, 2, 3, 4, 5].map(star => (
-                        <span
-                        key={star}
-                    
-                        >
-                            ★
-                        </span>
-                        ))}
-                    </div>
-                    <br />
-                    <h4>Measures: 50x50cm</h4>
-                    <h4>Technique: Oil on canvas</h4>
+                    <h1>El Viaje</h1>
+                    <h2>$400</h2>
+                    {
+                        isFav ? (
+                            <div className={style.imgFav}>
+                                <img onClick={handleFav} src={filledFav} alt="" />
+                                <span>Remove from favs</span>
+                            </div>
+                            
+                        ) : (
+                            <div className={style.imgFav}>
+                                <img onClick={handleFav} src={emptyFav} alt="" />
+                                <span>Add to favs</span>
+                            </div>
+                        )
+                    }
+                    <h3>Owner: Henry</h3>
+                    <h3>Type: Painting</h3>
+                    <h3>Technique: Oil on canvas</h3>
+                    <button className={style.buyPostButton}>Add to cart</button>
                 </div>
             </div>
-            
-            <br />
-
-            <div className={style.text}>
-                <div className={style.descrip}>
-                    <h2>DESCRIPTION</h2>
-                <h4>text...</h4>
+            <div className={style.descriptionDiv}>
+                <div>
+                    <h2>Description</h2>
+                    <h4>text...</h4>
                 </div>
-                <br />
                 <hr />
-                <div className={style.descrip}>
-                    <h2>ABOUT THE SELLER</h2>
-                    <h4>Name: HENRY</h4>
-                    <h4>Locality: Argentina</h4>
+                <div>
+                    <h2>About the seller</h2>
+                    <h3>Name: Henry</h3>
+                    <h3>Location: Argentina</h3>
                     <button>VIEW PROFILE</button>
-                </div>
-                <br />
-                <hr />
-                <div className={style.descrip}>
-                    <h2>COMMENTS</h2>
-                    <div className={style.form}>
-                        <textarea placeholder="Your comment"></textarea>
-                        <input type="text" placeholder="Name"/>
-                        <input type="text" placeholder="Email"/>
-                        
-                        <br />
-
-                        <button>PUBLICATE</button>
-                    </div>
                 </div>
             </div>
         </div>
