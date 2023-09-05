@@ -135,3 +135,37 @@ export const filterByPrice = (value:string) => {
     payload: value
   }
 }
+
+export const addFavorite = (artGallery: string) => {
+  const endpoint = "http://localhost:3001/favorites/";
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(endpoint, artGallery); 
+      const { data } = response;
+      return dispatch({
+        type: 'ADD_FAVORITE',
+        payload: data,
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+};
+
+
+export const deleteFavorite = (id: string) => {
+  const endpoint = "http://localhost:3001/favorites/" + id;
+    
+    return async (dispatch) => {
+      try {
+        const response = await axios.delete(endpoint);
+        const { data } = response;
+        return dispatch({
+          type: 'DELETE_FAVORITE',
+          payload: data,
+        });
+      } catch (error) {
+        alert(error.message);
+      }
+  };
+};
