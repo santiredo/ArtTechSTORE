@@ -1,17 +1,20 @@
-const validation = (userData: { email: string, password: string }) => {
+const validation = (userData: { mail: string, password: string }) => {
 
-    const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    const regexmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-    const errors: {email?: string, password?: string} = {};
+    const errors: {mail: string, password: string} = {
+        mail: "",
+        password: "",
+    };
 
-    if(!regexEmail.test(userData.email)){
-        errors.email = "The email is invalid.";
+    if(!regexmail.test(userData.mail)){
+        errors.mail = "The mail is invalid.";
     }
-    if(!userData.email){
-        errors.email = "This field can not be empty";
+    if(!userData.mail){
+        errors.mail = "This field can not be empty";
     }
-    if(userData.email.length > 35){
-        errors.email = "The email cannot exceed 35 characters";
+    if(userData.mail.length > 35){
+        errors.mail = "The mail cannot exceed 35 characters";
     }
     if(!userData.password.match(/\d/)){
         errors.password = "Password must contain at least 1 number";
