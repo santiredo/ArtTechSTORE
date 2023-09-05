@@ -1,65 +1,73 @@
+
+import {useState} from 'react'
 import googleIcon from "../../assets/googleIcon.png";
-import faceIcon from "../../assets/facebookIcon.png";
-import React, {useState} from "react";
+import facebookIcon from "../../assets/facebookIcon.png";
 import style from "./register.module.css";
-import Modal from 'react-modal';
 
-Modal.setAppElement('#root');
 
-const RegisterModal = ({ isOpen, onRequestClose, onRegister }) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-  
-    const handleRegister = () => {
-        // Handle registration logic here
-        // You can use registrationData to get user input
-        // Call onRegister when registration is successful
-        onRegister();
-        onRequestClose(); // Close the registration modal
-    };
+export default function Register({onRegister} : {onRegister: () => void})  {
 
-    return(
-        <Modal
-        isOpen={isOpen}
-        onRequestClose={onRequestClose}
-        contentLabel="Login Modal"
-        className="custom-modal"
-        >
-        <div className={style.container}>
-            <form onSubmit={handleRegister}>
-                <h1>REGISTER</h1>
-                <div className={style.regisInputs}>
-                    <input type="text" autoComplete="off" placeholder="Name"/>
-                    <input type="text" autoComplete="off" placeholder="Username"/>
-                    <input type="text" autoComplete="off" placeholder="Address"/>
-                    <input type="text" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                    <input type="text" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
-                    <input type="text" autoComplete="off" placeholder="Repeat your password"/>
-                    <select className={style.list}>
-                    <option value="option" disabled selected hidden>
-                        Choose an option
-                    </option>
-                    <option value="seller">Seller</option>
-                    <option value="customer">Customer</option>
-                    </select>
-                    <hr />
-                    <button type="submit">REGISTER</button>                
+    const [registerForm, setRegisterForm] = useState({
+        name:'',
+        mail:'',
+        password:'',
+        birthDate:'',
+        address:''
+    })
+
+    const [isArtist, setIsArtist] = useState(false)
+
+    const handleCheckboxChange = () => {
+        setIsArtist(!isArtist)
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRegisterForm({
+            ...registerForm,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    return (
+
+        <div className={style.registerPage}>
+            <form className={style.registerComponent}>
+                <h1>CREATE YOUR ACOUNT</h1>
+                <div className={style.registerInputs}>
+                    <input type="text" name='name' placeholder="Username" onChange={handleChange}/>
                 </div>
-
-                <div className={style.fastLogin}>
-                    <p>Or Register with: </p>
-                    <button className={style.fastLoginButton}>
-                    <img src={googleIcon} alt="" />
-                    GOOGLE</button>
-                    <button className={style.fastLoginButton}>
-                    <img src={faceIcon} alt="" />
-                    FACEBOOK</button>
+                <div className={style.registerInputs}>
+                    <input type="text" name='mail' placeholder="example@gmail.com" onChange={handleChange}/>
                 </div>
-                
+                <div className={style.registerInputs}>
+                    <input type="pasword" name='password' placeholder="password" onChange={handleChange}/>
+                </div>
+                <div className={style.registerInputs}>
+                    <input type="text" name='repeatedPassword' placeholder="repeat your password" onChange={handleChange}/>
+                </div>
+                <div className={style.registerInputs}>
+                    <input type="text" name='birthDate' placeholder="YYYY-MM-DD" onChange={handleChange}/>
+                </div>
+                <div className={style.registerCheckbox}>
+                    <label>Are you an artist?</label>
+                    <input type="checkbox" checked={isArtist} onChange={handleCheckboxChange} />
+                </div>
+                {
+                    isArtist && (
+                        <div className={style.registerInputs}>
+                            <input type="text" name='address' placeholder="Here goes your address" onChange={handleChange}/>
+                        </div>
+                    )
+                }
+                    <button className={style.registerButton}>REGISTER</button>
+                <div className={style.fastRegister}>
+                    <p>- Or -</p>
+                    <button className={style.fastRegisterButton}><img src={googleIcon} alt=""/> Continue with google</button>
+                    <button className={style.fastRegisterButton}><img src={facebookIcon} alt=""/> Continue with facebook</button>
+                </div>
             </form>
+            <button onClick={onRegister} className={style.quitRegisterButton}></button>
         </div>
-        </Modal>
     );
 };
 
-export default RegisterModal;
