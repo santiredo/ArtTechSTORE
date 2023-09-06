@@ -7,6 +7,7 @@ import { Dispatch } from 'redux';
 import Filters from "../Filters/Filters";
 
 
+
 export default function Display(){
     const dispatch:Dispatch<Action> = useDispatch();
 
