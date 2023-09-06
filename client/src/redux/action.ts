@@ -12,53 +12,67 @@ export function resetFilter(){
     type:'RESET',
   }
 }
-export function allProducts(){
-  return async function allPaintings(dispatch: Dispatch<Action>){
+async function allProductsBackEnd(){
     try {
       const response = await axios.get(`${URL}/products`);
-        const actionProduct={
-          type: 'GET_ALL_POST',
-          payload: response.data,
-        };
-        dispatch(actionProduct);
+      return response.data;
     } catch (error) {
       console.log(error);
       alert('Hubo un error al obtener los post');
     }
-  }
 }
 
-export function searchArtist(name:string) {
-  return async function search(dispatch: Dispatch<Action>) {
+export  function allProducts(){
+  const response= allProductsBackEnd()
+  return async (dispatch:any)=>{
+    dispatch({
+    type: 'GET_ALL_POST',
+    payload:await response
+    })}
+}
+
+async function searchArtistBackEnd(name:string) {
     try {
       const response = await axios.get(`${URL}/user?name=${name}`);
-        dispatch({
-          type: 'SEARCH_ARTIST',
-          payload: response.data,
-        });
+      return response.data;
     } catch (error) {
       console.log(error);
       alert('No se encontro el artista con ese nombre');
     }
-  }
 }
 
+export  function searchArtist(name:string){
+  const response=  searchArtistBackEnd(name)
+  return async (dispatch:any)=>{
+    dispatch({
+      type: 'SEARCH_ARTIST',
+      payload: response
+    })
+    
+    };
+}
 
-export function displayArtist(name:string) {
-  return async function display(dispatch: Dispatch<Action>) {
+async function displayArtistBackEnd(name:string) {
     try {
       const response = await axios.get(`${URL}/user?name=${name}`);
-        dispatch({
-          type: 'DISPLAY_ARTIST',
-          payload: response.data,
-        });
+      return response.data;
     } catch (error) {
       console.log(error);
     }
-  }
+
 }
 
 
+export  function displayArtist(name:string){
+  const response=  displayArtistBackEnd(name)
+  return async (dispatch:any)=>{
+    dispatch({
+      type: 'DISPLAY_ARTIST',
+      payload: response,
+    })
+  };
+  
+}
 
 
 //PHOTO ARTISTA
@@ -79,22 +93,28 @@ export function actionProfilePhoto(artistName: string) {
   };
 }
 
-export function allArtist(){
-  return async (dispatch: Dispatch<Action>) => {
+ async function allArtistBackEnd(){
+  
     try {
       const response = await axios.get(`${URL}/artist`);
-      
-      const action = {
-        type: 'GET_ALL_ARTISTS',
-        payload: response.data,
-      };
-      dispatch(action);
+      return response.data;
     } catch (error) {
       console.log(error);
       alert('Hubo un error al obtener los artistas');
     }
-    return Promise.resolve();
-  };
+ 
+}
+
+export function allArtist(){
+  const response= allArtistBackEnd();
+  return async (dispatch:Dispatch)=>(
+     dispatch(
+      {
+        type: 'GET_ALL_ARTISTS',
+        payload: response,
+      }
+     )
+  )
 }
 
 const llamadoAlBackend = async( creation: {
