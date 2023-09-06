@@ -43,7 +43,6 @@ export function searchArtist(name:string) {
   }
 }
 
-
 export function displayArtist(name:string) {
   return async function display(dispatch: Dispatch<Action>) {
     try {
@@ -57,9 +56,6 @@ export function displayArtist(name:string) {
     }
   }
 }
-
-
-
 
 //PHOTO ARTISTA
 
@@ -97,7 +93,7 @@ export function allArtist(){
   };
 }
 
-const llamadoAlBackend = async( creation: {
+const postCreationFunction = async( creation: {
     title: string;
     price: string;
     type: string;
@@ -124,13 +120,31 @@ export const postCreation = (creation: {
     image: string;
     description: string;
 }) => {
-    const dbCreation = llamadoAlBackend(creation)
+    const dbCreation = postCreationFunction(creation)
     return {
         type: 'CREATE_POST',
         payload: dbCreation
     }
 }
 
+
+export const getAllArtist = async(id:string | undefined, dispatch:Dispatch<Action>) => {
+
+    try {
+      
+      const response = await axios(`http://localhost:3001/artist/${id}`)
+      console.log(response.data)
+
+      return dispatch( {
+        type: 'ARTIST',
+        payload: response.data
+      })
+
+    } catch (error) {
+      
+      alert(error);
+    }
+}
 
 export function prev() {
   return {
