@@ -20,13 +20,14 @@
     cursor: pointer;
 }
 
+.hideInput,
 .searchInput{
     display: flex;
     position: absolute;
     align-items: center;
-    bottom: -60px;
-    right: calc(50% - 300px);
+    right: 0;
     gap: 5px;
+    top: 75px;
 }
 
 .searchInput p{
@@ -37,6 +38,16 @@
     position: absolute;
     right: 6px;
     cursor: pointer;
+    animation: displayX .5s forwards;
+}
+
+@keyframes displayX {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
 .searchInput input{
@@ -49,6 +60,29 @@
     color: #583000;
     font-size: 15px;
     font-family: 'Yuji Syuku', serif;
+    animation: displayInput .5s forwards;
+}
+
+@keyframes displayInput {
+    0%{
+        height: 0;
+    }
+    100%{
+        height: 30px;
+    }
+}
+
+.hideInput input{
+    animation: hideInput .5s forwards;
+}
+
+@keyframes hideInput {
+    0%{
+        height: 30px;
+    }
+    100%{
+        height: 0;
+    }
 }
 
 .container input:hover{
