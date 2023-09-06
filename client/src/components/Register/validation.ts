@@ -1,26 +1,95 @@
-const validation = (userData: { email: string, password: string }) => {
+export interface registerErrors {
+    name:string
+    mail:string
+    password:string
+    repeatedPassword:string
+    birthDate:string
+    address:string
+}
+
+const validation = (registerForm: {
+    name:string,
+    mail:string,
+    password:string,
+    repeatedPassword:string,
+    birthDate:string,
+    address:string
+
+}): registerErrors => {
 
     const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
-    const errors: {email?: string, password?: string} = {};
+    let errors: registerErrors = {
+        name: '',
+        mail: '',
+        password:'',
+        repeatedPassword:'',
+        birthDate:'',
+        address:''
+    };
 
-    if(!regexEmail.test(userData.email)){
-        errors.email = "The email is invalid.";
+    if(registerForm.name && !registerForm.name){
+        errors.name = "This field can not be empty";
     }
-    if(!userData.email){
-        errors.email = "This field can not be empty";
+    if(registerForm.mail && !regexEmail.test(registerForm.mail)){
+        errors.mail = "The email is invalid.";
     }
-    if(userData.email.length > 35){
-        errors.email = "The email cannot exceed 35 characters";
+    if(registerForm.password && !registerForm.password.match(/\d/)){
+        errors.password = "At least 1 number";
     }
-    if(!userData.password.match(/\d/)){
-        errors.password = "Password must contain at least 1 number";
+    if(registerForm.password && registerForm.password.length < 6){
+        errors.password = "Min 6 characters";
     }
-    if(userData.password.length < 6 || userData.password.length > 10){
-        errors.password = "Password must contain between 6 and 10 characters";
+    if(registerForm.repeatedPassword && registerForm.repeatedPassword !== registerForm.password){
+        errors.repeatedPassword = "Passwords must match"
     }
-
+    if(registerForm.birthDate.length === 10){
+        let birthDate = registerForm.birthDate.split('-')
+        let year = birthDate[0]
+        let month = birthDate[1]
+        let day = birthDate[2]
+        if(year.length !== 4 || month.length !== 2 || day.length !== 2 || Number(year) > 2023 || Number(month) > 12 || Number(day) > 31){
+            errors.birthDate = 'Date format required: YYYY-MM-DD'
+        }
+    } else if(registerForm.birthDate && registerForm.birthDate.length < 10){
+        errors.birthDate = 'Date format required: YYYY-MM-DD'
+    }
     return errors;
 }
 
+
 export default validation;
+
+export const validateSubmit = (registerForm: {
+    name:string,
+    mail:string,
+    password:string,
+    repeatedPassword:string,
+    birthDate:string,
+    address:string
+
+}) => {
+
+    let errors = false
+    const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    
+    if(!registerForm.name){
+        errors = true
+    }
+    if(!registerForm.mail || !regexEmail.test(registerForm.mail)){
+        errors = true
+    }
+    if(!registerForm.password || !registerForm.password.match(/\d/) || registerForm.password.length < 6){
+        errors = true
+    }
+    if(!registerForm.repeatedPassword || registerForm.repeatedPassword !== registerForm.password){
+        errors = true
+    }
+    if(!registerForm.birthDate){
+        errors = true
+    }else if(registerForm.birthDate.length !== 10){
+        errors = true
+    }
+
+    return errors
+}

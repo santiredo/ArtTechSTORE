@@ -1,8 +1,8 @@
 import { Comment } from "../../db";
 
 export async function postComment(
-  productId: string,
-  userId: string,
+  productId: number,
+  userId: number,
   message: string,
   rating: number
 ) {

@@ -96,6 +96,42 @@ export default function Form() {
         })
     }
 
+    //ACA ESTA EL HANDLESUBMIT:
+
+    const dispatch = useDispatch()
+
+    const handleSubmit = async(event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+
+        if(!finalValidate(form)){
+            if(form.image) {
+                try {
+                    const formData = new FormData()
+                    formData.append('file', form.image)
+    
+                    const response = await axios.post(
+                        'https://api.cloudinary.com/v1_1/dgyliu9l2/upload',
+                        formData
+                    )
+                    setForm({
+                        ...form,
+                        image: response.data.secure_url
+                    })
+
+                } catch (error) {
+                    error instanceof Error && alert(`Error: ${error.message}`);
+                }
+            }
+
+            dispatch(postCreation(form))
+
+        }else{
+            setErrors(validateSubmit(form))
+            alert('Some data is missing')
+        }
+
+    }
+
 
     // ACA TENEMOS FUNCIONES PARA MODIFICAR EL CSS DE LOS SELECTS
 
@@ -192,45 +228,6 @@ export default function Form() {
             techniqueActive?.classList.value.includes('techniqueActive') && techniqueActive.classList.toggle('techniqueActive')
 
         }
-    }
-
-
-
-
-    // ACA ESTA EL HANDLE SUBMIT
-
-    const dispatch = useDispatch()
-
-    const handleSubmit = async(event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-
-        if(!finalValidate(form)){
-            if(form.image) {
-                try {
-                    const formData = new FormData()
-                    formData.append('file', form.image)
-    
-                    const response = await axios.post(
-                        'https://api.cloudinary.com/v1_1/dgyliu9l2/upload',
-                        formData
-                    )
-                    setForm({
-                        ...form,
-                        image: response.data.secure_url
-                    })
-
-                } catch (error) {
-                    error instanceof Error && alert(`Error: ${error.message}`);
-                }
-            }
-
-            dispatch(postCreation(form))
-
-        }else{
-            setErrors(validateSubmit(form))
-            alert('Some data is missing')
-        }
-
     }
 
 

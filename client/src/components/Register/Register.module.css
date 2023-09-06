@@ -38,6 +38,14 @@
     color: #faedde;
 }
 
+.registerComponent span{
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    right: 12.5%;
+    top: -20px;
+}
+
 .registerInputs{
     display: flex;
     flex-direction: row;
@@ -45,6 +53,7 @@
     width: 100%;
     gap: 15px;
     color: #faedde;
+    position: relative;
 }
 
 .registerCheckbox{
@@ -141,5 +150,4 @@
 .quitRegisterButton:hover{
     cursor: pointer;
     background-color: #0000004f;
-
 }
