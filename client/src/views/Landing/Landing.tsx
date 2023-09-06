@@ -51,7 +51,7 @@ export default function Landing() {
                     </div>
                 </div>
                 <div className={style.phraseDiv}>
-                    <div className={style.rigthPhrase}>
+                    <div className={style.rightPhrase}>
                         <h2>Conéctate con la Mente Creativa</h2>
                         <p>Detrás de cada obra de arte hay una mente creativa que trabaja incansablemente para dar vida a su visión. Únete a nuestra comunidad y conecta con artistas apasionados que comparten su proceso y te invitan a descubrir el arte desde adentro.</p>
                     </div>
