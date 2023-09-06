@@ -1,59 +1,60 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { displayArtist, searchArtist } from '../../redux/action';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import search from '../../assets/lupa.png'
 import style from './SearchBar.module.css'
+import { useSelector } from 'react-redux';
+import { Artist, InitialState } from '../../redux/reducer';
+import { useDispatch } from 'react-redux';
+import { displayArtist } from '../../redux/action';
+import { NavLink } from 'react-router-dom';
 
 
 const SearchBar = () => {
-  const dispatch = useDispatch<any>();
-  const navigate = useNavigate()
-  const [artistState, setArtistState] = useState('');
-  let possibleArtists:any = useSelector<any>((state)=>state.artists);
-  const hasta:number=8
 
+  let artists = useSelector((state: InitialState<Artist>) => state.artists)
+  artists = artists.slice(0, 3)
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    setArtistState(event.target.value);
-    dispatch(displayArtist(event.target.value))//*Show possible artist using the filter
-  };
+  const [query, setQuery] = useState('')
+  
+  const dispatch = useDispatch<any>()
+  
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value)
 
-  const onSearch = (nombre: string) => {
-    dispatch(searchArtist(nombre));//*dispatch the action
-    navigate('/perfil');//*Go directly to the artist profile
-  };
+    dispatch(displayArtist(query))
+  }
 
-  const renderPossibleArtists = () => {
-    if (possibleArtists.length <= 0) {
-      return null;
-    }
-    if (possibleArtists.length<=hasta) {
-      possibleArtists=possibleArtists.slice(0,possibleArtists.length);
-    } else {
-      possibleArtists=possibleArtists.slice(0,hasta);
-    }
-    
-    return (
-      <ul>
-        {possibleArtists.map((artist:any) => (
-          <li key={artist.id}>{artist.name}</li>//*O capaz usando option en vez de li
-        ))}
-      </ul>
-    );
-  };
+  const [searchInput, setSearchInput] = useState(false)
+
+  const showInput = () => {
+    setSearchInput(!searchInput)
+  }
 
   return (
     <div className={style.container}>
-      <input
-        value={artistState}
-        onChange={handleChange}
-        type='search'
-        placeholder="Search an Artist"
-      />
-      {renderPossibleArtists()}
-      <button className={style.button} onClick={() => onSearch(artistState)}>Search</button>
+      {
+        searchInput && (
+          <>
+            <div className={style.searchInput}>
+              <input
+                type='text'
+                value={query}
+                onChange={handleInputChange}
+                placeholder="Search an Artist"
+              />
+              <p onClick={showInput}>⨉</p>
+            </div>
+            {(artists.length > 0) && (
+              <div>
+                {artists.map((artist:Artist) => (
+                  <NavLink to={`/detail/:${artist.id}`} key={artist.id}>{artist.name}</NavLink>
+                ))}
+              </div>
+            )}
+          </>
+          
+        )
+      }
+      <img src={search} alt="" className={style.button} onClick={() => {showInput()}} />
     </div>
   );
 };
