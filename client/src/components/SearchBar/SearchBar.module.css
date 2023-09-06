@@ -1,34 +1,54 @@
 .container{
-    
     display: flex;
     flex-direction: row;
+    align-items: center;
+    position: relative;
 }
 
 .button{
-    padding: 1.1vh;
-    height: 45px;
-    width: 100%;
     background-color: #faedde;
-    color: #583000;
-    &:hover{
-        color:darkslategray;
-        background-color: azure;
-        box-shadow: 0 5px 5px white;
-    }
+    border: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Yuji Syuku', serif;
+    width: 100%;
+    height: 25px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
-.container input{
-    outline: none;
-    border-radius: 12px;
-    padding: 1.1vh;
-    height: 100%;
-    width: 30vh;
+.searchInput{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    bottom: -60px;
+    right: calc(50% - 300px);
+    gap: 5px;
+}
+
+.searchInput p{
+    margin: 0;
+    font-size: 20px;
+    height: 25px;
+    padding-bottom: 8px;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}
+
+.searchInput input{
+    width: 600px;
+    height: 30px;
     border: none;
-    background-color: rgb(233, 228, 253) ;
-    color: rgba(47, 71, 90, 0.767);
-    font-size: 2.0vh;
-    text-align: left;
-    margin-right: 20px;
+    padding: 0 2.5% 1% 2.5%;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
 }
 
 .container input:hover{
