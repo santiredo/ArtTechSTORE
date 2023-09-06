@@ -35,7 +35,7 @@ return async (dispatch:any)=>{
 async function searchArtistBackEnd(name:string) {
     try {
       const response = await axios.get(`${URL}/user?name=${name}`);
-      return response.data;
+        return response.data;
     } catch (error) {
       console.log(error);
       alert('No se encontro el artista con ese nombre');
