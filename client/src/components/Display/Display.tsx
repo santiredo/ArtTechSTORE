@@ -7,14 +7,17 @@ import { Dispatch } from 'redux';
 import Filters from "../Filters/Filters";
 
 
+
 export default function Display(){
     const dispatch:Dispatch<Action> = useDispatch();
 
-    
-    useEffect(()=>{
-        dispatch(allArtist() as any);
-        dispatch(allProducts() as any);
-    },[]);
+    function Enter(){
+        useEffect(()=>{
+            dispatch(allArtist() as any);
+            dispatch(allProducts() as any);
+        },[allArtist]);
+    }
+    Enter();
     
     const allmy=useSelector((state:any)=>state.artists)
     const myProducts=useSelector((state:any)=>state.artGallery);
