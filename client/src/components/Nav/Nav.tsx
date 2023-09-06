@@ -41,9 +41,9 @@ const Navbar = () => {
         <img src={letter} alt="logo" />
         <h1>ArtTechStore</h1>
       </NavLink>
-      <SearchBar />   
       <NavLink to="/favorites" className={style.navLink}>Favourites</NavLink>
       <NavLink to="/favorites" className={style.navLink}>Home</NavLink>
+      <SearchBar /> 
     </div>
   );
 };
