@@ -134,4 +134,3 @@ export default function Register({onRegister} : {onRegister: () => void})  {
         </div>
     );
 };
-

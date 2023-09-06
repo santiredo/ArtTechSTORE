@@ -54,9 +54,9 @@ const validation = (registerForm: {
     } else if(registerForm.birthDate && registerForm.birthDate.length < 10){
         errors.birthDate = 'Date format required: YYYY-MM-DD'
     }
-
     return errors;
 }
+
 
 export default validation;
 

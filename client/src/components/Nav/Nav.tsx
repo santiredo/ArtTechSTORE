@@ -1,6 +1,6 @@
 
-
 import {useState, useEffect} from 'react'
+
 import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";

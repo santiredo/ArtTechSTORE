@@ -10,7 +10,7 @@ interface CardProps {
   price: number;
 }
 
-const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, cost }) => {
+const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, price }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, cost 
         <h1 className={style.cardType}>{type}</h1>
         <h2 className={style.cardName}>{name}</h2>
         <p className={style.cardArtistName}>{artistName}</p>
-        <p className={style.cardCost}>{cost}</p>
+        <p className={style.cardCost}>{price}</p>
         <button className={style.viewMoreButton}>➕</button>
         <button
           type="button"

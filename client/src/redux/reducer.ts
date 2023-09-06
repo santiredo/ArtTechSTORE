@@ -26,6 +26,7 @@ export type InitialState<T> = {
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
     paymentFilter: ArtGalleryItem[],
+    allPostFilter: ArtGalleryItem[],
 }
 
 
@@ -44,6 +45,7 @@ const initialState: InitialState<any> = {
     typeFilter: [],
     techniqueFilter: [],
     paymentFilter: [],
+    allPostFilter: [],
 }
 
 
@@ -56,7 +58,25 @@ export default function rootReducer(state = initialState, action:Action<any>){
             return{
               ...state,
               allPosts: allProducts,
+              artGallery:allProducts,
+              typeFilter:allProducts,
+              techniqueFilter:allProducts,
+              paymentFilter:allProducts,
+              allPostFilter:allProducts,
             }
+          }
+        case 'RESET':
+          return{
+            ...state,
+            artGallery:state.allPosts,
+            typeFilter:state.allPosts,
+            techniqueFilter:state.allPosts,
+            paymentFilter:state.allPosts,
+          }
+        case 'GET_ALL_ARTISTS':
+          return{
+            ...state,
+            artists: action.payload,
           }
         case 'CREATE_POST':
               return {
