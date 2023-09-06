@@ -1,73 +1,62 @@
-import React, { useEffect, useState } from "react";
-import styles from "./ProfileView.module.css";
+import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { actionProfilePhoto, displayArtist } from '../../redux/action';
+import { getAllArtist } from '../../redux/action';
+import { InitialState } from "../../redux/reducer";
+import { useParams } from "react-router-dom";
+import RatingStars from "../../components/RatingStars/RatingStars";
+import foto from '../../assets/fotoLanding3.png'
+import ultimaCreacion from '../../assets/fotoLanding4.jpg'
+import styles from './ProfileView.module.css'
 
-interface Artist {
-  artistName: string;
-  location: string;
-}
 
-interface ProfileState {
-  artistName: string;
-  photo: string | null;
-}
 
-const ProfileView: React.FC<Artist> = (props) => {
-  const dispatch = useDispatch();
-  const { artistName, photo } = useSelector((state: { artist: ProfileState }) => state.artist);
-  const [rating, setRating] = useState(0);
+export default function ProfileView() {
 
+  const artist = useSelector((state: InitialState) => state.artist);
+
+  const {id} = useParams()
+
+  const dispatch = useDispatch()
+
+  const [soldOut, setSoldOut] = useState(false)
+
+  const soldOutHandler = () => {
+    setSoldOut(!soldOut)
+  }
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await Promise.all([
-          dispatch<any>(displayArtist(props.artistName)),
-          dispatch<any>(actionProfilePhoto(props.artistName))
-        ]);
-      } catch (error) {
-        console.error("Error fetching artist data:", error);
-      }
-    };
 
-    fetchData();
-  }, [dispatch, props.artistName]);
+    getAllArtist(id, dispatch)
+    
+  }, []);
 
 
   return (
-    <div className={styles["profile-container"]}>
-      <div className={styles["p-container"]}>
-        {photo && <img className={styles["artist-photo"]} src={photo} alt="Artist photo" />}
-        
-        <div className={styles["stars-ranking"]}>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              className={star <= rating ? styles["filled"] : ""}
-              key={star}
-              onClick={() => setRating(star)}>
-              {star <= rating ? "★" : "☆"}
-            </span>
-          ))}
+    <div className={styles["profile-page"]}>
+      <div className={styles.profileContainer}>
+        <div className={styles["foto-rating-div"]}>
+          <img src={foto} alt="" />
+          <RatingStars/>
+        </div>
+        <div className={styles.profileInfo}>
+          <div className={styles.profileInfoDiv}>
+            <h1>{artist.name}</h1>
+            <h3>{artist.location}Argentina</h3>
+          </div>
+          <hr />
+          <div className={styles.profileInfoDiv}>
+            <button>On sale</button>
+            <button onClick={soldOutHandler}>Sold out</button>
+          </div>
+            <div className={soldOut ? styles.showSoldOut : styles.hideSoldOut}>
+              <p>Aqui van las creaciones vendidas</p>
+            </div>
+          <div className={styles.lastCreation}>
+            <h2>Last post:</h2>
+            <img src={ultimaCreacion} alt="" />
+          </div>
         </div>
       </div>
-     
-      <div className={styles["artist-info"]}>
-        <h1 className={styles["artist-name"]}>{artistName}</h1>
-        <p className={styles["artist-location"]}>{props.location}</p>
-      </div>
-    
-      <div className={styles["button-container"]}>
-        <button className={styles.CreateButton}>Creaciones en venta</button>
-        <button className={styles.SaleButton}>Vendidos</button>
-      </div>
-    
     </div>
   );
 };
-
-export default ProfileView;
-
-
-
-
-
