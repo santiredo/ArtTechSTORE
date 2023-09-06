@@ -1,0 +1,8 @@
+.ratingStarsComponent {
+    display: flex;
+    flex-direction: row;
+}
+
+.ratingStar{
+    cursor: pointer;
+}
