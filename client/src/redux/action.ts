@@ -12,23 +12,24 @@ export function resetFilter(){
     type:'RESET',
   }
 }
+
 async function allProductsBackEnd(){
-    try {
-      const response = await axios.get(`${URL}/products`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      alert('Hubo un error al obtener los post');
-    }
+  try {
+    const response = await axios.get(`${URL}/products`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    alert('Hubo un error al obtener los post');
+  }
 }
 
 export  function allProducts(){
-  const response= allProductsBackEnd()
-  return async (dispatch:any)=>{
-    dispatch({
-    type: 'GET_ALL_POST',
-    payload:await response
-    })}
+const response= allProductsBackEnd()
+return async (dispatch:any)=>{
+  dispatch({
+  type: 'GET_ALL_POST',
+  payload:await response
+  })}
 }
 
 async function searchArtistBackEnd(name:string) {
@@ -49,31 +50,27 @@ export  function searchArtist(name:string){
       payload: response
     })
     
-    };
+  };
 }
 
 async function displayArtistBackEnd(name:string) {
-    try {
-      const response = await axios.get(`${URL}/user?name=${name}`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-
+  try {
+    const response = await axios.get(`${URL}/user?name=${name}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
-
 
 export  function displayArtist(name:string){
-  const response=  displayArtistBackEnd(name)
-  return async (dispatch:any)=>{
-    dispatch({
-      type: 'DISPLAY_ARTIST',
-      payload: response,
+const response=  displayArtistBackEnd(name)
+return async (dispatch:any)=>{
+  dispatch({
+    type: 'DISPLAY_ARTIST',
+    payload: response,
     })
   };
-  
 }
-
 
 //PHOTO ARTISTA
 
@@ -93,28 +90,28 @@ export function actionProfilePhoto(artistName: string) {
   };
 }
 
- async function allArtistBackEnd(){
+async function allArtistBackEnd(){
   
-    try {
-      const response = await axios.get(`${URL}/artist`);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      alert('Hubo un error al obtener los artistas');
-    }
- 
+  try {
+    const response = await axios.get(`${URL}/artist`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    alert('Hubo un error al obtener los artistas');
+  }
+
 }
 
 export function allArtist(){
   const response= allArtistBackEnd();
   return async (dispatch:Dispatch)=>(
-     dispatch(
-      {
-        type: 'GET_ALL_ARTISTS',
-        payload: response,
-      }
-     )
-  )
+   dispatch(
+    {
+      type: 'GET_ALL_ARTISTS',
+      payload: response,
+    }
+   )
+)
 }
 
 const llamadoAlBackend = async( creation: {
