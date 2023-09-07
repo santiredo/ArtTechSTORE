@@ -42,6 +42,20 @@ async function searchArtistBackEnd(name:string) {
     }
 }
 
+// export function displayArtist(name:string) {
+//   return async function display(dispatch: Dispatch<Action>) {
+//     try {
+//       const response = await axios.get(`${URL}/user?name=${name}`);
+//         dispatch({
+//           type: 'DISPLAY_ARTIST',
+//           payload: response.data,
+//         });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// }
+
 export  function searchArtist(name:string){
   const response=  searchArtistBackEnd(name)
   return async (dispatch:any)=>{
@@ -114,7 +128,7 @@ export function allArtist(){
 )
 }
 
-const llamadoAlBackend = async( creation: {
+const postCreationFunction = async( creation: {
     title: string;
     price: string;
     type: string;
@@ -141,13 +155,31 @@ export const postCreation = (creation: {
     image: string;
     description: string;
 }) => {
-    const dbCreation = llamadoAlBackend(creation)
+    const dbCreation = postCreationFunction(creation)
     return {
         type: 'CREATE_POST',
         payload: dbCreation
     }
 }
 
+
+export const getArtistById = async(id:string | undefined, dispatch:Dispatch<Action>) => {
+
+    try {
+      
+      const response = await axios(`http://localhost:3001/artist/${id}`)
+      console.log(response.data)
+
+      return dispatch( {
+        type: 'ARTIST',
+        payload: response.data
+      })
+
+    } catch (error) {
+      
+      alert(error);
+    }
+}
 
 export function prev() {
   return {

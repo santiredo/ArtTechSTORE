@@ -1,6 +1,120 @@
-.profile-container {
-    height: 100vh;
+.profile-page {
+  display: flex;
+  justify-content: center;
+  margin: 120px 0 100px 0;
+  width: 100%;
+}
+
+.profileContainer{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.foto-rating-div{
+  width: 30%;
+}
+
+.foto-rating-div img{
+  width: 80%;
+}
+
+.profileInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+}
+
+.profileInfoDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.profileInfoDiv h1{
+  margin: 0;
+}
+
+.profileInfoDiv h3{
+  margin: 10px 0 0 0;
+}
+
+.profileInfo hr{
+  width: 100%;
+  border: none;
+  background-color: black;
+  height: 1px;
+  margin: 15px 0 40px 0;
+}
+
+.profileInfoDiv button{
+  background-color: #faedde;
+  border: none;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 5px 0;
+  font-family: 'Yuji Syuku', serif;
+  width: 30%;
+  height: 25px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.profileInfoDiv button:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #00000082;
+}
+
+.showSoldOut{
+  width: 90%;
+  margin-top: 40px;
+  background-color: #faedde;
+  animation: soldOut .5s forwards;
+}
+
+@keyframes soldOut {
+  0%{
+    height: 0;
   }
+  100%{
+    height: 200px;
+  }
+}
+
+.hideSoldOut{
+  width: 90%;
+  margin-top: 40px;
+  background-color: #faedde;
+  animation: hideSoldOut .5s forwards;
+}
+
+@keyframes hideSoldOut {
+  0%{
+    height: 200px;
+  }
+  80%{
+    opacity: 0;
+  }
+  100%{
+    margin-top: 0;
+    height: 0;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.lastCreation{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  text-align: start;
+  margin-top: 40px;
+}
+
 
   .artist-photo {
     border-radius: 50%;

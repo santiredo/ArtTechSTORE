@@ -10,15 +10,18 @@ interface ArtGalleryItem {
     posted: boolean;
 }
 
-
-interface Artist{
+export interface Artist{
   id:number,
   name:string,
+  mail:string,
+  birthDate:string,
+  location:string,
+  image:string
 }
 
 
-export type InitialState<T> = {
-    artist: T,
+export type InitialState = {
+    artist: Artist,
     artists: Artist[],
     allPosts: ArtGalleryItem[],
     numPage: number,
@@ -36,10 +39,17 @@ type Action<T> = {
 }
 
 
-const initialState: InitialState<any> = {
+const initialState: InitialState = {
     allPosts: [],
     artGallery:[],
-    artist:{},
+    artist: {
+      id:0,
+      name:'string',
+      mail:'string',
+      birthDate:'string',
+      location:'string',
+      image:'string'
+    },
     artists:[],
     numPage:1,
     typeFilter: [],
@@ -220,6 +230,11 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   ...state,
                   artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
                 };
+              case 'ARTIST':
+                return {
+                  ...state,
+                  artist: action.payload
+                }
         
           default:
               return {...state};
