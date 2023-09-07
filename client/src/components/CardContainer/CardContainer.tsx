@@ -4,9 +4,7 @@ import { ArtGalleryItem, InitialState } from '../../redux/reducer';
 import Card from '../Card/Card';
 import { getAllProducts } from '../../redux/action';
 import { useDispatch } from 'react-redux';
-
 import style from './cardContainer.module.css'
-import helpers from 'markdown-it/lib/helpers';
 
 
 
