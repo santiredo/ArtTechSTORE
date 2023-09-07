@@ -4,7 +4,7 @@ import 'dotenv/config';
 import fs from 'fs'
 import path from 'path'
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
 const sequelize = new Sequelize({
     dialect: 'postgres',
@@ -12,9 +12,15 @@ const sequelize = new Sequelize({
     password: DB_PASSWORD,
     host: DB_HOST,
     port: Number(DB_PORT), // Convertir a número, ya que normalmente está en formato de cadena
-    database: 'artists',
+    database: DB_NAME,
     logging: false,
     native: false,
+    dialectOptions: {
+        ssl: {
+            require: true, // Requiere SSL
+            rejectUnauthorized: false // Permite conexiones sin certificados válidos (no recomendado en producción)
+        }
+    }
 });
 
 const basename = path.basename(__filename)
