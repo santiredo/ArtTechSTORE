@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 const SearchBar = () => {
 
-  let artists = useSelector((state: InitialState<Artist>) => state.artists)
+  let artists = useSelector((state: InitialState) => state.artists)
   artists = artists.slice(0, 3)
 
   const [query, setQuery] = useState('')

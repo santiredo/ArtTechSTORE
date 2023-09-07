@@ -1,4 +1,4 @@
-import  { ReactNode } from 'react'
+//import  { ReactNode } from 'react'
 import { useSelector } from "react-redux";
 import Paginate from '../Paginado/Paginado';
 import { InitialState } from '../../redux/reducer';
@@ -7,8 +7,8 @@ import Card from '../Card/Card';
 
 
 const CardContainer=()=>{
-    const artGallery = useSelector((state:InitialState<any>)=>state.artGallery);
-    const numPage:number=useSelector((state:InitialState<any>)=>state.numPage);
+    const artGallery = useSelector((state:InitialState)=>state.artGallery);
+    const numPage:number=useSelector((state:InitialState)=>state.numPage);
     const cantPerPage = 20;
     const desde = (numPage - 1) * cantPerPage; 
     const hasta = numPage * cantPerPage;       
@@ -23,7 +23,7 @@ const CardContainer=()=>{
     return(
         <div>
         <div>
-            {viewArt?.map((artGallery):ReactNode=>{
+            {viewArt?.map((artGallery:any)=>{
                 return <Card
                     id={artGallery.id}
                     imageURL={artGallery.imageURL}
