@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { postOrder } from "../../controllers/Order/postOrder";
+import { postOrder } from "../../controllers/order/postOrder";
 
 export async function createOrderHandler(req: Request, res: Response) {
     try {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { postUser } from '../../controllers/User/postUser';
+import { postUser } from '../../controllers/user/postUser';
 import { User } from '../../db';
 
 

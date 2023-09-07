@@ -1,6 +1,6 @@
-import { deleteOrderHandler } from "../handlers/Order/deleteOrder";
-import { getOrderHandler } from "../handlers/Order/getOrders";
-import { createOrderHandler } from "../handlers/Order/postOrder";
+import { deleteOrderHandler } from "../handlers/order/deleteOrder";
+import { getOrderHandler } from "../handlers/order/getOrders";
+import { createOrderHandler } from "../handlers/order/postOrder";
 import express from "express";
 
 const orderRouter = express.Router();

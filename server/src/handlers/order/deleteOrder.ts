@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { deleteOrder } from "../../controllers/Order/deleteOrder";
+import { deleteOrder } from "../../controllers/order/deleteOrder";
 
 export async function deleteOrderHandler(req: Request, res: Response) {
     try {
