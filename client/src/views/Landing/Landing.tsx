@@ -52,10 +52,10 @@ export default function Landing() {
                 </div>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
-                        <h2>Conéctate con la Mente Creativa</h2>
-                        <p>Detrás de cada obra de arte hay una mente creativa que trabaja incansablemente para dar vida a su visión. Únete a nuestra comunidad y conecta con artistas apasionados que comparten su proceso y te invitan a descubrir el arte desde adentro.</p>
+                        <h2>Descubre el Arte que Resuena Contigo</h2>
+                        <p>El arte no solo es visual, es una experiencia que toca tu alma. Explora nuestras categorías y encuentra piezas que resuenen con tus emociones y valores. Cada obra es una oportunidad para conectar con algo más grande que nosotros mismos.</p>
                     </div>
-                    <img src={foto3} alt="" />
+                    <img src={foto5} alt="" />
                 </div>
                 <div className={style.phraseDiv}>
                     <img src={foto4} alt="" />
@@ -66,10 +66,10 @@ export default function Landing() {
                 </div>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
-                        <h2>Descubre el Arte que Resuena Contigo</h2>
-                        <p>El arte no solo es visual, es una experiencia que toca tu alma. Explora nuestras categorías y encuentra piezas que resuenen con tus emociones y valores. Cada obra es una oportunidad para conectar con algo más grande que nosotros mismos.</p>
+                        <h2>El Abismo Creativo</h2>
+                        <p>En las profundidades de la oscuridad, el arte encuentra su hogar más íntimo. En ese abismo, las sombras dan vida a la creatividad, tejiendo un tapiz de belleza desde el corazón de la penumbra. En cada trazo, nace la luz de la expresión más auténtica.</p>
                     </div>
-                    <img src={foto5} alt="" />
+                    <img src={foto3} alt="" />
                 </div>
                 <img className={style.fondo1} src={fondo1} alt="" />
             </div>
