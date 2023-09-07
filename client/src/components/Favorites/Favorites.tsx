@@ -11,17 +11,17 @@ interface ArtGallery {
     price: number;
   }
 
-interface ArtGalleryItem {
-    id: string;
-    imageURL: string;
-    type: string;
-    name: string;
-    artistName: string;
-    technique: string;
-    price: number;
-    bet: boolean;
-    posted: boolean;
-}
+// interface ArtGalleryItem {
+//     id: string;
+//     imageURL: string;
+//     type: string;
+//     name: string;
+//     artistName: string;
+//     technique: string;
+//     price: number;
+//     bet: boolean;
+//     posted: boolean;
+// }
 interface RootState {
     favorites: ArtGallery[]; 
   }
