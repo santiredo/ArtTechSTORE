@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUserByName } from '../../controllers/user/getUserByName';
+import { getUserByName } from '../../controllers/User/getUserByName';
 
 export async function getUserByNameHandler(req: Request, res: Response) {
     try {

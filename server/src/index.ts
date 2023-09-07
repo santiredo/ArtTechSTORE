@@ -9,7 +9,6 @@ sequelize
   .sync({ force: false })
   .then(() => {
     server.listen(PORT, () => {
-      console.log(io)
       console.log(`Server listening on port ${PORT}`);
     });
   })

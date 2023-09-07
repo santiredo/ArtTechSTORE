@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getUserById } from '../../controllers/user/getUserById';
+import { getUserById } from '../../controllers/User/getUserById';
 
 export async function getUserByIdHandler(req: Request, res: Response) {
     try {
