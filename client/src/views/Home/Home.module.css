@@ -5,77 +5,83 @@
     justify-content: center;
     padding: 20px;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 120px;
   }
   
   h1 {
     font-size: 2rem;
     margin-bottom: 20px;
   }
-  
-  /* Style for the Carousel */
-  .carousel-container {
-    width: 80%; /* Set the desired width of the carousel container */
-  max-width: 100px; /* Maximum width, adjust as needed */
-  margin: 20px auto;
-  overflow: hidden; /* Hide the overflow for smooth slide transitions */
-  height: 300px; /* Set the fixed height for the carousel container */
-  position: relative;
+   
+  .subcontainer{
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+    height: auto;
+    object-fit: contain;
+    overflow: hidden;
   }
-  
-  /* Style for individual Carousel items */
-  .carousel-item {
-    text-align: center;
-  height: 100%; /* Set the fixed height for each carousel item */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  .img {
+  margin-bottom: 85px;
+  width: auto; 
+  height: 400px;
+  object-fit:cover; 
+  transition: opacity 0.5s ease-in-out;
   }
-  
-  .carousel-img {
-    max-width: 100%; /* Ensure the image fits within the carousel item */
-  max-height: 100%; /* Set the maximum height to 100% */
-  object-fit: contain; /* Maintain aspect ratio and cover the available space */
-  }
-  
-  .carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for captions */
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  }
-  
+    
   .carousel-caption h3 {
     font-size: 1.5rem;
     margin: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: white;
   }
-
-  .carousel.slide {
-    transition: transform 0.5s ease-in-out;
-  }
-  
+ 
   .carousel.slide.carousel-inner {
     display: flex;
-    flex-direction: row; /* Display slides in a horizontal row */
+    flex-direction: row;
+    transition: transform 0.5s ease-in-out; 
   }
   
   .carousel.slide.carousel-item {
-    flex: 0 0 auto; /* Prevent slides from shrinking */
-    width: 40%; /* Ensure each slide occupies the full width */
+    flex: 0 0 auto; 
+    width: 300px;
+    height: 200px;  
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Start with 0 opacity */
-    transform: translateX(100%); /* Start position of the slides */
+    overflow: hidden;
+    opacity: 0; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: relative; 
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
   }
   
   .carousel.slide.carousel-item.active {
     opacity: 1; /* Show the active slide with full opacity */
     transform: translateX(0); /* Slide in from the right */
   }
-   
+
+  .carousel.slide .carousel-item.active .overlay {
+    opacity: 1; /* Darken the overlay on active slide */
+  }
   
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    opacity: 1; 
+    transition: opacity 0.5s ease-in-out; 
+  }
+
+.cards{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
