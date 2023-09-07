@@ -1,53 +1,27 @@
 import React, { useState } from 'react';
+import { ArtGalleryItem } from '../../redux/reducer';
+import user from '../../assets/usuario.png'
 import style from './Card.module.css';
 
-interface CardProps {
-  id: string;
-  imageURL: string;
-  type: string;
-  name: string;
-  artistName: string;
-  price: number;
-}
 
-const Card: React.FC<CardProps> = ({ id, imageURL, type, name, artistName, price }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  const cardStyle = {
-    backgroundImage: `url(${imageURL})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
-
-  const handleFavoriteClick = () => {
-    setIsFavorite((prevState) => !prevState);
-  };
+const Card: React.FC<ArtGalleryItem> = (props) => {
 
   return (
-    <div
-      key={id}
-      className={`${style.card} ${isHovered ? style.hovered : ''}`}
-      style={cardStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className={style.cardContent}>
-        <h1 className={style.cardType}>{type}</h1>
-        <h2 className={style.cardName}>{name}</h2>
-        <p className={style.cardArtistName}>{artistName}</p>
-        <p className={style.cardCost}>{price}</p>
-        <button className={style.viewMoreButton}>➕</button>
-        <button
-          type="button"
-          className={`${style.favoriteButton} ${style.cardButton} ${isFavorite ? style.favoriteActive : ''}`}
-          onClick={handleFavoriteClick}
-        >
-          {isFavorite ? '❤️' : '🖤'}
-        </button>
+    <div className={style.cardComponent}>
+      <img src={props.image} alt="" />
+      <div className={style.cardInfo}>
+        <div className={style.infoDiv}>
+          <div>
+            <img src={user} alt="" />
+            <h4>Artist</h4>
+          </div>
+          <h3>${props.price}</h3>
+          <button>Buy</button>
+        </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Card;
