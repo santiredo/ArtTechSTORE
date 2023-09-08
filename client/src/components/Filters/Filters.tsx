@@ -35,7 +35,6 @@ export default function Filters() {
     }
 
     return (
-        <div className={style.divAuxiliar}>
             <div className={style.filtersComponent}>
                 <h3>Filters</h3>
                 <img src={reset} onClick={handleReset} alt="" />
@@ -77,6 +76,5 @@ export default function Filters() {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
