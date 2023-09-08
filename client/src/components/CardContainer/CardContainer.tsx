@@ -1,6 +1,8 @@
 import  { useEffect } from 'react'
 import { useSelector } from "react-redux";
+
 import { ArtGalleryItem, InitialState } from '../../redux/reducer';
+
 import Card from '../Card/Card';
 import { getAllProducts } from '../../redux/action';
 import { useDispatch } from 'react-redux';
@@ -10,6 +12,7 @@ import style from './cardContainer.module.css'
 
 const CardContainer=()=>{
 
+
     const allPosted = useSelector((state:InitialState) => state.artGallery);
 
     const dispatch = useDispatch()
@@ -17,6 +20,7 @@ const CardContainer=()=>{
     useEffect(() => {
         getAllProducts(dispatch)
     }, [])
+
 
     // PAGINADO
 
@@ -85,6 +89,8 @@ const CardContainer=()=>{
                 })}
             </div>
         </div>
+
+
     )
 }
 

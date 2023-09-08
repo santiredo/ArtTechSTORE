@@ -23,10 +23,14 @@ export const getAllProducts = async(dispatch:Dispatch<Action>) => {
 }
 
 
-async function searchArtistBackEnd(name:string) {
+export async function searchArtist(name:string) {
     try {
       const response = await axios.get(`${URL}/user?name=${name}`);
-        return response.data;
+      return(
+        {
+        type: 'SEARCH_ARTIST',
+        payload: response.data,
+      })
     } catch (error) {
       console.log(error);
       alert('No se encontro el artista con ese nombre');
@@ -34,22 +38,20 @@ async function searchArtistBackEnd(name:string) {
 }
 
 
-export  function searchArtist(name:string){
-  const response=  searchArtistBackEnd(name)
-  return async (dispatch:any)=>{
-    dispatch({
-      type: 'SEARCH_ARTIST',
-      payload: response
-    })
-    
-  };
-}
 
-async function allArtistBackEnd(){
+
+export async function allArtist(dispatch:Dispatch<Action>){
   
   try {
     const response = await axios.get(`${URL}/artist`);
-    return response.data;
+    console.log("En la actionbackend",response);
+    
+    return dispatch(
+      {
+        type: 'GET_ALL_ARTISTS',
+        payload: response.data,
+      }
+     )
   } catch (error) {
     console.log(error);
     alert('Hubo un error al obtener los artistas');
@@ -57,16 +59,23 @@ async function allArtistBackEnd(){
 
 }
 
-export function allArtist(){
-  const response= allArtistBackEnd();
-  return async (dispatch:Dispatch)=>(
-   dispatch(
-    {
-      type: 'GET_ALL_ARTISTS',
-      payload: response,
-    }
-   )
-)
+export async function getAllUsers(dispatch:Dispatch<Action>){
+  
+  try {
+    const response = await axios.get(`${URL}/user`);
+    console.log("En la actionbackend",response);
+    
+    return dispatch(
+      {
+        type: 'GET_ALL_USERS',
+        payload: response.data,
+      }
+     )
+  } catch (error) {
+    console.log(error);
+    alert('Hubo un error al obtener los usuarios');
+  }
+
 }
 
 export const getArtistById = async(id:string | undefined, dispatch:Dispatch<Action>) => {
