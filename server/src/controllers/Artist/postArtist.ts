@@ -1,6 +1,13 @@
 import { Artist } from "../../db";
 
-export async function postArtist(name: string, mail: string, password: string, birthDate: string,address:string) {
+export async function postArtist(
+  name: string, 
+  mail: string, 
+  password: string, 
+  birthDate: string,
+  location:string, 
+  image: string
+  ){ 
   try {    
     
     const newArtist = await Artist.create({
@@ -8,7 +15,8 @@ export async function postArtist(name: string, mail: string, password: string, b
       mail: mail,
       password: password,
       birthDate: birthDate,
-      address:address,
+      location:location,
+      image: image
     });
 
     

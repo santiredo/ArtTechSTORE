@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { DataTypes } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 

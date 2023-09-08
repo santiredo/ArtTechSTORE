@@ -3,29 +3,28 @@ import { Artist } from "../../db";
 import { updateArtist } from '../../controllers/Artist/updateArtist';
 
 export async function updateArtistHandler(req: Request, res: Response) {
-    const {id} = req.params;
+    const { id } = req.params;
     const artistId = Number(id);
-    let { name,password } = req.body;
-    
+    const { name, password, image } = req.body;
+
     try {
-      const artist = await Artist.findByPk(artistId);
-      
-      if (artist) {
-        if(!name){
-          name= await artist.get('name');
+        const artist = await Artist.findByPk(artistId);
+
+        if (artist) {
+            const updatedArtist = await updateArtist(artistId, {
+                name,
+                password,
+                image,
+            });
+
+            console.log("The Artist has been updated", updatedArtist);
+
+            res.status(200).json(updatedArtist);
+        } else {
+            res.status(404).json({ message: 'Artist not found' });
         }
-        
-        if(!password){
-          password=await artist.get('password');
-        }
-        const updatedArtist=await updateArtist( artistId,name ,password);
-        console.log("El nuevo artista es", updatedArtist);
-        
-        res.status(200).json(updatedArtist);
-      } else {
-        res.status(404).json({ message: 'Artist not found' });
-      }
     } catch (error) {
-      res.status(500).json({ message: 'Error al actualizar el artista' });
+        console.error("Error:", error);        
+        res.status(500).json({ message: 'Error updating artist' });
     }
-  };
+};
