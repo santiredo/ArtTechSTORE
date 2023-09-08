@@ -1,28 +1,27 @@
-.divAuxiliar{
-    position: fixed;
+/* .divAuxiliar{
     bottom: 10%;
     left: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     z-index: 1000;
-    margin-left: 5%;
-    width: 15%;
-    height: 80%;
+    width: 20%;
+    height: 100%;
     gap: 10px;
 }
-
+ */
 .filtersComponent {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    background-color: #3b5b85eb;
-    width: 100%;
-    padding-left: 5%;
+    background-color: #00000077;
+    width: 20%;
+    padding-left: 2%;
     box-shadow: 0 0 5px #000000;
     border-radius: 5px;
+    color: #faedde;
 }
 
 .filtersComponent h3{
@@ -36,8 +35,8 @@
     width: 20px;
     height: 20px;
     border-radius: 15px;
-    top: 4%;
-    right: 5%;
+    top: 5.5%;
+    right: 10%;
     cursor: pointer;
 }
 
@@ -62,7 +61,7 @@
     padding-left: 5%;
     max-height: 75px;
     overflow: auto;
-    border-top: 3px solid #1f416d;
+    border-top: 3px solid #000000;
     
 }
 
@@ -72,7 +71,6 @@
     margin: 2px 0;
     cursor: pointer;
     position: relative;
-    font-weight: 600;
 }
 
 .options p:hover::before{
@@ -80,10 +78,10 @@
     display: block;
     height: 0;
     width: 0;
-    border-top: 2px solid #000000;
-    border-right: 2px solid #000000;
-    border-left: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    border-top: 2px solid #faedde;
+    border-right: 2px solid #faedde;
+    border-left: 2px solid #faedde;
+    border-bottom: 2px solid #faedde;
     position: absolute;
     border-radius: 5px;
     right: 30%;
@@ -95,5 +93,5 @@
 }
 
 .options::-webkit-scrollbar-thumb {
-    background-color: #1f416d;
+    background-color: #000000;
 }

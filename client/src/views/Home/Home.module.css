@@ -1,87 +1,20 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    margin-top: 120px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-   
-  .subcontainer{
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-    margin-bottom: 20px;
-    height: auto;
-    object-fit: contain;
-    overflow: hidden;
-  }
+  display: flex;
+  font-family: 'Yuji Syuku', serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0 100px 0;
+  width: 100%;
+  gap: 30px;
+}
 
-  .img {
-  margin-bottom: 85px;
-  width: auto; 
-  height: 400px;
-  object-fit:cover; 
-  transition: opacity 0.5s ease-in-out;
-  }
-    
-  .carousel-caption h3 {
-    font-size: 1.5rem;
-    margin: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    color: white;
-  }
- 
-  .carousel.slide.carousel-inner {
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.5s ease-in-out; 
-  }
-  
-  .carousel.slide.carousel-item {
-    flex: 0 0 auto; 
-    width: 300px;
-    height: 200px;  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    opacity: 0; 
-    background-color: rgba(0, 0, 0, 0.5); 
-    position: relative; 
-    transform: translateX(100%);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
-  }
-  
-  .carousel.slide.carousel-item.active {
-    opacity: 1; /* Show the active slide with full opacity */
-    transform: translateX(0); /* Slide in from the right */
-  }
-
-  .carousel.slide .carousel-item.active .overlay {
-    opacity: 1; /* Darken the overlay on active slide */
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    opacity: 1; 
-    transition: opacity 0.5s ease-in-out; 
-  }
-
-.cards{
+.postsSection{
   display: flex;
   flex-direction: row;
-  margin-top: 10px;
+  justify-content: space-between;
+  width: 90%;
+  height: 80vh;
+  overflow: auto;
 }

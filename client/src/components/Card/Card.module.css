@@ -9,21 +9,25 @@
 .cardComponent img{
   height: 100%;
   width: auto;
+  max-width: none;
 }
 
 .cardInfo{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 0;
+  width:0;
   height: 100%;
   background-color: #000000d2;
   position: absolute;
-  color: #ffffff;
+  color: #faedde;
 }
 
 .infoDiv{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   width: 100%;
   opacity: 0;
 }
@@ -33,7 +37,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  width: 100%;
+  gap: 5%;
 }
 
 .infoDiv img{
@@ -71,7 +76,7 @@
 }
 
 .cardInfo button{
-  color: #ffffff;
+  color: #faedde;
   background:linear-gradient(#5c3014cc, #000000ab);
   border: none;
   width: 50%;
@@ -88,29 +93,3 @@
   background:linear-gradient(#5c3014, #000000)
 }
 
-.imgFav{
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50px;
-  z-index: 900;
-}
-
-.imgFav img{
-  width: 50px;
-  cursor: pointer;
-}
-
-.imgFav span{
-  display: none;
-
-}
-
-.imgFav:hover span{
-  display: flex;
-  position: absolute;
-  width: 200px;
-  top: -25px;
-  left: calc(50% - 100px);
-  justify-content: center;
-}
