@@ -7,13 +7,11 @@ import React, { useEffect, useState } from 'react';
 
 interface ArtGalleryItem {
   id: number;
-  imageURL: string;
+  image: string;
   type: string;
-  name: string;
-  artistName: string;
+  title: string;
   technique: string;
   price: number;
-  bet: boolean;
   posted: boolean;
 }
 
@@ -29,26 +27,28 @@ const Home: React.FC = () => {
 
   return (
     <div className={style.container}>
-      <div>
+      <div className={style.subcontainer}>
         <h1>Latest posts</h1>
         <Carousel interval={5000}>
           {items.slice(-4).map((item) => (
             <Carousel.Item key={item.id}>
               <img
-                className="d-block w-100 carousel-img"
-                src={item.imageURL}
-                alt={item.name}
+                className={style.img}
+                src={item.image}
+                alt={item.title}
               />
               <Carousel.Caption>
-                <h3>{item.name}</h3>
+                <h3>{item.title}</h3>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
         </Carousel>
       </div>
       <br />
-      <CardContainer />
-      <Filters />
+      <div className={style.cards}>
+        <CardContainer />
+        <Filters />
+      </div>      
     </div>
   );
 };
