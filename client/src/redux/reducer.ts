@@ -35,11 +35,12 @@ export type InitialState = {
     artGallery: ArtGalleryItem[],
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
-    paymentFilter: ArtGalleryItem[],
-    allPostFilter: ArtGalleryItem[],
+    paymentFilter: ArtGalleryItem[]
+    allPostFilter: ArtGalleryItem[]
     numPage: number,
     user: User,
     users:User[],
+    loadingHome: boolean
 }
 
 
@@ -74,6 +75,7 @@ const initialState: InitialState = {
     techniqueFilter: [],
     paymentFilter: [],
     allPostFilter: [],
+    loadingHome: true
 }
 
 
@@ -89,6 +91,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
               techniqueFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               paymentFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               allPostFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
+              loadingHome: false
             }
           }
         case 'RESET':

@@ -15,13 +15,6 @@ const CardContainer=()=>{
 
     const allPosted = useSelector((state:InitialState) => state.artGallery);
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        getAllProducts(dispatch)
-    }, [])
-
-
     // PAGINADO
 
     const artGallery = allPosted.slice(6, allPosted.length)
