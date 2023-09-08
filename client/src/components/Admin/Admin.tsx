@@ -1,103 +1,64 @@
 import { 
     Card,
-    Text,
-    Metric,
-    Flex,
-    ProgressBar,
     Title,
     BarChart,
-    DonutChart, 
-    LineChart, 
-    Subtitle, 
-    Bold, 
-    Italic 
 } from "@tremor/react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { InitialState } from "../../redux/reducer";
+import { allArtist, getAllProducts, getAllUsers } from "../../redux/action";
+import { useEffect } from "react";
 
 const dataFormatter = (number: number) => {
     return  Intl.NumberFormat("us").format(number).toString();
   };
 
 
-  const chartdata = [
-    {
-      name: "Artistas",
-      "Cantidad": 20,
-    },
-    {
-      name: "Usuarios",
-      "Cantidad": 300,
-    },
-    {
-      name: "Administradores",
-      "Cantidad": 2,
-    },
-  ];
 export default function Admin(){
-    
+    //!aca vienen los estados y los dispatch
+    const dispatch = useDispatch();
+    const products=useSelector((state:InitialState)=>state.allPosts)
+    const artists=useSelector((state:InitialState)=>state.artists);
+    const users=useSelector((state:InitialState)=>state.users)
+    useEffect(()=>{
+        getAllUsers(dispatch)
+        allArtist(dispatch);
+        getAllProducts(dispatch);
+    },[])
+    //
+    const cantProducts=products.length;
+    const cantArtist=artists.length;
+    const cantUsers=users.length
+    const cantTotal=(cantProducts+cantArtist+cantUsers)
+    const chartdata=[{
+        name: "Product",
+        "Numberof":cantProducts,
+    },{
+        name: "Artists",
+        "Numberof":cantArtist,
+    },{
+        name: "Users",
+        "Numberof":cantUsers,
+    },{
+        name:"Total",
+        "Numberof":cantTotal,
+    }];
     return(
     <>
         <div>
-            <Card className="max-w-xs mx-auto">
-                <Text>Cuadros</Text>
-                <Metric>200</Metric>
-                <Flex className="mt-4">
-                <Text>20% of annual target</Text>
-                <Text>$ 225,000</Text>
-                </Flex>
-                <ProgressBar value={20} className="mt-2" />
-            </Card>
-        </div>
-        <div>
         <Card>
-            <Title>Transito</Title>
+            <Title>Total Number</Title>
+            
             <BarChart
             className="mt-6"
             data={chartdata}
             index="name"
-            categories={["Cantidad"]}
+            categories={["Numberof"]}
             colors={["blue"]}
             valueFormatter={dataFormatter}
             yAxisWidth={48}
             />
         </Card>
-        </div>
-        <div>
-        <Card className="max-w-lg, mt-2, mb-2">
-            <Title>Sales</Title>
-            <DonutChart
-            className="mt-6"
-            data={chartdata}
-            category="Cantidad"
-            index="name"
-            valueFormatter={dataFormatter}
-            colors={["slate", "violet", "indigo", "rose", "cyan", "amber"]}
-            />
-        </Card>
-        </div>
-        <div>
-        <Card>
-            <Title>Cantidades</Title>
-            <LineChart
-            className="mt-6"
-            data={chartdata}
-            index="name"
-            categories={["Cantidad"]}
-            colors={["emerald", "gray"]}
-            valueFormatter={dataFormatter}
-            yAxisWidth={40}
-            />
-        </Card>
-        </div>
-        <div>
-        <Metric>Textos</Metric>
-
-        <Title>Como escribir algo en su titulo</Title>
-
-        <Subtitle>Su subtitulo</Subtitle>
-
-        <Text>Que queres escribir</Text>
-
-        <Text>Diferentes <Bold>maneras de </Bold>que aparezcan <Italic>Por pantala</Italic></Text>
         </div>
     </>
     )

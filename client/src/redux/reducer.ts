@@ -20,17 +20,26 @@ export interface Artist{
   image:string
 }
 
+export interface User{
+  id:number,
+  name:string,
+  mail:string,
+  birthDate:string,
+  image:string
+}
 
 export type InitialState = {
     artist: Artist,
     artists: Artist[],
     allPosts: ArtGalleryItem[],
-    numPage: number,
     artGallery: ArtGalleryItem[],
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
     paymentFilter: ArtGalleryItem[]
     allPostFilter: ArtGalleryItem[]
+    numPage: number,
+    user: User,
+    users:User[],
     loadingHome: boolean
 }
 
@@ -53,6 +62,14 @@ const initialState: InitialState = {
       image:'string'
     },
     artists:[],
+    user: {
+      id:0,
+      name:'string',
+      mail:'string',
+      birthDate:'string',
+      image:'string'
+    },
+    users:[],
     numPage:1,
     typeFilter: [],
     techniqueFilter: [],
@@ -86,9 +103,18 @@ export default function rootReducer(state = initialState, action:Action<any>){
             paymentFilter:state.allPosts,
           }
         case 'GET_ALL_ARTISTS':
+          console.log("los artistas",action.payload);
+          
           return{
             ...state,
             artists: action.payload,
+          }
+        case 'GET_ALL_USERS':
+          console.log("Los usuarios",action.payload);
+          
+          return{
+            ...state,
+            users:action.payload,
           }
         case 'CREATE_POST':
               return {
