@@ -1,10 +1,10 @@
 import  { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllArtist } from '../../redux/action';
+import { getArtistById } from '../../redux/action';
 import { InitialState } from "../../redux/reducer";
 import { useParams } from "react-router-dom";
 import RatingStars from "../../components/RatingStars/RatingStars";
-import foto from '../../assets/fotoLanding3.png'
+import profilePhoto from '../../assets/usuario.png'
 import ultimaCreacion from '../../assets/fotoLanding4.jpg'
 import styles from './ProfileView.module.css'
 
@@ -19,23 +19,32 @@ export default function ProfileView() {
   const dispatch = useDispatch()
 
   const [soldOut, setSoldOut] = useState(false)
+  const [onSale, setOnSale] = useState(false)
 
   const soldOutHandler = () => {
     setSoldOut(!soldOut)
+
+    onSale && setOnSale(false)
+  }
+
+  const onSaleHandler = () => {
+    setOnSale(!onSale)
+
+    soldOut && setSoldOut(false)
   }
   
   useEffect(() => {
 
-    getAllArtist(id, dispatch)
+    /* getArtistById(id, dispatch) */
     
   }, []);
 
 
   return (
-    <div className={styles["profile-page"]}>
+    <div className={styles.profilePage}>
       <div className={styles.profileContainer}>
-        <div className={styles["foto-rating-div"]}>
-          <img src={foto} alt="" />
+        <div className={styles.photoDiv}>
+          <img className={styles.profilePhoto} src={profilePhoto} alt="" />
           <RatingStars/>
         </div>
         <div className={styles.profileInfo}>
@@ -45,11 +54,14 @@ export default function ProfileView() {
           </div>
           <hr />
           <div className={styles.profileInfoDiv}>
-            <button>On sale</button>
+            <button onClick={onSaleHandler}>On sale</button>
             <button onClick={soldOutHandler}>Sold out</button>
           </div>
             <div className={soldOut ? styles.showSoldOut : styles.hideSoldOut}>
               <p>Aqui van las creaciones vendidas</p>
+            </div>
+            <div className={onSale ? styles.showOnSale : styles.hideOnSale}>
+              <p>Aqui van las creaciones en venta</p>
             </div>
           <div className={styles.lastCreation}>
             <h2>Last post:</h2>

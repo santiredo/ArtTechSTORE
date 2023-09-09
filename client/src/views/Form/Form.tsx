@@ -123,7 +123,7 @@ export default function Form() {
                 }
             }
 
-            dispatch(postCreation(form))
+            postCreation(form, dispatch)
 
         }else{
             setErrors(validateSubmit(form))
