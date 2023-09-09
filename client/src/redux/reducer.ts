@@ -97,10 +97,10 @@ export default function rootReducer(state = initialState, action:Action<any>){
         case 'RESET':
           return{
             ...state,
-            artGallery:state.allPosts,
-            typeFilter:state.allPosts,
-            techniqueFilter:state.allPosts,
-            paymentFilter:state.allPosts,
+            artGallery: state.allPosts,
+            typeFilter: state.allPosts,
+            techniqueFilter: state.allPosts,
+            paymentFilter: state.allPosts,
           }
         case 'GET_ALL_ARTISTS':
           console.log("los artistas",action.payload);

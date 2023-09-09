@@ -162,3 +162,26 @@ export const deleteFavorite = (id: string) => {
   };
 };
 
+
+export const postCreation = async(form: {
+  title:string,
+  price: string,
+  type: string,
+  technique: string[],
+  image: string,
+  description: string
+}, dispatch:Dispatch<Action>) => {
+  try {
+
+    const response = await axios.post('http://localhost:3001/products', form)
+
+    return dispatch({
+      type: 'CREATE_POST',
+      payload: response.data
+    })
+    
+  } catch (error) {
+    alert(error)
+  }
+}
+  
