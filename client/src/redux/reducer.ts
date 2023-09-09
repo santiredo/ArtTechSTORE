@@ -32,6 +32,7 @@ export type InitialState = {
     artist: Artist,
     artists: Artist[],
     allPosts: ArtGalleryItem[],
+    allPostsSelled: ArtGalleryItem[],
     artGallery: ArtGalleryItem[],
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
@@ -51,6 +52,7 @@ type Action<T> = {
 
 const initialState: InitialState = {
     allPosts: [],
+    allPostsSelled:[],
     artGallery:[],
     artist: {
       id:0,
@@ -83,6 +85,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
           {
             return{
               ...state,
+              allPostsSelled:action.payload.filter((post:ArtGalleryItem) => post.posted === false).reverse(),
               allPosts: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               artGallery: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               typeFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
