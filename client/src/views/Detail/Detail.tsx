@@ -1,29 +1,43 @@
 
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import emptyFav from '../../assets/favEmpty.png'
 import filledFav from '../../assets/favFilled.png'
 import Viaje from "../../images/Viaje.jpg";
 import style from "./Detail.module.css";
+import { useSelector } from 'react-redux';
+import { InitialState } from '../../redux/reducer';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 
 
 
 const Detail = () => {
 
+    const product = useSelector((state: InitialState) => state.productDetail)
+
     const [isFav, setIsFav] = useState(false)
 
     const handleFav = () => {
         setIsFav(!isFav)
     }
+
+    const dispatch = useDispatch()
+    const {id} = useParams()
+
+    useEffect(() => {
+
+        getProductById(id, dispatch)
+    }, [])
     
     return(
         <div className={style.detailPage}>
             <div className={style.postContainer}>
                 <img className={style.postImage} src={Viaje} alt="cuadro" />
                 <div className={style.info}>
-                    <h1>El Viaje</h1>
-                    <h2>$400</h2>
+                    <h1>{product.title}</h1>
+                    <h2>{product.price}</h2>
                     {
                         isFav ? (
                             <div className={style.imgFav}>
