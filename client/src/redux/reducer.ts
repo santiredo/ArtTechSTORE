@@ -9,6 +9,8 @@ export interface ArtGalleryItem {
     technique: string;
     description: string;
     image: string;
+    artistName: string
+    artistPhoto: string
 }
 
 export interface Artist{
@@ -38,10 +40,10 @@ export type InitialState = {
     techniqueFilter: ArtGalleryItem[],
     paymentFilter: ArtGalleryItem[]
     allPostFilter: ArtGalleryItem[]
-    numPage: number,
     user: User,
     users:User[],
-    loadingHome: boolean
+    loadingHome: boolean,
+    productDetail: ArtGalleryItem
 }
 
 
@@ -72,12 +74,25 @@ const initialState: InitialState = {
       image:'string'
     },
     users:[],
-    numPage:1,
     typeFilter: [],
     techniqueFilter: [],
     paymentFilter: [],
     allPostFilter: [],
-    loadingHome: true
+    loadingHome: true,
+    productDetail: {
+      id: '',
+      title:'',
+      price: 0,
+      published: '',
+      posted: true,
+      auction: false,
+      type: '',
+      technique: '',
+      description: '',
+      image: '',
+      artistName: '',
+      artistPhoto: ''
+    }
 }
 
 

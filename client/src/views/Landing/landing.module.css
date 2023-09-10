@@ -5,6 +5,7 @@
     width: 100%;
     text-align: center;
     margin-bottom: 100px;
+    color: #faedde;
 }
 
 .registerButtonLanding{
@@ -35,7 +36,7 @@
 .title{
     letter-spacing: 5px;
     margin: 50px 0 100px 0;
-    color: #000000;
+    color: #faedde;
 }
 
 .phrases{

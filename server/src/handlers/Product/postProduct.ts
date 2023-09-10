@@ -6,11 +6,13 @@ import { Request, Response } from 'express';
 
 export async function createProductHandler(req: Request, res: Response) {
     try {
+
+      const {id} = req.params
   
       const { title, price, published, auction, type, technique, description, image } = req.body;
   
   
-      const newProduct = await createProduct(title, price, published, auction, type, technique, description, image);//*Revisar que lo que llega del body esta correcto
+      const newProduct = await createProduct(title, price, published, auction, type, technique, description, image, Number(id));//*Revisar que lo que llega del body esta correcto
   
   
       

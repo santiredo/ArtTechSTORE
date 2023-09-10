@@ -35,7 +35,7 @@ export default function ProfileView() {
   
   useEffect(() => {
 
-    /* getArtistById(id, dispatch) */
+    getArtistById(id, dispatch)
     
   }, []);
 

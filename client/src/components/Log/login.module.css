@@ -86,6 +86,12 @@
     height: 25px;
     border-radius: 2px;
     cursor: pointer;
+    color: #000000;
+}
+
+.loginButton:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #faedde90;
 }
 
 .fastLogin{
@@ -114,6 +120,7 @@
     width: 100%;
     height: 40px;
     border-radius: 2px;
+    color: #000000;
 }
 
 .fastLoginButton:hover{
@@ -121,7 +128,7 @@
 }
 
 .fastLoginButton:hover img{
-    transform: translateX(15px);
+    transform: translateX(10px);
     transition: .3s;
 }
 
@@ -133,9 +140,10 @@
 }
 
 .loginComponent h4{
-    margin: 40px 0 0 0;
+    margin: 15px 0 0 0;
     color: #faedde;
     font-weight: 100;
+    font-size: 20px;
 }
 
 .loginComponent h4:hover{
