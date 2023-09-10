@@ -9,6 +9,7 @@ import { postCreation } from '../../redux/action';
 
 export default function Form() {
 
+
     // DECLARAMOS EL ESTADO DE FORM
 
     const [form, setForm] = useState({
@@ -17,7 +18,7 @@ export default function Form() {
         type: '',
         technique: [] as string[],
         image: '',
-        description: ''
+        description: '',
     })
 
     const [errors, setErrors] = useState({
