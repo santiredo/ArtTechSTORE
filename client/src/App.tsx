@@ -33,7 +33,7 @@ export default function App() {
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favourites' element={<Favorites/>}/>
-          <Route path='/form' element={<Form/>}/>
+          <Route path='/form/:id' element={<Form/>}/>
         </Routes>
       </>
     )
