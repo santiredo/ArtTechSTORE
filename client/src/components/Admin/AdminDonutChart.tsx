@@ -42,7 +42,7 @@ export default function AdminDonutChart(){
     },[])
     return(
         <>
-            <Card className="max-w-lg">
+            <Card className="max-w-xs mx-auto" decoration="top" decorationColor="indigo">
                 <Title>Sales</Title>
                 <DonutChart
                 className="mt-6"
