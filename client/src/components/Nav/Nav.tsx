@@ -15,7 +15,6 @@ const Navbar = () => {
   const [visible, setVisible] = useState<boolean>(true);
 
   const [artist, setArtist] = useState(false)
-  setArtist(false) // Esto lo uso para que cuando se ingrese a la pagina saber si es artista o no, y renderizar la foto para ir al perfil
 
   useEffect(() => {
 

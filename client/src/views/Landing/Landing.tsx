@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import foto1 from '../../assets/fotoLanding.jpg'
 import foto2 from '../../assets/fotoLanding2.jpg'
 import foto3 from '../../assets/fotoLanding3.png'
@@ -6,7 +5,6 @@ import foto4 from '../../assets/fotoLanding4.jpg'
 import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
-import Register from '../../components/Register/Register'
 import LoginButton from '../../components/Auth0/Login/Login'
 
 

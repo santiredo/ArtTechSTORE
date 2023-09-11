@@ -8,7 +8,7 @@ import express from "express";
 const productsRouter= express.Router();
 
 
-productsRouter.post("/:id",createProductHandler);
+productsRouter.post("/",createProductHandler);
 productsRouter.get("/:id",getProductByIdHandler);
 productsRouter.get("/",getProductsHandler);
 productsRouter.put("/:id",updateProductHandler);
