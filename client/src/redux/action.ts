@@ -25,7 +25,7 @@ export const getAllProducts = async(dispatch:Dispatch<Action>) => {
 
 export async function searchArtist(name:string) {
     try {
-      const response = await axios.get(`${URL}/user?name=${name}`);
+      const response = await axios.get(`${URL}/artist?name=${name}`);
       return(
         {
         type: 'SEARCH_ARTIST',
@@ -36,8 +36,6 @@ export async function searchArtist(name:string) {
       alert('No se encontro el artista con ese nombre');
     }
 }
-
-
 
 
 export async function allArtist(dispatch:Dispatch<Action>){
