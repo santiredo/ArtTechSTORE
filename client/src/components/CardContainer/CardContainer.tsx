@@ -8,20 +8,20 @@ import style from './cardContainer.module.css'
 const CardContainer=()=>{
 
 
-    const allPosted = useSelector((state:InitialState) => state.artGallery);
+    const artGallery = useSelector((state:InitialState) => state.artGallery);
 
-    //PAGINADO
-    const artGallery = allPosted.slice(6, allPosted.length)
-    console.log(allPosted);
-    
     const firstRow = artGallery.slice(0, (artGallery.length/3))
     const secondRow = artGallery.slice((artGallery.length/3), (artGallery.length/3)*2)
     const thirdRow = artGallery.slice((artGallery.length/3)*2, artGallery.length)
 
 
-    console.log(firstRow)
-    console.log(secondRow)
-    console.log(thirdRow)
+    const artGalleryview = useSelector((state:InitialState) => state.artGallery);
+    const typeGalleryview = useSelector((state:InitialState) => state.typeFilter);
+    const techGalleryview = useSelector((state:InitialState) => state.techniqueFilter);
+    console.log("Esto es el view de los estados pantalla",artGalleryview);
+    console.log("Esto es el view de los estados type",typeGalleryview);
+    console.log("Esto es el view de los estados tech",techGalleryview);
+    
 
     return(
         <div className={style.cardContainer}>
