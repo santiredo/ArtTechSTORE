@@ -160,11 +160,14 @@ export const postCreation = async(form: {
   type: string,
   technique: string[],
   image: string,
-  description: string
+  description: string,
+  ArtistId: string | undefined
 }, dispatch:Dispatch<Action>) => {
   try {
 
-    const response = await axios.post('http://localhost:3001/products', form)
+    const response = await axios.post(`http://localhost:3001/products`, form)
+
+    console.log(response.data)
 
     return dispatch({
       type: 'CREATE_POST',
