@@ -12,16 +12,11 @@ const CardContainer=()=>{
 
     //PAGINADO
     const artGallery = allPosted.slice(6, allPosted.length)
-    console.log(allPosted);
     
     const firstRow = artGallery.slice(0, (artGallery.length/3))
     const secondRow = artGallery.slice((artGallery.length/3), (artGallery.length/3)*2)
     const thirdRow = artGallery.slice((artGallery.length/3)*2, artGallery.length)
 
-
-    console.log(firstRow)
-    console.log(secondRow)
-    console.log(thirdRow)
 
     return(
         <div className={style.cardContainer}>
