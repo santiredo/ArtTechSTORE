@@ -8,33 +8,17 @@ import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
 import Register from '../../components/Register/Register'
 import LoginButton from '../../components/Auth0/Login/Login'
-import LogoutButton from '../../components/Auth0/Logout/Logout'
 
 
 
 export default function Landing() {
-
-    const [registerHandler, setRegisterHandler] = useState(false)
-
-
-    const showRegister = () => {
-        console.log(registerHandler)
-        registerHandler ? setRegisterHandler(false) : setRegisterHandler(true)
-    }
 
 
     return (
 
         <div className={style.landingPage}>
             <h1 className={style.title}>Welcome to ArtTech STORE</h1>
-            {/*<Login onRegister={showRegister}/>*/}
-            <LoginButton/> {/* LOGIN AUTH0 */}
-            {/*<button className={style.registerButtonLanding} onClick={showRegister}>Register</button>*/}
-            {
-                registerHandler && (
-                    <Register onRegister={showRegister}/>
-                )
-            }
+            <LoginButton/> 
             <div className={style.phrases}>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
