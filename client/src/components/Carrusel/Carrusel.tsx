@@ -33,7 +33,9 @@ export default function Carrusel(){
                         <h3>${card.price}</h3>
                         <button>Buy</button>
                     </div>
-                    <img className={style.postImg} src={card.image} alt="" />
+                    <div className={style.divImage}>
+                      <img className={style.postImg} src={card.image} alt="" />
+                    </div>
                   </div>
                   <Carousel.Caption>
                   </Carousel.Caption>
