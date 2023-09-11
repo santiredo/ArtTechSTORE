@@ -9,23 +9,6 @@
     font-family: 'Yuji Syuku', serif;
 }
 
-.registerButtonLanding{
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    width: 120px;
-    font-size: 20px;
-    padding: 0 0 5px 0;
-    font-family: 'Yuji Syuku', serif;
-    top: 85px;
-    right: 10%;
-}
-
-.registerButtonLanding:hover{
-    cursor: pointer;
-    background-color: #0000003a;
-}
-
 .fondo1{
     position: absolute;
     width: 300px;
