@@ -10,9 +10,11 @@ const CardContainer=()=>{
 
     const artGallery = useSelector((state:InitialState) => state.artGallery);
 
+
     const firstRow = artGallery.slice(0, (artGallery.length/3))
     const secondRow = artGallery.slice((artGallery.length/3), (artGallery.length/3)*2)
     const thirdRow = artGallery.slice((artGallery.length/3)*2, artGallery.length)
+
 
 
     const artGalleryview = useSelector((state:InitialState) => state.artGallery);
