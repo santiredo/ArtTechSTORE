@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { getUserByName } from '../../controllers/User/getUserByName';
-
 export async function getUserByNameHandler(req: Request, res: Response) {
     try {
       const {name}= req.query;

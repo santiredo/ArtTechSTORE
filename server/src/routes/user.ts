@@ -2,14 +2,14 @@ import express from "express";
 
 import { deleteUserHandler } from "../handlers/User/deleteUser";
 import { getUserByIdHandler } from "../handlers/User/getUserById";
-import { getUserByNameHandler } from "../handlers/User/getUserByName";
+import { getUserByMailHandler } from "../handlers/User/getUserByMail";
 import { postUserHandler } from "../handlers/User/postUser";
 import { updateUserHandler } from "../handlers/User/updateUser";
 import { getAllUserHandler } from "../handlers/User/getAllUser";
 
 const userRouter = express.Router();
 
-userRouter.get("/name",getUserByNameHandler);
+userRouter.get("/mail",getUserByMailHandler);
 userRouter.get("/:id",getUserByIdHandler);
 userRouter.get("/",getAllUserHandler);
 userRouter.post("/",postUserHandler);
