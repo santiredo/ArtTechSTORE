@@ -39,6 +39,7 @@
     text-align: center;
     opacity: 0;
     animation: displayX .5s forwards;
+    cursor: pointer;
 }
 
 .hideInput p{
@@ -50,7 +51,7 @@
     text-align: center;
     opacity: 0;
     animation: hideX .5s forwards;
-
+    cursor: pointer;
 }
 
 @keyframes hideX {
@@ -132,4 +133,35 @@
         height: 0;
         display: none;
     }
+}
+
+.searchBarArtists{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #faedde;
+    gap: 15px;
+    top: 85px;
+    left: -560px;
+    width: 600px;
+    padding: 5px 10px;
+}
+
+.navlink{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    color: #583000;
+}
+
+.navlink:hover{
+    text-decoration:1px underline;
+}
+
+.navlink img{
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
 }
