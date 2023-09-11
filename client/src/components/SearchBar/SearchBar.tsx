@@ -76,7 +76,7 @@ const SearchBar = () => {
         </div>
       )}
     </>
-    <img src={search} alt="" className={style.button} onClick={() => {showInput()}} />
+    <img src={search} alt="" className={style.searchButton} onClick={() => {showInput()}} />
     </div>
   );
 };
