@@ -121,14 +121,12 @@ export default function rootReducer(state = initialState, action:Action<any>){
             paymentFilter: state.allPosts,
           }
         case 'GET_ALL_ARTISTS':
-          console.log("los artistas",action.payload);
           
           return{
             ...state,
             artists: action.payload,
           }
         case 'GET_ALL_USERS':
-          console.log("Los usuarios",action.payload);
           
           return{
             ...state,
