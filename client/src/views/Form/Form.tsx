@@ -5,12 +5,14 @@ import { finalValidate, validateForm, validateSubmit } from './Validation/valida
 import style from './form.module.css'
 import './form.css'
 import { postCreation } from '../../redux/action';
+import { useParams } from 'react-router-dom';
 
 
 export default function Form() {
 
 
     // DECLARAMOS EL ESTADO DE FORM
+    const {id} = useParams()
 
     const [form, setForm] = useState({
         title: '',
@@ -19,6 +21,7 @@ export default function Form() {
         technique: [] as string[],
         image: '',
         description: '',
+        ArtistId: id
     })
 
     const [errors, setErrors] = useState({
@@ -111,7 +114,7 @@ export default function Form() {
                     formData.append('file', form.image)
     
                     const response = await axios.post(
-                        'https://api.cloudinary.com/v1_1/dgyliu9l2/upload',
+                        'https://api.cloudinary.com/v1_1/dgyliu9l2/image/upload?upload_preset=PF_form_preset',
                         formData
                     )
                     setForm({
@@ -119,8 +122,15 @@ export default function Form() {
                         image: response.data.secure_url
                     })
 
-                } catch (error) {
-                    error instanceof Error && alert(`Error: ${error.message}`);
+                } catch (error: any) {
+                    if (error.response) {
+                        console.error('Cloudinary Error Response:', error.response.data);
+                    } else if (error.request) {
+                        console.error('No response received:', error.request);
+                    } else {
+                        console.error('Error:', error.message);
+                    }
+                    alert(`Error: ${error.message}`);
                 }
             }
 
@@ -294,19 +304,19 @@ export default function Form() {
                         </div>
                         <div className='hiddenOptions' id="techniqueOptions">
                             <div className="option">
-                                <p onClick={handleTechnique}>Oleo</p>
+                                <p onClick={handleTechnique}>Oil Painting</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Lapiz</p>
+                                <p onClick={handleTechnique}>Pencil</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Acuarela</p>
+                                <p onClick={handleTechnique}>Watercolor</p>
                             </div>
                             <div className="option">
                                 <p onClick={handleTechnique}>Macrame</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Ceramica</p>
+                                <p onClick={handleTechnique}>Ceramics</p>
                             </div>
                         </div>
                         {
