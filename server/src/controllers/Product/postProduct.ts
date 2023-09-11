@@ -1,5 +1,4 @@
-import { ARRAY } from 'sequelize';
-import { Artist, Product } from '../../db';
+import { Product } from '../../db';
 
 // Controlador para crear un producto
 export async function createProduct(
@@ -11,7 +10,7 @@ export async function createProduct(
   technique:string,
   description:string,
   image:string,
-  id:number
+  ArtistId:number
 ) {
 
   const newProduct = await Product.create({
@@ -23,7 +22,7 @@ export async function createProduct(
     technique,
     description,
     image,
-    ArtistId:id
+    ArtistId
   })
 
   console.log(newProduct)
