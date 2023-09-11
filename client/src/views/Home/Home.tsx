@@ -7,12 +7,9 @@ import Filters from "../../components/Filters/Filters";
 import React from 'react';
 import { InitialState } from "../../redux/reducer";
 import loadingGif from '../../assets/loading.gif'
-import style from "./Home.module.css";
 import { getAllProducts } from "../../redux/action";
 import ArtistsList from "../../components/ArtistsList/ArtistsList";
-
-
-
+import style from "./Home.module.css";
 
 const Home: React.FC = () => {
 
@@ -20,9 +17,9 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch()
 
-    useEffect(() => {
-        getAllProducts(dispatch)
-    }, [])
+  useEffect(() => {
+    getAllProducts(dispatch)
+  }, [])
 
 
   return (
