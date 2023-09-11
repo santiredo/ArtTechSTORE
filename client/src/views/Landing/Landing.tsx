@@ -1,7 +1,4 @@
-
-
 import {useState} from 'react'
-import Login from '../../components/Log/LogIn'
 import foto1 from '../../assets/fotoLanding.jpg'
 import foto2 from '../../assets/fotoLanding2.jpg'
 import foto3 from '../../assets/fotoLanding3.png'
@@ -10,6 +7,8 @@ import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
 import Register from '../../components/Register/Register'
+import LoginButton from '../../components/Auth0/Login/Login'
+import LogoutButton from '../../components/Auth0/Logout/Logout'
 
 
 
@@ -28,8 +27,9 @@ export default function Landing() {
 
         <div className={style.landingPage}>
             <h1 className={style.title}>Welcome to ArtTech STORE</h1>
-            <Login onRegister={showRegister}/>
-            <button className={style.registerButtonLanding} onClick={showRegister}>Register</button>
+            {/*<Login onRegister={showRegister}/>*/}
+            <LoginButton/> {/* LOGIN AUTH0 */}
+            {/*<button className={style.registerButtonLanding} onClick={showRegister}>Register</button>*/}
             {
                 registerHandler && (
                     <Register onRegister={showRegister}/>

@@ -129,3 +129,9 @@
     background-color: rgba(211, 219, 219, 0.079);
     transform: scale(1.1, 1.1);
 }
+
+.profile {
+    display: flex;
+    width: min-content;
+    color: white;
+}
