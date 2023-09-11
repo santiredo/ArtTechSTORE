@@ -5,7 +5,7 @@
 import { useDispatch } from 'react-redux'
 import reset from '../../assets/reset.png'
 import style from './filters.module.css'
-import { filterByPayment, filterByPrice, filterByTechnique, filterByType, resetFilter } from '../../redux/action'
+import { filterByPrice, filterByTechnique, filterByType, resetFilter } from '../../redux/action'
 
 
 
@@ -20,10 +20,6 @@ export default function Filters() {
 
     const handleTechnique = (event: React.MouseEvent<HTMLParagraphElement>) => {
         dispatch(filterByTechnique(event.currentTarget.getAttribute('data-value') ?? ''))
-    }
-
-    const handlePayment = (event: React.MouseEvent<HTMLParagraphElement>) => {
-        dispatch(filterByPayment(event.currentTarget.getAttribute('data-value') ?? ''))
     }
 
     const handlePrice = (event: React.MouseEvent<HTMLParagraphElement>) => {
@@ -50,19 +46,11 @@ export default function Filters() {
                 <div className={style.filterDiv}>
                     Technique
                     <div className={style.options}>
-                        <p onClick={handleTechnique} data-value='Oil painting'>Oil painting</p>
+                        <p onClick={handleTechnique} data-value='Oil Painting'>Oil Painting</p>
                         <p onClick={handleTechnique} data-value='Pencil'>Pencil</p>
                         <p onClick={handleTechnique} data-value='Watercolor'>Watercolor</p>
                         <p onClick={handleTechnique} data-value='Macrame'>Macrame</p>
                         <p onClick={handleTechnique} data-value='Ceramics'>Ceramics</p>
-
-                    </div>
-                </div>
-                <div className={style.filterDiv}>
-                    Payment method
-                    <div className={style.options}>
-                        <p onClick={handlePayment} data-value='Direct Purchase'>Direct Purchase</p>
-                        <p onClick={handlePayment} data-value='Auction'>Auction</p>
 
                     </div>
                 </div>
