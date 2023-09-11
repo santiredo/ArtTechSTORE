@@ -14,6 +14,9 @@ const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [visible, setVisible] = useState<boolean>(true);
 
+  const [artist, setArtist] = useState(false)
+  setArtist(false) // Esto lo uso para que cuando se ingrese a la pagina saber si es artista o no, y renderizar la foto para ir al perfil
+
   useEffect(() => {
 
     window.addEventListener("scroll", handleScroll);
@@ -47,11 +50,10 @@ const Navbar = () => {
       </NavLink>
       <NavLink to="/favorites" className={style.navLink}>Favourites</NavLink>
       <NavLink to="/home" className={style.navLink}>Home</NavLink>
-      <div className={style.profile}>
-        <img src={user?.picture} alt="user" />
-        <LogoutButton />
-      </div>
       <SearchBar/>
+      <div>
+        {artist ? <img src={user?.picture} alt="" /> : <LogoutButton/>}
+      </div>
     </div>
   );
 };
