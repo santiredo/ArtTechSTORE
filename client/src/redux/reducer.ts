@@ -39,8 +39,7 @@ export type InitialState = {
     artGallery: ArtGalleryItem[],
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
-    paymentFilter: ArtGalleryItem[]
-    allPostFilter: ArtGalleryItem[]
+    allPostFilter: ArtGalleryItem[],
     user: User,
     users:User[],
     loadingHome: boolean,
@@ -78,7 +77,6 @@ const initialState: InitialState = {
     users:[],
     typeFilter: [],
     techniqueFilter: [],
-    paymentFilter: [],
     allPostFilter: [],
     loadingHome: true,
     productDetail: {
@@ -109,7 +107,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
               artGallery: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               typeFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               techniqueFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
-              paymentFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               allPostFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               loadingHome: false
             }
@@ -159,9 +156,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 techniqueFilter: state.typeFilter.filter((post: ArtGalleryItem) => {
                   return post.type === action.payload
                 }),
-                paymentFilter: state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                }),
               }
         case 'FILTER_TECHNIQUE':
               return {
@@ -172,34 +166,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 typeFilter: state.techniqueFilter.filter((post: ArtGalleryItem) => {
                   return post.technique === action.payload
                 }),
-                paymentFilter: state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                  return post.technique === action.payload
-                })
-              }
-        case 'FILTER_PAYMENT':
-              return {
-                ...state,
-                artGallery: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                }),
-                typeFilter: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                }),
-                techniqueFilter: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                })
               }
         case 'FILTER_PRICE':
               return {
@@ -219,11 +185,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   if (action.payload === 'Lower') return a.price - b.price
                   return 0
                 }),
-                paymentFilter: [...state.paymentFilter].sort((a: ArtGalleryItem, b: ArtGalleryItem) => {
-                  if (action.payload === 'Higher') return b.price - a.price
-                  if (action.payload === 'Lower') return a.price - b.price
-                  return 0
-                })
               }
 
             case 'ADD_FAVORITE':

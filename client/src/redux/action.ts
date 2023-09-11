@@ -107,12 +107,6 @@ export const filterByTechnique = (value:string) => {
   }
 }
 
-export const filterByPayment = (value:string) => {
-  return {
-    type: 'FILTER_PAYMENT',
-    payload: value
-  }
-}
 
 export const filterByPrice = (value:string) => {
   return {
