@@ -33,6 +33,7 @@ export interface User{
 export type InitialState = {
     artist: Artist,
     artists: Artist[],
+    searchBarArtists: Artist[],
     allPosts: ArtGalleryItem[],
     allPostsSelled: ArtGalleryItem[],
     artGallery: ArtGalleryItem[],
@@ -66,6 +67,7 @@ const initialState: InitialState = {
       image:'string'
     },
     artists:[],
+    searchBarArtists: [],
     user: {
       id:0,
       name:'string',
@@ -146,7 +148,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
         case 'SEARCH_ARTIST':
               return {
                 ...state,
-                artist: action.payload,
+                searchBarArtists: action.payload,
               }
         case 'FILTER_TYPE':
               return {

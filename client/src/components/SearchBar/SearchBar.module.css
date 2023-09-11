@@ -14,35 +14,56 @@
     justify-content: center;
     padding: 10px;
     font-family: 'Yuji Syuku', serif;
-    width: 100%;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .hideInput,
-.searchInput{
+.input{
     display: flex;
     position: absolute;
     align-items: center;
     right: 0;
     gap: 5px;
-    top: 75px;
+    top: 50px;
 }
 
-.searchInput p{
-    margin: 0;
-    font-size: 20px;
-    height: 25px;
-    padding-bottom: 8px;
+.input p{
     position: absolute;
-    right: 6px;
-    cursor: pointer;
+    margin: 0 0 5px 0;
+    right: 8px;
+    font-size: 20px;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
     animation: displayX .5s forwards;
 }
 
-@keyframes displayX {
+.hideInput p{
+    position: absolute;
+    margin: 0 0 5px 0;
+    right: 8px;
+    font-size: 20px;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: hideX .5s forwards;
+
+}
+
+@keyframes hideX {
     0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+@keyframes displayX {
+    20%{
         opacity: 0;
     }
     100%{
@@ -50,41 +71,65 @@
     }
 }
 
-.searchInput input{
+.input input{
     width: 600px;
     height: 30px;
     border: none;
-    padding: 0 2.5% 1% 2.5%;
+    padding: 0 2.5% 0.5% 2.5%;
     border-radius: 2px;
     background-color: #faedde;
     color: #583000;
     font-size: 15px;
     font-family: 'Yuji Syuku', serif;
-    animation: displayInput .5s forwards;
+    animation: showInput .5s forwards;
 }
 
-@keyframes displayInput {
+@keyframes showInput {
     0%{
         height: 0;
+        opacity: 0;
     }
     100%{
         height: 30px;
+        opacity: 1;
     }
 }
 
+.input input:focus{
+    outline: none;
+    box-shadow: 0 0 10px #000000be;
+}
+
+.input input::placeholder{
+    color: #583000a0;
+}
+
 .hideInput input{
-    animation: hideInput .5s forwards;
+    width: 600px;
+    height: 30px;
+    border: none;
+    padding: 0 2.5% 0.5% 2.5%;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+    animation: hideInput .4s forwards;
 }
 
 @keyframes hideInput {
     0%{
+        
         height: 30px;
+    }
+    50%{
+        display: none;
+    }
+    80%{
+        height: 0;
     }
     100%{
         height: 0;
+        display: none;
     }
-}
-
-.container input:hover{
-    background-color: rgba(178, 195, 207, 0.767);
 }

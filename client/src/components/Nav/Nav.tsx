@@ -42,8 +42,8 @@ const Navbar = () => {
         <h1>ArtTechStore</h1>
       </NavLink>
       <NavLink to="/favorites" className={style.navLink}>Favourites</NavLink>
-      <NavLink to="/favorites" className={style.navLink}>Home</NavLink>
-      <SearchBar /> 
+      <NavLink to="/home" className={style.navLink}>Home</NavLink>
+      <SearchBar/>
     </div>
   );
 };

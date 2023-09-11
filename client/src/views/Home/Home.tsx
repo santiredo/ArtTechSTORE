@@ -9,6 +9,7 @@ import { InitialState } from "../../redux/reducer";
 import loadingGif from '../../assets/loading.gif'
 import style from "./Home.module.css";
 import { getAllProducts } from "../../redux/action";
+import ArtistsList from "../../components/ArtistsList/ArtistsList";
 
 
 
@@ -33,8 +34,11 @@ const Home: React.FC = () => {
           </div>
         ) : (
           <div className={style.container}>
-            <Carrusel/>
-            <br />
+            <div className={style.carruselAndArtists}>
+              <ArtistsList/>
+              <Carrusel/>
+            </div>
+            <hr />
             <div className={style.postsSection}>
               <Filters />
               <CardContainer />
