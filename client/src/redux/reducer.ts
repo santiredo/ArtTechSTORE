@@ -9,6 +9,9 @@ export interface ArtGalleryItem {
     technique: string;
     description: string;
     image: string;
+    artistName: string;
+    artistPhoto: string;
+    
 }
 
 export interface Artist{
@@ -41,7 +44,8 @@ export type InitialState = {
     numPage: number,
     user: User,
     users:User[],
-    loadingHome: boolean
+    loadingHome: boolean,
+    productDetail: ArtGalleryItem
 }
 
 
@@ -77,7 +81,8 @@ const initialState: InitialState = {
     techniqueFilter: [],
     paymentFilter: [],
     allPostFilter: [],
-    loadingHome: true
+    loadingHome: true,
+    productDetail: 
 }
 
 
@@ -231,6 +236,11 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   ...state,
                   artist: action.payload
                 }
+              case 'SET_ARTIST_INFO':
+                return {
+                  ...state,
+                  productDetail: action.payload
+                  };
         
           default:
               return {...state};

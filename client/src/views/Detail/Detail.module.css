@@ -40,6 +40,7 @@
     align-items: flex-start;
     justify-content: space-between;
     font-family: 'Yuji Syuku', serif;
+    color: #faedde;
 }
 
 .info h1{
@@ -60,7 +61,6 @@
 
 .imgFav span{
     display: none;
-
 }
 
 .imgFav:hover span{
@@ -74,6 +74,7 @@
 
 .buyPostButton{
     background-color: #faedde;
+    color: black;
     border: none;
     font-size: 15px;
     display: flex;
@@ -116,10 +117,19 @@
 .descriptionDiv h2{
     margin: 0;
     font-size: 35px;
+    color: #faedde;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.descriptionDiv h4{
+    margin: 0;
+    font-size: 20px;
+    color: #faedde;
+    font-family: 'Yuji Syuku', serif;
 }
 
 .descriptionDiv button{
-    background-color: #faedde;
+    color: #faedde;
     border: none;
     font-size: 15px;
     display: flex;
