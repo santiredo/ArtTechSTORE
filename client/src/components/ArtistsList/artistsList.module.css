@@ -42,10 +42,18 @@
 
 }
 
-.artistsDiv img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
+.imgDiv{
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.imgDiv img{
+    height: 100%;
+    object-fit: cover;
 }
 
 .artistsDiv h3{
