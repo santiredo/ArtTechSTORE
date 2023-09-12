@@ -23,12 +23,12 @@ export default function AdminDonutChart(){
         totalPrice += products[i].price;
     }
 
-    console.log("The total price of all products is: " + totalPrice);
+    
     for (let i = 0; i < soldProducts.length; i++) {
         totalPriceSold += soldProducts[i].price;
     }
 
-    console.log("The total price of all soldProducts is: " + totalPriceSold);
+    
     
     const chartdata=[{
         name: "In Store",

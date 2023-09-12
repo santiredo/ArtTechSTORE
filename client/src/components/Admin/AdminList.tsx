@@ -19,7 +19,7 @@ export default function AdminList(){
     const cantDrawing=products.filter((product)=>product.type==="Drawing")
     const cantPainting=products.filter((product)=>product.type==="Painting")
     const cant3D=products.filter((product)=>product.type==="3D Object")
-    console.log("Estos son los productos",cantOil);
+    
     
     const chartdata=[{
         Technique: "Pencil",

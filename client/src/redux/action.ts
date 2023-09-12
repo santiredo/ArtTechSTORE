@@ -179,7 +179,6 @@ export const postCreation = async(form: {
   }
 }
 
-
 export const createArtist = async(registerForm: {
   name:string,
   mail: string | undefined,
@@ -199,3 +198,4 @@ export const createArtist = async(registerForm: {
     
   }
 }
+
