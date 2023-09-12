@@ -22,7 +22,7 @@ export default function Carrusel(){
           <h1>Latest posts</h1>
           <Carousel className={style.carouselComponent} interval={null}>
             {
-              items.slice(-6).map((card) => (
+              items.slice(-3).map((card) => (
                 <Carousel.Item key={card.id}>
                   <div className={style.cardComponent}>
                     <div className={style.cardInfo}>
