@@ -27,9 +27,6 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.BOOLEAN,
         defaultValue: true
       },
-      auction: {
-        type: DataTypes.BOOLEAN
-      },
       type: {
         type: DataTypes.ENUM('Painting', '3D Object', 'Drawing')
       },
@@ -37,10 +34,10 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.ENUM('Oil Painting', 'Pencil', 'Watercolor', 'Macrame', 'Ceramics')
       },
       description: {
-        type: DataTypes.TEXT
+        type: DataTypes.STRING
       },
       image: {
-        type: DataTypes.TEXT
+        type: DataTypes.STRING
       }
     },
     {

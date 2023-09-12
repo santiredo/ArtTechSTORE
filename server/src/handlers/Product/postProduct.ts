@@ -5,14 +5,12 @@ import { Request, Response } from 'express';
 
 
 export async function createProductHandler(req: Request, res: Response) {
+
     try {
+
+      const { title, price, type, technique, description, image, ArtistId } = req.body;
   
-      const { title, price, published, auction, type, technique, description, image, ArtistId } = req.body;
-  
-  
-      const newProduct = await createProduct(title, price, published, auction, type, technique, description, image, ArtistId);//*Revisar que lo que llega del body esta correcto
-  
-  
+      const newProduct = await createProduct(title, price, type, technique, description, image, ArtistId);//*Revisar que lo que llega del body esta correcto
       
       res.status(201).json(newProduct);
   

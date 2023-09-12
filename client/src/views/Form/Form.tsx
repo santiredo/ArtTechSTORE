@@ -14,12 +14,13 @@ export default function Form() {
     // DECLARAMOS EL ESTADO DE FORM
     const {id} = useParams()
 
+    const [renderedImage, setRenderedImage] = useState('')
+
     const [form, setForm] = useState({
         title: '',
         price: '',
         type: '',
         technique: [] as string[],
-        image: '',
         description: '',
         ArtistId: id
     })
@@ -29,28 +30,29 @@ export default function Form() {
         price: '',
         type: '',
         technique: '',
-        image: '',
         description: ''
     })
 
     // ACA ESTAN LOS HANDLECHANGE
 
-    const handleUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleUploadFile = async(event: React.ChangeEvent<HTMLInputElement>) => {
         
         const file = event.target.files && event.target.files[0]
 
-        if(file){
-            const reader = new FileReader()
+        try {
 
-            reader.onload = (e) => {
-                if(e.target && e.target.result) {
-                    setForm({
-                        ...form,
-                        image: e.target.result.toString()
-                    })
-                }
-            }
-            reader.readAsDataURL(file)
+            const formData = new FormData()
+            formData.append('file', file!)
+
+            const response = await axios.post(
+                'https://api.cloudinary.com/v1_1/dgyliu9l2/image/upload?upload_preset=PF_form_preset',
+                formData
+            )
+
+            setRenderedImage(response.data.secure_url)
+            
+        } catch (error) {
+            
         }
     }
 
@@ -62,6 +64,7 @@ export default function Form() {
     }
 
     useEffect(() => {
+
         const priceError = validateForm(form.price)
         setErrors({
             ...errors,
@@ -107,37 +110,14 @@ export default function Form() {
     const handleSubmit = async(event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
-        if(!finalValidate(form)){
-            if(form.image) {
-                try {
-                    const formData = new FormData()
-                    formData.append('file', form.image)
-    
-                    const response = await axios.post(
-                        'https://api.cloudinary.com/v1_1/dgyliu9l2/image/upload?upload_preset=PF_form_preset',
-                        formData
-                    )
-                    setForm({
-                        ...form,
-                        image: response.data.secure_url
-                    })
+        if(!finalValidate(form, renderedImage)){
 
-                } catch (error: any) {
-                    if (error.response) {
-                        console.error('Cloudinary Error Response:', error.response.data);
-                    } else if (error.request) {
-                        console.error('No response received:', error.request);
-                    } else {
-                        console.error('Error:', error.message);
-                    }
-                    alert(`Error: ${error.message}`);
-                }
-            }
+            postCreation(form, renderedImage, dispatch)
 
-            postCreation(form, dispatch)
+            alert('Product posted successfully')
 
         }else{
-            setErrors(validateSubmit(form))
+            setErrors(validateSubmit(form, renderedImage))
             alert('Some data is missing')
         }
 
@@ -255,10 +235,10 @@ export default function Form() {
                         onChange={handleUploadFile}
                     />
                     {
-                        form.image ? (
+                        renderedImage !== '' ? (
                             <>
-                                <img src={form.image} alt="" />
-                                <span onClick={() => setForm({...form, image: ''})}>X</span>
+                                <img src={renderedImage} alt="" />
+                                <span onClick={() => setRenderedImage('')}>X</span>
                             </>
                         ) : (
                             <><p>Upload your image</p><label htmlFor='image'></label></>

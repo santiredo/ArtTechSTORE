@@ -17,11 +17,10 @@ export async function postUser(name: string, mail: string, birthDate: string) {
       birthDate: birthDate,
       admin: false
     });
-
     
     return newUser
     
   } catch (error) {
-    console.error(error);
+    throw error
   }
 }

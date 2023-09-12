@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import { postUser } from '../../controllers/User/postUser';
-import { User } from '../../db';
 
 
 export async function postUserHandler(req: Request, res: Response) {
@@ -12,7 +11,6 @@ export async function postUserHandler(req: Request, res: Response) {
 
     const user = await postUser(name, mail, birthDate);
 
-    console.log(user)
     res.status(201).json(user);
     
   } catch (error) {

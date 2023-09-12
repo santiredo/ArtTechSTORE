@@ -19,20 +19,19 @@ export interface FormErrors {
     title: string;
     price: string;
     type: string;
+    image:string;
     technique: string;
-    image: string;
     description: string;
 }
 
 export const validateSubmit = (form: {
     title: string;
     type: string;
-    image: string;
     description: string;
     technique: string[];
     price: string;
 
-}): FormErrors => {
+}, renderedImage:string): FormErrors => {
 
     let errors: FormErrors = {
         title: '',
@@ -52,7 +51,7 @@ export const validateSubmit = (form: {
     if(!form.type){
         errors.type = 'This field is required'
     }
-    if(!form.image){
+    if(!renderedImage){
         errors.image = 'You must choose an image'
     }
     if(!form.description){
@@ -61,7 +60,7 @@ export const validateSubmit = (form: {
     if(form.technique.length === 0){
         errors.technique = 'This field is required'
     }
-    if((form.price && !priceRegex.test(form.price) || !form.price)){
+    if((!priceRegex.test(form.price) || !form.price)){
         errors.price = 'This field accepts only numbers'
     }
 
@@ -71,12 +70,11 @@ export const validateSubmit = (form: {
 export const finalValidate = (form: {
     title: string;
     type: string;
-    image: string;
     description: string;
     technique: string[];
     price: string;
 
-}) => {
+}, renderedImage:string) => {
 
     let errors = false
 
@@ -89,7 +87,7 @@ export const finalValidate = (form: {
     if(!form.type){
         errors = true
     }
-    if(!form.image){
+    if(!renderedImage){
         errors = true
     }
     if(!form.description){

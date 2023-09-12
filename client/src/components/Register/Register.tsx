@@ -48,7 +48,6 @@ export default function Register({onRegister}: RegisterProps)  {
         if(event.target.name === 'birthDate'){
             value = value.replace(/-/g, '')
 
-            
             if(value.length > 4){
                 value = value.slice(0, 4)+'-'+value.slice(4)
                 console.log(value)
@@ -59,7 +58,6 @@ export default function Register({onRegister}: RegisterProps)  {
             }
         }
 
-
         setRegisterForm({
             ...registerForm,
             [event.target.name]: value
@@ -67,7 +65,14 @@ export default function Register({onRegister}: RegisterProps)  {
 
     }
 
+
+    // ACA EL SUBMIT DE REGISTRO
+
     const dispatch = useDispatch()
+
+    const postUser = async() => {
+        await axios.post(`http://localhost:3001/user`, registerForm)
+    }
 
     const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -79,11 +84,7 @@ export default function Register({onRegister}: RegisterProps)  {
 
             console.log(registerForm)
             
-            isArtist ? createArtist(registerForm, dispatch) : ( async() => {
-                console.log(registerForm)
-                const response = await axios.post(`http://localhost:3001/user`, registerForm)
-                console.log(response)
-            })
+            isArtist ? createArtist(registerForm, dispatch) : postUser()
 
             setRegisterForm({
                 name:'',
