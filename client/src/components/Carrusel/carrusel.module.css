@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100%;
+    width: 80%;
     height: 80vh;
 }
 
@@ -32,12 +32,22 @@
     overflow: hidden;
 }
 
-.postImg{
+.divImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
     height: 50vh;
 }
 
+.postImg{
+    max-width: 95%;
+    height: auto;
+    max-height: 100%;
+}
+
 .cardInfo{
-    width: 100%;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

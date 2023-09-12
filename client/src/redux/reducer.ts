@@ -9,9 +9,11 @@ export interface ArtGalleryItem {
     technique: string;
     description: string;
     image: string;
+
     artistName: string;
     artistPhoto: string;
     
+
 }
 
 export interface Artist{
@@ -34,14 +36,13 @@ export interface User{
 export type InitialState = {
     artist: Artist,
     artists: Artist[],
+    searchBarArtists: Artist[],
     allPosts: ArtGalleryItem[],
     allPostsSelled: ArtGalleryItem[],
     artGallery: ArtGalleryItem[],
     typeFilter: ArtGalleryItem[],
     techniqueFilter: ArtGalleryItem[],
-    paymentFilter: ArtGalleryItem[]
-    allPostFilter: ArtGalleryItem[]
-    numPage: number,
+    allPostFilter: ArtGalleryItem[],
     user: User,
     users:User[],
     loadingHome: boolean,
@@ -68,6 +69,7 @@ const initialState: InitialState = {
       image:'string'
     },
     artists:[],
+    searchBarArtists: [],
     user: {
       id:0,
       name:'string',
@@ -76,13 +78,25 @@ const initialState: InitialState = {
       image:'string'
     },
     users:[],
-    numPage:1,
     typeFilter: [],
     techniqueFilter: [],
-    paymentFilter: [],
     allPostFilter: [],
     loadingHome: true,
-    productDetail: 
+    productDetail: {
+      id: '',
+      title:'',
+      price: 0,
+      published: '',
+      posted: true,
+      auction: false,
+      type: '',
+      technique: '',
+      description: '',
+      image: '',
+      artistName: '',
+      artistPhoto: ''
+    }
+
 }
 
 
@@ -97,7 +111,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
               artGallery: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               typeFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               techniqueFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
-              paymentFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               allPostFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               loadingHome: false
             }
@@ -111,14 +124,12 @@ export default function rootReducer(state = initialState, action:Action<any>){
             paymentFilter: state.allPosts,
           }
         case 'GET_ALL_ARTISTS':
-          console.log("los artistas",action.payload);
           
           return{
             ...state,
             artists: action.payload,
           }
         case 'GET_ALL_USERS':
-          console.log("Los usuarios",action.payload);
           
           return{
             ...state,
@@ -138,7 +149,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
         case 'SEARCH_ARTIST':
               return {
                 ...state,
-                artist: action.payload,
+                searchBarArtists: action.payload,
               }
         case 'FILTER_TYPE':
               return {
@@ -147,9 +158,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   return post.type === action.payload
                 }),
                 techniqueFilter: state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                }),
-                paymentFilter: state.typeFilter.filter((post: ArtGalleryItem) => {
                   return post.type === action.payload
                 }),
               }
@@ -162,34 +170,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 typeFilter: state.techniqueFilter.filter((post: ArtGalleryItem) => {
                   return post.technique === action.payload
                 }),
-                paymentFilter: state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                  return post.technique === action.payload
-                })
-              }
-        case 'FILTER_PAYMENT':
-              return {
-                ...state,
-                artGallery: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                }),
-                typeFilter: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                }),
-                techniqueFilter: state.paymentFilter.filter((post: ArtGalleryItem) => {
-                  if(action.payload === 'Auction'){
-                    return post.auction === true
-                  }else{
-                    return post.auction === false
-                  }
-                })
               }
         case 'FILTER_PRICE':
               return {
@@ -209,14 +189,9 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   if (action.payload === 'Lower') return a.price - b.price
                   return 0
                 }),
-                paymentFilter: [...state.paymentFilter].sort((a: ArtGalleryItem, b: ArtGalleryItem) => {
-                  if (action.payload === 'Higher') return b.price - a.price
-                  if (action.payload === 'Lower') return a.price - b.price
-                  return 0
-                })
               }
 
-            case 'ADD_FAVORITE':
+          case 'ADD_FAVORITE':
                 
                 if (!state.artGallery.some((artGallery) => artGallery.id === action.payload.id)) {
                   return {
@@ -226,21 +201,30 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 }
                 return state; 
           
-              case 'DELETE_FAVORITE':
+          case 'DELETE_FAVORITE':
                 return {
                   ...state,
                   artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
                 };
-              case 'GET_ARTIST':
+          case 'GET_ARTIST':
                 return {
                   ...state,
                   artist: action.payload
                 }
-              case 'SET_ARTIST_INFO':
-                return {
-                  ...state,
-                  productDetail: action.payload
-                  };
+
+          case 'SET_ARTIST_INFO':
+             return {
+                ...state,
+                productDetail: action.payload
+                };
+
+          case 'CREATE_ARTIST':
+            return {
+              ...state,
+              artists: [...state.artists, action.payload]
+            }
+              
+
         
           default:
               return {...state};

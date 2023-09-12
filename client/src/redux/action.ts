@@ -23,11 +23,14 @@ export const getAllProducts = async(dispatch:Dispatch<Action>) => {
 }
 
 
-export async function searchArtist(name:string) {
+export async function searchArtist(name:string, dispatch: Dispatch<Action>) {
     try {
-      const response = await axios.get(`${URL}/user?name=${name}`);
-      return(
-        {
+      const response = await axios.get(`${URL}/artist/artist/name?name=${name}`);
+
+      console.log(name)
+      console.log('Los artistas: ', response.data)
+
+      return dispatch({
         type: 'SEARCH_ARTIST',
         payload: response.data,
       })
@@ -38,13 +41,10 @@ export async function searchArtist(name:string) {
 }
 
 
-
-
 export async function allArtist(dispatch:Dispatch<Action>){
   
   try {
     const response = await axios.get(`${URL}/artist`);
-    console.log("En la actionbackend",response);
     
     return dispatch(
       {
@@ -53,7 +53,6 @@ export async function allArtist(dispatch:Dispatch<Action>){
       }
      )
   } catch (error) {
-    console.log(error);
     alert('Hubo un error al obtener los artistas');
   }
 
@@ -63,7 +62,6 @@ export async function getAllUsers(dispatch:Dispatch<Action>){
   
   try {
     const response = await axios.get(`${URL}/user`);
-    console.log("En la actionbackend",response);
     
     return dispatch(
       {
@@ -72,7 +70,6 @@ export async function getAllUsers(dispatch:Dispatch<Action>){
       }
      )
   } catch (error) {
-    console.log(error);
     alert('Hubo un error al obtener los usuarios');
   }
 
@@ -110,12 +107,6 @@ export const filterByTechnique = (value:string) => {
   }
 }
 
-export const filterByPayment = (value:string) => {
-  return {
-    type: 'FILTER_PAYMENT',
-    payload: value
-  }
-}
 
 export const filterByPrice = (value:string) => {
   return {
@@ -168,12 +159,15 @@ export const postCreation = async(form: {
   price: string,
   type: string,
   technique: string[],
-  image: string,
-  description: string
-}, dispatch:Dispatch<Action>) => {
+  description: string,
+  ArtistId: string | undefined
+}, image:string, dispatch:Dispatch<Action>) => {
+
+
   try {
 
-    const response = await axios.post('http://localhost:3001/products', form)
+    const response = await axios.post(`http://localhost:3001/products`, {...form, image})
+
 
     return dispatch({
       type: 'CREATE_POST',
@@ -200,3 +194,24 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
   }
 };
   
+export const createArtist = async(registerForm: {
+  name:string,
+  mail: string | undefined,
+  birthDate: string,
+  location:string
+}, dispatch:Dispatch<Action>) => {
+
+  try {
+    const response = await axios.post(`http://localhost:3001/artist`, registerForm)
+
+    return dispatch({
+      type: 'CREATE_ARTIST',
+      payload: response.data
+    })
+    
+  } catch (error) {
+    
+  }
+}
+
+

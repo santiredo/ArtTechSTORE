@@ -1,20 +1,27 @@
 
 import {useState, useEffect} from 'react'
-import googleIcon from "../../assets/googleIcon.png";
-import facebookIcon from "../../assets/facebookIcon.png";
-import style from "./register.module.css";
 import validation, { validateSubmit } from "./validation";
+import { useAuth0 } from '@auth0/auth0-react';
+import style from "./register.module.css";
+import { useDispatch } from 'react-redux';
+import { createArtist } from '../../redux/action';
+import axios from 'axios';
 
 
-export default function Register({onRegister} : {onRegister: () => void})  {
+interface RegisterProps {
+    onRegister: (userExistence: boolean) => void;
+}
+
+export default function Register({onRegister}: RegisterProps)  {
+
+    const {user} = useAuth0()
 
     const [registerForm, setRegisterForm] = useState({
         name:'',
-        mail:'',
-        password:'',
-        repeatedPassword:'',
+        mail: user?.email?.toString(),
         birthDate:'',
-        address:''
+        location:'',
+        image: ''
     })
 
     const [isArtist, setIsArtist] = useState(false)
@@ -25,10 +32,8 @@ export default function Register({onRegister} : {onRegister: () => void})  {
     
     const[errors, setErrors] = useState({
         name:'',
-        mail:'',
-        password:'',
-        repeatedPassword:'',
-        birthDate:''
+        birthDate:'',
+        image:''
     });
 
     useEffect(() => {
@@ -43,7 +48,6 @@ export default function Register({onRegister} : {onRegister: () => void})  {
         if(event.target.name === 'birthDate'){
             value = value.replace(/-/g, '')
 
-            
             if(value.length > 4){
                 value = value.slice(0, 4)+'-'+value.slice(4)
                 console.log(value)
@@ -54,14 +58,20 @@ export default function Register({onRegister} : {onRegister: () => void})  {
             }
         }
 
-        console.log(value)
-
         setRegisterForm({
             ...registerForm,
             [event.target.name]: value
         })
 
-        console.log(registerForm)
+    }
+
+
+    // ACA EL SUBMIT DE REGISTRO
+
+    const dispatch = useDispatch()
+
+    const postUser = async() => {
+        await axios.post(`http://localhost:3001/user`, registerForm)
     }
 
     const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -71,16 +81,20 @@ export default function Register({onRegister} : {onRegister: () => void})  {
             setErrors(validation(registerForm))
             alert('You must fill the inputs correctly')
         } else{
-            // ACA VENDRIA EL DISPATCH
+
+            console.log(registerForm)
+            
+            isArtist ? createArtist(registerForm, dispatch) : postUser()
 
             setRegisterForm({
                 name:'',
-                mail:'',
-                password:'',
-                repeatedPassword:'',
+                mail: '',
                 birthDate:'',
-                address:''
+                location:'',
+                image: ''
             })
+            
+            onRegister(true)
             alert('Registered successfully')
         }
 
@@ -91,22 +105,13 @@ export default function Register({onRegister} : {onRegister: () => void})  {
       
         <div className={style.registerPage}>
             <form className={style.registerComponent}>
-                <h1>CREATE YOUR ACOUNT</h1>
+                <h1>CREATE YOUR ACCOUNT</h1>
                 <div className={style.registerInputs}>
                     {<span>{errors.name}</span>}
                     <input type="text" name='name' value={registerForm.name} placeholder="Username" onChange={handleChange}/>
                 </div>
                 <div className={style.registerInputs}>
-                    {<span>{errors.mail}</span>}
-                    <input type="text" name='mail' value={registerForm.mail} placeholder="example@gmail.com" onChange={handleChange}/>
-                </div>
-                <div className={style.registerInputs}>
-                    {<span>{errors.password}</span>}
-                    <input type="pasword" name='password' value={registerForm.password} placeholder="password" onChange={handleChange}/>
-                </div>
-                <div className={style.registerInputs}>
-                    {<span>{errors.repeatedPassword}</span>}
-                    <input type="text" name='repeatedPassword' value={registerForm.repeatedPassword} placeholder="repeat your password" onChange={handleChange}/>
+                    <input readOnly type="text" name='mail' value={registerForm.mail} placeholder="example@gmail.com" onChange={handleChange}/>
                 </div>
                 <div className={style.registerInputs}>
                     {<span>{errors.birthDate}</span>}
@@ -118,19 +123,20 @@ export default function Register({onRegister} : {onRegister: () => void})  {
                 </div>
                 {
                     isArtist && (
+                        <>
                         <div className={style.registerInputs}>
-                            <input type="text" name='address' value={registerForm.address} placeholder="Here goes your address" onChange={handleChange}/>
+                            <input type="text" name='location' value={registerForm.location} placeholder="Here goes your location" onChange={handleChange}/>
                         </div>
+                        <div className={style.registerInputs}>
+                            <input type="text" name='image' value={registerForm.image} placeholder="Profile photo" onChange={handleChange}/>
+                        </div>
+                        </>
+                        
                     )
                 }
                 <button onClick={handleRegister} className={style.registerButton}>Register</button>
-                <div className={style.fastRegister}>
-                    <p>- Or -</p>
-                    <button className={style.fastRegisterButton}><img src={googleIcon} alt=""/> Continue with google</button>
-                    <button className={style.fastRegisterButton}><img src={facebookIcon} alt=""/> Continue with facebook</button>
-                </div>
             </form>
-            <button onClick={onRegister} className={style.quitRegisterButton}></button>
+            <button className={style.quitRegisterButton}></button>
         </div>
     );
 };

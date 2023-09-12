@@ -5,19 +5,24 @@ import { finalValidate, validateForm, validateSubmit } from './Validation/valida
 import style from './form.module.css'
 import './form.css'
 import { postCreation } from '../../redux/action';
+import { useParams } from 'react-router-dom';
 
 
 export default function Form() {
 
+
     // DECLARAMOS EL ESTADO DE FORM
+    const {id} = useParams()
+
+    const [renderedImage, setRenderedImage] = useState('')
 
     const [form, setForm] = useState({
         title: '',
         price: '',
         type: '',
         technique: [] as string[],
-        image: '',
-        description: ''
+        description: '',
+        ArtistId: id
     })
 
     const [errors, setErrors] = useState({
@@ -25,28 +30,29 @@ export default function Form() {
         price: '',
         type: '',
         technique: '',
-        image: '',
         description: ''
     })
 
     // ACA ESTAN LOS HANDLECHANGE
 
-    const handleUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleUploadFile = async(event: React.ChangeEvent<HTMLInputElement>) => {
         
         const file = event.target.files && event.target.files[0]
 
-        if(file){
-            const reader = new FileReader()
+        try {
 
-            reader.onload = (e) => {
-                if(e.target && e.target.result) {
-                    setForm({
-                        ...form,
-                        image: e.target.result.toString()
-                    })
-                }
-            }
-            reader.readAsDataURL(file)
+            const formData = new FormData()
+            formData.append('file', file!)
+
+            const response = await axios.post(
+                'https://api.cloudinary.com/v1_1/dgyliu9l2/image/upload?upload_preset=PF_form_preset',
+                formData
+            )
+
+            setRenderedImage(response.data.secure_url)
+            
+        } catch (error) {
+            
         }
     }
 
@@ -58,6 +64,7 @@ export default function Form() {
     }
 
     useEffect(() => {
+
         const priceError = validateForm(form.price)
         setErrors({
             ...errors,
@@ -103,30 +110,14 @@ export default function Form() {
     const handleSubmit = async(event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
-        if(!finalValidate(form)){
-            if(form.image) {
-                try {
-                    const formData = new FormData()
-                    formData.append('file', form.image)
-    
-                    const response = await axios.post(
-                        'https://api.cloudinary.com/v1_1/dgyliu9l2/upload',
-                        formData
-                    )
-                    setForm({
-                        ...form,
-                        image: response.data.secure_url
-                    })
+        if(!finalValidate(form, renderedImage)){
 
-                } catch (error) {
-                    error instanceof Error && alert(`Error: ${error.message}`);
-                }
-            }
+            postCreation(form, renderedImage, dispatch)
 
-            postCreation(form, dispatch)
+            alert('Product posted successfully')
 
         }else{
-            setErrors(validateSubmit(form))
+            setErrors(validateSubmit(form, renderedImage))
             alert('Some data is missing')
         }
 
@@ -244,10 +235,10 @@ export default function Form() {
                         onChange={handleUploadFile}
                     />
                     {
-                        form.image ? (
+                        renderedImage !== '' ? (
                             <>
-                                <img src={form.image} alt="" />
-                                <span onClick={() => setForm({...form, image: ''})}>X</span>
+                                <img src={renderedImage} alt="" />
+                                <span onClick={() => setRenderedImage('')}>X</span>
                             </>
                         ) : (
                             <><p>Upload your image</p><label htmlFor='image'></label></>
@@ -293,19 +284,19 @@ export default function Form() {
                         </div>
                         <div className='hiddenOptions' id="techniqueOptions">
                             <div className="option">
-                                <p onClick={handleTechnique}>Oleo</p>
+                                <p onClick={handleTechnique}>Oil Painting</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Lapiz</p>
+                                <p onClick={handleTechnique}>Pencil</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Acuarela</p>
+                                <p onClick={handleTechnique}>Watercolor</p>
                             </div>
                             <div className="option">
                                 <p onClick={handleTechnique}>Macrame</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleTechnique}>Ceramica</p>
+                                <p onClick={handleTechnique}>Ceramics</p>
                             </div>
                         </div>
                         {

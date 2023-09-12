@@ -1,14 +1,25 @@
+
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { InitialState } from '../../redux/reducer';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+
 import emptyFav from '../../assets/favEmpty.png'
 import filledFav from '../../assets/favFilled.png'
 import Viaje from "../../images/Viaje.jpg";
 import style from "./Detail.module.css";
+
 import { getProductById } from "../../redux/action";
+
+import { useSelector } from 'react-redux';
+import { InitialState } from '../../redux/reducer';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+
+
 
 
 const Detail = () => {
@@ -22,6 +33,7 @@ const Detail = () => {
     }
 
     const dispatch = useDispatch()
+
     
     const {id} = useParams()
 
@@ -29,6 +41,7 @@ const Detail = () => {
         getProductById(id, dispatch)
     
   }, []);
+
 
 
     

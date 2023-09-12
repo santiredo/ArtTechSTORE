@@ -45,12 +45,12 @@ export default function AdminBarChart(){
     }];
     return(
     <>
-        <div>
+        <div >
         <Card>
             <Title>Total Number</Title>
             
             <BarChart
-            className="mt-6"
+            className="mt-6 "
             data={chartdata}
             index="name"
             categories={["Numberof"]}

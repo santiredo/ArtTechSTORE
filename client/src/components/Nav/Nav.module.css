@@ -4,13 +4,13 @@
     position: fixed;
     align-items: center;
     background-color: #0000003b;
-    width: 90%;
+    width: 100%;
     height: 12vh;
-    margin-left: 5%;
-    margin-top: 1%;
     justify-content:space-around;
     z-index: 1000;
     animation: nav .5s forwards;
+    font-family: 'Yuji Syuku', serif;
+
 }
 
 @keyframes nav {
@@ -63,14 +63,8 @@
 
 .navLink{
     text-decoration: none;
-    font-family: 'Yuji Syuku', serif;
-    background-color: transparent;
     color: #faedde;
-    padding: 0 5px 5px 5px;
-    font-size: 20px;
-    height: 25px;
-    border-radius: 2px;
-    cursor: pointer;
+    font-size: 30px;
     position: relative;
 }
 
@@ -132,4 +126,10 @@
 .log:hover{
     background-color: rgba(211, 219, 219, 0.079);
     transform: scale(1.1, 1.1);
+}
+
+.profile {
+    display: flex;
+    width: min-content;
+    color: white;
 }

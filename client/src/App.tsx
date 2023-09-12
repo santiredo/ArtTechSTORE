@@ -14,7 +14,15 @@ export default function App() {
 
 
   const location = useLocation()
-
+  if(location.pathname === '/admin'){
+    return(
+      <>
+        <Routes>
+          <Route path='/admin' element={<Admin/>}/>
+        </Routes>
+      </>
+    )
+  }
   if(location.pathname === '/'){
     return (
       <>
@@ -29,11 +37,10 @@ export default function App() {
         <Navbar/>
         <Routes>
           <Route path='/home' element={<Home/>}/>
-          <Route path='/admin' element={<Admin/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favourites' element={<Favorites/>}/>
-          <Route path='/form' element={<Form/>}/>
+          <Route path='/form/:id' element={<Form/>}/>
         </Routes>
       </>
     )

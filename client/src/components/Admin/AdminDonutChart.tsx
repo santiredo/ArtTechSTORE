@@ -23,12 +23,12 @@ export default function AdminDonutChart(){
         totalPrice += products[i].price;
     }
 
-    console.log("The total price of all products is: " + totalPrice);
+    
     for (let i = 0; i < soldProducts.length; i++) {
         totalPriceSold += soldProducts[i].price;
     }
 
-    console.log("The total price of all soldProducts is: " + totalPriceSold);
+    
     
     const chartdata=[{
         name: "In Store",
@@ -42,7 +42,7 @@ export default function AdminDonutChart(){
     },[])
     return(
         <>
-            <Card className="max-w-lg">
+            <Card className="max-w-xs mx-auto" decoration="top" decorationColor="indigo">
                 <Title>Sales</Title>
                 <DonutChart
                 className="mt-6"

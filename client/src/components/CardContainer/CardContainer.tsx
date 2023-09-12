@@ -8,19 +8,13 @@ import style from './cardContainer.module.css'
 const CardContainer=()=>{
 
 
-    const allPosted = useSelector((state:InitialState) => state.artGallery);
+    const artGallery = useSelector((state:InitialState) => state.artGallery);
 
-    //PAGINADO
-    const artGallery = allPosted.slice(6, allPosted.length)
 
     const firstRow = artGallery.slice(0, (artGallery.length/3))
     const secondRow = artGallery.slice((artGallery.length/3), (artGallery.length/3)*2)
     const thirdRow = artGallery.slice((artGallery.length/3)*2, artGallery.length)
 
-
-    console.log(firstRow)
-    console.log(secondRow)
-    console.log(thirdRow)
 
     return(
         <div className={style.cardContainer}>
@@ -38,6 +32,8 @@ const CardContainer=()=>{
                         technique={card.technique}
                         description={card.description}
                         image={card.image}
+                        artistName={card.artistName}
+                        artistPhoto={card.artistPhoto}
                     />
                 })}
             </div>
@@ -55,6 +51,8 @@ const CardContainer=()=>{
                         technique={card.technique}
                         description={card.description}
                         image={card.image}
+                        artistName={card.artistName}
+                        artistPhoto={card.artistPhoto}
                     />
                 })}
             </div>
@@ -72,6 +70,8 @@ const CardContainer=()=>{
                         technique={card.technique}
                         description={card.description}
                         image={card.image}
+                        artistName={card.artistName}
+                        artistPhoto={card.artistPhoto}
                     />
                 })}
             </div>

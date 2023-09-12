@@ -12,6 +12,8 @@ export async function getProductByIdHandler(req: Request, res: Response) {
       if (!product) {
         throw Error('Producto no encontrado')
       }
+
+      console.log(product)
   
       return res.status(201).json(product);
     } catch (error) {

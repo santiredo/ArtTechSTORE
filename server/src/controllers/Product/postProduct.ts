@@ -4,25 +4,33 @@ import { Product } from '../../db';
 export async function createProduct(
   title:string,
   price:number,
-  published:string,
-  auction:boolean,
   type:string,
   technique:string,
   description:string,
-  image:string
+  image:string,
+  ArtistId:number
 ) {
+
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+  const day = String(today.getDate()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day}`;
 
   const newProduct = await Product.create({
     title,
     price,
-    published,
-    auction,
     type,
-    technique,
+    published: formattedDate,
+    technique: technique[0],
     description,
-    image
+    image,
+    ArtistId
   })
 
+  console.log(newProduct)
 
   return newProduct;
 }

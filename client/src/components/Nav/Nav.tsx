@@ -5,12 +5,16 @@ import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";
 import style from "./Nav.module.css";
+import LogoutButton from '../Auth0/Logout/Logout';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const Navbar = () => {
 
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [visible, setVisible] = useState<boolean>(true);
+
+  const [artist, setArtist] = useState(false)
 
   useEffect(() => {
 
@@ -35,6 +39,8 @@ const Navbar = () => {
 
   const navbarClass = visible ? style.navBar : `${style.navBar} ${style.hiddenNavBar}`;
       
+  const {user} = useAuth0()
+
   return(
     <div className={navbarClass}>
       <NavLink to='/home' className={style.homeLink}>
@@ -42,8 +48,11 @@ const Navbar = () => {
         <h1>ArtTechStore</h1>
       </NavLink>
       <NavLink to="/favorites" className={style.navLink}>Favourites</NavLink>
-      <NavLink to="/favorites" className={style.navLink}>Home</NavLink>
-      <SearchBar /> 
+      <NavLink to="/home" className={style.navLink}>Home</NavLink>
+      <SearchBar/>
+      <div>
+        {artist ? <img src={user?.picture} alt="" /> : <LogoutButton/>}
+      </div>
     </div>
   );
 };

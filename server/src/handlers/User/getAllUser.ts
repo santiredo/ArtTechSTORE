@@ -5,7 +5,6 @@ import { getAllUser } from '../../controllers/User/getAllUser';
 
 export async function getAllUserHandler(req: Request, res: Response) {
     try {
-      console.log("Estoy aca");
       
       const user = await getAllUser();
   

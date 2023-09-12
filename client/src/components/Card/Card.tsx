@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArtGalleryItem } from '../../redux/reducer';
 import user from '../../assets/usuario.png'
 import style from './Card.module.css';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -17,7 +18,7 @@ const Card: React.FC<ArtGalleryItem> = (props) => {
             <h4>Artist</h4>
           </div>
           <h3>${props.price}</h3>
-          <button>Buy</button>
+          <NavLink to={`/detail/${props.id}`}>Buy</NavLink>
         </div>
       </div>
     </div>
