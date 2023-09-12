@@ -13,10 +13,7 @@ import style from "./Detail.module.css";
 
 import { getProductById } from "../../redux/action";
 
-import { useSelector } from 'react-redux';
-import { InitialState } from '../../redux/reducer';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+
 
 
 
