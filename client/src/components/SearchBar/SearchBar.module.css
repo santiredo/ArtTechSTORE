@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+.beforeMount{
+    display: none;
+}
+
 .hideInput,
 .input{
     display: flex;

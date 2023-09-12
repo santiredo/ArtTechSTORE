@@ -187,7 +187,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 }),
               }
 
-            case 'ADD_FAVORITE':
+          case 'ADD_FAVORITE':
                 
                 if (!state.artGallery.some((artGallery) => artGallery.id === action.payload.id)) {
                   return {
@@ -197,16 +197,22 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 }
                 return state; 
           
-              case 'DELETE_FAVORITE':
+          case 'DELETE_FAVORITE':
                 return {
                   ...state,
                   artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
                 };
-              case 'GET_ARTIST':
+          case 'GET_ARTIST':
                 return {
                   ...state,
                   artist: action.payload
                 }
+          case 'CREATE_ARTIST':
+            return {
+              ...state,
+              artists: [...state.artists, action.payload]
+            }
+              
         
           default:
               return {...state};

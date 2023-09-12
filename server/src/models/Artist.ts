@@ -17,9 +17,6 @@ export default function initializeArtistModel(sequelize: Sequelize): void {
       mail: {
         type: DataTypes.STRING,
       },
-      password: {
-        type: DataTypes.STRING,
-      },
       birthDate: {
         type: DataTypes.STRING,
         validate: {

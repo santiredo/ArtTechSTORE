@@ -18,11 +18,3 @@ userRouter.put("/:id",updateUserHandler);
 
 
 export default userRouter;
-
-// import router from "./index";
-
-// import { postUserHandler } from "../handlers/user/postUser";
-// import { getUserById } from "@/controllers/user/getUserById";
-
-// router.post("/user", postUserHandler);
-// router.get('/user/:id',getUserById )
