@@ -178,4 +178,24 @@ export const postCreation = async(form: {
     alert(error)
   }
 }
-  
+
+
+export const createArtist = async(registerForm: {
+  name:string,
+  mail: string | undefined,
+  birthDate: string,
+  location:string
+}, dispatch:Dispatch<Action>) => {
+
+  try {
+    const response = await axios.post(`http://localhost:3001/artist`, registerForm)
+
+    return dispatch({
+      type: 'CREATE_ARTIST',
+      payload: response.data
+    })
+    
+  } catch (error) {
+    
+  }
+}
