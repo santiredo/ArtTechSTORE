@@ -39,13 +39,17 @@ const SearchBar = () => {
 
   // RENDERIZADO DE LA SEARCHBAR
   const [searchInput, setSearchInput] = useState(false)
+  const [beforeMount, setBeforeMount] = useState(false)
+  const visibleInput = searchInput ? style.input :  style.hideInput;
 
   const showInput = () => {
+    setBeforeMount(true)
+    
     setSearchInput(!searchInput)
     setQuery('')
   }
 
-  const visibleInput = searchInput ? style.input :  style.hideInput;
+  
 
 
   // LIMPIAR EL onChange
@@ -59,15 +63,20 @@ const SearchBar = () => {
   return (
     <div className={style.container}>
     <>
-      <div className={visibleInput}>
-        <input
-          type='text'
-          value={query}
-          onChange={handleInputChange}
-          placeholder="Search an Artist"
-        />
-        <p onClick={cleanOnChange}>⨉</p>
-      </div>
+    {
+      beforeMount && (
+        <div id='searchInput' className={visibleInput}>
+          <input
+            type='text'
+            value={query}
+            onChange={handleInputChange}
+            placeholder="Search an Artist"
+          />
+          <p onClick={cleanOnChange}>⨉</p>
+        </div>
+      )
+    }
+
       {(artists.length > 0 && searchInput) && (
         <div className={style.searchBarArtists}>
           {artists.map((artist:Artist) => (
