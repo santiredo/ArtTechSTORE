@@ -26,7 +26,9 @@ export default function ArtistsList() {
                 {
                     artists.map((artist:Artist) => (
                         <NavLink key={artist.id} to={`/profile/${artist.id}`} className={style.artistsDiv}>
-                            <img src={artist.image ? artist.image : user} alt="" />
+                            <div className={style.imgDiv}>
+                                <img src={artist.image ? artist.image : user} alt="" />
+                            </div>
                             <h3>{artist.name}</h3>
                         </NavLink>
                     ))

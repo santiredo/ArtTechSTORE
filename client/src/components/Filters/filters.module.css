@@ -1,15 +1,3 @@
-/* .divAuxiliar{
-    bottom: 10%;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    z-index: 1000;
-    width: 20%;
-    height: 100%;
-    gap: 10px;
-}
- */
 .filtersComponent {
     position: relative;
     display: flex;
@@ -61,7 +49,7 @@
     padding-left: 5%;
     max-height: 75px;
     overflow: auto;
-    border-top: 3px solid #000000;
+    border-top: 2px solid #faedde;
     
 }
 
@@ -93,5 +81,5 @@
 }
 
 .options::-webkit-scrollbar-thumb {
-    background-color: #000000;
+    background-color: #faedde;
 }
