@@ -5,7 +5,9 @@ export async function updateProduct(numberId:number, price:number) {
 
     const updatedProduct = await Product.findByPk(numberId)
   
-   updatedProduct!.dataValues.price = price
+   updatedProduct!.update({
+    price:price,
+   })
   
    await updatedProduct?.save()
   

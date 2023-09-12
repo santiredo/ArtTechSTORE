@@ -9,8 +9,6 @@ export async function getProductById(productId: number) {
 
     const artistData = await Artist.findByPk(product?.dataValues.ArtistId)
 
-    console.log(artistData)
-
 
     return {...product?.dataValues, artistName: artistData?.dataValues.name, artistPhoto: artistData?.dataValues.image}
 
