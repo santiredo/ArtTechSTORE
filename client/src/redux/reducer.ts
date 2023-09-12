@@ -148,25 +148,39 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 searchBarArtists: action.payload,
               }
         case 'FILTER_TYPE':
+                {let filterType=state.typeFilter.filter((post: ArtGalleryItem) => {
+                  return post.type === action.payload
+                })
+                const filterTechnique=state.typeFilter.filter((post: ArtGalleryItem) => {
+                  return post.type === action.payload
+                })
+                if(filterType.length===0){
+                  filterType=state.allPosts.filter((post: ArtGalleryItem) => {
+                    return post.type === action.payload
+                  })
+                }
               return {
                 ...state,
-                artGallery: state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                }),
-                techniqueFilter: state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                }),
-              }
+                artGallery: filterType,
+                techniqueFilter:filterTechnique ,
+              }}
         case 'FILTER_TECHNIQUE':
+              {let filterTechnique=state.techniqueFilter.filter((post: ArtGalleryItem) => {
+                return post.technique === action.payload
+              })
+              const filterType=state.techniqueFilter.filter((post: ArtGalleryItem) => {
+                return post.technique === action.payload
+              })
+              if(filterTechnique.length===0){
+                filterTechnique=state.allPosts.filter((post: ArtGalleryItem) => {
+                  return post.technique === action.payload
+                })
+              }
               return {
                 ...state,
-                artGallery: state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                  return post.technique === action.payload
-                }),
-                typeFilter: state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                  return post.technique === action.payload
-                }),
-              }
+                artGallery:filterTechnique ,
+                typeFilter:filterType,
+              }}
         case 'FILTER_PRICE':
               return {
                 ...state,
