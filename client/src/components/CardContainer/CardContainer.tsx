@@ -16,15 +16,6 @@ const CardContainer=()=>{
     const thirdRow = artGallery.slice((artGallery.length/3)*2, artGallery.length)
 
 
-
-    const artGalleryview = useSelector((state:InitialState) => state.artGallery);
-    const typeGalleryview = useSelector((state:InitialState) => state.typeFilter);
-    const techGalleryview = useSelector((state:InitialState) => state.techniqueFilter);
-    console.log("Esto es el view de los estados pantalla",artGalleryview);
-    console.log("Esto es el view de los estados type",typeGalleryview);
-    console.log("Esto es el view de los estados tech",techGalleryview);
-    
-
     return(
         <div className={style.cardContainer}>
             <div className={style.cardContainerRow}>

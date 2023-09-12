@@ -75,7 +75,8 @@
   margin: 0;
 }
 
-.cardInfo button{
+.cardInfo a{
+  text-decoration: none;
   color: #faedde;
   background:linear-gradient(#5c3014cc, #000000ab);
   border: none;
@@ -85,7 +86,7 @@
   font-family: 'Yuji Syuku', serif;
 }
 
-.cardInfo button:hover{
+.cardInfo a:hover{
   cursor: pointer;
   transform: scale(1.05);
   box-shadow: 0 0 5px #ffffff;
