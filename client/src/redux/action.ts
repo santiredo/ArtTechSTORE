@@ -1,5 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
+import { ArtGallery } from "../components/Favorites/Favorites";
+
 const URL = "http://localhost:3001";
 
 export type Action = {
