@@ -27,7 +27,7 @@ export default function ProfileView() {
     if(onSale){
       setOnSale(false);
     }
-    if(items.length === 0){
+    if(items){
       swal('There are no products sold yet','','error');
     }
   }
