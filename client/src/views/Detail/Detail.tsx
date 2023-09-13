@@ -13,9 +13,6 @@ import user from '../../assets/usuario.png'
 import style from "./Detail.module.css";
 
 
-
-
-
 const Detail = () => {
 
     const product = useSelector((state: InitialState) => state.productDetail)
