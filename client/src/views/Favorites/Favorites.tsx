@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Card from "../Card/Card";
+import Card from "../../components/Card/Card";
 import style from "./Favorites.module.css";
 
 interface ArtGallery {
@@ -78,6 +78,7 @@ export default function Favorites() {
                 technique={""}
                 description={""}
                 artistPhoto={""}
+                isFav
               />
             ))
           : itemsPrueba.map((artGallery) => (
