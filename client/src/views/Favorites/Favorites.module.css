@@ -4,6 +4,8 @@
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
+    margin: 100px 0 50px 0;
+    font-family: 'Yuji Syuku', serif;
     color: white;
 }
 
