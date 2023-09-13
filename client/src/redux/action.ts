@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from 'redux';
+import { ArtGalleryItem } from "./reducer";
 const URL='http://localhost:3001'
 
 export type Action = {
@@ -121,39 +122,6 @@ export function resetFilter(){
   }
 }
 
-export const addFavorite = (artGallery: string) => {
-  
-  return (dispatch: Dispatch) => {
-    try {
-      const artwork = JSON.parse(artGallery);
-      dispatch({
-        type: 'ADD_FAVORITE',
-        payload: artwork,
-      });
-
-    } catch (error) {
-      const errorMessage = (error as Error).message;
-      alert(errorMessage);
-    }
-  };
-}
-
-export const deleteFavorite = (id: string) => {
-
-    return (dispatch: Dispatch) => {
-      try {
-        dispatch({
-        type: 'DELETE_FAVORITE',
-        payload: id,
-      });
-      } catch (error) {
-        const errorMessage = (error as Error).message;
-        alert(errorMessage);
-      }
-  };
-};
-
-
 export const postCreation = async(form: {
   title:string,
   price: string,
@@ -215,3 +183,16 @@ export const createArtist = async(registerForm: {
 }
 
 
+export const setFav = async (id:string, isFav:boolean, dispatch:Dispatch<Action>) => {
+  try {
+    const response = await axios.put(`http://localhost:3001/products/${id}`, {isFav: isFav})
+
+    return dispatch({
+      type: 'SET_FAV',
+      payload: response.data
+    })
+    
+  } catch (error) {
+    
+  }
+}

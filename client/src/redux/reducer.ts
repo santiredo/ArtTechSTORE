@@ -11,6 +11,7 @@ export interface ArtGalleryItem {
     image: string;
     artistName: string;
     artistPhoto: string;
+    isFav:boolean
 }
 
 export interface Artist{
@@ -59,20 +60,20 @@ const initialState: InitialState = {
     artGallery:[],
     artist: {
       id:0,
-      name:'string',
-      mail:'string',
-      birthDate:'string',
-      location:'string',
-      image:'string'
+      name:'',
+      mail:'',
+      birthDate:'',
+      location:'',
+      image:''
     },
     artists:[],
     searchBarArtists: [],
     user: {
       id:0,
-      name:'string',
-      mail:'string',
-      birthDate:'string',
-      image:'string'
+      name:'',
+      mail:'',
+      birthDate:'',
+      image:''
     },
     users:[],
     typeFilter: [],
@@ -91,9 +92,9 @@ const initialState: InitialState = {
       description: '',
       image: '',
       artistName: '',
-      artistPhoto: ''
+      artistPhoto: '',
+      isFav:false
     }
-
 }
 
 
@@ -201,22 +202,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   return 0
                 }),
               }
-
-          case 'ADD_FAVORITE':
-                
-                if (!state.artGallery.some((artGallery) => artGallery.id === action.payload.id)) {
-                  return {
-                    ...state,
-                    artGallery: [...state.artGallery, action.payload],
-                  };
-                }
-                return state; 
-          
-          case 'DELETE_FAVORITE':
-                return {
-                  ...state,
-                  artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
-                };
           case 'GET_ARTIST':
                 return {
                   ...state,
@@ -233,6 +218,11 @@ export default function rootReducer(state = initialState, action:Action<any>){
             return {
               ...state,
               artists: [...state.artists, action.payload]
+            }
+          case 'SET_FAV':
+            return {
+              ...state,
+              productDetail: action.payload
             }
               
 
