@@ -1,11 +1,10 @@
-
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { InitialState } from '../../redux/reducer';
+import { ArtGalleryItem, InitialState } from '../../redux/reducer';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { getProductById } from "../../redux/action";
+import { getProductById, setFav } from "../../redux/action";
 import emptyFav from '../../assets/favEmpty.png'
 import filledFav from '../../assets/favFilled.png'
 import loadingGif from '../../assets/loading.gif'
@@ -15,28 +14,40 @@ import style from "./Detail.module.css";
 
 const Detail = () => {
 
+    const {id} = useParams()
+
+    const dispatch = useDispatch()
+
     const product = useSelector((state: InitialState) => state.productDetail)
 
-    const [isFav, setIsFav] = useState(false)
+    const isFav = useSelector((state:InitialState) => state.productDetail.isFav)
 
     const [loading, setLoading] = useState(true)
 
     const handleFav = () => {
-        setIsFav(!isFav)
+
+        const localFavouritesJSON = localStorage.getItem('favourites')
+        let localFavourites = localFavouritesJSON ? JSON.parse(localFavouritesJSON) : [];
+
+        if(!isFav){
+
+            localFavourites.unshift(product)
+            localStorage.setItem('favourites', JSON.stringify(localFavourites))
+
+        } else {
+            const updatedFavourites = localFavourites.filter((item:ArtGalleryItem) => item.id !== product.id);
+            localStorage.setItem('favourites', JSON.stringify(updatedFavourites))
+
+        }
+
+        setFav(id!, !isFav, dispatch)
     }
 
-    const dispatch = useDispatch()
-
-    
-    const {id} = useParams()
-
     useEffect(() => {
-        getProductById(id, dispatch)
-    
+        getProductById(id, dispatch)        
+
         product && setLoading(false)
-  }, []);
-
-
+    }, []);
 
     
     return(
@@ -96,4 +107,4 @@ const Detail = () => {
     );
 };
 
-export default Detail;
+export default Detail
