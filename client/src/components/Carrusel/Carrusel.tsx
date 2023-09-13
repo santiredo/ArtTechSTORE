@@ -10,6 +10,8 @@ export default function Carrusel(){
 
     const [items, setItems] = useState<ArtGalleryItem[]>([]);
 
+    console.log(items)
+
     const URL='http://localhost:3001'
     useEffect(() => {
         fetch(`${URL}/products`).then(response => response.json()).then(data => setItems(data));
@@ -26,9 +28,11 @@ export default function Carrusel(){
                 <Carousel.Item key={card.id}>
                   <div className={style.cardComponent}>
                     <div className={style.cardInfo}>
-                        <div>
-                          <img src={user} alt="" />
-                          <h2>Artist</h2>
+                        <div className={style.artistData}>
+                            <div className={style.imgDiv}>
+                                <img src={card.artistPhoto ? card.artistPhoto : user} alt="" />
+                            </div>
+                            <h3>{card.artistName}</h3>
                         </div>
                         <h3>${card.price}</h3>
                         <button>Buy</button>
@@ -37,8 +41,6 @@ export default function Carrusel(){
                       <img className={style.postImg} src={card.image} alt="" />
                     </div>
                   </div>
-                  <Carousel.Caption>
-                  </Carousel.Caption>
                 </Carousel.Item>
               ))
             }
