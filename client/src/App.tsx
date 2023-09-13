@@ -8,7 +8,7 @@ import Form from './views/Form/Form';
 import Navbar from './components/Nav/Nav';
 import './App.css'
 import ProfileView from './views/Profile/ProfileView';
-import Favorites from './components/Favorites/Favorites';
+import Favorites from './views/Favorites/Favorites';
 
 export default function App() {
 
