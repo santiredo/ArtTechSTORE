@@ -182,11 +182,11 @@ export const postCreation = async(form: {
 export const getProductById = async (id: string | undefined, dispatch:Dispatch<Action>) => {
  
   try {
-    const response = await axios(`http://localhost:3001/artist/${id}`);
+    const response = await axios(`http://localhost:3001/products/${id}`);
     console.log(response.data)
 
     dispatch({
-      type: 'SET_ARTIST_INFO',
+      type: 'SET_PRODUCT_INFO',
       payload: response.data
     });
   } catch (error) {

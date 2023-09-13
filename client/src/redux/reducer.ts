@@ -9,11 +9,8 @@ export interface ArtGalleryItem {
     technique: string;
     description: string;
     image: string;
-
     artistName: string;
     artistPhoto: string;
-    
-
 }
 
 export interface Artist{
@@ -212,7 +209,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   artist: action.payload
                 }
 
-          case 'SET_ARTIST_INFO':
+          case 'SET_PRODUCT_INFO':
              return {
                 ...state,
                 productDetail: action.payload
