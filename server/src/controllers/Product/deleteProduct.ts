@@ -10,11 +10,13 @@ export async function deleteProduct(productId: number) {
     throw new Error('Producto no encontrado');
   }
 
-  
-  deletedProduct!.dataValues.posted = false
- 
-  await deletedProduct?.save()
- 
-  return deletedProduct
+  deletedProduct.update({
+    posted:false,
+  })
+
+  await deletedProduct.save();
+
+
+  return deletedProduct;
 
 }
