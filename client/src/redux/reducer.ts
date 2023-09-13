@@ -227,16 +227,8 @@ export default function rootReducer(state = initialState, action:Action<any>){
              return {
                 ...state,
                 productDetail: action.payload
-                };
+                }
 
-          case 'CREATE_ARTIST':
-            return {
-              ...state,
-              artists: [...state.artists, action.payload]
-            }
-              
-
-        
           default:
               return {...state};
     }

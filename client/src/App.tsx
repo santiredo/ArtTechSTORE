@@ -9,6 +9,7 @@ import Navbar from './components/Nav/Nav';
 import './App.css'
 import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
+import Hall from './views/Hall/Hall';
 
 export default function App() {
 
@@ -19,6 +20,15 @@ export default function App() {
       <>
         <Routes>
           <Route path='/admin' element={<Admin/>}/>
+        </Routes>
+      </>
+    )
+  }
+  if(location.pathname === '/hall'){
+    return(
+      <>
+        <Routes>
+          <Route path='/hall' element={<Hall/>}/>
         </Routes>
       </>
     )
