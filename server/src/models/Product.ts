@@ -38,6 +38,10 @@ export default function Product(sequelize: Sequelize): void {
       },
       image: {
         type: DataTypes.STRING
+      }, 
+      isFav: {
+        type: DataTypes.BOOLEAN,
+        defaultValue:false
       }
     },
     {
