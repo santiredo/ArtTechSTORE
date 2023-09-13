@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from 'redux';
+import { ArtGallery } from "../components/Favorites/Favorites";
 const URL='http://localhost:3001'
 
 export type Action = {
@@ -122,36 +123,43 @@ export function resetFilter(){
 }
 
 export const addFavorite = (artGallery: string) => {
-  
   return (dispatch: Dispatch) => {
     try {
       const artwork = JSON.parse(artGallery);
       dispatch({
-        type: 'ADD_FAVORITE',
+        type: "ADD_FAVORITE",
         payload: artwork,
       });
 
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      favorites.push(artwork);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     } catch (error) {
       const errorMessage = (error as Error).message;
       alert(errorMessage);
     }
   };
-}
+};
 
 export const deleteFavorite = (id: string) => {
-
-    return (dispatch: Dispatch) => {
-      try {
-        dispatch({
-        type: 'DELETE_FAVORITE',
+  return (dispatch: Dispatch) => {
+    try {
+      dispatch({
+        type: "DELETE_FAVORITE",
         payload: id,
       });
-      } catch (error) {
-        const errorMessage = (error as Error).message;
-        alert(errorMessage);
-      }
+
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      
+      const updatedFavorites = favorites.filter((favorite: ArtGallery) => favorite.id !== id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      alert(errorMessage);
+    }
   };
 };
+
 
 
 export const postCreation = async(form: {

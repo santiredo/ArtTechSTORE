@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./Favorites.module.css";
 
-interface ArtGallery {
+export interface ArtGallery {
   id: string;
   imageURL: string;
   type: string;
