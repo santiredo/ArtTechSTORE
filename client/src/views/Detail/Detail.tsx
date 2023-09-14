@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { ArtGalleryItem, InitialState } from '../../redux/reducer';
+import { Favourite, InitialState } from '../../redux/reducer';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { getProductById, setFav } from "../../redux/action";
+import { getFavsById, getProductById, setToFav } from "../../redux/action";
 import emptyFav from '../../assets/favEmpty.png'
 import filledFav from '../../assets/favFilled.png'
 import loadingGif from '../../assets/loading.gif'
 import user from '../../assets/usuario.png'
 import style from "./Detail.module.css";
+import axios from 'axios';
 
 
 const Detail = () => {
@@ -20,31 +21,39 @@ const Detail = () => {
 
     const product = useSelector((state: InitialState) => state.productDetail)
 
-    const isFav = useSelector((state:InitialState) => state.productDetail.isFav)
+    const isFav = useSelector((state: InitialState) => state.productDetail.isFav)
+
+    const favourites = useSelector((state: InitialState) => state.favourites)
 
     const [loading, setLoading] = useState(true)
 
-    const handleFav = () => {
+    const userDataJSON = localStorage.getItem('userData')
+    let userId = userDataJSON && JSON.parse(userDataJSON).id
 
-        const localFavouritesJSON = localStorage.getItem('favourites')
-        let localFavourites = localFavouritesJSON ? JSON.parse(localFavouritesJSON) : [];
+    const handleFav = async() => {
 
-        if(!isFav){
+        const fav = favourites.find((fav: Favourite) => {
+            return fav.userId === userId && fav.productId === Number(id)
+        })
 
-            localFavourites.unshift(product)
-            localStorage.setItem('favourites', JSON.stringify(localFavourites))
+        if(isFav && fav) {
+            
+            await axios.delete('http://localhost:3001/favourites', {[fav.id]:fav.id})
+            await getFavsById(userId, dispatch),
 
+            setToFav(Number(userId), Number(id), dispatch)
         } else {
-            const updatedFavourites = localFavourites.filter((item:ArtGalleryItem) => item.id !== product.id);
-            localStorage.setItem('favourites', JSON.stringify(updatedFavourites))
+            await axios.post('http://localhost:3001/favourites', {id:Number(id), userId:Number(userId)}),
+            await getFavsById(userId, dispatch),
 
+            setToFav(Number(userId), Number(id), dispatch)
         }
-
-        setFav(id!, !isFav, dispatch)
     }
 
     useEffect(() => {
-        getProductById(id, dispatch)        
+        setToFav(Number(userId), Number(id), dispatch)
+
+        getProductById(id, dispatch)
 
         product && setLoading(false)
     }, []);
