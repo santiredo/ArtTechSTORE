@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Dispatch } from 'redux';
-import { ArtGalleryItem } from "./reducer";
 const URL='http://localhost:3001'
 
 export type Action = {
@@ -182,17 +181,24 @@ export const createArtist = async(registerForm: {
   }
 }
 
-
-export const setFav = async (id:string, isFav:boolean, dispatch:Dispatch<Action>) => {
+export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
   try {
-    const response = await axios.put(`http://localhost:3001/products/${id}`, {isFav: isFav})
+
+    const response = await axios.get('http://localhost:3001/favourites', { [userId]: userId })
 
     return dispatch({
-      type: 'SET_FAV',
+      type: 'SET_FAVS',
       payload: response.data
     })
-    
+   
   } catch (error) {
-    
+    alert(error)
   }
+}
+
+export const setToFav = async(userId:number, productId: number, dispatch:Dispatch<Action>) => {
+  return dispatch({
+    type: 'IS_FAV',
+    payload: {userId, productId}
+  })
 }
