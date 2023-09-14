@@ -126,6 +126,12 @@ export default function rootReducer(state = initialState, action:Action<any>){
             ...state,
             artists: action.payload,
           }
+        case 'DELETE_ARTIST':
+            const updatedArtists = state.artists.filter(artist => artist.id !== action.payload);
+            return {
+              ...state,
+              artists: updatedArtists,
+            };
         case 'GET_ALL_USERS':
           
           return{

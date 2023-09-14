@@ -58,6 +58,19 @@ export async function allArtist(dispatch:Dispatch<Action>){
 
 }
 
+export async function deleteArtist(dispatch: Dispatch<Action>, artistId: string) {
+  try {
+    await axios.delete(`${URL}/artist/${artistId}`);
+    
+    dispatch({
+      type: 'DELETE_ARTIST',
+      payload: artistId,
+    });
+  } catch (error) {
+    alert('Hubo un error al eliminar el artista');
+  }
+}
+
 export async function getAllUsers(dispatch:Dispatch<Action>){
   
   try {
