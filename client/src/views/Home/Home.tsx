@@ -7,7 +7,7 @@ import Filters from "../../components/Filters/Filters";
 import React from 'react';
 import { InitialState } from "../../redux/reducer";
 import loadingGif from '../../assets/loading.gif'
-import { getAllProducts } from "../../redux/action";
+import { getAllProducts, getFavsById } from "../../redux/action";
 import ArtistsList from "../../components/ArtistsList/ArtistsList";
 import style from "./Home.module.css";
 
@@ -18,9 +18,17 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  const getAllFavourites = () => {
+    const userDataJSON = localStorage.getItem('userData')
+    let userId = userDataJSON && JSON.parse(userDataJSON).id
 
+    getFavsById(Number(userId),dispatch)
+  }
+
+  useEffect(() => {
     getAllProducts(dispatch)
+
+    getAllFavourites()
 
   }, [])
 
