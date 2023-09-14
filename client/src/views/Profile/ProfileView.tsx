@@ -8,7 +8,7 @@ import profilePhoto from '../../assets/usuario.png'
 import styles from './ProfileView.module.css'
 import { Artist } from '../../redux/reducer';
 import { NavLink } from "react-router-dom";
-
+import swal from "sweetalert";
 
 export default function ProfileView() {
 
@@ -24,13 +24,23 @@ export default function ProfileView() {
   const soldOutHandler = () => {
     setSoldOut(!soldOut)
 
-    onSale && setOnSale(false)
+    if(onSale){
+      setOnSale(false);
+    }
+    if(items){
+      swal('There are no products sold yet','','error');
+    }
   }
 
   const onSaleHandler = () => {
     setOnSale(!onSale)
 
-    soldOut && setSoldOut(false)
+    if(soldOut){
+      setSoldOut(false);
+    }
+    if(items.length === 0){
+      swal('There are no products for sale yet','','error');
+    } 
   }
   
   useEffect(() => {
@@ -69,15 +79,16 @@ export default function ProfileView() {
             <button onClick={soldOutHandler}>SOLD OUT</button>
           </div>
           <div className={soldOut ? styles.showSoldOut : styles.hideSoldOut}>
-            <p>Aqui van las creaciones vendidas</p>
-              
+            
           </div>
           <div className={onSale ? styles.showOnSale : styles.hideOnSale}>
             {items.map((card:Artist)=>
               (<div className={styles.cardComponent1}>
                 <img className={styles.img} src={card.image} alt="" />
                 <div className={styles.cardInfo}>
-                  <button className={styles.btn}>More Information</button>
+                  <NavLink to={`/detail/${card.id}`}>
+                    <button className={styles.btn}>More Information</button>
+                  </NavLink>
                 </div>
               </div>)
             )}
@@ -90,7 +101,7 @@ export default function ProfileView() {
               (<div className={styles.cardComponent2}>
                 <img className={styles.img} key={card.id} src={card.image} alt="" />
                 <div className={styles.cardInfo2}>
-                  <NavLink to={`/detail/${id}`} >
+                  <NavLink to={`/detail/${card.id}`} >
                     <button className={styles.btn2}>More Information</button>
                   </NavLink>
                 </div>

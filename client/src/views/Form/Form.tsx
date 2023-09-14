@@ -6,7 +6,7 @@ import style from './form.module.css'
 import './form.css'
 import { postCreation } from '../../redux/action';
 import { useParams } from 'react-router-dom';
-
+import swal from "sweetalert";
 
 export default function Form() {
 
@@ -52,7 +52,9 @@ export default function Form() {
             setRenderedImage(response.data.secure_url)
             
         } catch (error) {
-            
+            if (error instanceof Error) {
+                console.error("Error:", error.message);
+              }
         }
     }
 
@@ -70,7 +72,7 @@ export default function Form() {
             ...errors,
             price: priceError
         })
-    }, [form])
+    }, [form, errors])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -114,11 +116,11 @@ export default function Form() {
 
             postCreation(form, renderedImage, dispatch)
 
-            alert('Product posted successfully')
+            swal('Good job!', 'Product posted successfully');
 
         }else{
             setErrors(validateSubmit(form, renderedImage))
-            alert('Some data is missing')
+            swal('Some data is missing','Please complete the form','error');
         }
 
     }

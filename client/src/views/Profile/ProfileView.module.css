@@ -88,31 +88,72 @@
     width: 65%;
     height: 50vh;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+    animation: showOnSale 0.5s forwards;
+    animation: showSoldOut 0.5s forwards;
     position: relative;
     margin-top: 20px;
 }
 
-@keyframes soldOut {
+@keyframes showOnSale {
   0%{
     height: 0;
-    margin-top: 0;
+    opacity: 0;
+    display: none;
+  }
+  80%{
     opacity: 0;
   }
   100%{
-    height: 200px;
+    max-width: 95%;
+    height: auto;
+  }
+}
+
+@keyframes showSoldOut {
+  0%{
+    height: 0;
+    opacity: 0;
+    display: none;
+  }
+  80%{
+    opacity: 0;
+  }
+  100%{
+    max-width: 95%;
+    height: auto;
   }
 }
 
 .hideOnSale,
 .hideSoldOut{
-  width: 90%;
-  margin-top: 40px;
-  background-color: #faedde;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  height: 50vh;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
   animation: hideSoldOut .5s forwards;
+  animation: hideOnSale .5s forwards;
 }
 
 @keyframes hideSoldOut {
+  0%{
+    height: 200px;
+  }
+  80%{
+    opacity: 0;
+  }
+  100%{
+    margin-top: 0;
+    height: 0;
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes hideOnSale {
   0%{
     height: 200px;
   }
@@ -145,7 +186,7 @@
     width: 65%;
     height: 50vh;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     position: relative;
 }
 
@@ -156,7 +197,7 @@
     width: 65%;
     height: 50vh;
     overflow: hidden;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     position: relative;
 }
 
