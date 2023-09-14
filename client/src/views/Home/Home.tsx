@@ -1,18 +1,15 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Carrusel from "../../components/Carrusel/Carrusel";
 import Filters from "../../components/Filters/Filters";
 import React from 'react';
 import { InitialState } from "../../redux/reducer";
 import loadingGif from '../../assets/loading.gif'
-import { getAllProducts } from "../../redux/action";
+import { getAllProducts, getFavsById } from "../../redux/action";
 import ArtistsList from "../../components/ArtistsList/ArtistsList";
-import { useAuth0 } from '@auth0/auth0-react';
 import style from "./Home.module.css";
-import axios from "axios";
-import Register from "../../components/Register/Register";
 
 const Home: React.FC = () => {
 
@@ -21,31 +18,19 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  const {user} = useAuth0()
+  const getAllFavourites = () => {
+    const userDataJSON = localStorage.getItem('userData')
+    let userId = userDataJSON && JSON.parse(userDataJSON).id
 
-  const [doesUserExists, setUserExistence] = useState(true)
-
-  const isUserRegistered = async() => {
-
-    if(user?.email){
-      console.log(user.email)
-      const userResponse = await axios(`http://localhost:3001/user/mail?mail=${user!.email}`)
-
-      const artistResponse = await axios(`http://localhost:3001/artist/artist/mail?mail=${user!.email}`)
-
-      console.log(userResponse)
-      if(!userResponse.data && !artistResponse.data){
-        setUserExistence(false)
-      }
-    }
+    getFavsById(Number(userId),dispatch)
   }
 
   useEffect(() => {
-
-    isUserRegistered()
     getAllProducts(dispatch)
 
-  }, [user?.email])
+    getAllFavourites()
+
+  }, [])
 
 
   return (
@@ -66,9 +51,6 @@ const Home: React.FC = () => {
               <Filters />
               <CardContainer />
             </div>
-            {
-              !doesUserExists && <Register onRegister={(userExistence) => setUserExistence(userExistence)} />
-            }
           </div>
         )
       }
