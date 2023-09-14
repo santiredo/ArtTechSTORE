@@ -46,13 +46,13 @@ entries.forEach(([modelName, model]) => {
 
 // ACA VAN LAS RELACIONES
 
-const { User, Artist, Product, Comment, Order } = sequelize.models
+const { User, Artist, Product, Comment, Order, Favourite } = sequelize.models
 
 Artist.hasMany(Product)
 Product.belongsTo(Artist)
 
-User.belongsToMany(Product, {through: 'User_Favourite'})
-Product.belongsToMany(User, {through: 'User_Favourite'})
+User.belongsToMany(Product, {through: Favourite})
+Product.belongsToMany(User, {through: Favourite})
 
 User.hasMany(Comment)
 Comment.belongsTo(User)
@@ -69,5 +69,5 @@ Order.belongsTo(Product)
 Product.hasOne(Comment)
 Comment.belongsTo(Product)
 
-export { User, Artist, Product, Comment, Order }
+export { User, Artist, Product, Comment, Order, Favourite }
 export { sequelize };
