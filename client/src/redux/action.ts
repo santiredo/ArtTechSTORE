@@ -203,3 +203,11 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
 }
 
 
+export const updateRating = (value: number, idProduct:number, idUser:number) => {
+  //debug
+  console.log(`User con id ${idUser} dio ${value} estrellas a la pintura con id ${idProduct}`)
+  return {
+    type: 'UPDATE_RATING',
+    payload: {value,idProduct,idUser},
+  };
+};
