@@ -17,13 +17,13 @@ const Navbar = () => {
   const [artist, setArtist] = useState(false)
 
   useEffect(() => {
-
+    !true && setArtist(true)
     window.addEventListener("scroll", handleScroll);
-
+  
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prevScrollPos, visible]);
 
 
