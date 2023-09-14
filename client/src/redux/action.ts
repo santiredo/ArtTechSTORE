@@ -211,3 +211,26 @@ export const updateRating = (value: number, idProduct:number, idUser:number) => 
     payload: {value,idProduct,idUser},
   };
 };
+
+export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
+
+  try {
+    const response = await axios('http://localhost:3001/favourites', {[userId]:userId})
+
+    return dispatch ({
+      type: 'SET_FAV',
+      payload: response.data
+    })
+    
+  } catch (error) {
+    alert(error)
+  }
+}
+
+export const setToFav = (userId:number, productId:number, dispatch:Dispatch<Action>) => {
+
+  return dispatch({
+    type: 'IS_FAV',
+    payload: {userId, productId}
+  })
+}
