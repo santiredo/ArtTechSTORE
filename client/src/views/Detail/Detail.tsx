@@ -27,7 +27,7 @@ const Detail = () => {
 
     const [loading, setLoading] = useState(true)
 
-    const userId = JSON.parse(localStorage.getItem('userData')!).id
+    const userId = JSON.parse(localStorage.getItem('userData')!).id;
 
     const handleFav = async() => {
 
@@ -39,46 +39,44 @@ const Detail = () => {
                 return fav.UserId === userId && fav.ProductId === Number(id)
             })
 
-            console.log(fav?.id)
-
             await axios.delete(`http://localhost:3001/favourites/${fav?.id}`)
             await getFavsById(userId, dispatch)
 
+
         } else {
             
-            console.log({id:Number(id), userId:Number(userId)})
             await axios.post('http://localhost:3001/favourites', {productId:Number(id), userId:Number(userId)})
             await getFavsById(userId, dispatch)
 
+
         }
     }
-
-    const findFav = async() => {
-        await getAllFavourites()
-
-        const fav = favourites.find((fav: Favourite) => {
-            return fav.UserId === userId && fav.ProductId === Number(id)
-        })
-
-        console.log(favourites)
-        fav && setIsFav(true)
-    }
-
-    const getAllFavourites = async() => {
-        const userDataJSON = localStorage.getItem('userData')
     
-        let userId = JSON.parse(userDataJSON!).id
-    
-        getFavsById(Number(userId),dispatch)
-      }
+    const findFav = async () => {
+
+        const favs = await getFavsById(userId, dispatch)
+        
+        if (userId && favs) {
+
+            const fav = favourites.find((fav: Favourite) => {
+                return fav.UserId === userId && fav.ProductId === Number(id);
+            });
+            
+            fav && setIsFav(true);
+            
+            setLoading(false);
+
+        } else {
+            setTimeout(findFav, 1000);
+        }
+    };
+
 
     useEffect(() => {
 
         findFav()
-
         getProductById(id, dispatch)
 
-        product && setLoading(false)
     }, []);
 
     
