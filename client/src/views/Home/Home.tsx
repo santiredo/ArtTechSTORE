@@ -18,9 +18,11 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch()
 
-  const getAllFavourites = () => {
+
+  const getAllFavourites = async() => {
     const userDataJSON = localStorage.getItem('userData')
-    let userId = userDataJSON && JSON.parse(userDataJSON).id
+
+    let userId = JSON.parse(userDataJSON!).id
 
     getFavsById(Number(userId),dispatch)
   }
@@ -28,7 +30,10 @@ const Home: React.FC = () => {
   useEffect(() => {
     getAllProducts(dispatch)
 
-    getAllFavourites()
+    setTimeout(() => {
+      getAllFavourites()
+    }, 5000);
+    
 
   }, [])
 
