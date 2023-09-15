@@ -8,7 +8,7 @@ export async function deleteArtistHandler (req:Request, res: Response){
         const artistaDeleted=await deleteArtist(artistId)
         return res.status(200).send(artistaDeleted)
     } catch (error) {
-        console.error('Error al eliminar el artista')
-        return res.status(500).json({error: 'Error al eliminar el artista'});
+        console.error('Error while eliminating the artist')
+        return res.status(500).json({error: 'Error while eliminating the artist'});
     }
 }

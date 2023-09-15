@@ -35,10 +35,17 @@ export default function initializeArtistModel(sequelize: Sequelize): void {
       },
       image: {//se agrega esta linea
         type: DataTypes.STRING
+      },
+      deletedAt:{
+        type: DataTypes.DATE,
+        allowNull:true,
       }
     },
     {
-      timestamps: false,
+      paranoid:true,
+      timestamps:true,
+      createdAt:false,
+      updatedAt:false,
     }
   );
 }
