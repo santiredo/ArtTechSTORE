@@ -12,13 +12,12 @@ export async function deleteProductHandler(req: Request, res: Response) {
     const productId = parseInt(req.params.id, 10);
 
     const deletedProduct = await deleteProduct(productId);
-    console.log("Sali",deletedProduct);
-    await deletedProduct.save();
-    return res.status(201).json(deletedProduct); // 204 significa "No Content" (sin contenido)
+    
+    return res.status(201).send(deletedProduct); // 204 significa "No Content" (sin contenido)
 
   } catch (error) {
 
-    console.error('Error al eliminar el producto', error);
+    console.error('Error to eliminate the product', error);
 
     return res.status(500).json({ error: (error as Error).message });
   }
