@@ -11,6 +11,8 @@ import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
 import Wrong from './views/WrongURL/WrongURL';
 import { useEffect, useState } from 'react';
+import Hall from './views/Hall/Hall';
+
 
 export default function App() {
 
@@ -33,6 +35,15 @@ export default function App() {
       </>
     )
   }
+  if(location.pathname === '/hall'){
+    return(
+      <>
+        <Routes>
+          <Route path='/hall' element={<Hall/>}/>
+        </Routes>
+      </>
+    )
+  }
   if(location.pathname === '/'){
     return (
       <>
@@ -49,7 +60,7 @@ export default function App() {
           <Route path='/home' element={<Home/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
-          <Route path='/favourites' element={<Favorites/>}/>
+          <Route path='/favorites' element={<Favorites/>}/>
           <Route path='/form/:id' element={<Form/>}/>
           <Route path='*' element={<Wrong/>}/>
         </Routes>

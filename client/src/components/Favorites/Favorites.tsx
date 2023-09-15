@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./Favorites.module.css";
+import RatingStars from '../RatingStars/RatingStars'
 
-interface ArtGallery {
+export interface ArtGallery {
   id: string;
   imageURL: string;
   type: string;
@@ -82,8 +83,11 @@ export default function Favorites() {
             ))
           : itemsPrueba.map((artGallery) => (
               <div className={style.favoriteCard}>
-                <img src={artGallery.imageURL} alt={artGallery.name} />
+                <img className={style.image} src={artGallery.imageURL} alt={artGallery.name} />
                 <div className={style.data}>
+
+                  <RatingStars idProducto={1} idUser={1} />
+ 
                   <h4>Nombre: {artGallery.name}</h4>
                   <h4>Tipo: {artGallery.type}</h4>
                   <h4>Autor: {artGallery.artistName}</h4>

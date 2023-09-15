@@ -12,14 +12,14 @@ const Card: React.FC<ArtGalleryItem> = (props) => {
     <div className={style.cardComponent}>
       <img src={props.image} alt="" />
       <div className={style.cardInfo}>
-        <div className={style.infoDiv}>
-          <div>
-            <img src={user} alt="" />
-            <h4>Artist</h4>
+          <div className={style.artistDiv}>
+            <div className={style.imgDiv}>
+              <img src={props.artistPhoto ? props.artistPhoto : user} alt="" />
+            </div>
+             <h5>{props.artistName}</h5>
           </div>
-          <h3>${props.price}</h3>
+          <h4>${props.price}</h4>
           <NavLink to={`/detail/${props.id}`}>Buy</NavLink>
-        </div>
       </div>
     </div>
   )

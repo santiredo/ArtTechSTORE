@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Dispatch } from 'redux';
+import { ArtGallery } from "../components/Favorites/Favorites";
 const URL='http://localhost:3001'
 
 export type Action = {
@@ -27,8 +28,6 @@ export async function searchArtist(name:string, dispatch: Dispatch<Action>) {
     try {
       const response = await axios.get(`${URL}/artist/artist/name?name=${name}`);
 
-      console.log(name)
-      console.log('Los artistas: ', response.data)
 
       return dispatch({
         type: 'SEARCH_ARTIST',
@@ -58,6 +57,19 @@ export async function allArtist(dispatch:Dispatch<Action>){
 
 }
 
+export async function deleteArtist(dispatch: Dispatch<Action>, artistId: string) {
+  try {
+    await axios.delete(`${URL}/artist/${artistId}`);
+    
+    dispatch({
+      type: 'DELETE_ARTIST',
+      payload: artistId,
+    });
+  } catch (error) {
+    alert('Hubo un error al eliminar el artista');
+  }
+}
+
 export async function getAllUsers(dispatch:Dispatch<Action>){
   
   try {
@@ -80,7 +92,6 @@ export const getArtistById = async(id:string | undefined, dispatch:Dispatch<Acti
     try {
       
       const response = await axios(`http://localhost:3001/artist/${id}`)
-      console.log(response.data)
 
       return dispatch( {
         type: 'GET_ARTIST',
@@ -122,36 +133,43 @@ export function resetFilter(){
 }
 
 export const addFavorite = (artGallery: string) => {
-  
   return (dispatch: Dispatch) => {
     try {
       const artwork = JSON.parse(artGallery);
       dispatch({
-        type: 'ADD_FAVORITE',
+        type: "ADD_FAVORITE",
         payload: artwork,
       });
 
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      favorites.push(artwork);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     } catch (error) {
       const errorMessage = (error as Error).message;
       alert(errorMessage);
     }
   };
-}
+};
 
 export const deleteFavorite = (id: string) => {
-
-    return (dispatch: Dispatch) => {
-      try {
-        dispatch({
-        type: 'DELETE_FAVORITE',
+  return (dispatch: Dispatch) => {
+    try {
+      dispatch({
+        type: "DELETE_FAVORITE",
         payload: id,
       });
-      } catch (error) {
-        const errorMessage = (error as Error).message;
-        alert(errorMessage);
-      }
+
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      
+      const updatedFavorites = favorites.filter((favorite: ArtGallery) => favorite.id !== id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      alert(errorMessage);
+    }
   };
 };
+
 
 
 export const postCreation = async(form: {
@@ -183,7 +201,6 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
  
   try {
     const response = await axios(`http://localhost:3001/products/${id}`);
-    console.log(response.data)
 
     dispatch({
       type: 'SET_PRODUCT_INFO',
@@ -192,26 +209,38 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
   } catch (error) {
     alert(error);
   }
+}
+
+
+export const updateRating = (value: number, idProduct:number, idUser:number) => {
+  //debug
+  return {
+    type: 'UPDATE_RATING',
+    payload: {value,idProduct,idUser},
+  };
 };
-  
-export const createArtist = async(registerForm: {
-  name:string,
-  mail: string | undefined,
-  birthDate: string,
-  location:string
-}, dispatch:Dispatch<Action>) => {
+
+export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
+
 
   try {
-    const response = await axios.post(`http://localhost:3001/artist`, registerForm)
+    const response = await axios(`http://localhost:3001/favourites/${userId}`)
 
-    return dispatch({
-      type: 'CREATE_ARTIST',
+    return dispatch ({
+      type: 'SET_FAV',
       payload: response.data
     })
     
   } catch (error) {
-    
+    alert(error)
   }
 }
 
+export const setToFav = (userId:number, productId:number, dispatch:Dispatch<Action>) => {
 
+  console.log({userId, productId})
+  return dispatch({
+    type: 'IS_FAV',
+    payload: {userId, productId}
+  })
+}

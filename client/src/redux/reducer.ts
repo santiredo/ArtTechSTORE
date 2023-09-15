@@ -30,6 +30,12 @@ export interface User{
   image:string
 }
 
+export interface Favourite{
+  id:number,
+  UserId: number,
+  ProductId:number
+}
+
 export type InitialState = {
     artist: Artist,
     artists: Artist[],
@@ -43,7 +49,8 @@ export type InitialState = {
     user: User,
     users:User[],
     loadingHome: boolean,
-    productDetail: ArtGalleryItem
+    productDetail: ArtGalleryItem,
+    favourites: Favourite[]
 }
 
 
@@ -92,7 +99,8 @@ const initialState: InitialState = {
       image: '',
       artistName: '',
       artistPhoto: ''
-    }
+    },
+    favourites:[]
 
 }
 
@@ -126,6 +134,12 @@ export default function rootReducer(state = initialState, action:Action<any>){
             ...state,
             artists: action.payload,
           }
+        case 'DELETE_ARTIST':
+            const updatedArtists = state.artists.filter(artist => artist.id !== action.payload);
+            return {
+              ...state,
+              artists: updatedArtists,
+            };
         case 'GET_ALL_USERS':
           
           return{
@@ -201,22 +215,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
                   return 0
                 }),
               }
-
-          case 'ADD_FAVORITE':
-                
-                if (!state.artGallery.some((artGallery) => artGallery.id === action.payload.id)) {
-                  return {
-                    ...state,
-                    artGallery: [...state.artGallery, action.payload],
-                  };
-                }
-                return state; 
-          
-          case 'DELETE_FAVORITE':
-                return {
-                  ...state,
-                  artGallery: state.artGallery.filter((artGallery) => artGallery.id !== action.payload),
-                };
           case 'GET_ARTIST':
                 return {
                   ...state,
@@ -227,16 +225,22 @@ export default function rootReducer(state = initialState, action:Action<any>){
              return {
                 ...state,
                 productDetail: action.payload
-                };
-
-          case 'CREATE_ARTIST':
+                }
+          case 'SET_FAV':
             return {
               ...state,
-              artists: [...state.artists, action.payload]
+              favourites: action.payload
             }
-              
+          case 'IS_FAV':
+            const fav = state.favourites.find((fav:Favourite) => {
+              return fav.UserId === action.payload.userId && fav.ProductId === action.payload.productId
+            })
+            console.log(fav)
+            return {
+              ...state,
+              productDetail: fav !== undefined ? {...state.productDetail, isFav:true} : {...state.productDetail, isFav: false}
+            }
 
-        
           default:
               return {...state};
     }

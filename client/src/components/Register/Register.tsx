@@ -1,45 +1,30 @@
-
+import swal from 'sweetalert';
 import {useState, useEffect} from 'react'
 import validation, { validateSubmit } from "./validation";
 import { useAuth0 } from '@auth0/auth0-react';
 import style from "./register.module.css";
-import { useDispatch } from 'react-redux';
-import { createArtist } from '../../redux/action';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
-interface RegisterProps {
-    onRegister: (userExistence: boolean) => void;
-}
-
-export default function Register({onRegister}: RegisterProps)  {
+export default function Register({onRegister}: {onRegister: (userExistence: boolean) => void})  {
 
     const {user} = useAuth0()
 
     const [registerForm, setRegisterForm] = useState({
         name:'',
-        mail: user?.email?.toString(),
+        mail: user?.email,
         birthDate:'',
         location:'',
         image: ''
     })
 
-    const [isArtist, setIsArtist] = useState(false)
+    // ACA LOS HANDLECHANGE
 
+    const [isArtist, setIsArtist] = useState(false)
     const handleCheckboxChange = () => {
         setIsArtist(!isArtist)
     }
-    
-    const[errors, setErrors] = useState({
-        name:'',
-        birthDate:'',
-        image:''
-    });
-
-    useEffect(() => {
-        setErrors(validation(registerForm))
-    }, [registerForm])
-
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value = event.target.value
@@ -64,14 +49,33 @@ export default function Register({onRegister}: RegisterProps)  {
         })
 
     }
+    
+    const[errors, setErrors] = useState({
+        name:'',
+        birthDate:'',
+        image:''
+    });
+
+    useEffect(() => {
+        setErrors(validation(registerForm))
+    }, [registerForm])
+
 
 
     // ACA EL SUBMIT DE REGISTRO
 
-    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const postUser = async() => {
-        await axios.post(`http://localhost:3001/user`, registerForm)
+        const response = await axios.post(`http://localhost:3001/user`, registerForm)
+
+        localStorage.setItem('userData', JSON.stringify(response.data));
+    }
+
+    const postArtist = async() => {
+        const response = await axios.post(`http://localhost:3001/artist`, registerForm)
+
+        localStorage.setItem('userData', JSON.stringify(response.data));
     }
 
     const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -79,12 +83,12 @@ export default function Register({onRegister}: RegisterProps)  {
 
         if(validateSubmit(registerForm)){
             setErrors(validation(registerForm))
-            alert('You must fill the inputs correctly')
+            swal('You must fill the inputs correctly');
         } else{
 
             console.log(registerForm)
             
-            isArtist ? createArtist(registerForm, dispatch) : postUser()
+            isArtist ? postArtist() : postUser()
 
             setRegisterForm({
                 name:'',
@@ -95,7 +99,8 @@ export default function Register({onRegister}: RegisterProps)  {
             })
             
             onRegister(true)
-            alert('Registered successfully')
+            swal('Registered successfully');
+            navigate('/home')
         }
 
         
@@ -139,4 +144,4 @@ export default function Register({onRegister}: RegisterProps)  {
             <button className={style.quitRegisterButton}></button>
         </div>
     );
-};
+}
