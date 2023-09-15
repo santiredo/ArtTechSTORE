@@ -27,7 +27,7 @@ export default function Hall(){
             setLoading(false)
             setUserExistence(false)
         } else{
-            localStorage.setItem('userDate', response.data)
+            localStorage.setItem('userData', JSON.stringify(response.data))
             navigate('/home')
         }
       }

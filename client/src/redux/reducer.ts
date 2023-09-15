@@ -11,7 +11,6 @@ export interface ArtGalleryItem {
     image: string;
     artistName: string;
     artistPhoto: string;
-    isFav: boolean
 }
 
 export interface Artist{
@@ -33,8 +32,8 @@ export interface User{
 
 export interface Favourite{
   id:number,
-  userId: number,
-  productId:number
+  UserId: number,
+  ProductId:number
 }
 
 export type InitialState = {
@@ -99,8 +98,7 @@ const initialState: InitialState = {
       description: '',
       image: '',
       artistName: '',
-      artistPhoto: '',
-      isFav: false
+      artistPhoto: ''
     },
     favourites:[]
 
@@ -235,11 +233,12 @@ export default function rootReducer(state = initialState, action:Action<any>){
             }
           case 'IS_FAV':
             const fav = state.favourites.find((fav:Favourite) => {
-              return fav.userId === action.payload.userId && fav.productId === action.payload.productId
+              return fav.UserId === action.payload.userId && fav.ProductId === action.payload.productId
             })
+            console.log(fav)
             return {
               ...state,
-              productDetail: fav ? {...state.productDetail, isFav:true} : state.productDetail
+              productDetail: fav !== undefined ? {...state.productDetail, isFav:true} : {...state.productDetail, isFav: false}
             }
 
           default:

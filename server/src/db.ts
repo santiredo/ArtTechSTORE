@@ -51,9 +51,6 @@ const { User, Artist, Product, Comment, Order, Favourite } = sequelize.models
 Artist.hasMany(Product)
 Product.belongsTo(Artist)
 
-User.belongsToMany(Product, {through: Favourite})
-Product.belongsToMany(User, {through: Favourite})
-
 User.hasMany(Comment)
 Comment.belongsTo(User)
 

@@ -4,7 +4,7 @@ import { Favourite, InitialState } from '../../redux/reducer';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { getFavsById, getProductById, setToFav } from "../../redux/action";
+import { getFavsById, getProductById } from "../../redux/action";
 import emptyFav from '../../assets/favEmpty.png'
 import filledFav from '../../assets/favFilled.png'
 import loadingGif from '../../assets/loading.gif'
@@ -21,42 +21,64 @@ const Detail = () => {
 
     const product = useSelector((state: InitialState) => state.productDetail)
 
-    const isFav = useSelector((state: InitialState) => state.productDetail.isFav)
+    const [isFav, setIsFav] = useState(false)
 
     const favourites = useSelector((state: InitialState) => state.favourites)
 
     const [loading, setLoading] = useState(true)
 
-    const userDataJSON = localStorage.getItem('userData')
-    const userId = userDataJSON && JSON.parse(userDataJSON).id
+    const userId = JSON.parse(localStorage.getItem('userData')!).id
 
     const handleFav = async() => {
 
-        const fav = favourites.find((fav: Favourite) => {
-            return fav.userId === userId && fav.productId === Number(id)
-        })
+        setIsFav(!isFav)
 
-        if(isFav && fav) {
-            
-            await axios.delete('http://localhost:3001/favourites', {[fav.id]:fav.id})
-            await getFavsById(userId, dispatch),
+        if(isFav) {
 
-            setToFav(Number(userId), Number(id), dispatch)
+            const fav = favourites.find((fav: Favourite) => {
+                return fav.UserId === userId && fav.ProductId === Number(id)
+            })
+
+            console.log(fav?.id)
+
+            await axios.delete(`http://localhost:3001/favourites/${fav?.id}`)
+            await getFavsById(userId, dispatch)
+
         } else {
-            await axios.post('http://localhost:3001/favourites', {id:Number(id), userId:Number(userId)}),
-            await getFavsById(userId, dispatch),
+            
+            console.log({id:Number(id), userId:Number(userId)})
+            await axios.post('http://localhost:3001/favourites', {productId:Number(id), userId:Number(userId)})
+            await getFavsById(userId, dispatch)
 
-            setToFav(Number(userId), Number(id), dispatch)
         }
     }
 
+    const findFav = async() => {
+        await getAllFavourites()
+
+        const fav = favourites.find((fav: Favourite) => {
+            return fav.UserId === userId && fav.ProductId === Number(id)
+        })
+
+        console.log(favourites)
+        fav && setIsFav(true)
+    }
+
+    const getAllFavourites = async() => {
+        const userDataJSON = localStorage.getItem('userData')
+    
+        let userId = JSON.parse(userDataJSON!).id
+    
+        getFavsById(Number(userId),dispatch)
+      }
+
     useEffect(() => {
-        setToFav(Number(userId), Number(id), dispatch)
+
+        findFav()
 
         getProductById(id, dispatch)
 
         product && setLoading(false)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     

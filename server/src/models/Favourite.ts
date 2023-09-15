@@ -9,12 +9,12 @@ export default function initializeCommentModel(sequelize: Sequelize): void {
         autoIncrement: true,
         primaryKey: true,
       },
-      userId: {
+      UserId:{
+        type: DataTypes.INTEGER
+      }, 
+      ProductId: {
         type: DataTypes.INTEGER,
-      },
-      productId: {
-        type: DataTypes.INTEGER,
-      },
+      }
     },
     {
       timestamps: false,

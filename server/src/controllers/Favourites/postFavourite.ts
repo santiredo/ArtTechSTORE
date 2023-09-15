@@ -1,4 +1,4 @@
-import { User, Product, Favourite } from "../../db";
+import { Favourite } from "../../db";
 
 export async function postFavourite(
   productId: number,
@@ -6,15 +6,10 @@ export async function postFavourite(
 ) {
   try {
 
-    const user = await User.findByPk(userId)
-    const product = await Product.findByPk(productId)
-
-    !user && Error('User not found')
-    !product && Error('Product not found')
 
     const newRelation = await Favourite.create({
-        userId,
-        productId
+        UserId:userId,
+        ProductId:productId
     })
 
     return newRelation

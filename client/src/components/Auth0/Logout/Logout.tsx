@@ -5,13 +5,7 @@ const LogoutButton = () => {
   const { logout } = useAuth0();
 
   const handleLogOut = () => {
-    const userDataJSON = localStorage.getItem('userData')
-
-    let userData = userDataJSON ? JSON.parse(userDataJSON) : [];
-
-    const deleteUserData = userData.pop()
-    
-    localStorage.setItem('userData', JSON.stringify(deleteUserData))
+    localStorage.clear()
   }
 
   return (
