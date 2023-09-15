@@ -1,11 +1,12 @@
+import { getAllArtistAdmin } from '../../controllers/Admin/getAllArtist';
 import { Request, Response } from 'express';
-import { getAllArtist } from '../../controllers/Artist/getAllArtists';
 
 
-export async function getAllArtistsHandler(req: Request, res: Response) {
+
+export async function getAllArtistsAdminHandler(req: Request, res: Response) {
     try {
       
-      const artists = await getAllArtist();
+      const artists = await getAllArtistAdmin();
   
       return res.status(200).json(artists);
     } catch (error) {

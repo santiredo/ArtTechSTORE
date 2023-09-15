@@ -1,13 +1,12 @@
-
-import { getProducts } from '../../controllers/Product/getProducts';
+import { getProductsAdmin } from '../../controllers/Admin/getAllProducts';
 import { Request, Response } from 'express';
 
 
 // Manejador para obtener todos los productos
-export async function getProductsHandler(req: Request, res: Response) {
+export async function getProductsAdminHandler(req: Request, res: Response) {
     try {
   
-      const products = await getProducts();
+      const products = await getProductsAdmin();
   
       return res.status(201).json(products);
   
