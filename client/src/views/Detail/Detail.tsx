@@ -28,7 +28,7 @@ const Detail = () => {
     const [loading, setLoading] = useState(true)
 
     const userDataJSON = localStorage.getItem('userData')
-    let userId = userDataJSON && JSON.parse(userDataJSON).id
+    const userId = userDataJSON && JSON.parse(userDataJSON).id
 
     const handleFav = async() => {
 
@@ -56,6 +56,7 @@ const Detail = () => {
         getProductById(id, dispatch)
 
         product && setLoading(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     
