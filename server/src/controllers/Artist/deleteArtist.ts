@@ -20,9 +20,9 @@ export async function deleteArtist(artistId: number) {
         deletedAt:formattedDate
       })
       await artist.save();
-      return "The product was succesfully eliminated.";
+      return "The artist was succesfully eliminated.";
     }
     else{
-      return "The product was not succesfully eliminated";
+      return "The artist was not succesfully eliminated";
     }
   }
