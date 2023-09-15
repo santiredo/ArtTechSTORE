@@ -38,10 +38,21 @@ export default function Product(sequelize: Sequelize): void {
       },
       image: {
         type: DataTypes.STRING
+      },
+      deletedAt:{
+        type:DataTypes.DATE,
+        allowNull: true,
       }
     },
+    
     {
-      timestamps: false,
-    }
+      paranoid:true,
+      timestamps:true,
+      createdAt:false,
+      updatedAt:false,
+    },
+    
   );
+ 
+  
 }

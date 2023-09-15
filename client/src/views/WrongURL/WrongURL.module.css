@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    background-image: url("https://www.semana.com/resizer/QWRE34znDLIFICECMgErb-BSjD0=/1280x720/smart/filters:format(jpg):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/semana/6U5L6VOYBVFW3JIBAPNUG43GBY.jpg");
+    background-repeat: no-repeat;
+    margin-top: 300px;
+    margin-left: 100px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 300%;
+    width: 70%;
+}

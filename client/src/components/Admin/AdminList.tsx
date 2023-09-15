@@ -16,6 +16,8 @@ export default function AdminList(){
     const cantPencil=products.filter((product)=>product.technique==="Pencil")
     const cantOil=products.filter((product)=>product.technique==="Oil Painting")
     const cantWater=products.filter((product)=>product.technique==="Watercolor")
+    const cantMacrame=products.filter((product)=>product.technique==="Macrame")
+    const cantCeramics=products.filter((product)=>product.technique==="Ceramics")
     const cantDrawing=products.filter((product)=>product.type==="Drawing")
     const cantPainting=products.filter((product)=>product.type==="Painting")
     const cant3D=products.filter((product)=>product.type==="3D Object")
@@ -30,6 +32,13 @@ export default function AdminList(){
     },{
         Technique: "Watercolor",
         Quantity: cantWater.length,
+    },
+    {
+        Technique: "Macrame",
+        Quantity: cantMacrame.length,
+    },{
+        Technique: "Ceramics",
+        Quantity: cantCeramics.length,
     }]
     const chartdata2=[{
         Type: "Drawing",
