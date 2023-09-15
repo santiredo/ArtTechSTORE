@@ -28,8 +28,6 @@ export async function searchArtist(name:string, dispatch: Dispatch<Action>) {
     try {
       const response = await axios.get(`${URL}/artist/artist/name?name=${name}`);
 
-      console.log(name)
-      console.log('Los artistas: ', response.data)
 
       return dispatch({
         type: 'SEARCH_ARTIST',
@@ -81,7 +79,6 @@ export const getArtistById = async(id:string | undefined, dispatch:Dispatch<Acti
     try {
       
       const response = await axios(`http://localhost:3001/artist/${id}`)
-      console.log(response.data)
 
       return dispatch( {
         type: 'GET_ARTIST',
@@ -191,7 +188,6 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
  
   try {
     const response = await axios(`http://localhost:3001/products/${id}`);
-    console.log(response.data)
 
     dispatch({
       type: 'SET_PRODUCT_INFO',
@@ -205,7 +201,6 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
 
 export const updateRating = (value: number, idProduct:number, idUser:number) => {
   //debug
-  console.log(`User con id ${idUser} dio ${value} estrellas a la pintura con id ${idProduct}`)
   return {
     type: 'UPDATE_RATING',
     payload: {value,idProduct,idUser},
@@ -214,8 +209,9 @@ export const updateRating = (value: number, idProduct:number, idUser:number) => 
 
 export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
 
+
   try {
-    const response = await axios('http://localhost:3001/favourites', {[userId]:userId})
+    const response = await axios(`http://localhost:3001/favourites/${userId}`)
 
     return dispatch ({
       type: 'SET_FAV',
@@ -229,6 +225,7 @@ export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
 
 export const setToFav = (userId:number, productId:number, dispatch:Dispatch<Action>) => {
 
+  console.log({userId, productId})
   return dispatch({
     type: 'IS_FAV',
     payload: {userId, productId}
