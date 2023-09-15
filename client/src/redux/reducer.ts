@@ -4,7 +4,6 @@ export interface ArtGalleryItem {
     price: number;
     published:string;
     posted: boolean;
-    auction: boolean;
     type: string;
     technique: string;
     description: string;
@@ -50,7 +49,8 @@ export type InitialState = {
     users:User[],
     loadingHome: boolean,
     productDetail: ArtGalleryItem,
-    favourites: Favourite[]
+    favourites: Favourite[],
+    detailedFavourites: ArtGalleryItem[]
 }
 
 
@@ -92,7 +92,6 @@ const initialState: InitialState = {
       price: 0,
       published: '',
       posted: true,
-      auction: false,
       type: '',
       technique: '',
       description: '',
@@ -100,7 +99,8 @@ const initialState: InitialState = {
       artistName: '',
       artistPhoto: ''
     },
-    favourites:[]
+    favourites:[],
+    detailedFavourites: []
 
 }
 
@@ -230,15 +230,6 @@ export default function rootReducer(state = initialState, action:Action<any>){
             return {
               ...state,
               favourites: action.payload
-            }
-          case 'IS_FAV':
-            const fav = state.favourites.find((fav:Favourite) => {
-              return fav.UserId === action.payload.userId && fav.ProductId === action.payload.productId
-            })
-            console.log(fav)
-            return {
-              ...state,
-              productDetail: fav !== undefined ? {...state.productDetail, isFav:true} : {...state.productDetail, isFav: false}
             }
 
           default:

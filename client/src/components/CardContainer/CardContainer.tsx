@@ -27,7 +27,6 @@ const CardContainer=()=>{
                         price={card.price}
                         published={card.published}
                         posted={card.posted}
-                        auction={card.auction}
                         type={card.type}
                         technique={card.technique}
                         description={card.description}
@@ -46,7 +45,6 @@ const CardContainer=()=>{
                         price={card.price}
                         published={card.published}
                         posted={card.posted}
-                        auction={card.auction}
                         type={card.type}
                         technique={card.technique}
                         description={card.description}
@@ -65,7 +63,6 @@ const CardContainer=()=>{
                         price={card.price}
                         published={card.published}
                         posted={card.posted}
-                        auction={card.auction}
                         type={card.type}
                         technique={card.technique}
                         description={card.description}
