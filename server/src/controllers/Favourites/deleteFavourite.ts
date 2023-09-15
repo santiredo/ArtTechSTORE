@@ -1,12 +1,12 @@
 import { Favourite } from "../../db";
 
-export const deleteFavourite = async (id: string) => {
+export const deleteFavourite = async (favId: number) => {
 
-  const deletedFavourite = await Favourite.findByPk(id);
+  const favourite = await Favourite.findByPk(favId);
 
-  if (!deletedFavourite) {
+  if (!favourite) {
     throw new Error("Favorito no encontrado");
   }
 
-  await deletedFavourite.destroy();
+  return await favourite.destroy();
 };
