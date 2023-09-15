@@ -27,10 +27,18 @@ export default function initializeUserModel(sequelize: Sequelize): void {
       },
       admin: {
         type: DataTypes.BOOLEAN
+      },
+      deletedAt:{
+        type: DataTypes.DATE,
+        allowNull:true,
       }
     },
     {
-      timestamps: false,
+      paranoid:true,
+      timestamps:true,
+      createdAt:false,
+      updatedAt:false,
+
     }
   )
 }
