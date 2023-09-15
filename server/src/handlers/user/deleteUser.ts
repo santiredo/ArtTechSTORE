@@ -4,10 +4,10 @@ import { deleteUser } from '../../controllers/User/deleteUser'
 export async function deleteUserHandler (req:Request, res: Response){
     try{
         const userId = parseInt(req.params.id, 10)
-        await deleteUser(userId)
-        return res.status(200).send()
+        const deletedUser=await deleteUser(userId)
+        return res.status(200).send(deletedUser)
     } catch (error) {
-        console.error('Error al eliminar el usuario')
-        return res.status(500).json({error: 'Error al eliminar el usuario'})
+        console.error('Error while eliminating the user')
+        return res.status(500).json({error: 'Error while eliminating the user'})
     }
 }
