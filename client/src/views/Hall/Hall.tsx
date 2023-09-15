@@ -34,7 +34,8 @@ export default function Hall(){
     }
 
     useEffect(() => {
-        isUserRegistered()
+        isUserRegistered();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user?.email])
 
     return (

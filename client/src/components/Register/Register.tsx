@@ -1,4 +1,4 @@
-
+import swal from 'sweetalert';
 import {useState, useEffect} from 'react'
 import validation, { validateSubmit } from "./validation";
 import { useAuth0 } from '@auth0/auth0-react';
@@ -83,7 +83,7 @@ export default function Register({onRegister}: {onRegister: (userExistence: bool
 
         if(validateSubmit(registerForm)){
             setErrors(validation(registerForm))
-            alert('You must fill the inputs correctly')
+            swal('You must fill the inputs correctly');
         } else{
 
             console.log(registerForm)
@@ -99,7 +99,7 @@ export default function Register({onRegister}: {onRegister: (userExistence: bool
             })
             
             onRegister(true)
-            alert('Registered successfully')
+            swal('Registered successfully');
             navigate('/home')
         }
 
@@ -144,4 +144,4 @@ export default function Register({onRegister}: {onRegister: (userExistence: bool
             <button className={style.quitRegisterButton}></button>
         </div>
     );
-};
+}

@@ -67,6 +67,15 @@ export default function ProfileView() {
         <div className={styles.photoDiv}>
           <img className={styles.profilePhoto} src={artist.image ? artist.image : profilePhoto} alt="" />
           <RatingStars/>
+          <div>
+            { artist ?
+              <div>
+              <NavLink to={`/form/${id}`}>
+                  <button className={styles.btn}>Add Product</button>
+              </NavLink>
+              </div>
+            : "" }
+          </div>
         </div>
         <div className={styles.profileInfo}>
           <div className={styles.profileInfoDiv}>
