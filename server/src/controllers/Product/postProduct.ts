@@ -24,7 +24,7 @@ export async function createProduct(
     price,
     type,
     published: formattedDate,
-    technique: technique[0],
+    technique: technique,
     description,
     image,
     ArtistId
