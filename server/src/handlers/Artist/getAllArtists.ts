@@ -10,6 +10,6 @@ export async function getAllArtistsHandler(req: Request, res: Response) {
       return res.status(200).json(artists);
     } catch (error) {
       console.error(error);
-      return res.status(404).json({ error: 'Artista no encontrado por nombre' });
+      return res.status(404).json({ error: 'Artist not found by name' });
     }
   }

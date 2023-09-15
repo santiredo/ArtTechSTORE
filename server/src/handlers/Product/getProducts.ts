@@ -13,9 +13,9 @@ export async function getProductsHandler(req: Request, res: Response) {
   
     } catch (error) {
   
-      console.error('Error al obtener los productos', error);
+      console.error('Error while obtaining products', error);
   
-      return res.status(500).json({ error: 'Error al obtener los productos' });
+      return res.status(500).json({ error: 'Error while obtaining products' });
     }
   }
   
