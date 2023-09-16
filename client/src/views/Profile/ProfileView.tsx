@@ -9,6 +9,8 @@ import styles from './ProfileView.module.css'
 import { Artist } from '../../redux/reducer';
 import { NavLink } from "react-router-dom";
 import swal from "sweetalert";
+import axios from "axios";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function ProfileView() {
 
@@ -61,6 +63,27 @@ export default function ProfileView() {
     }); 
   }, [id]);
 
+  const [loading, setLoading] = useState(true);
+
+  const {user} = useAuth0();
+
+  const isUserRegistered = async() => {
+    if(user?.email){
+      let response = await axios(`http://localhost:3001/user/mail?mail=${user!.email}`)
+
+      if(!response.data) {response = await axios(`http://localhost:3001/artist/artist/mail?mail=${user!.email}`)}
+
+      if(!response.data){
+          setLoading(false)
+      }
+    }
+  }
+  
+  useEffect(() => {
+    isUserRegistered();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [user?.email])
+
   return (
     <div className={styles.profilePage}>
       <div className={styles.profileContainer}>
@@ -68,13 +91,17 @@ export default function ProfileView() {
           <img className={styles.profilePhoto} src={artist.image ? artist.image : profilePhoto} alt="" />
           <RatingStars/>
           <div>
-            { artist ?
-              <div>
+            { 
+            loading 
+            ?
+            ""
+            :
+            <div>
               <NavLink to={`/form/${id}`}>
                   <button className={styles.btn}>Add Product</button>
               </NavLink>
-              </div>
-            : "" }
+            </div>
+            }
           </div>
         </div>
         <div className={styles.profileInfo}>
