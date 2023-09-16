@@ -21,6 +21,10 @@ export default function initializeOrderModel(sequelize: Sequelize): void {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      statusId:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
     },
     {
       timestamps: false,
