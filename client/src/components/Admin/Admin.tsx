@@ -3,6 +3,7 @@ import AdminBarChart from "./AdminBarChart";
 import AdminDonutChart from "./AdminDonutChart";
 import AdminList from "./AdminList";
 import letter from "../../assets/letra2.png";
+import AdminArtistsList from "./AdminArtistsList";
 
 export default function Admin(){
     //!aca vienen los estados y los dispatch
@@ -21,6 +22,7 @@ export default function Admin(){
         <AdminBarChart/>
         <AdminDonutChart/>
         <AdminList/>
+        <AdminArtistsList/>
     </div>
     </>
     )

@@ -56,7 +56,7 @@ export async function allArtist(dispatch:Dispatch<Action>){
 
 }
 
-export async function deleteArtist(dispatch: Dispatch<Action>, artistId: string) {
+export async function deleteArtist(dispatch: Dispatch<Action>, artistId: number) {
   try {
     await axios.delete(`${URL}/artist/${artistId}`);
     
