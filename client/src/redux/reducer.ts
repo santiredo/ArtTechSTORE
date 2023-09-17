@@ -18,7 +18,8 @@ export interface Artist{
   mail:string,
   birthDate:string,
   location:string,
-  image:string
+  image:string, 
+  products:ArtGalleryItem[]
 }
 
 export interface User{
@@ -70,7 +71,8 @@ const initialState: InitialState = {
       mail:'string',
       birthDate:'string',
       location:'string',
-      image:'string'
+      image:'string',
+      products:[]
     },
     artists:[],
     searchBarArtists: [],
