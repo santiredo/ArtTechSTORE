@@ -1,0 +1,135 @@
+.navBar{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    align-items: center;
+    background-color: #0000003b;
+    width: 100%;
+    height: 12vh;
+    justify-content:space-around;
+    z-index: 1000;
+    animation: nav .5s forwards;
+    font-family: 'Yuji Syuku', serif;
+
+}
+
+@keyframes nav {
+    0%{
+        top: -15%;
+    }
+    100%{
+        top: 0;
+    }
+    
+}
+
+.hiddenNavBar{
+    animation: hideNav .5s forwards
+}
+
+@keyframes hideNav {
+    0%{
+        top: 0;
+    }
+    100% {
+        top: -15%;
+    }
+    
+}
+
+.homeLink{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: #faedde;
+    cursor: pointer;
+    height: 0;
+}
+
+.homeLink:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.homeLink h1{
+    margin: 0;
+}
+
+.homeLink img{
+    height: 90px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+}
+
+.navLink{
+    text-decoration: none;
+    color: #faedde;
+    font-size: 30px;
+    position: relative;
+}
+
+.navLink:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid #faedde;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: calc(50% - 4px);
+    animation: beforeLink .2s forwards;
+}
+
+.navLink:hover::after{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid #faedde;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: calc(50% - 4px);
+    animation: afterLink .2s forwards;
+}
+
+@keyframes beforeLink {
+    0% {
+        left: -15px;
+    }
+    100%{
+        left: -10px;
+    }
+}
+
+@keyframes afterLink {
+    0% {
+        right: -15px;
+    }
+    100%{
+        right: -10px;
+    }
+}
+
+
+.log{
+    text-decoration: none;
+    color: rgb(66, 39, 39);
+    font-size: 3vh;
+    font-weight: bolder;
+    margin-top: 25px;
+}
+
+.log:hover{
+    background-color: rgba(211, 219, 219, 0.079);
+    transform: scale(1.1, 1.1);
+}
+
+.profile {
+    display: flex;
+    width: min-content;
+    color: white;
+}

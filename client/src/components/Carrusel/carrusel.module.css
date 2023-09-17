@@ -1,0 +1,105 @@
+.subcontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+    height: 80vh;
+}
+
+.subcontainer h1 {
+    margin-bottom: 20px;
+    color: #faedde;
+}
+
+.carouselComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cardComponent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 10%;
+    background-color: rgba(0, 0, 0, 0.457);
+    color: #faedde;
+    overflow: hidden;
+}
+
+.divImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65%;
+    height: 50vh;
+}
+
+.postImg{
+    max-width: 95%;
+    height: auto;
+    max-height: 100%;
+}
+
+.cardInfo{
+    width: 35%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.artistData{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.artistData h3{
+    margin: 0;
+    width: 65%;
+}
+
+.imgDiv{
+    display: flex;
+    align-items: center;
+    border-radius: 40px;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+}
+
+.imgDiv img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardInfo button{
+    color: #faedde;
+    background:linear-gradient(#5c3014cc, #000000ab);
+    border: none;
+    width: 50%;
+    font-size: 20px;
+    padding: 0 0 5px 0;
+    font-family: 'Yuji Syuku', serif;
+}
+  
+.cardInfo button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #ffffff;
+    transition: .2s;
+    background:linear-gradient(#5c3014, #000000)
+}
+  
+  

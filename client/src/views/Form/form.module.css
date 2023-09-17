@@ -1,0 +1,147 @@
+.formPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 70px 0 50px 0;
+    color: #faedde;
+    font-family: 'Yuji Syuku', serif;
+
+}
+
+.formPage h1{
+    margin: 40px 0;
+}
+
+.formPage form{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    height: 60%;
+    width: 80%;
+    gap: 5%;
+}
+
+.uploadImgDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    width: 40%;
+    position: relative;
+    background-color: #faedde83;
+}
+
+.uploadImgDiv p{
+    position: absolute;
+}
+
+.uploadImgDiv label{
+    width: 90%;
+    height: 90%;
+    cursor: pointer;
+}
+
+.uploadImgDiv label:hover{
+    border: 1px dashed;
+    z-index: 1000;
+    background-color: #00000018;
+}
+
+.uploadImgDiv input{
+    display: none;
+}
+
+.uploadImgDiv img{
+    position: absolute;
+    max-height: 90%;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.uploadImgDiv span{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.allInputsDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    height: 100%;
+}
+
+.allInputsDiv input{
+    width: 100%;
+    height: 25px;
+    border: none;
+    padding: 0 0 0 10px;
+    background-color: #faeddee3;
+    color: #000000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.allInputsDiv textarea:focus,
+.allInputsDiv input:focus{
+    outline: none;
+}
+
+.allInputsDiv textarea{
+    max-width: 100%;
+    max-height: 100px;
+    min-width: 100%;
+    min-height: 100px;
+    border: none;
+    padding: 0 5px 2.5px 5px;
+    background-color: #faeddee3;
+    color: #000000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.selectedTechniques{
+    width: max-content;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    top: 0;
+    left: 102%;
+    background-color: #faeddee3;
+    color: #000000;
+}
+
+.selectedTechniques p{
+    margin: 0 10px;
+    height: 25px;
+}
+
+.errors{
+    position: absolute;
+    color: red;
+    font-weight: 100;
+    text-align: end;
+    width: 100%;
+}
+
+.formPage button{
+    margin: 50px 0 0 0;
+    background-color: #faedde;
+    border: none;
+    font-size: 20px;
+    padding: 0 10px 5px 10px;
+    font-family: 'Yuji Syuku', serif;
+    color: #000000;
+}
+
+.formPage button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 5px #faeddead;
+}

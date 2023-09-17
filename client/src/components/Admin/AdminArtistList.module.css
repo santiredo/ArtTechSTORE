@@ -1,0 +1,102 @@
+.artistsListComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    width: 37%;
+    max-width: 20rem;
+    height: 35vh;
+    position: relative;
+    background-color: rgb(17 24 39);
+    border-radius: 0.5rem;
+    border-top-width: 4px;
+    border-color: rgb(99 102 241);
+    margin-right: auto!important;
+    margin-left: auto!important;
+    padding: 1.5rem;
+}
+
+.artistContainer {
+  display: flex;
+  align-items: center;
+}
+
+.list::-webkit-scrollbar{
+    width: 1px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background-color: #faedde;
+}
+
+.artistsListComponent h1{
+    font-family: var(--bs-body-font-family);
+    font-size: 1.5rem;
+    align-items: left;
+    color: #faedde;
+    margin-bottom: 20px;
+    padding: 1.5rem;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    gap: 20px;
+}
+
+.artistsDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(107 114 128);
+    opacity: 1;
+}
+
+.imgDiv{
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.imgDiv img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.artistsDiv h3{
+    width: 50%;
+    margin: 0;
+    font-size: 20px;
+}
+
+.artistsDiv:hover h3{
+    text-decoration: 1px underline;
+}
+
+.artistsDiv:hover{
+    background-color: #0000003f;
+}
+
+.buttonWrapper {
+    position: relative;
+  }
+
+.myButton {
+    transition: transform 0.3s ease;
+    margin-left: 20px;
+  }
+  
+.myButton:hover {
+  transform: scale(1.3);
+  }
+  

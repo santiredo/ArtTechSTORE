@@ -1,0 +1,169 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.searchButton{
+    border: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    font-family: 'Yuji Syuku', serif;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.beforeMount{
+    display: none;
+}
+
+.hideInput,
+.input{
+    display: flex;
+    position: absolute;
+    align-items: center;
+    right: 0;
+    gap: 5px;
+    top: 50px;
+}
+
+.input p{
+    position: absolute;
+    margin: 0 0 5px 0;
+    right: 8px;
+    font-size: 20px;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: displayX .5s forwards;
+    cursor: pointer;
+}
+
+.hideInput p{
+    position: absolute;
+    margin: 0 0 5px 0;
+    right: 8px;
+    font-size: 20px;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    animation: hideX .5s forwards;
+    cursor: pointer;
+}
+
+@keyframes hideX {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+@keyframes displayX {
+    20%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.input input{
+    width: 600px;
+    height: 30px;
+    border: none;
+    padding: 0 2.5% 0.5% 2.5%;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+    animation: showInput .5s forwards;
+}
+
+@keyframes showInput {
+    0%{
+        height: 0;
+        opacity: 0;
+    }
+    100%{
+        height: 30px;
+        opacity: 1;
+    }
+}
+
+.input input:focus{
+    outline: none;
+    box-shadow: 0 0 10px #000000be;
+}
+
+.input input::placeholder{
+    color: #583000a0;
+}
+
+.hideInput input{
+    width: 600px;
+    height: 30px;
+    border: none;
+    padding: 0 2.5% 0.5% 2.5%;
+    border-radius: 2px;
+    background-color: #faedde;
+    color: #583000;
+    font-size: 15px;
+    font-family: 'Yuji Syuku', serif;
+    animation: hideInput .4s forwards;
+}
+
+@keyframes hideInput {
+    0%{
+        
+        height: 30px;
+    }
+    50%{
+        display: none;
+    }
+    80%{
+        height: 0;
+    }
+    100%{
+        height: 0;
+        display: none;
+    }
+}
+
+.searchBarArtists{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #faedde;
+    gap: 15px;
+    top: 85px;
+    left: -560px;
+    width: 600px;
+    padding: 5px 10px;
+}
+
+.navlink{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    align-items: center;
+    gap: 10px;
+    color: #583000;
+}
+
+.navlink:hover{
+    text-decoration:1px underline;
+}
+
+.navlink img{
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+}

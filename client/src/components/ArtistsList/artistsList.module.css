@@ -1,0 +1,70 @@
+.artistsListComponent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20%;
+    height: 60.8vh;
+    position: relative;
+}
+
+.list::-webkit-scrollbar{
+    width: 1px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background-color: #faedde;
+}
+
+.artistsListComponent h1{
+    color: #faedde;
+    background: linear-gradient( #974D22, #924B21);
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    gap: 20px;
+}
+
+.artistsDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000000e0;
+}
+
+.imgDiv{
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.imgDiv img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.artistsDiv h3{
+    width: 50%;
+    margin: 0;
+    font-size: 20px;
+}
+
+.artistsDiv:hover h3{
+    text-decoration: 1px underline;
+}
+
+.artistsDiv:hover{
+    background-color: #0000003f;
+}

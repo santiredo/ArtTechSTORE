@@ -1,0 +1,85 @@
+.filtersComponent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    background-color: #00000077;
+    width: 20%;
+    padding-left: 2%;
+    box-shadow: 0 0 5px #000000;
+    border-radius: 5px;
+    color: #faedde;
+}
+
+.filtersComponent h3{
+    margin: 0;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.filtersComponent img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: 5.5%;
+    right: 10%;
+    cursor: pointer;
+}
+
+.filtersComponent img:hover{
+    transform: rotate(-45deg) scale(1.1);
+}
+
+.filterDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: start;
+    width: 98%;
+    padding-right: 2%;
+    padding-left: 5%;
+    max-height: 75px;
+    overflow: auto;
+    border-top: 1px solid #faedde;
+    
+}
+
+.options p{
+    width: 100%;
+    font-size: small;
+    margin: 2px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.options p:hover::before{
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-top: 2px solid #faedde;
+    border-right: 2px solid #faedde;
+    border-left: 2px solid #faedde;
+    border-bottom: 2px solid #faedde;
+    position: absolute;
+    border-radius: 5px;
+    right: 30%;
+    top:55%; 
+}
+
+.options::-webkit-scrollbar{
+    width: 1px;
+}
+
+.options::-webkit-scrollbar-thumb {
+    background-color: #faedde;
+}

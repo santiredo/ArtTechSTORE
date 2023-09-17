@@ -1,0 +1,75 @@
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 100px;
+    color: #faedde;
+    font-family: 'Yuji Syuku', serif;
+}
+
+.fondo1{
+    position: absolute;
+    width: 300px;
+    z-index: -1;
+    left: -100px;
+    bottom: -100px;
+}
+
+.title{
+    letter-spacing: 5px;
+    margin: 50px 0 100px 0;
+    color: #faedde;
+}
+
+.phrases{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 50px;
+    position: relative;
+}
+
+.phrases p{
+    margin: 0;
+    font-size: 20px;
+}
+
+.phrases h2{
+    margin: 0;
+}
+
+.phraseDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+    height: 250px;
+}
+
+.phraseDiv img{
+    max-height: 200px;
+    max-width: 250PX;
+    opacity: 75%;
+}
+
+.leftPhrase{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    gap: 10px;
+}
+
+.rightPhrase{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 10px;
+}
+
+.phraseDiv:hover{
+    background: linear-gradient(#1f416deb, #B0C3DBeb);
+    border-radius: 5px;
+}
