@@ -31,7 +31,7 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.ENUM('Painting', '3D Object', 'Drawing')
       },
       technique: {
-        type: DataTypes.ENUM('Oil Painting', 'Pencil', 'Watercolor', 'Macrame', 'Ceramics')
+        type: DataTypes.JSONB
       },
       description: {
         type: DataTypes.STRING
