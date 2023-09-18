@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Dispatch } from 'redux';
-const URL='http://localhost:3001'
 
 export type Action = {
   type: string;
@@ -10,7 +9,7 @@ export type Action = {
 export const getAllProducts = async(dispatch:Dispatch<Action>) => {
   try {
 
-    const response = await axios('http://localhost:3001/products')
+    const response = await axios('/products')
 
     return dispatch({
       type: 'ALL_PRODUCTS',
@@ -25,7 +24,7 @@ export const getAllProducts = async(dispatch:Dispatch<Action>) => {
 
 export async function searchArtist(name:string, dispatch: Dispatch<Action>) {
     try {
-      const response = await axios.get(`${URL}/artist/artist/name?name=${name}`);
+      const response = await axios.get(`/artist/artist/name?name=${name}`);
 
 
       return dispatch({
@@ -42,7 +41,7 @@ export async function searchArtist(name:string, dispatch: Dispatch<Action>) {
 export async function allArtist(dispatch:Dispatch<Action>){
   
   try {
-    const response = await axios.get(`${URL}/artist`);
+    const response = await axios.get(`/artist`);
     
     return dispatch(
       {
@@ -58,7 +57,7 @@ export async function allArtist(dispatch:Dispatch<Action>){
 
 export async function deleteArtist(dispatch: Dispatch<Action>, artistId: number) {
   try {
-    await axios.delete(`${URL}/artist/${artistId}`);
+    await axios.delete(`/artist/${artistId}`);
     
     dispatch({
       type: 'DELETE_ARTIST',
@@ -72,7 +71,7 @@ export async function deleteArtist(dispatch: Dispatch<Action>, artistId: number)
 export async function getAllUsers(dispatch:Dispatch<Action>){
   
   try {
-    const response = await axios.get(`${URL}/user`);
+    const response = await axios.get(`/user`);
     
     return dispatch(
       {
@@ -90,7 +89,7 @@ export const getArtistById = async(id:string | undefined, dispatch:Dispatch<Acti
 
     try {
       
-      const response = await axios(`http://localhost:3001/artist/${id}`)
+      const response = await axios(`/artist/${id}`)
 
       return dispatch( {
         type: 'GET_ARTIST',
@@ -143,7 +142,7 @@ export const postCreation = async(form: {
 
   try {
 
-    const response = await axios.post(`http://localhost:3001/products`, {...form, image})
+    const response = await axios.post(`/products`, {...form, image})
 
 
     return dispatch({
@@ -159,7 +158,7 @@ export const postCreation = async(form: {
 export const getProductById = async (id: string | undefined, dispatch:Dispatch<Action>) => {
  
   try {
-    const response = await axios(`http://localhost:3001/products/${id}`);
+    const response = await axios(`/products/${id}`);
 
     dispatch({
       type: 'SET_PRODUCT_INFO',
@@ -183,7 +182,7 @@ export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
 
 
   try {
-    const response = await axios(`http://localhost:3001/favourites/${userId}`)
+    const response = await axios(`/favourites/${userId}`)
 
     return dispatch ({
       type: 'SET_FAV',

@@ -19,9 +19,9 @@ export default function Hall(){
   
     const isUserRegistered = async() => {
       if(user?.email){
-        let response = await axios(`http://localhost:3001/user/mail?mail=${user!.email}`)
+        let response = await axios(`/user/mail?mail=${user!.email}`)
   
-        if(!response.data) {response = await axios(`http://localhost:3001/artist/artist/mail?mail=${user!.email}`)}
+        if(!response.data) {response = await axios(`/artist/artist/mail?mail=${user!.email}`)}
   
         if(!response.data){
             setLoading(false)
