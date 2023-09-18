@@ -13,6 +13,9 @@ RUN npm install
 # Copia el código fuente de tu aplicación
 COPY . .
 
+# Instala TypeScript globalmente en el contenedor
+RUN npm install -g typescript
+
 # Compila TypeScript a JavaScript
 RUN tsc  # Asegúrate de que este comando compile a la carpeta 'dist'
 
