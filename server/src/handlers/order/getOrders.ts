@@ -1,5 +1,5 @@
+import { getOrders } from '../../controllers/Order/getOrders';
 import { Request, Response } from 'express';
-import { getOrders } from "../../controllers/Order/getOrders";
 
 export async function getOrderHandler(req: Request, res: Response) {
     try {

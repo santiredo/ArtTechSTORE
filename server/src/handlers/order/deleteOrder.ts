@@ -1,10 +1,10 @@
+import { deleteOrder } from '../../controllers/Order/deleteOrder';
 import { Request, Response } from 'express';
-import { deleteOrder } from "../../controllers/Order/deleteOrder";
 
 export async function deleteOrderHandler(req: Request, res: Response) {
     try {
       const orderId = parseInt(req.params.id, 10);
-      await deleteOrder(orderId);
+      await deleteOrder(orderId)
       return res.status(204).send();
     } catch (error) {
       console.error('Error al eliminar la orden', error);
