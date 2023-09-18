@@ -111,13 +111,19 @@ export default function rootReducer(state = initialState, action:Action<any>){
           {
             return{
               ...state,
-              allPostsSelled:action.payload.filter((post:ArtGalleryItem) => post.posted === false).reverse(),
               allPosts: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               artGallery: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               typeFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               techniqueFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               allPostFilter: action.payload.filter((post:ArtGalleryItem) => post.posted === true).reverse(),
               loadingHome: false
+            }
+          }
+        case 'ALL_PRODUCTS_SELLED':
+          {
+            return{
+              ...state,
+              allPostsSelled:action.payload.filter((post:ArtGalleryItem) => post.posted === false).reverse(),
             }
           }
         case 'RESET':
@@ -135,11 +141,11 @@ export default function rootReducer(state = initialState, action:Action<any>){
             artists: action.payload,
           }
         case 'DELETE_ARTIST':
-            const updatedArtists = state.artists.filter(artist => artist.id !== action.payload);
+            {const updatedArtists = state.artists.filter(artist => artist.id !== action.payload);
             return {
               ...state,
               artists: updatedArtists,
-            };
+            };}
         case 'GET_ALL_USERS':
           
           return{
