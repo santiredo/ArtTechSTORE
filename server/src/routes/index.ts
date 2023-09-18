@@ -1,5 +1,4 @@
 import { Router } from 'express';
-
 import productsRouter from './products';
 import orderRouter from './order';
 import userRouter from './user';
