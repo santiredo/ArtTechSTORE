@@ -7,11 +7,17 @@ WORKDIR /app/client  # Cambia a la carpeta 'client'
 # Copia los archivos de configuración del proyecto (package.json y package-lock.json)
 COPY package*.json ./
 
+RUN rm -rf node_modules
+RUN rm package-lock.json
+
 # Instala las dependencias del proyecto
 RUN npm install
 
 # Copia el código fuente de tu aplicación
 COPY . .
+
+# Instala TypeScript globalmente en el contenedor
+RUN npm install -g typescript
 
 # Compila TypeScript y genera el código optimizado para producción
 RUN npm run build
@@ -20,4 +26,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para ejecutar tu aplicación
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
