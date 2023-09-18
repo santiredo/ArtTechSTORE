@@ -2,7 +2,7 @@
 FROM node:14
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /app/client  # Cambia a la carpeta 'client'
+WORKDIR /app/client
 
 # Copia los archivos de configuración del proyecto (package.json y package-lock.json)
 COPY package*.json ./
