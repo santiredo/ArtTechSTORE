@@ -2,14 +2,14 @@ import { sequelize } from "./db";
 import server from "./server";
 import io from "./socketServer/socketHandler";
 
-const PORT = 3001;
+const {DB_PORT} = process.env;
 
 
 sequelize
   .sync({ force: false })
   .then(() => {
-    server.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`);
+    server.listen(DB_PORT, () => {
+      console.log(`Server listening on port ${DB_PORT}`);
     });
   })
   .catch((error: any) => {
