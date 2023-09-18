@@ -35,6 +35,8 @@ export default function ProfileView() {
   useEffect(() => {
 
     getArtistById(id, dispatch)
+
+    setLoading(false)
     
   }, [id, dispatch]);
 
