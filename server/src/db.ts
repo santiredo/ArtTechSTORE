@@ -4,18 +4,23 @@ import 'dotenv/config';
 import fs from 'fs'
 import path from 'path'
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, DATABASE_URL } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
-
-let sequelize: Sequelize =  new Sequelize(DATABASE_URL!, {
-    logging: false,
-    native: false,
-    dialectOptions: {
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  username: DB_USER,
+  password: DB_PASSWORD,
+  host: DB_HOST,
+  port: Number(DB_PORT), 
+  database: DB_NAME,
+  logging: false,
+  native: false,
+  dialectOptions: {
       ssl: {
-        require: true,
-        rejectUnauthorized: false
+          require: true, // Requiere SSL
+          rejectUnauthorized: false // Permite conexiones sin certificados válidos (no recomendado en producción)
       }
-    }
+  }
 });
 
 const basename = path.basename(__filename)
