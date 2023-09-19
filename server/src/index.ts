@@ -1,6 +1,5 @@
 import { sequelize } from "./db";
 import server from "./server";
-import io from "./socketServer/socketHandler";
 
 const {DB_PORT} = process.env;
 
