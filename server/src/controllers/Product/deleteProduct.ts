@@ -20,6 +20,7 @@ export async function deleteProduct(productId: number) {
 
   if(deletedProduct.isSoftDeleted()){
     deletedProduct.update({
+      posted:false,
       deletedAt:formattedDate
     })
     await deletedProduct.save();

@@ -40,7 +40,7 @@ export default function ProfileView() {
     
   }, [id, dispatch]);
 
-  
+  const isArtistLoggedIn = localStorage.getItem("artistId") === id;
 
   return (
     <div className={styles.profilePage}>
@@ -50,15 +50,17 @@ export default function ProfileView() {
           <div>
             { 
             loading 
-            ?
+            ? (
             ""
-            :
+            ):(
             <div>
+              {isArtistLoggedIn && (
               <NavLink to={`/form/${id}`}>
                   <button className={styles.btn}>Add Product</button>
               </NavLink>
+            )}
             </div>
-            }
+            )}
           </div>
         </div>
         <div className={styles.profileInfo}>

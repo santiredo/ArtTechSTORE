@@ -12,6 +12,5 @@ sequelize
     });
   })
   .catch((error: any) => {
-    // Declara el tipo del parámetro 'error'
     console.error(error);
   });
