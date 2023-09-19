@@ -39,13 +39,13 @@ const Detail = () => {
                 return fav.UserId === userId && fav.ProductId === Number(id)
             })
 
-            await axios.delete(`http://localhost:3001/favourites/${fav?.id}`)
+            await axios.delete(`/favourites/${fav?.id}`)
             await getFavsById(userId, dispatch)
 
 
         } else {
             
-            await axios.post('http://localhost:3001/favourites', {productId:Number(id), userId:Number(userId)})
+            await axios.post('/favourites', {productId:Number(id), userId:Number(userId)})
             await getFavsById(userId, dispatch)
 
 
@@ -109,7 +109,7 @@ const Detail = () => {
                             }
                             <h2>{product.title}</h2>
                             <h3>{product.price}</h3>
-                            <NavLink to={`http://localhost:3001/artist/${product.artistName}`}>
+                            <NavLink to={`/artist/${product.artistName}`}>
                             <div className={style.imgDiv}>
                                 <img src={product.artistPhoto ? product.artistPhoto : user} alt="" />
                             </div>
