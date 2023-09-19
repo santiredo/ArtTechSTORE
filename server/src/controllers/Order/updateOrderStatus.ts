@@ -1,10 +1,12 @@
 import { Order } from "../../db";
 
 
-export async function updateOrder(orderId:number, statusId:number) {
+export async function updateOrder(orderId:number) {
     const updatedOrder = await Order.findByPk(orderId)
 
-    updatedOrder!.dataValues.statusId = statusId
+    updatedOrder!.update ({
+        statusId : 1
+    })
 
     await updatedOrder?.save()
 
