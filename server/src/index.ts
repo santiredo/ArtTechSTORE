@@ -7,8 +7,8 @@ const { DB_PORT } = process.env;
 sequelize
   .sync({ force: false })
   .then(() => {
-    server.listen(3001, () => {
-      console.log(`Server listening on port ${DB_PORT}`);
+    server.listen(() => {
+      console.log(`Server listening`);
     });
   })
   .catch((error: any) => {
