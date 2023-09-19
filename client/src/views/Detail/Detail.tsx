@@ -11,10 +11,13 @@ import loadingGif from '../../assets/loading.gif'
 import user from '../../assets/usuario.png'
 import style from "./Detail.module.css";
 import axios from 'axios';
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 
 
 const Detail = () => {
 
+    initMercadoPago('TEST-96ce1060-b631-4a00-b37a-be900591244e');
+    
     const {id} = useParams()
 
     const dispatch = useDispatch()
@@ -78,6 +81,28 @@ const Detail = () => {
         getProductById(id, dispatch)
 
     }, []);
+    
+      const [preferenceId, setPreferenceId] = useState(null);
+    
+        const createPreference = async () => {
+            const response = await axios.post("http://localhost:3001/create_preference", {
+                description: product.title,
+                price: product.price,
+                quantity: 1,
+                currency_id: "ARS"
+            })
+        
+            const {id} = response.data;
+    
+            return id
+        }
+    
+        const handleBuy = async () => {
+            const id = await createPreference();
+            if(id) {
+                setPreferenceId(id);
+            }
+        }
 
     
     return(
@@ -117,7 +142,8 @@ const Detail = () => {
                             </NavLink>
                             <h3>{product.type}</h3>
                             <h3>{product.technique}</h3>
-                            <button className={style.buyPostButton}>Buy now</button>
+                            <button className={style.buyPostButton} onClick={handleBuy}>Buy now</button>
+                            {preferenceId && <Wallet initialization={{ preferenceId }} />}
                         </div>
                     </div>
                     <div className={style.descriptionDiv}>
