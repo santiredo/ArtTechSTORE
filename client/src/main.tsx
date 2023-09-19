@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Auth0Provider } from '@auth0/auth0-react';
 import axios from 'axios'
 
-/* axios.defaults.baseURL = 'http://localhost:3001' */
-axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
+ axios.defaults.baseURL = 'http://localhost:3001' 
+//axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
