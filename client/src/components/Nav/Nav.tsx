@@ -5,9 +5,9 @@ import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";
 import style from "./Nav.module.css";
-import LogoutButton from '../Auth0/Logout/Logout';
-import { useAuth0 } from '@auth0/auth0-react';
-import DashboardButton from '../Admin/DashBoardButton/DashboardButton';
+// import LogoutButton from '../Auth0/Logout/Logout';
+// import { useAuth0 } from '@auth0/auth0-react';
+// import DashboardButton from '../Admin/DashBoardButton/DashboardButton';
 
 
 const Navbar = () => {
@@ -15,9 +15,9 @@ const Navbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
   const [visible, setVisible] = useState<boolean>(true);
 
-  const [artist, setArtist] = useState(false)
+/*   const [artist, setArtist] = useState(false)
   const [username, setUsername] = useState(false)
-  const [admin, setAdmin] = useState(false)
+  const [admin, setAdmin] = useState(false) */
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -25,7 +25,6 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [prevScrollPos, visible]);
 
 
@@ -41,9 +40,9 @@ const Navbar = () => {
 
   const navbarClass = visible ? style.navBar : `${style.navBar} ${style.hiddenNavBar}`;
       
-  const {user} = useAuth0()
+  // const {user} = useAuth0()
 
-  const userDataJSON = localStorage.getItem('userData')
+/*   const userDataJSON = localStorage.getItem('userData')
 
   if(JSON.parse(userDataJSON!).admin === true) {
     setAdmin(true);
@@ -53,7 +52,7 @@ const Navbar = () => {
   }
   else{
     setUsername(true);
-  }
+  } */
 
   return(
     <div className={navbarClass}>
@@ -65,9 +64,9 @@ const Navbar = () => {
       <NavLink to="/home" className={style.navLink}>Home</NavLink>
       <SearchBar/>
       <div>
-        {artist && <img src={user?.picture} alt="" />}
+{/*         {artist && <img src={user?.picture} alt="" />}
         {username && <LogoutButton/>}
-        {admin && <DashboardButton/>}
+        {admin && <DashboardButton/>} */}
       </div>
     </div>
   );
