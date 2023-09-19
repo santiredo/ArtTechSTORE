@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           domain="dev-bmewhnl6c5tr886s.us.auth0.com"
           clientId="2sXnU51ibdteMmbhOjNb42oTthkRMkkg"
           authorizationParams={{
-            redirect_uri: 'http://127.0.0.1:5173/hall'
+            redirect_uri: 'https://art-tech-store.vercel.app//hall'
           }}
         >
           <App />
