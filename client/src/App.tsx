@@ -15,7 +15,7 @@ import Hall from './views/Hall/Hall';
 import axios from 'axios';
 
 
-axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/' 
+axios.defaults.baseURL = 'http://localhost:3001/' 
 
 
 export default function App() {
