@@ -3,7 +3,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { InitialState } from "../../redux/reducer";
-import { getAllProducts } from "../../redux/action";
+import { getAllProducts, getAllProductsAdmin } from "../../redux/action";
 import { useEffect } from "react";
 import { Card, DonutChart, Metric, Text, Title } from "@tremor/react";
 
@@ -39,6 +39,7 @@ export default function AdminDonutChart(){
     }]
     useEffect(()=>{
         getAllProducts(dispatch);
+        getAllProductsAdmin(dispatch);
     },[])
     return(
         <>

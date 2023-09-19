@@ -6,7 +6,7 @@ import express from "express";
 const adminRouter = express.Router();
 
 adminRouter.get("/artist",getAllArtistsAdminHandler);
-adminRouter.get("/product", getProductsAdminHandler);
+adminRouter.get("/products", getProductsAdminHandler);
 adminRouter.get("/user",getAllUserAdminHandler);
 
 
