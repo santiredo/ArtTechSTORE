@@ -8,12 +8,17 @@ export async function updateOrderHandler(req: Request, res: Response){
     try {
         const {id} = req.params
 
-        const {statusId} = req.body
-
         const orderId = Number(id)
 
-        const updatedOrder = await updateOrder(orderId, statusId)
+        const updatedOrder = await updateOrder(orderId)
 
+        const user = await User.findOne({
+            where:{
+                id: updatedOrder!.dataValues.UserId
+            }
+        })
+        const userMail = user?.dataValues.mail
+        
         if(updatedOrder){const  transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465,
@@ -25,9 +30,17 @@ export async function updateOrderHandler(req: Request, res: Response){
         })
         const MailOptions = {
             from: '"Art Tech Store" artechstorehenry@gmail.com',
-            to: 'user.mail',
+            to: userMail,
             subject: "Confirmación de pago",
-            text: "Gracias por elegir Art Tech Store como su proveedor de arte, esperemos que lo disfrute",
+            text: `Hola!
+            
+            Confirmamos el pago por tu compra en Art Tech Store.
+            
+            El numero de tu pedido es #${orderId}
+            
+            Ya estamos preparando tu pedido para enviártelo. ¡Te vamos a avisar cuando esté en camino!
+            
+            Gracias por elegir Art Tech Store como su proveedor de arte, esperemos que lo disfrute.`,
         }
         transporter.sendMail(MailOptions)
 

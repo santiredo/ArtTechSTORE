@@ -5,8 +5,11 @@ export async function createOrderHandler(req: Request, res: Response) {
     try {
   ////////////////////REVISAR/////////////////
 
-      const { userId, statusId, price, address } = req.body;  
-      const order = await postOrder(userId, statusId, price, address);
+      const {price, address } = req.body;
+      const {id} = req.params
+      const userId = Number(id)
+      
+      const order = await postOrder (price, address, userId);
   
       return res.status(200).json(order);
     } catch (error) {
