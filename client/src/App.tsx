@@ -12,6 +12,10 @@ import Favorites from './components/Favorites/Favorites';
 import Wrong from './views/WrongURL/WrongURL';
 import { useEffect, useState } from 'react';
 import Hall from './views/Hall/Hall';
+import axios from 'axios';
+
+
+axios.defaults.baseURL = 'http://localhost:3001/' 
 
 
 export default function App() {
