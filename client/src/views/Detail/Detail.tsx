@@ -82,39 +82,49 @@ const Detail = () => {
 
     }, []);
     
-      const [preferenceId, setPreferenceId] = useState(null);
+    const [preferenceId, setPreferenceId] = useState(null);
     
-        const createPreference = async () => {
-            const response = await axios.post("http://localhost:3001/create_preference", {
+    const createPreference = async () => {
+        const response = await axios.post("http://localhost:3001/create_preference", {
                 description: product.title,
                 price: product.price,
                 quantity: 1,
                 currency_id: "ARS"
             })
-        
+            
             const {id} = response.data;
-    
+
             return id
         }
-    
+        
         const handleBuy = async () => {
             const id = await createPreference();
+
             if(id) {
                 setPreferenceId(id);
             }
-        }
 
-    
-    return(
-        <>
+            try {
+            
+              const response = await axios.post(`/order/${userId}`, { price: product.price, address: 'Direccion Random' })
+            
+              return response.data
+            } catch (error) {
+              alert(error);
+            }
+        }
+        
+        
+        return(
+            <>
         {
             loading ? (
                 <div className={style.loadingDiv}>
                     <img src={loadingGif} alt="" />
                 </div>
 
-            ) : (
-                <div className={style.detailPage}>
+) : (
+    <div className={style.detailPage}>
                     <div className={style.postContainer}>
                         <img className={style.postImage} src={product.image} alt="cuadro" />
                         <div className={style.info}>
