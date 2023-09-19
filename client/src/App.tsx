@@ -61,7 +61,7 @@ export default function App() {
       <>
         {navbarVisible && <Navbar />}
         <Routes>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='https://art-tech-store.vercel.app/home' element={<Home/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
