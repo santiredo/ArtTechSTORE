@@ -18,27 +18,27 @@ export default function Favorites() {
       <h1>My favorite products</h1>
       <div className={style.itemsContainer}>
         {
-          favourites.map((product: ArtGalleryItem) => (
-            <div className={style.favouriteComponent}>
-              <div className={style.imgFav}>
-                  <img src={filledFav} alt="" />
-                  <span>Remove from favs</span>
-              </div>
-              <h2>{product.title}</h2>
-              <div className={style.imageArtist}>
-                <img src={product.image} alt="" />
-                <NavLink to={`/profile/id`} className={style.artistDiv}>
-                  <div className={style.imgDiv}>
-                    <img src={product.artistPhoto ? product.artistPhoto: user} alt="" />
-                  </div>
-                  <h3>{product.artistName}</h3>
-                </NavLink>
-              </div>              
-              <div className={style.favInfo}>
-                <br />
-                <h2>${product.price}</h2>
-                <hr />
-                <div><h5>Published on:</h5><h5>{product.published}</h5></div>
+        favourites.map((product: ArtGalleryItem) => (
+          <div className={style.favouriteComponent}>
+            <div className={style.imgFav}>
+                <img src={filledFav} alt="" />
+                <span>Remove from favs</span>
+            </div>
+            <h2>{product.title}</h2>
+            <div className={style.imageArtist}>
+              <img src={product.image} alt="" />
+              <NavLink to={`/profile/id`} className={style.artistDiv}>
+                <div className={style.imgDiv}>
+                  <img src={product.artistPhoto ? product.artistPhoto: user} alt="" />
+                </div>
+                <h3>{product.artistName}</h3>
+              </NavLink>
+            </div>              
+            <div className={style.favInfo}>
+              <br />
+              <h2>${product.price}</h2>
+              <hr />
+              <div><h5>Published on:</h5><h5>{product.published}</h5></div>
                 <hr />
                 <div className={style.typeTechnique}>
                   <h5>{product.type}</h5>
@@ -50,9 +50,8 @@ export default function Favorites() {
                   More info
                 </NavLink>
               </div>
-
             </div>
-          ))
+        ))
         }
       </div>
     </div>
