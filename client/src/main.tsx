@@ -8,7 +8,6 @@ import { store } from './redux/store.ts'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Auth0Provider } from '@auth0/auth0-react';
 
-axios.defaults.baseURL = 'http://localhost:3001' 
 // axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -19,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           domain="dev-bmewhnl6c5tr886s.us.auth0.com"
           clientId="2sXnU51ibdteMmbhOjNb42oTthkRMkkg"
           authorizationParams={{
-            redirect_uri: 'http://127.0.0.1:5173/hall'
+            redirect_uri: '/hall'
           }}
         >
           <App />
