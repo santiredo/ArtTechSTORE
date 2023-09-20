@@ -20,8 +20,10 @@ mercadopago.configure({
     "TEST-7741310851460716-091516-1590a60389b1b05df8af4e050c4d17ff-354584235",
 });
 
-router.use("/create_preference/:id", (req, res) => {
-  const { id } = req.params;
+router.post("/create_preference/:id/:productId", (req, res) => {
+  const { id, productId } = req.params;
+
+  console.log(req.body)
 
   let preference = {
     items: [
@@ -32,7 +34,7 @@ router.use("/create_preference/:id", (req, res) => {
       },
     ],
     back_urls: {
-      success: `${URL}/success/${id}`,
+      success: `${URL}/success/${id}/${productId}`,
       failure: `${URL}/failure`,
       pending: "",
     },

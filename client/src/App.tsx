@@ -69,7 +69,7 @@ export default function App() {
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
           <Route path='/form/:id' element={<Form/>}/>
-          <Route path='/success/:id' element={<Success />}/>
+          <Route path='/success/:id/:productId' element={<Success />}/>
           <Route path='*' element={<Wrong/>}/>
         </Routes>
       </>
