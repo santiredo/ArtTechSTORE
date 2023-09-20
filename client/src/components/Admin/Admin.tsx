@@ -15,15 +15,19 @@ export default function Admin(){
     navigation('/home');
    }
     return(
-    <>
-    <div className="bg-neutral-400 space-y-10">
+    <div className="bg-neutral-400">
         <button className="h-25 w-20 bg-neutral-400 rounded-lg" onClick={handleClick}>{<img className="h-20 w-32" src={letter} alt="logo" />}</button>
-        
+        <div className="flex  flex-wrap flex-row justify-space-evenly bg-neutral-400 space-y-10 center">
         <AdminBarChart/>
+        </div>
+    
+    <div className="flex  flex-wrap flex-row justify-space-evenly bg-neutral-400 space-y-30 center">
         <AdminDonutChart/>
+    </div>
+    <div className="flex  flex-wrap flex-row justify-space-evenly bg-neutral-400 space-y-10 center ">
         <AdminList/>
         <AdminArtistsList/>
     </div>
-    </>
+    </div>
     )
 }
