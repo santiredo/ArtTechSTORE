@@ -18,25 +18,26 @@ const Home: React.FC = () => {
 
   const dispatch = useDispatch()
 
+  const products = useSelector((state:InitialState) => state.allPosts)
+
+  const favs = useSelector((state: InitialState) => state.favourites)
 
   const getAllFavourites = async() => {
-    const userDataJSON = localStorage.getItem('userData')
-
-    let userId = JSON.parse(userDataJSON!).id
-
+    const userId = JSON.parse(localStorage.getItem('userData')!).id
     getFavsById(Number(userId),dispatch)
   }
 
   useEffect(() => {
-    getAllProducts(dispatch)
-
-    setTimeout(() => {
-      getAllFavourites()
-    }, 5000);
-    
+    getAllProducts(dispatch)  
 
   }, [])
 
+  console.log(favs)
+
+  useEffect(() => {
+    getAllFavourites()
+
+  }, [products])
 
   return (
     <>

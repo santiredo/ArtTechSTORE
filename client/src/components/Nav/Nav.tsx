@@ -1,13 +1,14 @@
 
 import {useState, useEffect} from 'react'
-
 import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";
-import style from "./Nav.module.css";
 import LogoutButton from '../Auth0/Logout/Logout';
 import { useAuth0 } from '@auth0/auth0-react';
+import userPhoto from '../../assets/usuario.png'
+import config from '../../assets/configuracion.png'
 import DashboardButton from '../Admin/DashBoardButton/DashboardButton';
+import style from "./Nav.module.css";
 
 
 const Navbar = () => {
@@ -19,6 +20,8 @@ const Navbar = () => {
   const [userName, setUsername] = useState(false)
   const [admin, setAdmin] = useState(false)
 
+  console.log(artist)
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   
@@ -29,14 +32,14 @@ const Navbar = () => {
 
   const {user} = useAuth0()
 
+  const userData = JSON.parse(localStorage.getItem('userData')!)
 
   const typeOfUser = async() => {
-
-    const userData = await JSON.parse(localStorage.getItem('userData')!)
 
     if(userData.admin === true){
       return setAdmin(true)
     }else if(userData.location){
+      console.log('soy artista')
       return setArtist(true)
     } else{
       return setUsername(true)
@@ -57,6 +60,17 @@ const Navbar = () => {
   };
 
   const navbarClass = visible ? style.navBar : `${style.navBar} ${style.hiddenNavBar}`;
+ 
+  const [userConfig, setUserConfig] = useState(false)
+  const [beforeMount, setBeforeMount] = useState(false)
+
+  const showArtistConfig = () => {
+    setBeforeMount(true)
+
+    setUserConfig(!userConfig)
+  }
+
+  const visibleUser = userConfig ? style.showUser :  style.hideUser;
 
   return(
     <div className={navbarClass}>
@@ -68,9 +82,37 @@ const Navbar = () => {
       <NavLink to="/home" className={style.navLink}>Home</NavLink>
       <SearchBar/>
       <div>
-        {artist && <img src={user?.picture} alt="" />}
+        {artist && (
+          <div className={style.config} onClick={showArtistConfig}>
+            <img src={config} alt="" />
+            {
+              beforeMount && (
+                <div className={visibleUser}>
+                  <NavLink key={userData.id} to={`/profile/${userData.id}`} className={style.artistsDiv}>
+                    <div className={style.imgDiv}>
+                        <img src={user ? user.picture : userPhoto} alt="" />
+                    </div>
+                  </NavLink>
+                  <LogoutButton/>
+                </div>
+              )
+            }
+          </div>
+        )}
         {userName && <LogoutButton/>}
-        {admin && <DashboardButton/>}
+        {admin && (
+          <div className={style.config} onClick={showArtistConfig}>
+            <img src={config} alt="" />
+            {
+              beforeMount && (
+                <div className={visibleUser}>
+                  <DashboardButton/>
+                  <LogoutButton/>
+                </div>
+              )
+            }
+          </div>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import profilePhoto from '../../assets/usuario.png'
 import { NavLink } from "react-router-dom";
 import loadingGIF from '../../assets/loading.gif'
+import { useAuth0 } from "@auth0/auth0-react";
 import styles from './ProfileView.module.css'
 
 
@@ -36,11 +37,12 @@ export default function ProfileView() {
 
   const isArtistProfile = () => {
 
-    const userId = JSON.parse(localStorage.getItem('userData')!)
+    const userId = JSON.parse(localStorage.getItem('userData')!).id
 
     Number(userId) === Number(artist.id) && setArtistProfile(true)
 
   }
+
 
   useEffect(() => {
 
@@ -60,6 +62,8 @@ export default function ProfileView() {
     
   }, [id, dispatch]);
 
+  const {user} = useAuth0()
+
   return (
     <div className={styles.profilePage}>
       {
@@ -71,7 +75,9 @@ export default function ProfileView() {
           <>
             <div className={styles.profileContainer}>
               <div className={styles.photoDiv}>
-                <img className={styles.profilePhoto} src={artist.image ? artist.image : profilePhoto} alt="" />
+                <div className={styles.profilePhoto}>
+                  <img src={user ? user.picture : profilePhoto} alt="" />
+                </div>
                 <div>
                   <div>
                     {
@@ -123,18 +129,23 @@ export default function ProfileView() {
                   }
                 </div>
                 <br />
-                <div className={styles.lastCreation}>
-                  <h2>Last post</h2>
-                  <br />
-                    <div className={styles.cardComponent2}>
-                      {/* <img className={styles.img} key={productsOnSale[0].id || null} src={productsOnSale[0].image || ''} alt="" />
-                      <div className={styles.cardInfo2}>
-                        <NavLink to={`/detail/${productsOnSale[0].id}`} >
-                          <button className={styles.btn2}>More Information</button>
-                        </NavLink>
-                      </div> */}
+                {
+                  productsOnSale[0] && (
+                    <div className={styles.lastCreation}>
+                      <h2>Last post</h2>
+                      <br />
+                        <div className={styles.cardComponent2}>
+                          <img className={styles.img} key={productsOnSale[0].id || null} src={productsOnSale[0].image || ''} alt="" />
+                          <div className={styles.cardInfo2}>
+                            <NavLink to={`/detail/${productsOnSale[0].id}`} >
+                              <button className={styles.btn2}>More Information</button>
+                            </NavLink>
+                          </div>
+                        </div>
                     </div>
-                </div>
+                  )
+                }
+                
               </div>
             </div>
           </>

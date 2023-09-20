@@ -157,6 +157,8 @@ export const postCreation = async(form: {
 
   try {
 
+    console.log(form, image)
+
     const response = await axios.post(`/products`, {...form, image})
 
 

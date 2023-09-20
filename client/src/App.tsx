@@ -21,8 +21,6 @@ axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
 export default function App() {
 
   const location = useLocation()
-
-  console.log(location.pathname)
   
   if(location.pathname === '/admin'){
     return(

@@ -128,15 +128,9 @@ export default function Register({onRegister}: {onRegister: (userExistence: bool
                 </div>
                 {
                     isArtist && (
-                        <>
                         <div className={style.registerInputs}>
                             <input type="text" name='location' value={registerForm.location} placeholder="Here goes your location" onChange={handleChange}/>
-                        </div>
-                        <div className={style.registerInputs}>
-                            <input type="text" name='image' value={registerForm.image} placeholder="Profile photo" onChange={handleChange}/>
-                        </div>
-                        </>
-                        
+                        </div>                        
                     )
                 }
                 <button onClick={handleRegister} className={style.registerButton}>Register</button>

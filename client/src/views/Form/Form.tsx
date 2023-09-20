@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
-import { finalValidate, validateForm, validateSubmit } from './Validation/validation';
+import { finalValidate, validateSubmit } from './Validation/validation';
 import style from './form.module.css'
 import './form.css'
 import { postCreation } from '../../redux/action';
@@ -64,15 +64,6 @@ export default function Form() {
             [event.target.name]: event.target.value
         })
     }
-
-    useEffect(() => {
-
-        const priceError = validateForm(form.price)
-        setErrors({
-            ...errors,
-            price: priceError
-        })
-    }, [form, errors])
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
