@@ -46,19 +46,17 @@ export default function ProfileView() {
 
     isArtistProfile()
 
+    artist.id === Number(id) && setLoading(false)
+
+    return (() => {
+      setLoading(true)
+    }) 
+
   }, [artist])
   
   useEffect(() => {
 
     getArtistById(id, dispatch)
-
-    setTimeout(() => {
-      artist.name.length > 0 && setLoading(false)
-    }, 3000);
-
-    return(() => {
-      setLoading(true)
-    })
     
   }, [id, dispatch]);
 
