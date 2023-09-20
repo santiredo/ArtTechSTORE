@@ -33,7 +33,8 @@ export interface User{
 export interface Favourite{
   id:number,
   UserId: number,
-  ProductId:number
+  ProductId:number,
+  fav: true
 }
 
 export type InitialState = {
@@ -67,11 +68,11 @@ const initialState: InitialState = {
     artGallery:[],
     artist: {
       id:0,
-      name:'string',
-      mail:'string',
-      birthDate:'string',
-      location:'string',
-      image:'string',
+      name:'',
+      mail:'',
+      birthDate:'',
+      location:'',
+      image:'',
       products: []
     },
     artists:[],

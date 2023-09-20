@@ -29,18 +29,18 @@ const Navbar = () => {
 
   const {user} = useAuth0()
 
-  const userData = JSON.parse(localStorage.getItem('userData')!)
 
-  const typeOfUser = () => {
+  const typeOfUser = async() => {
+
+    const userData = await JSON.parse(localStorage.getItem('userData')!)
 
     if(userData.admin === true){
       return setAdmin(true)
-    }
-    if(userData.location){
+    }else if(userData.location){
       return setArtist(true)
+    } else{
+      return setUsername(true)
     }
-    return setUsername(true)
-
   }
 
   useEffect(() => {

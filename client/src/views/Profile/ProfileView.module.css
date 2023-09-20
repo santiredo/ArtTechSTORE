@@ -4,7 +4,15 @@
   margin: 150px 0 100px 0;
   width: 100%;
   font-family: 'Yuji Syuku', serif;
-  color:#faedde
+  color:#faedde;
+  min-height: 100vh;
+}
+
+.loading{
+  width: 50px;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
 }
 
 .profileContainer{
