@@ -67,13 +67,13 @@ export default function Register({onRegister}: {onRegister: (userExistence: bool
     const navigate = useNavigate()
 
     const postUser = async() => {
-        const response = await axios.post(`http://localhost:3001/user`, registerForm)
+        const response = await axios.post(`/user`, registerForm)
 
         localStorage.setItem('userData', JSON.stringify(response.data));
     }
 
     const postArtist = async() => {
-        const response = await axios.post(`http://localhost:3001/artist`, registerForm)
+        const response = await axios.post(`/artist`, registerForm)
 
         localStorage.setItem('userData', JSON.stringify(response.data));
     }
