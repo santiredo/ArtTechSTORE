@@ -84,7 +84,7 @@
     object-fit: cover;
 }
 
-.cardInfo button{
+.cardInfo .button{
     color: #faedde;
     background:linear-gradient(#5c3014cc, #000000ab);
     border: none;
@@ -92,9 +92,10 @@
     font-size: 20px;
     padding: 0 0 5px 0;
     font-family: 'Yuji Syuku', serif;
+    text-decoration: none;
 }
   
-.cardInfo button:hover{
+.cardInfo .button:hover{
     cursor: pointer;
     transform: scale(1.05);
     box-shadow: 0 0 5px #ffffff;
