@@ -184,15 +184,6 @@ export const getProductById = async (id: string | undefined, dispatch:Dispatch<A
   }
 }
 
-
-export const updateRating = (value: number, idProduct:number, idUser:number) => {
-  //debug
-  return {
-    type: 'UPDATE_RATING',
-    payload: {value,idProduct,idUser},
-  };
-};
-
 export const getFavsById = async (userId:number, dispatch:Dispatch<Action>) => {
 
 

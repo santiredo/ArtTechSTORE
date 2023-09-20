@@ -11,7 +11,6 @@ import './App.css'
 import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
 import Wrong from './views/WrongURL/WrongURL';
-import { useEffect, useState } from 'react';
 import Hall from './views/Hall/Hall';
 import axios from 'axios';
 
@@ -22,14 +21,6 @@ axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
 export default function App() {
 
   const location = useLocation()
-  const [navbarVisible, setNavbarVisible] = useState(true);
-
-  useEffect(() => {
-    if(location.pathname==='*'){
-      setNavbarVisible(false);
-    }
-  }, [navbarVisible]);
- 
 
   console.log(location.pathname)
   
@@ -51,6 +42,15 @@ export default function App() {
       </>
     )
   }
+  if(location.pathname.includes('success')){
+    return (
+      <>
+        <Routes>
+        <Route path='/success/:id/:productId' element={<Success />}/>
+        </Routes>
+      </>
+    )
+  }
   if(location.pathname === '/'){
     return (
       <>
@@ -62,14 +62,13 @@ export default function App() {
   } else {
     return (
       <>
-        {navbarVisible && <Navbar />}
+        <Navbar />
         <Routes>
           <Route path='/home' element={<Home/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
           <Route path='/form/:id' element={<Form/>}/>
-          <Route path='/success/:id/:productId' element={<Success />}/>
           <Route path='*' element={<Wrong/>}/>
         </Routes>
       </>
