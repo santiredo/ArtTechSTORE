@@ -8,12 +8,10 @@ export async function updateProductHandler(req: Request, res: Response) {
   
       const {id} = req.params
   
-      const {price} = req.body
+      const {rating} = req.body
   
-      const numberId = Number(id)
-      console.log(numberId, price)
   
-      const updatedProduct = await updateProduct(numberId, price)
+      const updatedProduct = await updateProduct(Number(id), rating)
   
       console.log(updatedProduct)
   

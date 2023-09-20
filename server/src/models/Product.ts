@@ -27,6 +27,10 @@ export default function Product(sequelize: Sequelize): void {
         type: DataTypes.BOOLEAN,
         defaultValue: true
       },
+      rating:{
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+      },
       type: {
         type: DataTypes.ENUM('Painting', '3D Object', 'Drawing')
       },
