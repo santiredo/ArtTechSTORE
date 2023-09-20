@@ -82,27 +82,42 @@ const Detail = () => {
 
     }, []);
     
-      const [preferenceId, setPreferenceId] = useState(null);
+    const [preferenceId, setPreferenceId] = useState(null);
+
+    const handleBuy = async() => {
+        try {
+
+            const response = await axios.post(`/order/${userId}`, { price: product.price, address: "Address" })
+
+            const {id} = response.data
+            const idOrder = id
+
+            if(idOrder){
+            
+                try {
+
+                const response = await axios.post(`http://localhost:3001/create_preference/${idOrder}`, {
+                    description: product.title,
+                    price: product.price,
+                    quantity: 1,
+                    currency_id: "ARS"
+                })
     
-        const createPreference = async () => {
-            const response = await axios.post("http://localhost:3001/create_preference", {
-                description: product.title,
-                price: product.price,
-                quantity: 1,
-                currency_id: "ARS"
-            })
-        
-            const {id} = response.data;
-    
-            return id
-        }
-    
-        const handleBuy = async () => {
-            const id = await createPreference();
-            if(id) {
-                setPreferenceId(id);
+                const {id} = response.data;
+
+                if(id){
+                    setPreferenceId(id)
+                } 
+                    
+                } catch (error) {
+                    alert(error)
+                }
             }
+            
+        } catch (error) {
+            alert(error)
         }
+    }
 
     
     return(
@@ -143,7 +158,8 @@ const Detail = () => {
                             <h3>{product.type}</h3>
                             <h3>{product.technique}</h3>
                             <button className={style.buyPostButton} onClick={handleBuy}>Buy now</button>
-                            {preferenceId && <Wallet initialization={{ preferenceId }} />}
+                            {preferenceId && <Wallet initialization={{  preferenceId }}/>}
+
                         </div>
                     </div>
                     <div className={style.descriptionDiv}>
