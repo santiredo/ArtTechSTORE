@@ -22,87 +22,64 @@ const Detail = () => {
 
     const dispatch = useDispatch()
 
-    const product = useSelector((state: InitialState) => state.productDetail)
+    const [loading, setLoading] = useState(true)
 
-    const [isFav, setIsFav] = useState(false)
+    const product = useSelector((state: InitialState) => state.productDetail)
 
     const favourites = useSelector((state: InitialState) => state.favourites)
 
-    const [loading, setLoading] = useState(true)
-
     const userId = JSON.parse(localStorage.getItem('userData')!).id;
+
+    const thisFav = favourites.find((fav: Favourite) => {
+        return fav.UserId === userId && fav.ProductId === Number(id)
+    })
+
+    const isFav = thisFav?.fav || false
 
     const handleFav = async() => {
 
-        setIsFav(!isFav)
-
         if(isFav) {
 
-            const fav = favourites.find((fav: Favourite) => {
-                return fav.UserId === userId && fav.ProductId === Number(id)
-            })
-
-            await axios.delete(`/favourites/${fav?.id}`)
+            await axios.delete(`/favourites/${thisFav!.id}`)
             await getFavsById(userId, dispatch)
-
 
         } else {
             
             await axios.post('/favourites', {productId:Number(id), userId:Number(userId)})
             await getFavsById(userId, dispatch)
 
-
         }
     }
-    
-    const findFav = async () => {
-
-        const favs = await getFavsById(userId, dispatch)
-        
-        if (userId && favs) {
-
-            const fav = favourites.find((fav: Favourite) => {
-                return fav.UserId === userId && fav.ProductId === Number(id);
-            });
-            
-            fav && setIsFav(true);
-            
-            setLoading(false);
-
-        } else {
-            setTimeout(findFav, 1000);
-        }
-    };
-
 
     useEffect(() => {
-
-        findFav()
         getProductById(id, dispatch)
 
+        setTimeout(() => {
+            product.title.length > 0 && setLoading(false)
+          }, 3000);
     }, []);
     
-      const [preferenceId, setPreferenceId] = useState(null);
+    const [preferenceId, setPreferenceId] = useState(null);
+
+    const createPreference = async () => {
+        const response = await axios.post("http://localhost:3001/create_preference", {
+            description: product.title,
+            price: product.price,
+            quantity: 1,
+            currency_id: "ARS"
+        })
     
-        const createPreference = async () => {
-            const response = await axios.post("http://localhost:3001/create_preference", {
-                description: product.title,
-                price: product.price,
-                quantity: 1,
-                currency_id: "ARS"
-            })
-        
-            const {id} = response.data;
-    
-            return id
+        const {id} = response.data;
+
+        return id
+    }
+
+    const handleBuy = async () => {
+        const id = await createPreference();
+        if(id) {
+            setPreferenceId(id);
         }
-    
-        const handleBuy = async () => {
-            const id = await createPreference();
-            if(id) {
-                setPreferenceId(id);
-            }
-        }
+    }
 
     
     return(
