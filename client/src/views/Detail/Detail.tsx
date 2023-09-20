@@ -34,7 +34,7 @@ const Detail = () => {
         return fav.UserId === userId && fav.ProductId === Number(id)
     })
 
-    const isFav = thisFav?.fav || false
+    const isFav = thisFav ? true : false
 
     const handleFav = async() => {
 
@@ -52,16 +52,22 @@ const Detail = () => {
     }
 
     useEffect(() => {
-        getProductById(id, dispatch)
 
-        setTimeout(() => {
-            product.title.length > 0 && setLoading(false)
-          }, 3000);
+        product.id == id && setLoading(false)
+    }, [product])
+
+    useEffect(() => {
+        getProductById(id, dispatch)
+        getFavsById(userId, dispatch)
+
     }, []);
 
     const [preferenceId, setPreferenceId] = useState(null);
 
+    const [loadingBuy, setLoadingBuy] = useState(false)
+
     const handleBuy = async() => {
+        setLoadingBuy(true)
         try {
 
             const response = await axios.post(`/order/${userId}`, { price: product.price, address: "Address" })
@@ -73,7 +79,7 @@ const Detail = () => {
             
                 try {
 
-                const response = await axios.post(`http://localhost:3001/create_preference/${idOrder}`, {
+                const response = await axios.post(`/create_preference/${idOrder}/${product.id}`, {
                     description: product.title,
                     price: product.price,
                     quantity: 1,
@@ -84,6 +90,7 @@ const Detail = () => {
 
                 if(id){
                     setPreferenceId(id)
+                    setLoadingBuy(false)
                 } 
                     
                 } catch (error) {
@@ -134,7 +141,8 @@ const Detail = () => {
                             <h3>{product.type}</h3>
                             <h3>{product.technique}</h3>
                             <button className={style.buyPostButton} onClick={handleBuy}>Buy now</button>
-                            {preferenceId && <Wallet initialization={{  preferenceId }}/>}
+                            {loadingBuy && (<div className={style.loadingBuy}><img src={loadingGif} alt="" /></div>)}
+                            {preferenceId && (<div className={style.wallet}><Wallet initialization={{  preferenceId }}/></div>)}
 
                         </div>
                     </div>

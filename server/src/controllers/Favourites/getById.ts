@@ -8,9 +8,5 @@ export async function getFavouritesById(UserId: number) {
         }
     })
 
-    const favourites = userFavourites.map(async(fav) => {
-        return await Product.findByPk(fav.dataValues.ProductId)
-    })
-
-    return favourites
+    return userFavourites
 }

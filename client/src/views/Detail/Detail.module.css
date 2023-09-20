@@ -139,6 +139,24 @@
     box-shadow: 0 0 10px #00000082;
 }
 
+.loadingBuy{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingBuy img{
+    width: 40px;
+    height: 40px;
+}
+
+.wallet{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .descriptionDiv{
     display: flex;
     flex-direction: column;
