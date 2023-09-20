@@ -6,6 +6,7 @@ import Admin from './components/Admin/Admin';
 import Home from './views/Home/Home';
 import Form from './views/Form/Form';
 import Navbar from './components/Nav/Nav';
+import Success from './views/SuccessMP/Success';
 import './App.css'
 import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
@@ -66,6 +67,7 @@ export default function App() {
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
           <Route path='/form/:id' element={<Form/>}/>
+          <Route path='/success/:id' element={<Success />}/>
           <Route path='*' element={<Wrong/>}/>
         </Routes>
       </>

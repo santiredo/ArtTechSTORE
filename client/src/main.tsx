@@ -11,7 +11,6 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/'
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>

@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 100px 0 50px 0;
+    margin: 120px 0 50px 0;
     color: #faedde;
     min-height: 100vh;
     font-family: 'Yuji Syuku', serif;
@@ -32,18 +32,19 @@
     width: 40%;
     background-color: #00000065;
     position: relative;
+    margin-top: 50px;
 }
 
 .imageArtist{
     display: flex;
-    width: 90%;
-    height: auto;
+    width: auto;
+    height: 80%;
     position: relative;
 }
 
 .imageArtist img{
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 350px;
 }
 
 .artistDiv{
