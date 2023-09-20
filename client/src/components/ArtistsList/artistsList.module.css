@@ -18,15 +18,11 @@
 
 .artistsListComponent h1{
     color: #faedde;
-    background: linear-gradient( #974D22, #924B21);
 }
 
 .list{
     display: flex;
-    flex-direction: column;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
     gap: 20px;
 }
 

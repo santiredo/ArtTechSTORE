@@ -78,7 +78,6 @@
 .cardInfo a{
   text-decoration: none;
   color: #faedde;
-  background:linear-gradient(#5c3014cc, #000000ab);
   border: none;
   width: 50%;
   font-size: 20px;
@@ -91,6 +90,10 @@
   transform: scale(1.05);
   box-shadow: 0 0 5px #ffffff;
   transition: .2s;
-  background:linear-gradient(#5c3014, #000000)
+  background-color: #5A2A27 ;
 }
 
+.buyButton {
+  border-radius: 0.5rem;
+  background-color: #5A2A27 ;
+}

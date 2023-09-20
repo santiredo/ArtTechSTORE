@@ -48,8 +48,8 @@ const Home: React.FC = () => {
         ) : (
           <div className={style.container}>
             <div className={style.carruselAndArtists}>
-              <ArtistsList/>
               <Carrusel/>
+              <ArtistsList/>
             </div>
             <hr />
             <div className={style.postsSection}>

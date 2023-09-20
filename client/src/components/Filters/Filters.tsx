@@ -1,13 +1,7 @@
-
-
-
-
 import { useDispatch } from 'react-redux'
 import reset from '../../assets/reset.png'
 import style from './filters.module.css'
 import { filterByPrice, filterByTechnique, filterByType, resetFilter } from '../../redux/action'
-
-
 
 export default function Filters() {
 

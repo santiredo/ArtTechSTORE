@@ -86,12 +86,13 @@
 
 .cardInfo button{
     color: #faedde;
-    background:linear-gradient(#5c3014cc, #000000ab);
+    background-color: #5A2A27 ;
     border: none;
     width: 50%;
     font-size: 20px;
     padding: 0 0 5px 0;
     font-family: 'Yuji Syuku', serif;
+    border-radius: 0.5rem;
 }
   
 .cardInfo button:hover{
@@ -99,7 +100,7 @@
     transform: scale(1.05);
     box-shadow: 0 0 5px #ffffff;
     transition: .2s;
-    background:linear-gradient(#5c3014, #000000)
+    background-color: #5A2A27 ;
 }
   
   
