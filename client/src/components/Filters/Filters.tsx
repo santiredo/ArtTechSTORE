@@ -1,7 +1,3 @@
-
-
-
-
 import { useDispatch } from 'react-redux'
 import reset from '../../assets/reset.png'
 import style from './filters.module.css'
@@ -51,7 +47,7 @@ export default function Filters() {
                         <p onClick={handleTechnique} data-value='Watercolor'>Watercolor</p>
                         <p onClick={handleTechnique} data-value='Macrame'>Macrame</p>
                         <p onClick={handleTechnique} data-value='Ceramics'>Ceramics</p>
-
+                        <p onClick={handleTechnique} data-value='NFT'>NFT</p>
                     </div>
                 </div>
                 <div className={style.filterDiv}>
