@@ -30,6 +30,8 @@ export default function App() {
     }
   }, [navbarVisible]);
  
+
+  console.log(location.pathname)
   
   if(location.pathname === '/admin'){
     return(
@@ -53,7 +55,7 @@ export default function App() {
     return (
       <>
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Landing/>}/>
         </Routes>
       </>
     )
@@ -62,7 +64,7 @@ export default function App() {
       <>
         {navbarVisible && <Navbar />}
         <Routes>
-          <Route path='/home' element={<Landing/>}/>
+          <Route path='/home' element={<Home/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
