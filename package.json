@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/mercadopago": "^1.5.8"
+  }
+}
