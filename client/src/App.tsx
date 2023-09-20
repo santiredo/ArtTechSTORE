@@ -52,7 +52,7 @@ export default function App() {
     return (
       <>
         <Routes>
-          <Route path='/' element={<Landing/>}/>
+          <Route path='/' element={<Home/>}/>
         </Routes>
       </>
     )
@@ -61,7 +61,7 @@ export default function App() {
       <>
         {navbarVisible && <Navbar />}
         <Routes>
-          <Route path='/home' element={<Home/>}/>
+          <Route path='/home' element={<Landing/>}/>
           <Route path='/detail/:id' element={<Detail/>}/>
           <Route path='/profile/:id' element={<ProfileView/>}/>
           <Route path='/favorites' element={<Favorites/>}/>
