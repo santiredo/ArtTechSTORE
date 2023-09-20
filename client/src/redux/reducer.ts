@@ -52,7 +52,8 @@ export type InitialState = {
     loadingHome: boolean,
     productDetail: ArtGalleryItem,
     favourites: Favourite[],
-    detailedFavourites: ArtGalleryItem[]
+    detailedFavourites: ArtGalleryItem[],
+    activeFilters: string[];
 }
 
 
@@ -103,7 +104,8 @@ const initialState: InitialState = {
       artistPhoto: ''
     },
     favourites:[],
-    detailedFavourites: []
+    detailedFavourites: [],
+    activeFilters: [],
 
 }
 
@@ -172,58 +174,46 @@ export default function rootReducer(state = initialState, action:Action<any>){
                 searchBarArtists: action.payload,
               }
         case 'FILTER_TYPE':
-                {let filterType=state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                })
-                const filterTechnique=state.typeFilter.filter((post: ArtGalleryItem) => {
-                  return post.type === action.payload
-                })
-                if(filterType.length===0){
-                  filterType=state.allPosts.filter((post: ArtGalleryItem) => {
-                    return post.type === action.payload
-                  })
-                }
-              return {
-                ...state,
-                artGallery: filterType,
-                techniqueFilter:filterTechnique ,
-              }}
+          {let updatedTypeFilters = [...state.activeFilters];
+          if (updatedTypeFilters.includes(action.payload)) {
+            updatedTypeFilters = updatedTypeFilters.filter(filter => filter !== action.payload);
+          } else {
+            updatedTypeFilters.push(action.payload);
+          }
+          const filteredByType = state.allPosts.filter(post => updatedTypeFilters.includes(post.type));
+
+          return {
+            ...state,
+            activeFilters: updatedTypeFilters,
+            artGallery: filteredByType,
+          }}
         case 'FILTER_TECHNIQUE':
-              {let filterTechnique=state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                return post.technique === action.payload
-              })
-              const filterType=state.techniqueFilter.filter((post: ArtGalleryItem) => {
-                return post.technique === action.payload
-              })
-              if(filterTechnique.length===0){
-                filterTechnique=state.allPosts.filter((post: ArtGalleryItem) => {
-                  return post.technique === action.payload
-                })
-              }
-              return {
-                ...state,
-                artGallery:filterTechnique ,
-                typeFilter:filterType,
-              }}
+          {let updatedTechniqueFilters = [...state.activeFilters];
+          if (updatedTechniqueFilters.includes(action.payload)) {
+            updatedTechniqueFilters = updatedTechniqueFilters.filter(filter => filter !== action.payload);
+          } else {
+            updatedTechniqueFilters.push(action.payload);
+          }
+          const filteredByTechnique = state.allPosts.filter(post => updatedTechniqueFilters.includes(post.technique));
+        
+          return {
+            ...state,
+            activeFilters: updatedTechniqueFilters,
+            artGallery: filteredByTechnique,
+          }}
         case 'FILTER_PRICE':
-              return {
-                ...state,
-                artGallery: [...state.artGallery].sort((a: ArtGalleryItem, b: ArtGalleryItem) => {
-                  if (action.payload === 'Higher') return b.price - a.price
-                  if (action.payload === 'Lower') return a.price - b.price
-                  return 0
-                }),
-                typeFilter: [...state.typeFilter].sort((a: ArtGalleryItem, b: ArtGalleryItem) => {
-                  if (action.payload === 'Higher') return b.price - a.price
-                  if (action.payload === 'Lower') return a.price - b.price
-                  return 0
-                }),
-                techniqueFilter: [...state.techniqueFilter].sort((a: ArtGalleryItem, b: ArtGalleryItem) => {
-                  if (action.payload === 'Higher') return b.price - a.price
-                  if (action.payload === 'Lower') return a.price - b.price
-                  return 0
-                }),
-              }
+          {const sortedArtGallery = [...state.artGallery];
+          if (action.payload === 'Higher') {
+            sortedArtGallery.sort((a, b) => b.price - a.price);
+          } else if (action.payload === 'Lower') {
+            sortedArtGallery.sort((a, b) => a.price - b.price);
+          }
+          
+          return {
+            ...state,
+            artGallery: sortedArtGallery,
+            
+          }}
           case 'GET_ARTIST':
                 return {
                   ...state,
