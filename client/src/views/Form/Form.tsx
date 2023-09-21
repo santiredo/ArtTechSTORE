@@ -20,7 +20,7 @@ export default function Form() {
         title: '',
         price: '',
         type: '',
-        technique: [] as string[],
+        technique: '',
         description: '',
         ArtistId: id
     })
@@ -78,12 +78,10 @@ export default function Form() {
 
         const technique = event.currentTarget.textContent
 
-        if (technique && !form.technique.includes(technique)){
-            setForm({
-                ...form,
-                technique: [...form.technique, technique]
-            })
-        }
+        technique && setForm({
+            ...form, 
+            technique: technique
+        })
     }
 
     const handleType = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -258,7 +256,7 @@ export default function Form() {
                                 <p onClick={handleType}>3D Object</p>
                             </div>
                             <div className="option">
-                                <p onClick={handleType}>Dibujo</p>
+                                <p onClick={handleType}>Drawing</p>
                             </div>
                         </div>
                         {
@@ -292,12 +290,11 @@ export default function Form() {
                                 <p onClick={handleTechnique}>Ceramics</p>
                             </div>
                         </div>
+                        
                         {
                             form.technique && (
                                 <div className={style.selectedTechniques}>
-                                    {form.technique.map(element => (
-                                        <p key={element}>{element}</p>
-                                    ))}
+                                     <p>{form.technique}</p>
                                 </div>
                             )
                         }

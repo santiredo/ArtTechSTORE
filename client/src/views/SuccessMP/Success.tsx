@@ -22,7 +22,7 @@ const Success = () => {
   useEffect(() => {
 
     updateOrder();
-
+    
   }, []);
 
   const handleSendRating = async () => {

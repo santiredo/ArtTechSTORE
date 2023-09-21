@@ -6,6 +6,8 @@
     width: 20%;
     height: 60.8vh;
     position: relative;
+    background-color: #0e03037f;
+    border-radius: 0.8rem;
 }
 
 .list::-webkit-scrollbar{
@@ -18,7 +20,7 @@
 
 .artistsListComponent h1{
     color: #faedde;
-    background: linear-gradient( #974D22, #924B21);
+    margin-bottom: 1.4rem;
 }
 
 .list{
@@ -44,8 +46,8 @@
 .imgDiv{
     display: flex;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 3.4rem;
+    height: 3.4rem;
     border-radius: 40px;
     overflow: hidden;
 }
@@ -57,8 +59,9 @@
 
 .artistsDiv h3{
     width: 50%;
-    margin: 0;
+    margin: 1.2rem;
     font-size: 20px;
+    color: antiquewhite;
 }
 
 .artistsDiv:hover h3{

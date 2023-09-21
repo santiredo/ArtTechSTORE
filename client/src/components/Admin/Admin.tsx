@@ -17,7 +17,7 @@ export default function Admin(){
     return(
     <div className="bg-neutral-400">
         <button className="h-25 w-20 bg-neutral-400 rounded-lg" onClick={handleClick}>{<img className="h-20 w-32" src={letter} alt="logo" />}</button>
-        <div className="flex  flex-wrap flex-row justify-space-evenly bg-neutral-400 space-y-10 center">
+        <div className="flex flex-wrap flex-row justify-space-evenly bg-neutral-400 space-y-10 center">
         <AdminBarChart/>
         </div>
     

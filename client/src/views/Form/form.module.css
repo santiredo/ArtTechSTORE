@@ -7,6 +7,7 @@
     margin: 70px 0 50px 0;
     color: #faedde;
     font-family: 'Yuji Syuku', serif;
+    
 
 }
 
@@ -33,6 +34,7 @@
     width: 40%;
     position: relative;
     background-color: #faedde83;
+    border-radius: 5px;
 }
 
 .uploadImgDiv p{
@@ -86,6 +88,7 @@
     color: #000000;
     font-size: 15px;
     font-family: 'Yuji Syuku', serif;
+    border-radius: 5px;
 }
 
 .allInputsDiv textarea:focus,
@@ -104,6 +107,7 @@
     color: #000000;
     font-size: 15px;
     font-family: 'Yuji Syuku', serif;
+    border-radius: 5px;
 }
 
 .selectedTechniques{
@@ -116,6 +120,7 @@
     left: 102%;
     background-color: #faeddee3;
     color: #000000;
+    border-radius: 5px;
 }
 
 .selectedTechniques p{
@@ -139,9 +144,10 @@
     padding: 0 10px 5px 10px;
     font-family: 'Yuji Syuku', serif;
     color: #000000;
+    border-radius: 10px;
 }
 
 .formPage button:hover{
     cursor: pointer;
-    box-shadow: 0 0 5px #faeddead;
+    box-shadow: 0 0 10px #c39b09d2;
 }

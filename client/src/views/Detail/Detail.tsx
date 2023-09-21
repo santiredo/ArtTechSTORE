@@ -131,15 +131,15 @@ const Detail = () => {
                                 )
                             }
                             <h2>{product.title}</h2>
-                            <h3>{product.price}</h3>
+                            <h3>Price : ${product.price}</h3>
                             <NavLink to={`/artist/${product.artistName}`}>
                             <div className={style.imgDiv}>
                                 <img src={product.artistPhoto ? product.artistPhoto : user} alt="" />
                             </div>
                             {product.artistName}
                             </NavLink>
-                            <h3>{product.type}</h3>
-                            <h3>{product.technique}</h3>
+                            <h3>Type : {product.type}</h3>
+                            <h3>Technique : {product.technique}</h3>
                             <button className={style.buyPostButton} onClick={handleBuy}>Buy now</button>
                             {loadingBuy && (<div className={style.loadingBuy}><img src={loadingGif} alt="" /></div>)}
                             {preferenceId && (<div className={style.wallet}><Wallet initialization={{  preferenceId }}/></div>)}

@@ -21,6 +21,7 @@
     background-color: #faeddee3;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .technique:hover::before,
@@ -68,7 +69,7 @@
 .showType,
 .hideType{
     padding: 5px 0 0 10px;
-    background-color: #ECD9C9;
+    background-color: #b2947a;
     color: #000000;
     font-weight: 300;
     overflow-x: hidden;
@@ -79,6 +80,7 @@
     top: 45px;
     gap: 10px;
     z-index: 999;
+    border-radius: 5px;
 }
 
 .showTechnique p,

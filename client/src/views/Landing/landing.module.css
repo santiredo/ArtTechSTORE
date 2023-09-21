@@ -21,6 +21,9 @@
     letter-spacing: 5px;
     margin: 50px 0 100px 0;
     color: #faedde;
+    background-color: dimgray;
+    border-radius: 2rem;
+    padding: 1.2rem;
 }
 
 .phrases{

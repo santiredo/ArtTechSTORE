@@ -19,7 +19,7 @@ const Card: React.FC<ArtGalleryItem> = (props) => {
              <h5>{props.artistName}</h5>
           </div>
           <h4>${props.price}</h4>
-          <NavLink to={`/detail/${props.id}`}>Buy</NavLink>
+          <NavLink to={`/detail/${props.id}`} className={style.buyButton}>Buy</NavLink>
       </div>
     </div>
   )
