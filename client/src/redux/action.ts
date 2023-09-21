@@ -149,7 +149,7 @@ export const postCreation = async(form: {
   title:string,
   price: string,
   type: string,
-  technique: string[],
+  technique: string,
   description: string,
   ArtistId: string | undefined
 }, image:string, dispatch:Dispatch<Action>) => {

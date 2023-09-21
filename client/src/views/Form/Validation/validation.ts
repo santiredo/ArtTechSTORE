@@ -28,7 +28,7 @@ export const validateSubmit = (form: {
     title: string;
     type: string;
     description: string;
-    technique: string[];
+    technique: string;
     price: string;
 
 }, renderedImage:string): FormErrors => {
@@ -71,7 +71,7 @@ export const finalValidate = (form: {
     title: string;
     type: string;
     description: string;
-    technique: string[];
+    technique: string;
     price: string;
 
 }, renderedImage:string) => {
