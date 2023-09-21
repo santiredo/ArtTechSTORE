@@ -25,6 +25,6 @@ export async function getProducts() {
     let artists = await Promise.all(artistPromises) ;
 
     return allProducts.map((product, i) => {
-        return {...product.dataValues, artistName: artists[i]!.name, artistPhoto: artists[i]!.image }
+        return {...product.dataValues, artistName: artists[i]!.name, artistPhoto: artists[i]!.image, artistId:artists[i]!.id }
     })    
 }

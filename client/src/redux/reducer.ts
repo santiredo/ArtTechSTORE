@@ -8,6 +8,7 @@ export interface ArtGalleryItem {
     technique: string;
     description: string;
     image: string;
+    artistId:number;
     artistName: string;
     artistPhoto: string;
 }
@@ -100,6 +101,7 @@ const initialState: InitialState = {
       technique: '',
       description: '',
       image: '',
+      artistId:0,
       artistName: '',
       artistPhoto: ''
     },

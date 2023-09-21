@@ -9,9 +9,13 @@ import style from "./Favorites.module.css";
 
 export default function Favorites() {
 
-  const favourites = useSelector((state:InitialState) => state.allPosts)
 
-  console.log(favourites)
+  const allPosts = useSelector((state:InitialState) => state.allPosts)
+
+  const userId = JSON.parse(localStorage.getItem('userData')!).id
+
+  const favourites = allPosts.filter((post) => Number(post.artistId) === Number(userId) )
+
 
   return (
     <div className={style.container}>
