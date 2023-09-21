@@ -1,17 +1,15 @@
-import { Product } from "../../db"
+import { Product } from "../../db";
 
 // Controlador para actualizar un producto por su ID
-export async function updateProduct(numberId:number, rating:number) {
+export async function updateProduct(numberId: number, rating: number) {
+  const updatedProduct = await Product.findByPk(numberId);
 
-    const updatedProduct = await Product.findByPk(numberId)
-  
-   updatedProduct!.update({
+  updatedProduct!.update({
     rating: rating,
-    posted:true
-   })
-  
-   await updatedProduct?.save()
-  
-   return updatedProduct
-  
-  }
+    posted: false,
+  });
+
+  await updatedProduct?.save();
+
+  return updatedProduct;
+}
