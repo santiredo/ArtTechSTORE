@@ -134,6 +134,7 @@ export default function rootReducer(state = initialState, action:Action<any>){
         case 'RESET':
           return{
             ...state,
+            activeFilters: [], // Borra los filtros activos
             artGallery: state.allPosts,
             typeFilter: state.allPosts,
             techniqueFilter: state.allPosts,
