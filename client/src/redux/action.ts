@@ -24,7 +24,7 @@ export const getAllProducts = async(dispatch:Dispatch<Action>) => {
 export const getAllProductsAdmin = async(dispatch:Dispatch<Action>) => {
   try {
 
-    const response = await axios('http://localhost:3001/admin/products')
+    const response = await axios('/admin/products')
 
     return dispatch({
       type: 'ALL_PRODUCTS_SELLED',
