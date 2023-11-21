@@ -16,10 +16,7 @@ const sequelize = new Sequelize({
   logging: false,
   native: false,
   dialectOptions: {
-      ssl: {
-          require: true, // Requiere SSL
-          rejectUnauthorized: false // Permite conexiones sin certificados válidos (no recomendado en producción)
-      }
+      ssl: false
   }
 });
 
