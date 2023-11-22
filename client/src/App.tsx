@@ -12,11 +12,6 @@ import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
 import Wrong from './views/WrongURL/WrongURL';
 import Hall from './views/Hall/Hall';
-import axios from 'axios';
-
-
-axios.defaults.baseURL = 'https://arttechstore-production.up.railway.app/' 
-
 
 export default function App() {
 
