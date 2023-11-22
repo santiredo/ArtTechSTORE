@@ -1,0 +1,65 @@
+.signUpContainer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    background-color: #000000e4;
+    width: 60%;
+    height: fit-content;
+    top: 10%;
+}
+
+.signUpContainer h2{
+    position: absolute;
+    margin: 0;
+    top: 1%;
+    right: 1.75%;
+    cursor: pointer;
+}
+
+.signUpContainer h1{
+    margin: 1.5% 0 3% 0;
+}
+
+.signUpContainer form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 100%;
+}
+
+.signUpContainer input{
+    height: 30px;
+    width: 100%;
+    padding: 0 2%;
+}
+
+.checkboxField{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}
+
+.checkboxField input{
+    border: none;
+    height: 100%;
+    width: 5%;
+    background-color: #000;
+    margin-top: 0.5%;
+}
+
+.optionalLocation{
+    height: 30px;
+    width: 100%;
+}
+
+.optionalLocation input{
+    height: 100%;
+}
+
+.signUpContainer input:focus{
+    outline: none;
+    box-shadow: 0 0 5px #ffffffca;
+}
