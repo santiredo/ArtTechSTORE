@@ -9,6 +9,24 @@
     font-family: 'Yuji Syuku', serif;
 }
 
+.log{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    width: 175px;
+    top: 60px;
+    right: calc(5% + 22px);
+    justify-content: space-between;
+}
+
+.log button{
+    padding: 2px 8px;
+}
+
+.log button:hover{
+    background-color: #00000066;
+}
+
 .fondo1{
     position: absolute;
     width: 300px;

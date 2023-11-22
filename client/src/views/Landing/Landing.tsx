@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import foto1 from '../../assets/fotoLanding.jpg'
 import foto2 from '../../assets/fotoLanding2.jpg'
 import foto3 from '../../assets/fotoLanding3.png'
@@ -5,18 +6,31 @@ import foto4 from '../../assets/fotoLanding4.jpg'
 import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
-import LoginButton from '../../components/Auth0/Login/Login'
-
+import SignUp from '../../components/Log/SignUp/SignUp'
 
 
 export default function Landing() {
+
+    const [signUp, setSignUp] = useState(false)
+    const [logIn, setLogIn] = useState(false)
+
+    const popUpSignUp = () => {
+        setSignUp(!signUp)
+    }
+
+    const popUpLogIn = () => {
+        setLogIn(!logIn)
+    }
 
 
     return (
 
         <div className={style.landingPage}>
             <h1 className={style.title}>Welcome to ArtTech STORE</h1>
-            <LoginButton/> 
+            <div className={style.log}>
+                <button onClick={popUpLogIn}>Log in</button>
+                <button onClick={popUpSignUp}>Sign up</button>
+            </div>
             <div className={style.phrases}>
                 <div className={style.phraseDiv}>
                     <div className={style.rightPhrase}>
@@ -55,6 +69,7 @@ export default function Landing() {
                 </div>
                 <img className={style.fondo1} src={fondo1} alt="" />
             </div>
+            {signUp && <SignUp/>}
         </div>
     )
 }
