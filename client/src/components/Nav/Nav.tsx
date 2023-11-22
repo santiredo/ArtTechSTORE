@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react'
 import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";
-import LogoutButton from '../Auth0/Logout/Logout';
 import { useAuth0 } from '@auth0/auth0-react';
 import userPhoto from '../../assets/usuario.png'
 import config from '../../assets/configuracion.png'
@@ -93,13 +92,13 @@ const Navbar = () => {
                         <img src={user ? user.picture : userPhoto} alt="" />
                     </div>
                   </NavLink>
-                  <LogoutButton/>
+                  {/* <LogoutButton/> */}
                 </div>
               )
             }
           </div>
         )}
-        {userName && <LogoutButton/>}
+        {/* {userName && <LogoutButton/>} */}
         {admin && (
           <div className={style.config} onClick={showArtistConfig}>
             <img src={config} alt="" />
@@ -107,7 +106,7 @@ const Navbar = () => {
               beforeMount && (
                 <div className={visibleUser}>
                   <DashboardButton/>
-                  <LogoutButton/>
+                  {/* <LogoutButton/> */}
                 </div>
               )
             }

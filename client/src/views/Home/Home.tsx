@@ -4,14 +4,13 @@ import { useEffect } from 'react'
 import CardContainer from "../../components/CardContainer/CardContainer";
 import Carrusel from "../../components/Carrusel/Carrusel";
 import Filters from "../../components/Filters/Filters";
-import React from 'react';
 import { InitialState } from "../../redux/reducer";
 import loadingGif from '../../assets/loading.gif'
 import { getAllProducts, getFavsById } from "../../redux/action";
 import ArtistsList from "../../components/ArtistsList/ArtistsList";
 import style from "./Home.module.css";
 
-const Home: React.FC = () => {
+export default function Home() {
 
 
   const loading = useSelector((state:InitialState) => state.loadingHome)
@@ -63,6 +62,4 @@ const Home: React.FC = () => {
     </>
     
   );
-};
-
-export default Home;
+}

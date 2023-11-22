@@ -1,6 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
-import Register from '../../components/Register/Register'
 import axios from 'axios'
 import loadingGIF from '../../assets/loading.gif'
 import { useNavigate } from 'react-router-dom'
@@ -53,9 +52,9 @@ export default function Hall(){
                     </>
                 ) : (
                     <div>
-                        {
+                        {/* {
                             !userExistence && <Register onRegister={(userExistence) => setUserExistence(userExistence)} />
-                        }
+                        } */}
                     </div>
                 )
             }
