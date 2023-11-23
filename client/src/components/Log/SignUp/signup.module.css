@@ -1,19 +1,31 @@
+.backgroundShadow{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000000;
+}
+
 .signUpContainer{
     display: flex;
     flex-direction: column;
+    position: relative;
     position: fixed;
     align-items: center;
-    background-color: #000000e4;
+    justify-content: center;
+    background-color: #4B494B;
     width: 60%;
     height: fit-content;
-    top: 10%;
+    margin-top: 10vh;
+    color: #FBFBF9;
 }
 
 .signUpContainer h2{
     position: absolute;
     margin: 0;
     top: 1%;
-    right: 1.75%;
+    right: 1.5%;
     cursor: pointer;
 }
 
@@ -33,21 +45,33 @@
 .signUpContainer input{
     height: 30px;
     width: 100%;
-    padding: 0 2%;
+    padding: 0 2% 0.3% 2%;
+    color: #000000;
+    background-color: #FBFBF9;
+}
+
+.signUpContainer input:focus{
+    outline: none;
+    box-shadow: 2px 2px 5px #000000;
+    transform: scale(1.01);
 }
 
 .checkboxField{
     display: flex;
     width: 30%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .checkboxField input{
     border: none;
     height: 100%;
-    width: 5%;
-    background-color: #000;
-    margin-top: 0.5%;
+    width: auto;
+    margin-top: 2%;
+}
+
+.checkboxField input:focus{
+    box-shadow: none;
 }
 
 .optionalLocation{
@@ -59,7 +83,15 @@
     height: 100%;
 }
 
-.signUpContainer input:focus{
-    outline: none;
-    box-shadow: 0 0 5px #ffffffca;
+.signUpContainer form button{
+    background-color: #FBFBF9;
+    width: 20%;
+    color: #000000;
+    font-weight: 900;
+    height: 35px;
+}
+
+.signUpContainer form button:hover{
+    box-shadow: 2px 2px 5px #000000;
+    transform: scale(1.01);
 }

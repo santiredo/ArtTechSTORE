@@ -7,7 +7,11 @@ import style from './signup.module.css'
 import validation, { validateSubmit } from "./signUpValidation";
 
 
-export default function SignUp() {
+interface SignUpProps {
+    onClose: () => void;
+}
+
+export default function SignUp({onClose}: SignUpProps) {
 
     //CONFIGURACION PARA AUTENTICACION CON FIREBASE
 
@@ -30,7 +34,6 @@ export default function SignUp() {
         email: '',
         password:'',
         confirmedPassword:'',
-        location:''
     })
 
     //CREAMOS UN ESTADO PARA SETEAR EN VERDADERO O FALSO DEPENDIENDO SI ES ARTISTA O NO
@@ -83,7 +86,6 @@ export default function SignUp() {
                 email: '',
                 password:'',
                 confirmedPassword:'',
-                location:''
             })
             
         }
@@ -93,8 +95,9 @@ export default function SignUp() {
 
     return (
 
+        <div className={style.backgroundShadow}>
         <div className={style.signUpContainer}>
-            <h2>✖</h2>
+            <h2 onClick={onClose}>✖</h2>
             <h1>Create your account</h1>
             <form>
                 <input  className={style.signUpFields} type="text" name="name" id="" placeholder="Username" onChange={handleChange}/>
@@ -110,19 +113,10 @@ export default function SignUp() {
                     <input type="checkbox" checked={isArtist} onChange={handleCheckboxChange} />
                 </div>
                 <br />
-                {
-                    isArtist && (
-                        <>
-                        <div className={style.optionalLocation}>
-                            <input type="text" name='location' value={registerForm.location} placeholder="Location" onChange={handleChange}/>
-                        </div>
-                        <br />   
-                        </>                 
-                    )
-                }
                 <button onClick={handleRegister}>Register</button>
                 <br />
             </form>
+        </div>
         </div>
     )
 }
