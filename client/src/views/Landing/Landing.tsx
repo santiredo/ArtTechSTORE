@@ -7,6 +7,7 @@ import foto5 from '../../assets/fotoLanding5.png'
 import fondo1 from '../../assets/fondoLanding.png'
 import style from './landing.module.css'
 import SignUp from '../../components/Log/SignUp/SignUp'
+import LogIn from '../../components/Log/LogIn/LogIn'
 
 
 export default function Landing() {
@@ -69,7 +70,8 @@ export default function Landing() {
                 </div>
                 <img className={style.fondo1} src={fondo1} alt="" />
             </div>
-            {signUp && <SignUp/>}
+            {signUp && <SignUp onClose={popUpSignUp}/>}
+            {logIn && <LogIn onClose={popUpLogIn}/>}
         </div>
     )
 }

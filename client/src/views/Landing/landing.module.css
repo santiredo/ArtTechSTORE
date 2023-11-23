@@ -5,7 +5,7 @@
     width: 100%;
     text-align: center;
     margin-bottom: 100px;
-    color: #faedde;
+    color: #FBFBF9;
     font-family: 'Yuji Syuku', serif;
 }
 
@@ -13,10 +13,10 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    width: 175px;
-    top: 60px;
-    right: calc(5% + 22px);
-    justify-content: space-between;
+    width: auto;
+    top: 10vh;
+    right: calc(5% + 30px);
+    justify-content: space-evenly;
 }
 
 .log button{
@@ -38,7 +38,7 @@
 .title{
     letter-spacing: 5px;
     margin: 50px 0 100px 0;
-    color: #faedde;
+    color: #FBFBF9;
 }
 
 .phrases{
@@ -88,6 +88,6 @@
 }
 
 .phraseDiv:hover{
-    background: linear-gradient(#1f416deb, #B0C3DBeb);
+    background-color: #45474B;
     border-radius: 5px;
 }
