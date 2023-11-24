@@ -17,7 +17,8 @@
     background-color: #4B494B;
     width: 60%;
     height: fit-content;
-    margin-top: 10vh;
+    max-height: 90vh;
+    margin-top: 5vh;
     color: #FBFBF9;
 }
 
@@ -83,15 +84,42 @@
     height: 100%;
 }
 
-.signUpContainer form button{
+.registerButton{
     background-color: #FBFBF9;
-    width: 20%;
+    width: 30%;
+    padding-bottom: 0.5%;
     color: #000000;
     font-weight: 900;
     height: 35px;
 }
 
-.signUpContainer form button:hover{
+.registerButton:hover{
     box-shadow: 2px 2px 5px #000000;
     transform: scale(1.01);
+}
+
+.googleAuthButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    background-color: #00000042;
+    color: #000000;
+    font-weight: 600;
+    height: 50px;
+    padding-bottom: 0.5%;
+    cursor: pointer;
+}
+
+.googleAuthButton:hover{
+    box-shadow: 2px 2px 5px #000000;
+    transform: scale(1.01);
+}
+
+.googleAuthButton img{
+    width: 50px;
+    position: absolute;
+    left: 5%;
 }

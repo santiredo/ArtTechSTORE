@@ -1,10 +1,14 @@
 
-import { initializeApp } from "firebase/app";
-import { sendEmailVerification, getAuth, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
 import {useState, useEffect} from 'react'
+import validation, { validateSubmit } from "./signUpValidation";
+import {auth, provider } from '../googleAuth'
+import googleIcon from '../../../assets/googleIcon.png'
 
 import style from './signup.module.css'
-import validation, { validateSubmit } from "./signUpValidation";
+
+//CONFIGURACION PARA AUTENTICACION CON FIREBASE
+
 
 
 interface SignUpProps {
@@ -12,20 +16,6 @@ interface SignUpProps {
 }
 
 export default function SignUp({onClose}: SignUpProps) {
-
-    //CONFIGURACION PARA AUTENTICACION CON FIREBASE
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyC4zq8o7z0NbobyIqxx7hOEAODA2O9rOYU",
-        authDomain: "arttechstore-7e85b.firebaseapp.com",
-        projectId: "arttechstore-7e85b",
-        storageBucket: "arttechstore-7e85b.appspot.com",
-        messagingSenderId: "991803634669",
-        appId: "1:991803634669:web:5667abb3016b765b392de4"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app)
 
 
     // CREAMOS EL ESTADO PARA EL FORMULARIO DE REGISTRO
@@ -60,7 +50,8 @@ export default function SignUp({onClose}: SignUpProps) {
     const [errors, setErrors] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        confirmedPassword: ''
     })
 
     //ACA INVOCAMOS UN HOOK PARA QUE SE ESTEN VALIDANDO AUTOMATICAMENTE LOS INPUTS CADA VEZ QUE EL USUARIO ESCRIBE
@@ -70,16 +61,23 @@ export default function SignUp({onClose}: SignUpProps) {
     }, [registerForm])
 
     // EVENTO PARA EL SUBMIT
-    const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleRegister = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
 
         if(validateSubmit(registerForm)){
             setErrors(validation(registerForm))
         } else{
 
-            console.log(registerForm)
-            
-            /* isArtist ? postArtist() : postUser() */
+            try {
+
+                const user = await createUserWithEmailAndPassword(auth, registerForm.email, registerForm.password)
+
+                // Llamamos a la funcion que crea los usuarios en la base de datos
+                
+            } catch (error) {
+                alert('Some error has occured')
+                console.log(error)
+            }
 
             setRegisterForm({
                 name:'',
@@ -88,10 +86,22 @@ export default function SignUp({onClose}: SignUpProps) {
                 confirmedPassword:'',
             })
             
-        }
-
-        
+        }        
     }
+        // Aca manejamos el registro con google
+
+        const googleRegistration = async() => {
+
+            try {
+                
+                const user = await signInWithPopup(auth, provider)
+
+                console.log(user)
+            } catch (error) {
+                alert('Some error has occured')
+                console.log(error)
+            }
+        }
 
     return (
 
@@ -113,7 +123,15 @@ export default function SignUp({onClose}: SignUpProps) {
                     <input type="checkbox" checked={isArtist} onChange={handleCheckboxChange} />
                 </div>
                 <br />
-                <button onClick={handleRegister}>Register</button>
+                <button className={style.registerButton} onClick={handleRegister}>Register</button>
+                <br />
+                <p>- Or -</p>
+                <br />
+                <button className={style.googleAuthButton} onClick={googleRegistration}>
+                    <img src={googleIcon} alt="" />
+                    Sign up with Google
+                </button>
+                
                 <br />
             </form>
         </div>
