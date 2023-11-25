@@ -7,11 +7,11 @@ import Home from './views/Home/Home';
 import Form from './views/Form/Form';
 import Navbar from './components/Nav/Nav';
 import Success from './views/SuccessMP/Success';
-import './App.css'
 import ProfileView from './views/Profile/ProfileView';
 import Favorites from './components/Favorites/Favorites';
 import Wrong from './views/WrongURL/WrongURL';
-import Hall from './views/Hall/Hall';
+import './App.css'
+
 
 export default function App() {
 
@@ -22,15 +22,6 @@ export default function App() {
       <>
         <Routes>
           <Route path='/admin' element={<Admin/>}/>
-        </Routes>
-      </>
-    )
-  }
-  if(location.pathname === '/hall'){
-    return(
-      <>
-        <Routes>
-          <Route path='/hall' element={<Hall/>}/>
         </Routes>
       </>
     )
