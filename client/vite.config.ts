@@ -5,8 +5,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist', // Carpeta de salida para los archivos generados
-  },
-  esbuild: {
-    jsxInject: `import React from 'react';`, // Agregamos la importación de React aquí
   }
 })
