@@ -6,11 +6,10 @@ import {auth, provider } from '../googleAuth'
 import googleIcon from '../../../assets/googleIcon.png'
 
 import style from './signup.module.css'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-//CONFIGURACION PARA AUTENTICACION CON FIREBASE
-
-
-
+// CONFIGURACION PARA CERRAR EL POP UP DEL REGISTRO
 interface SignUpProps {
     onClose: () => void;
 }
@@ -20,7 +19,6 @@ export default function SignUp({onClose}: SignUpProps) {
 
     // CREAMOS EL ESTADO PARA EL FORMULARIO DE REGISTRO
     const [registerForm, setRegisterForm] = useState({
-        name:'',
         email: '',
         password:'',
         confirmedPassword:'',
@@ -48,7 +46,6 @@ export default function SignUp({onClose}: SignUpProps) {
 
     //CREAMOS UN ESTADO PARA SETEAR LOS ERRORES DEL FORMULARIO
     const [errors, setErrors] = useState({
-        name: '',
         email: '',
         password: '',
         confirmedPassword: ''
@@ -70,9 +67,22 @@ export default function SignUp({onClose}: SignUpProps) {
 
             try {
 
-                const user = await createUserWithEmailAndPassword(auth, registerForm.email, registerForm.password)
+                const email = registerForm.email
+                const password = registerForm.password
+                const navigate = useNavigate()
 
-                // Llamamos a la funcion que crea los usuarios en la base de datos
+                const firebaseUser = await createUserWithEmailAndPassword(auth, email, password)
+
+                if (firebaseUser){
+
+                    const newUser = await axios.post('/user', {email:email, password:password})
+
+                    console.log(newUser.data)
+
+                    localStorage.setItem('userData', JSON.stringify(newUser.data))
+
+                    navigate('/home')
+                }
                 
             } catch (error) {
                 alert('Some error has occured')
@@ -80,7 +90,6 @@ export default function SignUp({onClose}: SignUpProps) {
             }
 
             setRegisterForm({
-                name:'',
                 email: '',
                 password:'',
                 confirmedPassword:'',
@@ -110,8 +119,6 @@ export default function SignUp({onClose}: SignUpProps) {
             <h2 onClick={onClose}>✖</h2>
             <h1>Create your account</h1>
             <form>
-                <input  className={style.signUpFields} type="text" name="name" id="" placeholder="Username" onChange={handleChange}/>
-                <br />
                 <input  className={style.signUpFields} type="text" name="email" id="" placeholder="E-mail" onChange={handleChange}/>
                 <br />
                 <input  className={style.signUpFields} type="password" name="password" id="" placeholder="Password" onChange={handleChange}/>
