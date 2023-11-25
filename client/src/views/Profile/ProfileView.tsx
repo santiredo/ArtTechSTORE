@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import profilePhoto from '../../assets/usuario.png'
 import { NavLink } from "react-router-dom";
 import loadingGIF from '../../assets/loading.gif'
-import { useAuth0 } from "@auth0/auth0-react";
 import styles from './ProfileView.module.css'
 
 
@@ -62,7 +61,6 @@ export default function ProfileView() {
     
   }, [id, dispatch]);
 
-  const {user} = useAuth0()
 
   return (
     <div className={styles.profilePage}>
@@ -76,7 +74,7 @@ export default function ProfileView() {
             <div className={styles.profileContainer}>
               <div className={styles.photoDiv}>
                 <div className={styles.profilePhoto}>
-                  <img src={user ? user.picture : profilePhoto} alt="" />
+                  <img src={profilePhoto} alt="" />
                 </div>
                 <div>
                   <div>
