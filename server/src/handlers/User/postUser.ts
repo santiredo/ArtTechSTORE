@@ -4,12 +4,15 @@ import { postUser } from '../../controllers/User/postUser';
 
 export async function postUserHandler(req: Request, res: Response) {
 
+  console.log('Hola')
+
   try {
 
-    const { name, mail, birthDate } = req.body;
+    const { email, password } = req.body;
 
+    console.log('Hola como estas')
 
-    const user = await postUser(name, mail, birthDate);
+    const user = await postUser(email, password);
 
     res.status(201).json(user);
     

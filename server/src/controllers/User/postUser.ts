@@ -1,20 +1,11 @@
 import {User} from "../../db";
 
-export async function postUser(name: string, mail: string, birthDate: string) {
+export async function postUser(email: string, password: string) {
   try {
 
-    const user = await User.findOne({
-      where: {
-        name: name
-      }
-    })
-
-    if(user) throw Error('That name is already in use')
-
     const newUser = await User.create({
-      name: name,
-      mail: mail,
-      birthDate: birthDate,
+      email: email,
+      password: password,
       admin: false
     });
     
