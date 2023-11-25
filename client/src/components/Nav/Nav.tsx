@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react'
 import SearchBar from "../SearchBar/SearchBar";
 import {NavLink} from "react-router-dom";
 import letter from "../../assets/letra2.png";
-import { useAuth0 } from '@auth0/auth0-react';
 import userPhoto from '../../assets/usuario.png'
 import config from '../../assets/configuracion.png'
 import DashboardButton from '../Admin/DashBoardButton/DashboardButton';
@@ -29,7 +28,6 @@ const Navbar = () => {
     };
   }, [prevScrollPos, visible]);
 
-  const {user} = useAuth0()
 
   const userData = JSON.parse(localStorage.getItem('userData')!)
 
@@ -89,7 +87,7 @@ const Navbar = () => {
                 <div className={visibleUser}>
                   <NavLink key={userData.id} to={`/profile/${userData.id}`} className={style.artistsDiv}>
                     <div className={style.imgDiv}>
-                        <img src={user ? user.picture : userPhoto} alt="" />
+                        <img src={userPhoto} alt="" />
                     </div>
                   </NavLink>
                   {/* <LogoutButton/> */}
