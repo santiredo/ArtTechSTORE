@@ -1,29 +1,25 @@
 export interface registerErrors {
-    name:string
     email:string
     password:string
     confirmedPassword:string
 }
 
 const validation = (registerForm: {
-    name:string
     email:string
     password:string
     confirmedPassword:string
 }): registerErrors => {
 
     let errors: registerErrors = {
-        name: '',
         email:'',
         password: '',
         confirmedPassword: ''
     };
 
-    if(registerForm.email && !registerForm.name){
-        errors.name = "You must choose a name";
-    }
-    if(registerForm.password && !registerForm.email){
-        errors.email = "You must enter an email"
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+    if(registerForm.password && emailRegex.test(registerForm.email)){
+        errors.email = "You must enter a valid email"
     }
     if(registerForm.confirmedPassword && (!registerForm.password || registerForm.password.length < 8)){
         errors.password = "Password: 8+ chars."
@@ -39,7 +35,6 @@ const validation = (registerForm: {
 export default validation;
 
 export const validateSubmit = (registerForm: {
-    name:string
     email:string
     password:string
     confirmedPassword:string
@@ -47,10 +42,13 @@ export const validateSubmit = (registerForm: {
 }) => {
 
     let errors = false
-    
-    if(!registerForm.name || !registerForm.email || !registerForm.password || !registerForm.confirmedPassword){
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+    if(!emailRegex.test(registerForm.email)){
         errors = true
     }
+
     if(registerForm.password !== registerForm.confirmedPassword){
         errors = true
     }
