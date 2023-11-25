@@ -12,18 +12,12 @@ export default function initializeUserModel(sequelize: Sequelize): void {
       name: {
         type: DataTypes.STRING,
       },
-      mail: {
+      email: {
         type: DataTypes.STRING,
+        unique: true
       },
-      birthDate: {
-        type: DataTypes.STRING,
-        validate: {
-          isDateFormat: function (value: string) {
-            if (!/\d{4}-\d{2}-\d{2}/.test(value)) {
-              throw new Error('The field release must have the format YYYY-MM-DD.');
-            }
-          },
-        },
+      password: {
+        type: DataTypes.STRING
       },
       admin: {
         type: DataTypes.BOOLEAN
